@@ -1,0 +1,22 @@
+{
+  "name": "auto_mobiedu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vananh6116/auto_mobiedu.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vananh6116/auto_mobiedu/issues"
+  },
+  "homepage": "https://github.com/vananh6116/auto_mobiedu#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.39.0",
+    "@types/node": "^20.9.0"
+  }
+}
