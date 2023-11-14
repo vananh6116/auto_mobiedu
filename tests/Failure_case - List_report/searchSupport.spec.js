@@ -9,13 +9,13 @@ const { test, expect } = require('@playwright/test');
 function searchSupport() {
     test('Search by text exactly', async ({ page }) => {
         await page.goto('https://mskill8.mobiedu.vn/');
+        await expect(page).toHaveTitle(/.*checkout/);
 
-        // Expect a title "to contain" a substring.
-        await expect(page).toHaveTitle(/Playwright/);
+
     });
 }
 
 
 function main() {
-
+    searchSupport();
 }
