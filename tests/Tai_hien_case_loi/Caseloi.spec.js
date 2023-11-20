@@ -1,87 +1,88 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
+const { isDate } = require('util/types');
 
 /**
  * Case 1: Thay banner đầu trang => Xóa trong CMS => Web vẫn hiển thị 
  * Expect: Web không còn hiển thị banner đã xóa
  */
 
-function case1 () {
+function case1() {
     test('Case lỗi 1', async ({ page }) => {
-    
-          test.setTimeout(120000);
+
+        test.setTimeout(120000);
         // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
-    await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
-    await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
-    await page.getByRole('button', { name: 'Đăng nhập' }).click();
-    await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
+        await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+        await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
+        await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
+        await page.getByRole('button', { name: 'Đăng nhập' }).click();
+        await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
 
         // Click Quản trị Banner - Banner - Thêm mới 
-    await page.goto('https://mskill8admin.mobiedu.vn/banner');
-    await expect(page.getByRole('heading', { name: 'Danh sách banner' })).toBeVisible();
-    await page.getByRole('button', { name: 'Thêm mới' }).click();
-    await expect(page.getByRole('heading', { name: 'Thêm mới' })).toBeVisible();
+        await page.goto('https://mskill8admin.mobiedu.vn/banner');
+        await expect(page.getByRole('heading', { name: 'Danh sách banner' })).toBeVisible();
+        await page.getByRole('button', { name: 'Thêm mới' }).click();
+        await expect(page.getByRole('heading', { name: 'Thêm mới' })).toBeVisible();
 
-         // Thêm mới banner 
-    await page.getByRole('textbox', { name: 'Tiêu đề *' }).click();
-    await page.getByRole('textbox', { name: 'Tiêu đề *' }).fill('QA_BE YOURSELF');
-    await page.getByRole('textbox', { name: 'Đường dẫn *' }).click();
-    await page.getByRole('textbox', { name: 'Đường dẫn *' }).fill('https://');
-    await page.locator('#select2-page_show-container').click();
-    await page.getByRole('treeitem', { name: 'Trang chủ', exact: true }).click();
-    await page.getByRole('spinbutton', { name: 'Số thứ tự hiển thị *' }).click();
-    await page.getByRole('spinbutton', { name: 'Số thứ tự hiển thị *' }).fill('1');
-    await page.getByRole('button', { name: 'Upload / Chọn hình ảnh +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
-    await page.getByRole('button', { name: 'Xong' }).click();
-    await page.waitForTimeout(1000);
-    await page.getByRole('button', { name: 'Upload / Chọn hình ảnh mobile +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
-    await page.getByRole('button', { name: 'Xong' }).click();
-    await page.getByRole('button', { name: 'Lưu' }).click();
-    await expect(page.getByText('Thêm mới thành công!')).toBeVisible();
+        // Thêm mới banner 
+        await page.getByRole('textbox', { name: 'Tiêu đề *' }).click();
+        await page.getByRole('textbox', { name: 'Tiêu đề *' }).fill('QA_BE YOURSELF');
+        await page.getByRole('textbox', { name: 'Đường dẫn *' }).click();
+        await page.getByRole('textbox', { name: 'Đường dẫn *' }).fill('https://');
+        await page.locator('#select2-page_show-container').click();
+        await page.getByRole('treeitem', { name: 'Trang chủ', exact: true }).click();
+        await page.getByRole('spinbutton', { name: 'Số thứ tự hiển thị *' }).click();
+        await page.getByRole('spinbutton', { name: 'Số thứ tự hiển thị *' }).fill('1');
+        await page.getByRole('button', { name: 'Upload / Chọn hình ảnh +' }).click();
+        await page.locator('div#file-preview figure:nth-child(2) > img').click();
+        await page.getByRole('button', { name: 'Xong' }).click();
+        await page.waitForTimeout(1000);
+        await page.getByRole('button', { name: 'Upload / Chọn hình ảnh mobile +' }).click();
+        await page.locator('div#file-preview figure:nth-child(2) > img').click();
+        await page.getByRole('button', { name: 'Xong' }).click();
+        await page.getByRole('button', { name: 'Lưu' }).click();
+        await expect(page.getByText('Thêm mới thành công!')).toBeVisible();
 
         // Truy cập Web kiểm tra hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
-    await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
-    await page.waitForTimeout(18000);
-    await expect(page.locator('section').filter({ hasText: 'QA_BE YOURSELF ĐĂNG NHẬP NGAY hoidap.mobiedu.vn Cộng đồng hỏi đápcủa mobiEdu ĐĂNG N' })).toBeVisible();
+        await page.goto('https://mskill8.mobiedu.vn/');
+        await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
+        await page.waitForTimeout(20000);
+        await expect(page.locator('section').filter({ hasText: 'QA_BE YOURSELF ĐĂNG NHẬP NGAY' })).toBeVisible();
 
         // Chụp ảnh màn hình web hiển thị
-    await page
-        .locator('section').filter({ hasText: 'QA_BE YOURSELF ĐĂNG NHẬP NGAY hoidap.mobiedu.vn Cộng đồng hỏi đápcủa mobiEdu ĐĂN' })
-        .screenshot({ path: 'Banner_them_case1.png' });
-    
+        await page
+            .locator('section').filter({ hasText: 'QA_BE YOURSELF ĐĂNG NHẬP NGAY hoidap.mobiedu.vn Cộng đồng hỏi đápcủa mobiEdu ĐĂN' })
+            .screenshot({ path: 'Banner_them_case1.png' });
+
 
         // Truy cập CMS xóa banner : Click Quản trị Banner - Banner
         // Lọc banner nhập tiêu đề 
-    await page.goto('https://mskill8admin.mobiedu.vn/banner');
-    await page.getByPlaceholder('Nhập từ khóa tìm kiếm...').fill('QA_BE YOURSELF');
-    await page.getByRole('button', { name: 'Tìm kiếm' }).click();
+        await page.goto('https://mskill8admin.mobiedu.vn/banner');
+        await page.getByPlaceholder('Nhập từ khóa tìm kiếm...').fill('QA_BE YOURSELF');
+        await page.getByRole('button', { name: 'Tìm kiếm' }).click();
 
         // Xóa banner
-    await page
+        await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_BE YOURSELF' })
             .locator('a')
             .nth(1)
             .click();
-    await page.getByRole('button', { name: 'Xóa' }).click();
-    await expect(page.getByText('Xóa thành công!')).toBeVisible();
+        await page.getByRole('button', { name: 'Xóa' }).click();
+        await expect(page.getByText('Xóa thành công!')).toBeVisible();
 
         // Truy cập Web kiểm tra không hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
-    await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
-    await page.waitForTimeout(18000);
-    await expect(page.locator('section').filter({ hasText: 'QA_BE YOURSELF ĐĂNG NHẬP NGAY hoidap.mobiedu.vn Cộng đồng hỏi đápcủa mobiEdu ĐĂNG N' })).not.toBeVisible();
+        await page.goto('https://mskill8.mobiedu.vn/');
+        await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
+        await page.waitForTimeout(18000);
+        await expect(page.locator('section').filter({ hasText: 'QA_BE YOURSELF ĐĂNG NHẬP NGAY' })).not.toBeVisible();
 
         // Chụp ảnh màn hình 
-    await page
-        .locator('section').filter({ hasText: 'Tích hợp ChatGPT Nâng tầm học tập cùng mobiEdu ĐĂNG NHẬP NGAY hoidap.mobiedu.vn ' })
-        .screenshot({ path: 'Banner_sau_xoa_case1.png' });
+        await page
+            .locator('section').filter({ hasText: 'Tích hợp ChatGPT Nâng tầm học tập cùng mobiEdu ĐĂNG NHẬP NGAY hoidap.mobiedu.vn ' })
+            .screenshot({ path: 'Banner_sau_xoa_case1.png' });
 
-});
+    });
 }
 
 /**
@@ -89,18 +90,18 @@ function case1 () {
  * Mong muốn : Hiển thị vài dòng demo sau đó hiển thị button Xem thêm
  */
 
-function case2 () {
+function case2() {
     test('Case lỗi 2', async ({ page }) => {
 
-    await page.goto('https://mskill8.mobiedu.vn/');
-    await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
-    await page.getByRole('link', { name: 'Khóa học' }).hover();
-    await page.locator('#mobiEduToggleMenu').getByRole('link', { name: 'Tất cả' }).click();
-    await expect(page.locator('div').filter({ hasText: 'Khóa họckeyboard_arrow_down Tất cả Trẻ em Học sinh phổ thông Sinh viên và người ' }).first()).toBeVisible();
-    await page.locator('.product-item > .image > .img-scale').first().click();
-    await expect(page.getByRole('button', { name: 'Xem thêm ' })).toBeVisible();
+        await page.goto('https://mskill8.mobiedu.vn/');
+        await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
+        await page.getByRole('link', { name: 'Khóa học' }).hover({ force: true });
+        await page.locator('#mobiEduToggleMenu').getByRole('link', { name: 'Tất cả' }).click();
+        await expect(page.locator('div').filter({ hasText: 'Khóa họckeyboard_arrow_down Tất cả Trẻ em Học sinh phổ thông Sinh viên và người ' }).first()).toBeVisible();
+        await page.locator('.product-item > .image > .img-scale').first().click();
+        await expect(page.getByRole('button', { name: 'Xem thêm ' })).toBeVisible();
 
-});
+    });
 }
 
 /**
@@ -108,27 +109,27 @@ function case2 () {
  * Mong muốn : Lọc khóa học hiển thị đầy đủ các chủ đề 
  */
 
-function case3 () {
+function case3() {
     test('Case lỗi 3', async ({ page }) => {
 
-    await page.goto('https://mskill8.mobiedu.vn/');
-    await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
-    await page.getByRole('link', { name: 'Khóa học' }).hover();
-    await page.locator('#mobiEduToggleMenu').getByRole('link', { name: 'Tất cả' }).click();
-    await expect(page.locator('div').filter({ hasText: 'Khóa họckeyboard_arrow_down Tất cả Trẻ em Học sinh phổ thông Sinh viên và người ' }).first()).toBeVisible();
-    await page.getByRole('link', { name: 'Xem thêm ' }).click();
-    await page.getByRole('link', { name: 'Xem thêm ' }).click();
-    await expect(page.getByText('Tiền tiểu học')).toBeVisible();
-    await expect(page.getByText('STEAM')).toBeVisible();
-    await expect(page.getByText('Tin học - lập trình')).toBeVisible();
-    await expect(page.getByText('Kĩ năng mềm')).toBeVisible();
-    await expect(page.getByText('Kĩ năng văn phòng')).toBeVisible();
-    await expect(page.getByText('Kinh doanh - Marketing')).toBeVisible();
-    await expect(page.getByRole('main').getByText('Ngoại ngữ')).toBeVisible();
-    await expect(page.getByText('Nghệ thuật')).toBeVisible();
-    await expect(page.getByText('Sức khỏe - Đời sống')).toBeVisible();
+        await page.goto('https://mskill8.mobiedu.vn/');
+        await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
+        await page.getByRole('link', { name: 'Khóa học' }).hover();
+        await page.locator('#mobiEduToggleMenu').getByRole('link', { name: 'Tất cả' }).click();
+        await expect(page.locator('div').filter({ hasText: 'Khóa họckeyboard_arrow_down Tất cả Trẻ em Học sinh phổ thông Sinh viên và người ' }).first()).toBeVisible();
+        await page.getByRole('link', { name: 'Xem thêm ' }).click();
+        await page.getByRole('link', { name: 'Xem thêm ' }).click();
+        await expect(page.getByText('Tiền tiểu học')).toBeVisible();
+        await expect(page.getByText('STEAM')).toBeVisible();
+        await expect(page.getByText('Tin học - lập trình')).toBeVisible();
+        await expect(page.getByText('Kĩ năng mềm')).toBeVisible();
+        await expect(page.getByText('Kĩ năng văn phòng')).toBeVisible();
+        await expect(page.getByText('Kinh doanh - Marketing')).toBeVisible();
+        await expect(page.getByRole('main').getByText('Ngoại ngữ')).toBeVisible();
+        await expect(page.getByText('Nghệ thuật')).toBeVisible();
+        await expect(page.getByText('Sức khỏe - Đời sống')).toBeVisible();
 
-});
+    });
 }
 
 /**
@@ -136,77 +137,77 @@ function case3 () {
  * Mong muốn : Upload bài viết upload được ảnh, web hiển thị ảnh 
  */
 
-function case4 () {
+function case4() {
     test('Case lỗi 4', async ({ page }) => {
-    
-          test.setTimeout(120000);
+
+        test.setTimeout(120000);
         // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
-    await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
-    await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
-    await page.getByRole('button', { name: 'Đăng nhập' }).click();
-    await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
+        await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+        await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
+        await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
+        await page.getByRole('button', { name: 'Đăng nhập' }).click();
+        await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
 
         // Click Quản trị nội dung - Tin tức - Thêm mới 
-    await page.goto('https://mskill8admin.mobiedu.vn/blog');
-    await expect(page.getByRole('heading', { name: 'Danh sách bài viết' })).toBeVisible();
-    await page.getByRole('button', { name: 'Thêm mới' }).click();
-    await expect(page.getByRole('heading', { name: 'Thêm mới' })).toBeVisible();
+        await page.goto('https://mskill8admin.mobiedu.vn/blog');
+        await expect(page.getByRole('heading', { name: 'Danh sách bài viết' })).toBeVisible();
+        await page.getByRole('button', { name: 'Thêm mới' }).click();
+        await expect(page.getByRole('heading', { name: 'Thêm mới' })).toBeVisible();
 
         // Thêm data tin tức 
-    await page.getByRole('textbox', { name: 'Tiêu đề *' }).fill('QA_Cách chinh phục hai đại học top đầu thế giới');
-    await page.getByRole('textbox', { name: 'Đường dẫn' }).fill('qa-cach-chinh-phuc-hai-dai-hoc-top-dau-the-gioi');
-    await page.locator('#select2-blog_category-container').click();
-    await page.getByRole('treeitem', { name: '[Blog]Tin dịch vụ' }).click();
-    await page.getByRole('spinbutton', { name: 'Thời gian đọc *' }).fill('10');
-    await page.getByRole('textbox', { name: 'Chọn thẻ tag...' }).click();
-    await page.getByRole('treeitem', { name: 'Kỹ năng chung' }).click();
-    await page.getByRole('spinbutton', { name: 'Lượt xem' }).click();
-    await page.getByRole('spinbutton', { name: 'Lượt xem' }).fill('1000');
-    await page.getByRole('button', { name: 'Upload / Chọn hình ảnh +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
-    await page.getByRole('button', { name: 'Xong' }).click();
-    await page.frameLocator('internal:role=dialog[name="Thêm mới"i] >> iframe[title="Rich Text Area"]').getByRole('paragraph').click();
-    await page
-        .frameLocator('internal:role=dialog[name="Thêm mới"i] >> iframe[title="Rich Text Area"]')
-        .getByLabel('Rich Text Area. Press ALT-0 for help.')
-        .fill('QA_CÁCH CHINH PHỤC HAI ĐẠI HỌC TOP ĐẦU THẾ GIỚI');
-    await page.keyboard.press('Enter');
-    await page.getByRole('menuitem', { name: 'Insert' }).click();
-    await page.getByText('Image...').click();
-    await page.getByLabel('Source').click();
-    await page.getByLabel('Source').fill('https://cdn.mobiedu.vn/mskill/uploads/mb3/1692449927-720x430.png');
-    await page.getByRole('button', { name: 'Save' }).click();
-    await page.getByLabel('Thêm mới').getByLabel('Trạng thái\n*').click();
-    await page.getByLabel('Thêm mới').getByLabel('Trạng thái\n*').selectOption('1');
-    await page.getByLabel('Thêm mới').getByLabel('Nổi bật\n*').click();
-    await page.getByLabel('Thêm mới').getByLabel('Nổi bật\n*').selectOption('1');
-    await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).click();
-    await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).clear();
-    await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).fill('1');
-    await page.getByRole('button', { name: 'Lưu' }).click();
-    await expect(page.getByText('Thêm mới thành công!')).toBeVisible();
+        await page.getByRole('textbox', { name: 'Tiêu đề *' }).fill('QA_Cách chinh phục hai đại học top đầu thế giới');
+        await page.getByRole('textbox', { name: 'Đường dẫn' }).fill('qa-cach-chinh-phuc-hai-dai-hoc-top-dau-the-gioi');
+        await page.locator('#select2-blog_category-container').click();
+        await page.getByRole('treeitem', { name: '[Blog]Tin dịch vụ' }).click();
+        await page.getByRole('spinbutton', { name: 'Thời gian đọc *' }).fill('10');
+        await page.getByRole('textbox', { name: 'Chọn thẻ tag...' }).click();
+        await page.getByRole('treeitem', { name: 'Kỹ năng chung' }).click();
+        await page.getByRole('spinbutton', { name: 'Lượt xem' }).click();
+        await page.getByRole('spinbutton', { name: 'Lượt xem' }).fill('1000');
+        await page.getByRole('button', { name: 'Upload / Chọn hình ảnh +' }).click();
+        await page.locator('div#file-preview figure:nth-child(2) > img').click();
+        await page.getByRole('button', { name: 'Xong' }).click();
+        await page.frameLocator('internal:role=dialog[name="Thêm mới"i] >> iframe[title="Rich Text Area"]').getByRole('paragraph').click();
+        await page
+            .frameLocator('internal:role=dialog[name="Thêm mới"i] >> iframe[title="Rich Text Area"]')
+            .getByLabel('Rich Text Area. Press ALT-0 for help.')
+            .fill('QA_CÁCH CHINH PHỤC HAI ĐẠI HỌC TOP ĐẦU THẾ GIỚI');
+        await page.keyboard.press('Enter');
+        await page.getByRole('menuitem', { name: 'Insert' }).click();
+        await page.getByText('Image...').click();
+        await page.getByLabel('Source').click();
+        await page.getByLabel('Source').fill('https://cdn.mobiedu.vn/mskill/uploads/mb3/1692449927-720x430.png');
+        await page.getByRole('button', { name: 'Save' }).click();
+        await page.getByLabel('Thêm mới').getByLabel('Trạng thái\n*').click();
+        await page.getByLabel('Thêm mới').getByLabel('Trạng thái\n*').selectOption('1');
+        await page.getByLabel('Thêm mới').getByLabel('Nổi bật\n*').click();
+        await page.getByLabel('Thêm mới').getByLabel('Nổi bật\n*').selectOption('1');
+        await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).click();
+        await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).clear();
+        await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).fill('1');
+        await page.getByRole('button', { name: 'Lưu' }).click();
+        await expect(page.getByText('Thêm mới thành công!')).toBeVisible();
 
         // Truy cập Web kiểm tra hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
-    await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
-    await page.locator('.home-11 > .container > .button > .btn').click();
-    await expect(page.locator('div.desktop-show > div > div:nth-child(2) > div:nth-child(2)')).toBeVisible();
-    await page.locator('div:nth-child(2) > div > article:nth-child(1)').click();
-    await expect(page.getByRole('heading', { name: 'QA_Cách chinh phục hai đại học top đầu thế giới' })).toBeVisible();
-    await expect(page.getByText('QA_CÁCH CHINH PHỤC HAI ĐẠI HỌC TOP ĐẦU THẾ GIỚI', { exact: true })).toBeVisible();
+        await page.goto('https://mskill8.mobiedu.vn/');
+        await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
+        await page.locator('.home-11 > .container > .button > .btn').click();
+        await expect(page.locator('div.desktop-show > div > div:nth-child(2) > div:nth-child(2)')).toBeVisible();
+        await page.locator('div:nth-child(2) > div > article:nth-child(1)').click();
+        await expect(page.getByRole('heading', { name: 'QA_Cách chinh phục hai đại học top đầu thế giới' })).toBeVisible();
+        await expect(page.getByText('QA_CÁCH CHINH PHỤC HAI ĐẠI HỌC TOP ĐẦU THẾ GIỚI', { exact: true })).toBeVisible();
 
         // Chụp ảnh màn hình Web  
-    await page.waitForTimeout(1000);
-    await page.screenshot({ path: 'Anh_them_tin_tuc_case4.png', fullPage: true });
+        await page.waitForTimeout(1000);
+        await page.screenshot({ path: 'Anh_them_tin_tuc_case4.png', fullPage: true });
 
         // Truy cập CMS xóa tin tức 
-    await page.goto('https://mskill8admin.mobiedu.vn/blog');
-    await page.locator('tr:nth-child(1) > td.align-middle.text-right > span.btn.btn-sm.btn-danger.del-menu-link').click();
-    await page.getByRole('button', { name: 'Xóa' }).click();
-    await expect(page.getByText('Xóa thành công!')).toBeVisible();
-    
-});
+        await page.goto('https://mskill8admin.mobiedu.vn/blog');
+        await page.locator('tr:nth-child(1) > td.align-middle.text-right > span.btn.btn-sm.btn-danger.del-menu-link').click();
+        await page.getByRole('button', { name: 'Xóa' }).click();
+        await expect(page.getByText('Xóa thành công!')).toBeVisible();
+
+    });
 }
 
 /**
@@ -214,98 +215,98 @@ function case4 () {
  * Mong muốn : Sửa banner lưu thành công - Web hiển thị đúng tiêu đề
  */
 
-function case5 () {
+function case5() {
     test('Case lỗi 5', async ({ page }) => {
-    
-          test.setTimeout(120000);
+
+        test.setTimeout(120000);
         // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
-    await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
-    await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
-    await page.getByRole('button', { name: 'Đăng nhập' }).click();
-    await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
+        await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+        await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
+        await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
+        await page.getByRole('button', { name: 'Đăng nhập' }).click();
+        await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
 
         // Click Quản trị Banner - Banner - Thêm mới 
-    await page.goto('https://mskill8admin.mobiedu.vn/banner');
-    await expect(page.getByRole('heading', { name: 'Danh sách banner' })).toBeVisible();
-    await page.getByRole('button', { name: 'Thêm mới' }).click();
-    await expect(page.getByRole('heading', { name: 'Thêm mới' })).toBeVisible();
+        await page.goto('https://mskill8admin.mobiedu.vn/banner');
+        await expect(page.getByRole('heading', { name: 'Danh sách banner' })).toBeVisible();
+        await page.getByRole('button', { name: 'Thêm mới' }).click();
+        await expect(page.getByRole('heading', { name: 'Thêm mới' })).toBeVisible();
 
-         // Thêm mới banner 
-    await page.getByRole('textbox', { name: 'Tiêu đề *' }).click();
-    await page.getByRole('textbox', { name: 'Tiêu đề *' }).fill('QA_BE YOURSELF');
-    await page.getByRole('textbox', { name: 'Đường dẫn *' }).click();
-    await page.getByRole('textbox', { name: 'Đường dẫn *' }).fill('https://');
-    await page.locator('#select2-page_show-container').click();
-    await page.getByRole('treeitem', { name: 'Trang chủ', exact: true }).click();
-    await page.getByRole('spinbutton', { name: 'Số thứ tự hiển thị *' }).click();
-    await page.getByRole('spinbutton', { name: 'Số thứ tự hiển thị *' }).fill('1');
-    await page.getByRole('button', { name: 'Upload / Chọn hình ảnh +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
-    await page.getByRole('button', { name: 'Xong' }).click();
-    await page.waitForTimeout(1000);
-    await page.getByRole('button', { name: 'Upload / Chọn hình ảnh mobile +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
-    await page.getByRole('button', { name: 'Xong' }).click();
-    await page.getByRole('button', { name: 'Lưu' }).click();
-    await expect(page.getByText('Thêm mới thành công!')).toBeVisible();
+        // Thêm mới banner 
+        await page.getByRole('textbox', { name: 'Tiêu đề *' }).click();
+        await page.getByRole('textbox', { name: 'Tiêu đề *' }).fill('QA_BE YOURSELF');
+        await page.getByRole('textbox', { name: 'Đường dẫn *' }).click();
+        await page.getByRole('textbox', { name: 'Đường dẫn *' }).fill('https://');
+        await page.locator('#select2-page_show-container').click();
+        await page.getByRole('treeitem', { name: 'Trang chủ', exact: true }).click();
+        await page.getByRole('spinbutton', { name: 'Số thứ tự hiển thị *' }).click();
+        await page.getByRole('spinbutton', { name: 'Số thứ tự hiển thị *' }).fill('1');
+        await page.getByRole('button', { name: 'Upload / Chọn hình ảnh +' }).click();
+        await page.locator('div#file-preview figure:nth-child(2) > img').click();
+        await page.getByRole('button', { name: 'Xong' }).click();
+        await page.waitForTimeout(1000);
+        await page.getByRole('button', { name: 'Upload / Chọn hình ảnh mobile +' }).click();
+        await page.locator('div#file-preview figure:nth-child(2) > img').click();
+        await page.getByRole('button', { name: 'Xong' }).click();
+        await page.getByRole('button', { name: 'Lưu' }).click();
+        await expect(page.getByText('Thêm mới thành công!')).toBeVisible();
 
         // Truy cập Web kiểm tra hiển thị sau khi thêm mới thành công 
-    await page.goto('https://mskill8.mobiedu.vn/');
-    await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
-    await page.waitForTimeout(18000);
-    await expect(page.locator('section').filter({ hasText: 'QA_BE YOURSELF ĐĂNG NHẬP NGAY hoidap.mobiedu.vn Cộng đồng hỏi đápcủa mobiEdu ĐĂNG N' })).toBeVisible();
+        await page.goto('https://mskill8.mobiedu.vn/');
+        await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
+        await page.waitForTimeout(18000);
+        await expect(page.locator('section').filter({ hasText: 'QA_BE YOURSELF ĐĂNG NHẬP NGAY' })).toBeVisible();
 
         // Chụp ảnh màn hình web hiển thị
-    await page
-        .locator('section').filter({ hasText: 'QA_BE YOURSELF ĐĂNG NHẬP NGAY hoidap.mobiedu.vn Cộng đồng hỏi đápcủa mobiEdu ĐĂN' })
-        .screenshot({ path: 'Banner_them_case5_1.png' });
+        await page
+            .locator('section').filter({ hasText: 'QA_BE YOURSELF ĐĂNG NHẬP NGAY hoidap.mobiedu.vn Cộng đồng hỏi đápcủa mobiEdu ĐĂN' })
+            .screenshot({ path: 'Banner_them_case5_1.png' });
 
         //  Truy cập CMS Chỉnh sửa banner 
-    await page.goto('https://mskill8admin.mobiedu.vn/banner');
-    await page
-        .getByPlaceholder('Nhập từ khóa tìm kiếm...')
-        .fill('QA_BE YOURSELF');
-    await page.getByRole('button', { name: 'Tìm kiếm' }).click();
-    await page.getByRole('link', { name: ' Edit' }).click();
-    await expect(page.getByRole('heading', { name: 'Thêm mới' })).toBeVisible();
-    await page.getByRole('textbox', { name: 'Tiêu đề *' }).fill('///QA_///_ BE YOURSELF ///////');
-    await page.getByRole('button', { name: 'Upload / Chọn hình ảnh +' }).click();
-    await page.locator('div#file-preview figure:nth-child(9) > img').click();
-    await page.getByRole('button', { name: 'Xong' }).click();
-    await page.waitForTimeout(1000);
-    await page.getByRole('button', { name: 'Upload / Chọn hình ảnh mobile +' }).click();
-    await page.locator('div#file-preview figure:nth-child(9) > img').click();
-    await page.getByRole('button', { name: 'Xong' }).click();
-    await page.getByRole('button', { name: 'Lưu' }).click();
-    await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
+        await page.goto('https://mskill8admin.mobiedu.vn/banner');
+        await page
+            .getByPlaceholder('Nhập từ khóa tìm kiếm...')
+            .fill('QA_BE YOURSELF');
+        await page.getByRole('button', { name: 'Tìm kiếm' }).click();
+        await page.getByRole('link', { name: ' Edit' }).click();
+        await expect(page.getByRole('heading', { name: 'Thêm mới' })).toBeVisible();
+        await page.getByRole('textbox', { name: 'Tiêu đề *' }).fill('///QA_///_ BE YOURSELF ///////');
+        await page.getByRole('button', { name: 'Upload / Chọn hình ảnh +' }).click();
+        await page.locator('div#file-preview figure:nth-child(9) > img').click();
+        await page.getByRole('button', { name: 'Xong' }).click();
+        await page.waitForTimeout(1000);
+        await page.getByRole('button', { name: 'Upload / Chọn hình ảnh mobile +' }).click();
+        await page.locator('div#file-preview figure:nth-child(9) > img').click();
+        await page.getByRole('button', { name: 'Xong' }).click();
+        await page.getByRole('button', { name: 'Lưu' }).click();
+        await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
 
         // Truy cập Web kiểm tra hiển thị sau khi chỉnh sửa 
-    await page.goto('https://mskill8.mobiedu.vn/');
-    await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
-    await page.waitForTimeout(18000);
-    await expect(page.locator('section')
-        .filter({ hasText: '///QA_///_ BE YOURSELF /////// ĐĂNG NHẬP NGAY hoidap.mobiedu.vn Cộng đồng hỏi đápcủa mobiEdu ĐĂNG N' }))
-        .toBeVisible();
-    
+        await page.goto('https://mskill8.mobiedu.vn/');
+        await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
+        await page.waitForTimeout(18000);
+        await expect(page.locator('section')
+            .filter({ hasText: '///QA_///_ BE YOURSELF /////// ĐĂNG NHẬP NGAY hoidap.mobiedu.vn Cộng đồng hỏi đápcủa mobiEdu ĐĂNG N' }))
+            .toBeVisible();
+
         // Chụp ảnh màn hình web hiển thị
-    await page
-        .locator('section')
-        .filter({ hasText: '///QA_///_ BE YOURSELF /////// ĐĂNG NHẬP NGAY hoidap.mobiedu.vn Cộng đồng hỏi đápcủa mobiEdu ĐĂN' })
-        .screenshot({ path: 'Banner_sua_case5_2.png' });
+        await page
+            .locator('section')
+            .filter({ hasText: '///QA_///_ BE YOURSELF /////// ĐĂNG NHẬP NGAY hoidap.mobiedu.vn Cộng đồng hỏi đápcủa mobiEdu ĐĂN' })
+            .screenshot({ path: 'Banner_sua_case5_2.png' });
 
         // Truy cập CMS xoá banner
-    await page.goto('https://mskill8admin.mobiedu.vn/banner');
-    await page
-        .getByPlaceholder('Nhập từ khóa tìm kiếm...')
-        .fill('///QA_///_ BE YOURSELF ///////');
-    await page.getByRole('button', { name: 'Tìm kiếm' }).click();
-    await page.waitForTimeout(1000);
-    await page.getByRole('link', { name: ' Remove' }).click();
-    await page.getByRole('button', { name: 'Xóa' }).click();
-    await expect(page.getByText('Xóa thành công!')).toBeVisible();
+        await page.goto('https://mskill8admin.mobiedu.vn/banner');
+        await page
+            .getByPlaceholder('Nhập từ khóa tìm kiếm...')
+            .fill('///QA_///_ BE YOURSELF ///////');
+        await page.getByRole('button', { name: 'Tìm kiếm' }).click();
+        await page.waitForTimeout(1000);
+        await page.getByRole('link', { name: ' Remove' }).click();
+        await page.getByRole('button', { name: 'Xóa' }).click();
+        await expect(page.getByText('Xóa thành công!')).toBeVisible();
 
-});
+    });
 }
 
 /**
@@ -313,68 +314,68 @@ function case5 () {
  * Mong muốn : Upload banner lên trang có gắn đường link, click vào link thành công 
 */
 
-function case6 () {
+function case6() {
     test('Case lỗi 6', async ({ page }) => {
-    
-          test.setTimeout(120000);
+
+        test.setTimeout(120000);
         // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
-    await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
-    await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
-    await page.getByRole('button', { name: 'Đăng nhập' }).click();
-    await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
+        await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+        await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
+        await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
+        await page.getByRole('button', { name: 'Đăng nhập' }).click();
+        await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
 
         // Click Quản trị Banner - Banner - Thêm mới 
-    await page.goto('https://mskill8admin.mobiedu.vn/banner');
-    await expect(page.getByRole('heading', { name: 'Danh sách banner' })).toBeVisible();
-    await page.getByRole('button', { name: 'Thêm mới' }).click();
-    await expect(page.getByRole('heading', { name: 'Thêm mới' })).toBeVisible();
+        await page.goto('https://mskill8admin.mobiedu.vn/banner');
+        await expect(page.getByRole('heading', { name: 'Danh sách banner' })).toBeVisible();
+        await page.getByRole('button', { name: 'Thêm mới' }).click();
+        await expect(page.getByRole('heading', { name: 'Thêm mới' })).toBeVisible();
 
-         // Thêm mới banner có gắn đường link
-    await page.getByRole('textbox', { name: 'Tiêu đề *' }).click();
-    await page.getByRole('textbox', { name: 'Tiêu đề *' }).fill('QA_BE YOURSELF');
-    await page.getByRole('textbox', { name: 'Đường dẫn *' }).click();
-    await page.getByRole('textbox', { name: 'Đường dẫn *' }).fill('https://mskill8.mobiedu.vn/khoa-hoc/hoc-thu-khoa-2007');
-    await page.locator('#select2-page_show-container').click();
-    await page.getByRole('treeitem', { name: 'Trang chủ', exact: true }).click();
-    await page.getByRole('spinbutton', { name: 'Số thứ tự hiển thị *' }).click();
-    await page.getByRole('spinbutton', { name: 'Số thứ tự hiển thị *' }).fill('1');
-    await page.getByRole('button', { name: 'Upload / Chọn hình ảnh +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
-    await page.getByRole('button', { name: 'Xong' }).click();
-    await page.waitForTimeout(1000);
-    await page.getByRole('button', { name: 'Upload / Chọn hình ảnh mobile +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
-    await page.getByRole('button', { name: 'Xong' }).click();
-    await page.getByRole('button', { name: 'Lưu' }).click();
-    await expect(page.getByText('Thêm mới thành công!')).toBeVisible();
+        // Thêm mới banner có gắn đường link
+        await page.getByRole('textbox', { name: 'Tiêu đề *' }).click();
+        await page.getByRole('textbox', { name: 'Tiêu đề *' }).fill('QA_BE YOURSELF');
+        await page.getByRole('textbox', { name: 'Đường dẫn *' }).click();
+        await page.getByRole('textbox', { name: 'Đường dẫn *' }).fill('https://mskill8.mobiedu.vn/khoa-hoc/hoc-thu-khoa-2007');
+        await page.locator('#select2-page_show-container').click();
+        await page.getByRole('treeitem', { name: 'Trang chủ', exact: true }).click();
+        await page.getByRole('spinbutton', { name: 'Số thứ tự hiển thị *' }).click();
+        await page.getByRole('spinbutton', { name: 'Số thứ tự hiển thị *' }).fill('1');
+        await page.getByRole('button', { name: 'Upload / Chọn hình ảnh +' }).click();
+        await page.locator('div#file-preview figure:nth-child(2) > img').click();
+        await page.getByRole('button', { name: 'Xong' }).click();
+        await page.waitForTimeout(1000);
+        await page.getByRole('button', { name: 'Upload / Chọn hình ảnh mobile +' }).click();
+        await page.locator('div#file-preview figure:nth-child(2) > img').click();
+        await page.getByRole('button', { name: 'Xong' }).click();
+        await page.getByRole('button', { name: 'Lưu' }).click();
+        await expect(page.getByText('Thêm mới thành công!')).toBeVisible();
 
         // Truy cập web kiểm tra click banner 
-    await page.goto('https://mskill8.mobiedu.vn/');
-    await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
-    await page.waitForTimeout(18000);
-    await expect(page.locator('section')
-        .filter({ hasText: 'QA_BE YOURSELF ĐĂNG NHẬP NGAY hoidap.mobiedu.vn Cộng đồng hỏi đápcủa mobiEdu ĐĂNG N' })).toBeVisible();
-    await page.locator('div:nth-child(5) > .container > .row > .col-lg-7 > .image > .img-scale2').click();
-    await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc/hoc-thu-khoa-2007');
+        await page.goto('https://mskill8.mobiedu.vn/');
+        await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
+        await page.waitForTimeout(18000);
+        await expect(page.locator('section')
+            .filter({ hasText: 'QA_BE YOURSELF ĐĂNG NHẬP NGAY hoidap.mobiedu.vn Cộng đồng hỏi đápcủa mobiEdu ĐĂNG N' })).toBeVisible();
+        await page.locator('div:nth-child(5) > .container > .row > .col-lg-7 > .image > .img-scale2').click();
+        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc/hoc-thu-khoa-2007');
 
         // Truy cập CMS xóa banner
         // Lọc banner nhập tiêu đề 
-    await page.goto('https://mskill8admin.mobiedu.vn/banner');
-    await page.getByPlaceholder('Nhập từ khóa tìm kiếm...').fill('QA_BE YOURSELF');
-    await page.getByRole('button', { name: 'Tìm kiếm' }).click();
+        await page.goto('https://mskill8admin.mobiedu.vn/banner');
+        await page.getByPlaceholder('Nhập từ khóa tìm kiếm...').fill('QA_BE YOURSELF');
+        await page.getByRole('button', { name: 'Tìm kiếm' }).click();
 
         // Xóa banner
-    await page
+        await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_BE YOURSELF' })
             .locator('a')
             .nth(1)
             .click();
-    await page.getByRole('button', { name: 'Xóa' }).click();
-    await expect(page.getByText('Xóa thành công!')).toBeVisible();
-    
-});
+        await page.getByRole('button', { name: 'Xóa' }).click();
+        await expect(page.getByText('Xóa thành công!')).toBeVisible();
+
+    });
 }
 
 /**
@@ -382,113 +383,113 @@ function case6 () {
  * Mong muốn : Sau khi chỉnh sửa bài viết => Bài viết vẫn hiển thị trên web 
  */
 
-function case7 () {
+function case7() {
     test('Case lỗi 7', async ({ page }) => {
-    
-          test.setTimeout(120000);
+
+        test.setTimeout(120000);
         // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
-    await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
-    await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
-    await page.getByRole('button', { name: 'Đăng nhập' }).click();
-    await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
+        await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+        await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
+        await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
+        await page.getByRole('button', { name: 'Đăng nhập' }).click();
+        await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
 
         // Click Quản trị nội dung - Tin tức - Thêm mới 
-    await page.goto('https://mskill8admin.mobiedu.vn/blog');
-    await expect(page.getByRole('heading', { name: 'Danh sách bài viết' })).toBeVisible();
-    await page.getByRole('button', { name: 'Thêm mới' }).click();
-    await expect(page.getByRole('heading', { name: 'Thêm mới' })).toBeVisible();
+        await page.goto('https://mskill8admin.mobiedu.vn/blog');
+        await expect(page.getByRole('heading', { name: 'Danh sách bài viết' })).toBeVisible();
+        await page.getByRole('button', { name: 'Thêm mới' }).click();
+        await expect(page.getByRole('heading', { name: 'Thêm mới' })).toBeVisible();
 
         // Thêm data tin tức 
-    await page.getByRole('textbox', { name: 'Tiêu đề *' }).fill('QA_Cách chinh phục hai đại học top đầu thế giới');
-    await page.getByRole('textbox', { name: 'Đường dẫn' }).fill('qa-cach-chinh-phuc-hai-dai-hoc-top-dau-the-gioi');
-    await page.locator('#select2-blog_category-container').click();
-    await page.getByRole('treeitem', { name: '[Blog]Tin dịch vụ' }).click();
-    await page.getByRole('spinbutton', { name: 'Thời gian đọc *' }).fill('10');
-    await page.getByRole('textbox', { name: 'Chọn thẻ tag...' }).click();
-    await page.getByRole('treeitem', { name: 'Kỹ năng chung' }).click();
-    await page.getByRole('spinbutton', { name: 'Lượt xem' }).click();
-    await page.getByRole('spinbutton', { name: 'Lượt xem' }).fill('1000');
-    await page.getByRole('button', { name: 'Upload / Chọn hình ảnh +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
-    await page.getByRole('button', { name: 'Xong' }).click();
-    await page.frameLocator('internal:role=dialog[name="Thêm mới"i] >> iframe[title="Rich Text Area"]').getByRole('paragraph').click();
-    await page
-        .frameLocator('internal:role=dialog[name="Thêm mới"i] >> iframe[title="Rich Text Area"]')
-        .getByLabel('Rich Text Area. Press ALT-0 for help.')
-        .fill('QA_CÁCH CHINH PHỤC HAI ĐẠI HỌC TOP ĐẦU THẾ GIỚI');
-    await page.keyboard.press('Enter');
-    await page.getByRole('menuitem', { name: 'Insert' }).click();
-    await page.getByText('Image...').click();
-    await page.getByLabel('Source').click();
-    await page.getByLabel('Source').fill('https://cdn.mobiedu.vn/mskill/uploads/mb3/1692449927-720x430.png');
-    await page.getByRole('button', { name: 'Save' }).click();
-    await page.getByLabel('Thêm mới').getByLabel('Trạng thái\n*').click();
-    await page.getByLabel('Thêm mới').getByLabel('Trạng thái\n*').selectOption('1');
-    await page.getByLabel('Thêm mới').getByLabel('Nổi bật\n*').click();
-    await page.getByLabel('Thêm mới').getByLabel('Nổi bật\n*').selectOption('1');
-    await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).click();
-    await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).clear();
-    await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).fill('1');
-    await page.getByRole('button', { name: 'Lưu' }).click();
-    await expect(page.getByText('Thêm mới thành công!')).toBeVisible();
+        await page.getByRole('textbox', { name: 'Tiêu đề *' }).fill('QA_Cách chinh phục hai đại học top đầu thế giới');
+        await page.getByRole('textbox', { name: 'Đường dẫn' }).fill('qa-cach-chinh-phuc-hai-dai-hoc-top-dau-the-gioi');
+        await page.locator('#select2-blog_category-container').click();
+        await page.getByRole('treeitem', { name: '[Blog]Tin dịch vụ' }).click();
+        await page.getByRole('spinbutton', { name: 'Thời gian đọc *' }).fill('10');
+        await page.getByRole('textbox', { name: 'Chọn thẻ tag...' }).click();
+        await page.getByRole('treeitem', { name: 'Kỹ năng chung' }).click();
+        await page.getByRole('spinbutton', { name: 'Lượt xem' }).click();
+        await page.getByRole('spinbutton', { name: 'Lượt xem' }).fill('1000');
+        await page.getByRole('button', { name: 'Upload / Chọn hình ảnh +' }).click();
+        await page.locator('div#file-preview figure:nth-child(2) > img').click();
+        await page.getByRole('button', { name: 'Xong' }).click();
+        await page.frameLocator('internal:role=dialog[name="Thêm mới"i] >> iframe[title="Rich Text Area"]').getByRole('paragraph').click();
+        await page
+            .frameLocator('internal:role=dialog[name="Thêm mới"i] >> iframe[title="Rich Text Area"]')
+            .getByLabel('Rich Text Area. Press ALT-0 for help.')
+            .fill('QA_CÁCH CHINH PHỤC HAI ĐẠI HỌC TOP ĐẦU THẾ GIỚI');
+        await page.keyboard.press('Enter');
+        await page.getByRole('menuitem', { name: 'Insert' }).click();
+        await page.getByText('Image...').click();
+        await page.getByLabel('Source').click();
+        await page.getByLabel('Source').fill('https://cdn.mobiedu.vn/mskill/uploads/mb3/1692449927-720x430.png');
+        await page.getByRole('button', { name: 'Save' }).click();
+        await page.getByLabel('Thêm mới').getByLabel('Trạng thái\n*').click();
+        await page.getByLabel('Thêm mới').getByLabel('Trạng thái\n*').selectOption('1');
+        await page.getByLabel('Thêm mới').getByLabel('Nổi bật\n*').click();
+        await page.getByLabel('Thêm mới').getByLabel('Nổi bật\n*').selectOption('1');
+        await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).click();
+        await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).clear();
+        await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).fill('1');
+        await page.getByRole('button', { name: 'Lưu' }).click();
+        await expect(page.getByText('Thêm mới thành công!')).toBeVisible();
 
         // Truy cập Web kiểm tra hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
-    await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
-    await page.locator('.home-11 > .container > .button > .btn').click();
-    await expect(page.locator('div.desktop-show > div > div:nth-child(2) > div:nth-child(2)')).toBeVisible();
-    await page.locator('div:nth-child(2) > div > article:nth-child(1)').click();
-    await expect(page.getByRole('heading', { name: 'QA_Cách chinh phục hai đại học top đầu thế giới' })).toBeVisible();
-    await expect(page.getByText('QA_CÁCH CHINH PHỤC HAI ĐẠI HỌC TOP ĐẦU THẾ GIỚI', { exact: true })).toBeVisible();
+        await page.goto('https://mskill8.mobiedu.vn/');
+        await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
+        await page.locator('.home-11 > .container > .button > .btn').click();
+        await expect(page.locator('div.desktop-show > div > div:nth-child(2) > div:nth-child(2)')).toBeVisible();
+        await page.locator('div:nth-child(2) > div > article:nth-child(1)').click();
+        await expect(page.getByRole('heading', { name: 'QA_Cách chinh phục hai đại học top đầu thế giới' })).toBeVisible();
+        await expect(page.getByText('QA_CÁCH CHINH PHỤC HAI ĐẠI HỌC TOP ĐẦU THẾ GIỚI', { exact: true })).toBeVisible();
 
         // Chụp ảnh màn hình Web  
-    await page.waitForTimeout(1000);
-    await page.screenshot({ path: 'Anh_them_tin_tuc_case7.png', fullPage: true });
+        await page.waitForTimeout(1000);
+        await page.screenshot({ path: 'Anh_them_tin_tuc_case7.png', fullPage: true });
 
         // Truy cập CMS chỉnh sửa bài viết 
-    await page.goto('https://mskill8admin.mobiedu.vn/blog');
-    await page.locator('tr:nth-child(1) > td.align-middle.text-right > span.btn.btn-sm.btn-primary.edit-menu-link.show-list').click();
-    await expect(page.getByRole('heading', { name: 'Chỉnh sửa' })).toBeVisible();
-    await page.getByRole('textbox', { name: 'Tiêu đề *' }).click();
-    await page.getByRole('textbox', { name: 'Tiêu đề *' }).clear();
-    await page
-        .getByRole('textbox', { name: 'Tiêu đề *' })
-        .fill('///_QA///_Cách chinh phục hai đại học top đầu thế giới//////');
-    await page.getByRole('button', { name: 'Upload / Chọn hình ảnh +' }).click();
-    await page.locator('div#file-preview figure:nth-child(9) > img').click();
-    await page.getByRole('button', { name: 'Xong' }).click();
-   
-    // Thêm ảnh nội dung bài viết
-    await page.getByRole('menuitem', { name: 'Insert' }).click();
-    await page.getByText('Image...').click();
-    await page.getByLabel('Source').click();
-    await page.getByLabel('Source').fill('https://cdn.mobiedu.vn/mskill/uploads/mb3/1692860289-banner-dau-trang-mb.jpg');
-    await page.getByRole('button', { name: 'Save' }).click();
-    await page.getByRole('button', { name: 'Lưu' }).click();
-    await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
+        await page.goto('https://mskill8admin.mobiedu.vn/blog');
+        await page.locator('tr:nth-child(1) > td.align-middle.text-right > span.btn.btn-sm.btn-primary.edit-menu-link.show-list').click();
+        await expect(page.getByRole('heading', { name: 'Chỉnh sửa' })).toBeVisible();
+        await page.getByRole('textbox', { name: 'Tiêu đề *' }).click();
+        await page.getByRole('textbox', { name: 'Tiêu đề *' }).clear();
+        await page
+            .getByRole('textbox', { name: 'Tiêu đề *' })
+            .fill('///_QA///_Cách chinh phục hai đại học top đầu thế giới//////');
+        await page.getByRole('button', { name: 'Upload / Chọn hình ảnh +' }).click();
+        await page.locator('div#file-preview figure:nth-child(9) > img').click();
+        await page.getByRole('button', { name: 'Xong' }).click();
+
+        // Thêm ảnh nội dung bài viết
+        await page.getByRole('menuitem', { name: 'Insert' }).click();
+        await page.getByText('Image...').click();
+        await page.getByLabel('Source').click();
+        await page.getByLabel('Source').fill('https://cdn.mobiedu.vn/mskill/uploads/mb3/1692860289-banner-dau-trang-mb.jpg');
+        await page.getByRole('button', { name: 'Save' }).click();
+        await page.getByRole('button', { name: 'Lưu' }).click();
+        await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
 
         // Truy cập Web kiểm tra hiển thị sau khi chỉnh sửa 
-    await page.goto('https://mskill8.mobiedu.vn/');
-    await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
-    await page.locator('.home-11 > .container > .button > .btn').click();
-    await expect(page.locator('div.desktop-show > div > div:nth-child(2) > div:nth-child(2)')).toBeVisible();
-    await page.getByRole('heading', { name: 'Mới nhất' });
-    await page.locator('div:nth-child(2) > div > article:nth-child(1)').click();
-    await expect(page.getByRole('heading', { name: '///_QA///_CÁCH CHINH PHỤC HAI ĐẠI HỌC TOP ĐẦU THẾ GIỚI//////' })).toBeVisible();
-    await expect(page.getByText('QA_CÁCH CHINH PHỤC HAI ĐẠI HỌC TOP ĐẦU THẾ GIỚI')).toBeVisible();
+        await page.goto('https://mskill8.mobiedu.vn/');
+        await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
+        await page.locator('.home-11 > .container > .button > .btn').click();
+        await expect(page.locator('div.desktop-show > div > div:nth-child(2) > div:nth-child(2)')).toBeVisible();
+        await page.getByRole('heading', { name: 'Mới nhất' });
+        await page.locator('div:nth-child(2) > div > article:nth-child(1)').click();
+        await expect(page.getByRole('heading', { name: '///_QA///_CÁCH CHINH PHỤC HAI ĐẠI HỌC TOP ĐẦU THẾ GIỚI//////' })).toBeVisible();
+        await expect(page.getByText('QA_CÁCH CHINH PHỤC HAI ĐẠI HỌC TOP ĐẦU THẾ GIỚI')).toBeVisible();
 
         // Chụp ảnh màn hình sau khi chỉnh sửa 
-    await page.waitForTimeout(1000);
-    await page.screenshot({ path: 'Anh_sua_tin_tuc_case7.png', fullPage: true });
+        await page.waitForTimeout(1000);
+        await page.screenshot({ path: 'Anh_sua_tin_tuc_case7.png', fullPage: true });
 
         //  Truy cập CMS xóa bài viết 
-    await page.goto('https://mskill8admin.mobiedu.vn/blog');
-    await page.locator('tr:nth-child(1) > td.align-middle.text-right > span.btn.btn-sm.btn-danger.del-menu-link').click();
-    await page.getByRole('button', { name: 'Xóa' }).click();
-    await expect(page.getByText('Xóa thành công!')).toBeVisible();
+        await page.goto('https://mskill8admin.mobiedu.vn/blog');
+        await page.locator('tr:nth-child(1) > td.align-middle.text-right > span.btn.btn-sm.btn-danger.del-menu-link').click();
+        await page.getByRole('button', { name: 'Xóa' }).click();
+        await expect(page.getByText('Xóa thành công!')).toBeVisible();
 
-});
+    });
 }
 
 /**
@@ -496,150 +497,231 @@ function case7 () {
  * Mong muốn: Web hiển thị đúng thông tin như CMS đã cài đặt 
  */
 
-function case8 () {
+function case8() {
     test('Case lỗi 8', async ({ page }) => {
-    
-          test.setTimeout(120000);
+
+        test.setTimeout(120000);
         // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
-    await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
-    await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
-    await page.getByRole('button', { name: 'Đăng nhập' }).click();
-    await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
+        await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+        await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
+        await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
+        await page.getByRole('button', { name: 'Đăng nhập' }).click();
+        await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
 
         // Thêm mới khóa học combo 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-combo');
-    await page.getByRole('link', { name: 'Thêm khóa học mới' }).click();
-    await expect(page.getByRole('heading', { name: 'Thêm mới khóa học Combo' })).toBeVisible();
-    await page.getByRole('textbox', { name: 'Tên khóa học *' }).fill('QA_Kỹ năng chung');
-    await page.locator('#select2-cp-container').click();
-    await page.getByRole('treeitem', { name: 'iNETS' }).click();
-    await page.getByRole('textbox', { name: 'Chọn danh mục...' }).click();
-    await page.getByRole('treeitem', { name: 'Sinh viên và người đi làm' }).click();
-    await page.locator('input#time').fill('46:30:00');
-    await page.getByRole('textbox', { name: 'Chọn thẻ tag...' }).click();
-    await page.getByRole('treeitem', { name: 'Kỹ năng chung' }).click();
-    await page.getByRole('textbox', { name: 'Chọn chủ đề...' }).click();
-    await page.getByRole('treeitem', { name: 'Kĩ năng văn phòng' }).click();
-    await page.locator('span#select2-list_course-container').click();
-    await page.locator('ul#select2-list_course-results > li:nth-child(3)').click();
-    await page.getByRole('button', { name: 'Thêm khóa học' }).click();
-    await page
-        .locator('textarea#intro')
-        .fill('Gói Khóa học Kỹ năng chung');
-    await page.frameLocator('#description_ifr').getByRole('paragraph').click();
-    await page.frameLocator('#description_ifr').getByRole('paragraph')
-        .fill('Gói khóa học Kỹ năng chung với 11 khóa học về gia đình, sức khỏe và các công cụ tin học văn phòng được giảng dạy từ các chuyên gia hàng đầu trong lĩnh vực sẽ giúp bạn hoàn thiện bản thân một các toàn diện nhất. Bộ 3 khóa học về gia đình: 108 Tọa pháp Yoga - Bí mật trẻ mãi, Massage uyên ương và Nghệ thuật Phòng the đỉnh cao giúp bạn có những phút giây thư giãn thoải mái và hâm nóng tình cảm vợ chồng, giữ lửa hôn nhân. Cùng với đó là 4 khóa học: Dạy cắm hoa cơ bản theo phong cách Phương Tây, Đọc sách siêu tốc, Bí kíp nhiếp ảnh Trẻ em và Gia đình đẹp mê hồn và Làm chủ giọng nói sẽ mang đến cho bạn những kiến thức bổ ich giúp bạn hoàn thiện các kỹ năng trong đời sống, thêm tự tin và dẽ dàng làm chủ mọi tình huống thường ngày. Ngoài ra, bạn có thể thành tạo các kỹ năng văn phòng với 4 khóa học: DISC - Thấu hiểu bản thân - Xây dựng đội nhóm thành công, Thiết kế Powerpoint chuyên nghiệp, Chinh phục excel công sở và Thiết kế trình chiếu PowerPoint 2016 từ A-Z. Hãy tham gia ngay Gói khóa học Kỹ Năng chung để trải nghiệm những video vô cùng hữu ích nhé!')
-    await page.getByRole('button', { name: 'Upload / Chọn ảnh trang bìa +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
-    await page.getByRole('button', { name: 'Xong' }).click();
-    await page.waitForTimeout(1000);
-    await page.getByRole('button', { name: 'Upload / Chọn ảnh minh hoạ +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
-    await page.getByRole('button', { name: 'Xong' }).click();
-    await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).fill('1');
-    await page.locator('#status').click();
-    await page.locator('#status').selectOption('1');
-    await page.locator('#hot').click();
-    await page.locator('#hot').selectOption('1');
-    await page.getByRole('button', { name: 'Lưu' }).click();
-    await expect(page.getByText('Thêm mới thành công!')).toBeVisible();
+        await page.goto('https://mskill8admin.mobiedu.vn/course-combo');
+        await page.getByRole('link', { name: 'Thêm khóa học mới' }).click();
+        await expect(page.getByRole('heading', { name: 'Thêm mới khóa học Combo' })).toBeVisible();
+        await page.getByRole('textbox', { name: 'Tên khóa học *' }).fill('QA_Kỹ năng chung_Combo');
+        await page.locator('#select2-cp-container').click();
+        await page.getByRole('treeitem', { name: 'iNETS' }).click();
+        await page.getByRole('textbox', { name: 'Chọn danh mục...' }).click();
+        await page.getByRole('treeitem', { name: 'Sinh viên và người đi làm' }).click();
+        await page.locator('input#time').fill('46:30:00');
+        await page.getByRole('textbox', { name: 'Chọn thẻ tag...' }).click();
+        await page.getByRole('treeitem', { name: 'Kỹ năng chung' }).click();
+        await page.getByRole('textbox', { name: 'Chọn chủ đề...' }).click();
+        await page.getByRole('treeitem', { name: 'Kĩ năng văn phòng' }).click();
+        await page.locator('span#select2-list_course-container').click();
+        await page.locator('ul#select2-list_course-results > li:nth-child(3)').click();
+        await page.getByRole('button', { name: 'Thêm khóa học' }).click();
+        await page
+            .locator('textarea#intro')
+            .fill('Gói Khóa học Kỹ năng chung');
+        await page.frameLocator('#description_ifr').getByRole('paragraph').click();
+        await page.frameLocator('#description_ifr').getByRole('paragraph')
+            .fill('Gói khóa học Kỹ năng chung với 11 khóa học về gia đình, sức khỏe và các công cụ tin học văn phòng được giảng dạy từ các chuyên gia hàng đầu trong lĩnh vực sẽ giúp bạn hoàn thiện bản thân một các toàn diện nhất. Bộ 3 khóa học về gia đình: 108 Tọa pháp Yoga - Bí mật trẻ mãi, Massage uyên ương và Nghệ thuật Phòng the đỉnh cao giúp bạn có những phút giây thư giãn thoải mái và hâm nóng tình cảm vợ chồng, giữ lửa hôn nhân. Cùng với đó là 4 khóa học: Dạy cắm hoa cơ bản theo phong cách Phương Tây, Đọc sách siêu tốc, Bí kíp nhiếp ảnh Trẻ em và Gia đình đẹp mê hồn và Làm chủ giọng nói sẽ mang đến cho bạn những kiến thức bổ ich giúp bạn hoàn thiện các kỹ năng trong đời sống, thêm tự tin và dẽ dàng làm chủ mọi tình huống thường ngày. Ngoài ra, bạn có thể thành tạo các kỹ năng văn phòng với 4 khóa học: DISC - Thấu hiểu bản thân - Xây dựng đội nhóm thành công, Thiết kế Powerpoint chuyên nghiệp, Chinh phục excel công sở và Thiết kế trình chiếu PowerPoint 2016 từ A-Z. Hãy tham gia ngay Gói khóa học Kỹ Năng chung để trải nghiệm những video vô cùng hữu ích nhé!')
+        await page.getByRole('button', { name: 'Upload / Chọn ảnh trang bìa +' }).click();
+        await page.locator('div#file-preview figure:nth-child(2) > img').click();
+        await page.getByRole('button', { name: 'Xong' }).click();
+        await page.waitForTimeout(1000);
+        await page.getByRole('button', { name: 'Upload / Chọn ảnh minh hoạ +' }).click();
+        await page.locator('div#file-preview figure:nth-child(2) > img').click();
+        await page.getByRole('button', { name: 'Xong' }).click();
+        await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).fill('1');
+        await page.locator('#status').click();
+        await page.locator('#status').selectOption('1');
+        await page.locator('#hot').click();
+        await page.locator('#hot').selectOption('1');
+        await page.getByRole('button', { name: 'Lưu' }).click();
+        await expect(page.getByText('Thêm mới thành công!')).toBeVisible();
 
         // Thêm gói cước 
-    await page.getByRole('link', { name: ' Thêm gói cước' }).click();
-    await expect(page.getByRole('heading', { name: 'Thêm Gói cước' })).toBeVisible();
-    await page.locator('#select2-pod_supplier_2-container').click();
-    await page.getByRole('treeitem', { name: 'iNETSolution' }).click();
-    await page.locator('#select2-pod_service_2-container').click();
-    await page.getByRole('treeitem', { name: 'mSkill-iNETS' }).click();
-    await page.locator('#select2-pod_code_2-container').click();
-    await page.getByRole('treeitem', { name: 'KN' }).click();
-    await page.getByRole('textbox', { name: 'Tên gói' }).fill('QA_Kỹ năng chung');
-    await page.getByRole('textbox', { name: 'Giá cước' }).fill('5000');
-    await page.locator('#pod_period_2');
-    await page.getByRole('textbox', { name: 'Nhập text dưới 100 ký tự' }).fill('QA-KN - Kỹ năng');
-    await page.getByLabel('Cú pháp SMS Mobiphone').fill('DK QAKN');
-    await page.getByLabel('Ưu tiên').click();
-    await page.getByLabel('Ưu tiên').selectOption('1');
-    await page.locator('#submit_add_pod_2').click();
-    await expect(page.getByText('Thêm gói cước thành công!')).toBeVisible();
-    await page.waitForTimeout(1000);
-    await page.getByRole('button', { name: 'Lưu' }).click();
-    await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
+        await page.getByRole('link', { name: ' Thêm gói cước' }).click();
+        await expect(page.getByRole('heading', { name: 'Thêm Gói cước' })).toBeVisible();
+        await page.locator('#select2-pod_supplier_2-container').click();
+        await page.getByRole('treeitem', { name: 'iNETSolution' }).click();
+        await page.locator('#select2-pod_service_2-container').click();
+        await page.getByRole('treeitem', { name: 'mSkill-iNETS' }).click();
+        await page.locator('#select2-pod_code_2-container').click();
+        await page.getByRole('treeitem', { name: 'KN' }).click();
+        await page.getByRole('textbox', { name: 'Tên gói' }).fill('QA_Kỹ năng chung_Combo');
+        await page.getByRole('textbox', { name: 'Giá cước' }).fill('5000');
+        page.locator('#pod_period_2');
+        await page.getByRole('textbox', { name: 'Nhập text dưới 100 ký tự' }).fill('QA-KN - Kỹ năng');
+        await page.getByLabel('Cú pháp SMS Mobiphone').fill('DK QAKN');
+        await page.getByLabel('Ưu tiên').click();
+        await page.getByLabel('Ưu tiên').selectOption('1');
+        await page.locator('#submit_add_pod_2').click();
+        await expect(page.getByText('Thêm gói cước thành công!')).toBeVisible();
+        await page.waitForTimeout(1000);
+        await page.getByRole('button', { name: 'Lưu' }).click();
+        await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
 
         // Truy cập Web kiểm tra 
-    
+        await page.goto('https://mskill8.mobiedu.vn/');
+        //CLick khoá học ở trang chủ
+        await expect(page.getByRole('link', { name: 'QA_Kỹ năng chung_Combo' })).toBeVisible();
+        await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.price').getByText('5.000 đ/ngày').first()).toBeVisible();
+        await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > div > p.old-price').getByText('500.000 đ')).toBeVisible();
+        // Chụp ảnh màn hình sau khi chỉnh sửa 
+        await page.waitForTimeout(1000);
+        await page.screenshot({ path: 'Anh_courseCombo_Homepage_0.png', fullPage: true });
 
-
-    
-
-    
-
-
-  
-    
-
-
-
-
-
-
-
-
-
-});
+    });
 }
 
+function case8_1() {
+    test('Case 8_1:  sửa khoá học combo có hiển thị thay đổi ', async ({ page }) => {
+        test.setTimeout(120000);
+        //Login hệ thống
+        await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+        await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
+        await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
+        await page.getByRole('button', { name: 'Đăng nhập' }).click();
+        await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
+        // Thêm mới khóa học combo 
+        await page.goto('https://mskill8admin.mobiedu.vn/course-combo');
+        await page.getByRole('link', { name: 'Thêm khóa học mới' }).click();
+        await expect(page.getByRole('heading', { name: 'Thêm mới khóa học Combo' })).toBeVisible();
+        await page.getByRole('textbox', { name: 'Tên khóa học *' }).fill('QA_Kỹ năng edit_Combo');
+        await page.locator('#select2-cp-container').click();
+        await page.getByRole('treeitem', { name: 'iNETS' }).click();
+        await page.getByRole('textbox', { name: 'Chọn danh mục...' }).click();
+        await page.getByRole('treeitem', { name: 'Sinh viên và người đi làm' }).click();
+        await page.locator('input#time').fill('46:30:00');
+        await page.getByRole('textbox', { name: 'Chọn thẻ tag...' }).click();
+        await page.getByRole('treeitem', { name: 'Kỹ năng chung' }).click();
+        await page.getByRole('textbox', { name: 'Chọn chủ đề...' }).click();
+        await page.getByRole('treeitem', { name: 'Kĩ năng văn phòng' }).click();
+        await page.locator('body > div:nth-child(2) > main:nth-child(4) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(6) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > section:nth-child(1) > form:nth-child(1) > div:nth-child(3) > div:nth-child(3) > div:nth-child(1) > span:nth-child(3) > span:nth-child(1) > span:nth-child(1) > ul:nth-child(1) > li:nth-child(2) > input:nth-child(1)').click();
+        await page.getByRole('treeitem', { name: 'IoT' }).click();
+        await page.locator('span#select2-list_course-container').click();
+        await page.locator('ul#select2-list_course-results > li:nth-child(3)').click();
+        await page.getByRole('button', { name: 'Thêm khóa học' }).click();
+        await page
+            .locator('textarea#intro')
+            .fill('Gói Khóa học Kỹ năng chung');
+        await page.frameLocator('#description_ifr').getByRole('paragraph').click();
+        await page.frameLocator('#description_ifr').getByRole('paragraph')
+            .fill('Gói khóa học Kỹ năng chung với 11 khóa học về gia đình, sức khỏe và các công cụ tin học văn phòng được giảng dạy từ các chuyên gia hàng đầu trong lĩnh vực sẽ giúp bạn hoàn thiện bản thân một các toàn diện nhất. Bộ 3 khóa học về gia đình: 108 Tọa pháp Yoga - Bí mật trẻ mãi, Massage uyên ương và Nghệ thuật Phòng the đỉnh cao giúp bạn có những phút giây thư giãn thoải mái và hâm nóng tình cảm vợ chồng, giữ lửa hôn nhân. Cùng với đó là 4 khóa học: Dạy cắm hoa cơ bản theo phong cách Phương Tây. Ngoài ra, bạn có thể thành tạo các kỹ năng văn phòng với 4 khóa học: DISC - Thấu hiểu bản thân - Xây dựng đội nhóm thành công, Thiết kế Powerpoint chuyên nghiệp, Chinh phục excel công sở và Thiết kế trình chiếu PowerPoint 2016 từ A-Z. Hãy tham gia ngay Gói khóa học Kỹ Năng chung để trải nghiệm những video vô cùng hữu ích nhé!')
+        await page.getByRole('button', { name: 'Upload / Chọn ảnh trang bìa +' }).click();
+        await page.locator('div#file-preview figure:nth-child(2) > img').click();
+        await page.getByRole('button', { name: 'Xong' }).click();
+        await page.waitForTimeout(1000);
+        await page.getByRole('button', { name: 'Upload / Chọn ảnh minh hoạ +' }).click();
+        await page.locator('div#file-preview figure:nth-child(2) > img').click();
+        await page.getByRole('button', { name: 'Xong' }).click();
+        await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).fill('1');
+        await page.locator('#status').click();
+        await page.locator('#status').selectOption('1');
+        await page.locator('#hot').click();
+        await page.locator('#hot').selectOption('1');
+        await page.getByRole('button', { name: 'Lưu' }).click();
+        await expect(page.getByText('Thêm mới thành công!')).toBeVisible();
+
+        //CLick sửa khoá học vừa thêm mới
+        await page.goto('https://mskill8admin.mobiedu.vn/course-combo');
+        await page.getByPlaceholder('Nhập từ khóa tìm kiếm...').click();
+        await page.getByPlaceholder('Nhập từ khóa tìm kiếm...').fill("QA_Kỹ năng edit_Combo");
+        await page.getByRole('button', { name: 'Tìm kiếm' }).click();
+        await page.locator('body > div:nth-child(2) > main:nth-child(4) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(4) > section:nth-child(2) > div:nth-child(1) > table:nth-child(1) > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(7) > a:nth-child(1) > i:nth-child(1)').click();
+        //Edit thông tin gói cước
+        await page.getByRole('link', { name: ' Thêm gói cước' }).click();
+        await expect(page.getByRole('heading', { name: 'Thêm Gói cước' })).toBeVisible();
+        await page.locator('#select2-pod_supplier_2-container').click();
+        await page.getByRole('treeitem', { name: 'Iris' }).click();
+        await page.locator('#select2-pod_service_2-container').click();
+        await page.getByRole('treeitem', { name: 'Dino Đi học' }).click();
+        await page.locator('#select2-pod_code_2-container').click();
+        await page.getByRole('treeitem', { name: 'EPD' }).click();
+        await page.getByRole('textbox', { name: 'Tên gói' }).fill('QA_Combo');
+        await page.getByRole('textbox', { name: 'Giá cước' }).fill('5000');
+        await page.locator('#pod_period_2').isVisible();
+        await page.getByRole('textbox', { name: 'Nhập text dưới 100 ký tự' }).fill('Gio cuoc DNDH');
+        await page.getByLabel('Cú pháp SMS Mobiphone').fill('DK DINO1');
+        await page.getByLabel('Ưu tiên').click();
+        await page.getByLabel('Ưu tiên').selectOption('1');
+        await page.locator('#submit_add_pod_2').click();
+        await expect(page.getByText('Thêm gói cước thành công!')).toBeVisible();
+        await page.waitForTimeout(1000);
+
+        // Truy cập Web kiểm tra 
+        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.getByPlaceholder('Nhập từ khóa...').click();
+        await page.getByPlaceholder('Nhập từ khóa...').fill('QA_Kỹ năng edit_Combo');
+        //Click page khoá học
+        await expect(page.getByRole('link', { name: 'QA_Kỹ năng edit_Combo' })).toBeVisible();
+        await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.price').getByText('5.000 đ/ngày').first()).toBeVisible();
+        await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > div > p.old-price').getByText('500.000 đ')).toBeVisible();
+        await page.locator('div#search-course div:nth-child(1) > div > div.image.img-hover > a > img').click();
+        //Click về trang khoá học search khoá học trên => Check khoá học có hiển thị trong chủ đề hooặc chuyên mục khoá học hay không. 
+        await page.getByRole('link', { name: 'QA_Kỹ năng edit_Combo' }).click();
+        await page.getByRole('main').getByRole('link', { name: 'Khóa học' }).click();
 
 
 
+        // Chụp ảnh màn hình sau khi chỉnh sửa 
+        await page.waitForTimeout(1000);
+        await page.screenshot({ path: 'pic_searchCourse_coursePage', fullPage: true });
 
-
+    });
+}
 
 /**
  * Case 9 : Thêm mới khóa học bị lỗi - khóa học API
  * Mong muốn: Web hiển thị đúng thông tin như CMS đã cài đặt 
  */
 
-function case9 () {
+function case9() {
     test('Case lỗi 9 ', async ({ page }) => {
-    
-          test.setTimeout(120000);
+
+        test.setTimeout(120000);
         // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
-    await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
-    await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
-    await page.getByRole('button', { name: 'Đăng nhập' }).click();
-    await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
+        await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+        await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
+        await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
+        await page.getByRole('button', { name: 'Đăng nhập' }).click();
+        await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
 
         // Thêm khóa học : khóa học API
-    await page.goto('https://mskill8admin.mobiedu.vn/course-combo');
-    await page.getByRole('link', { name: 'Thêm khóa học mới' }).click();
-    await expect(page.getByRole('heading', { name: 'Thêm mới khóa học Combo' })).toBeVisible();
-    await page
-        .getByRole('textbox', { name: 'Tên khóa học API *' })
-        .fill('Cổng khoa học giáo dục Vkid');
-    await page.locator('#select2-cp-container').click();
-    await page.getByRole('treeitem', { name: 'iNETS' }).click();
-    await page.getByRole('textbox', { name: 'Chọn danh mục...' }).click();
-    await page.getByRole('treeitem', { name: 'Trẻ em' }).click();
-    await page.getByRole('textbox', { name: 'Chọn thẻ tag...' }).click();
-    await page.getByRole('treeitem', { name: 'trẻ em' }).click();
-    await page.getByRole('textbox', { name: 'Chọn chủ đề...' }).click();
-    await page.getByRole('treeitem', { name: 'Tiền tiểu học' }).click();
-    await page.getByRole('spinbutton', { name: 'Giá gốc *' }).fill('120000');
-    await page.getByRole('textbox', { name: 'Độ tuổi' }).fill('5-10');
-    await page
-        .getByRole('textbox', { name: 'Giới thiệu khóa học *' })
-        .fill('Cổng Khoa học cho bé Vkid là cổng giáo dục cho phép các em thiếu nhi học khoa học tự nhiên trực tuyến theo chương trình giáo dục phổ thông qua các câu hỏi trắc nghiệm về các hiện tượng thiên nhiên, các quy luật tự nhiên. Các câu hỏi khoa học gắn liền với những đồ vật và hiện tượng trong cuộc sống hàng ngày, khích lệ trí tò mò, trí tượng tượng, rèn luyện kĩ năng tập trung, tư duy khoa học, mở rộng vốn hiểu biết về thế giới bên ngoài, môi trường xung quanh.')
-    await page
-        .getByRole('textbox', { name: 'Bạn sẽ học được gì (Lợi ích)' })
-        .fill('Trải nghiệm hàng ngàn câu hỏi trắc nghiệm thuộc nhiều kĩ năng của 4 bộ môn Khoa học tự nhiên.')
-        
-    
-});
+        await page.goto('https://mskill8admin.mobiedu.vn/course-combo');
+        await page.getByRole('link', { name: 'Thêm khóa học mới' }).click();
+        await expect(page.getByRole('heading', { name: 'Thêm mới khóa học Combo' })).toBeVisible();
+        await page
+            .getByRole('textbox', { name: 'Tên khóa học API *' })
+            .fill('Cổng khoa học giáo dục Vkid');
+        await page.locator('#select2-cp-container').click();
+        await page.getByRole('treeitem', { name: 'iNETS' }).click();
+        await page.getByRole('textbox', { name: 'Chọn danh mục...' }).click();
+        await page.getByRole('treeitem', { name: 'Trẻ em' }).click();
+        await page.getByRole('textbox', { name: 'Chọn thẻ tag...' }).click();
+        await page.getByRole('treeitem', { name: 'trẻ em' }).click();
+        await page.getByRole('textbox', { name: 'Chọn chủ đề...' }).click();
+        await page.getByRole('treeitem', { name: 'Tiền tiểu học' }).click();
+        await page.getByRole('spinbutton', { name: 'Giá gốc *' }).fill('120000');
+        await page.getByRole('textbox', { name: 'Độ tuổi' }).fill('5-10');
+        await page
+            .getByRole('textbox', { name: 'Giới thiệu khóa học *' })
+            .fill('Cổng Khoa học cho bé Vkid là cổng giáo dục cho phép các em thiếu nhi học khoa học tự nhiên trực tuyến theo chương trình giáo dục phổ thông qua các câu hỏi trắc nghiệm về các hiện tượng thiên nhiên, các quy luật tự nhiên. Các câu hỏi khoa học gắn liền với những đồ vật và hiện tượng trong cuộc sống hàng ngày, khích lệ trí tò mò, trí tượng tượng, rèn luyện kĩ năng tập trung, tư duy khoa học, mở rộng vốn hiểu biết về thế giới bên ngoài, môi trường xung quanh.')
+        await page
+            .getByRole('textbox', { name: 'Bạn sẽ học được gì (Lợi ích)' })
+            .fill('Trải nghiệm hàng ngàn câu hỏi trắc nghiệm thuộc nhiều kĩ năng của 4 bộ môn Khoa học tự nhiên.')
+
+
+    });
 }
-function main () {
+function main() {
     case1();
     case2();
     case3();
@@ -648,6 +730,7 @@ function main () {
     case6();
     case7();
     case8();
+    case8_1();
     // case9();
 }
 
