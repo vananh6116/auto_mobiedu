@@ -65,7 +65,7 @@ function case1() {
         await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_BE YOURSELF' })
-            .locator('a')
+            .locator('i')
             .nth(1)
             .click();
         await page.getByRole('button', { name: 'Xóa' }).click();
@@ -123,7 +123,7 @@ function case3() {
         await expect(page.getByText('STEAM')).toBeVisible();
         await expect(page.getByText('Tin học - lập trình')).toBeVisible();
         await expect(page.getByText('Kĩ năng mềm')).toBeVisible();
-        await expect(page.getByText('Kĩ năng văn phòng')).toBeVisible();
+        await expect(page.getByText('IoT')).toBeVisible();
         await expect(page.getByText('Kinh doanh - Marketing')).toBeVisible();
         await expect(page.getByRole('main').getByText('Ngoại ngữ')).toBeVisible();
         await expect(page.getByText('Nghệ thuật')).toBeVisible();
@@ -268,7 +268,14 @@ function case5() {
             .getByPlaceholder('Nhập từ khóa tìm kiếm...')
             .fill('QA_BE YOURSELF');
         await page.getByRole('button', { name: 'Tìm kiếm' }).click();
-        await page.getByRole('link', { name: ' Edit' }).click();
+        //click sửa
+        await page
+            .locator('tbody > tr')
+            .filter({ hasText: 'QA_BE YOURSELF' })
+            .locator('i')
+            .nth(0)
+            .click();
+        // await page.getByRole('link', { name: 'Edit' }).click();
         await expect(page.getByRole('heading', { name: 'Thêm mới' })).toBeVisible();
         await page.getByRole('textbox', { name: 'Tiêu đề *' }).fill('///QA_///_ BE YOURSELF ///////');
         await page.getByRole('button', { name: 'Upload / Chọn hình ảnh +' }).click();
@@ -369,7 +376,7 @@ function case6() {
         await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_BE YOURSELF' })
-            .locator('a')
+            .locator('i')
             .nth(1)
             .click();
         await page.getByRole('button', { name: 'Xóa' }).click();
@@ -484,10 +491,17 @@ function case7() {
         await page.screenshot({ path: 'Anh_sua_tin_tuc_case7.png', fullPage: true });
 
         //  Truy cập CMS xóa bài viết 
+        // Xóa 
         await page.goto('https://mskill8admin.mobiedu.vn/blog');
-        await page.locator('tr:nth-child(1) > td.align-middle.text-right > span.btn.btn-sm.btn-danger.del-menu-link').click();
+        await page
+            .locator('tbody > tr')
+            .filter({ hasText: '///_QA///_CÁCH CHINH PHỤC HAI ĐẠI HỌC TOP ĐẦU THẾ GIỚI//////' })
+            .locator('i')
+            .nth(1)
+            .click();
         await page.getByRole('button', { name: 'Xóa' }).click();
         await expect(page.getByText('Xóa thành công!')).toBeVisible();
+
 
     });
 }
@@ -521,7 +535,7 @@ function case8() {
         await page.getByRole('textbox', { name: 'Chọn thẻ tag...' }).click();
         await page.getByRole('treeitem', { name: 'Kỹ năng chung' }).click();
         await page.getByRole('textbox', { name: 'Chọn chủ đề...' }).click();
-        await page.getByRole('treeitem', { name: 'Kĩ năng văn phòng' }).click();
+        await page.getByRole('treeitem', { name: 'IoT' }).click();
         await page.locator('span#select2-list_course-container').click();
         await page.locator('ul#select2-list_course-results > li:nth-child(3)').click();
         await page.getByRole('button', { name: 'Thêm khóa học' }).click();
@@ -577,104 +591,16 @@ function case8() {
         // Chụp ảnh màn hình sau khi chỉnh sửa 
         await page.waitForTimeout(1000);
         await page.screenshot({ path: 'Anh_courseCombo_Homepage_0.png', fullPage: true });
-
-    });
-}
-
-function case8_1() {
-    test('Case 8_1:  sửa khoá học combo có hiển thị thay đổi ', async ({ page }) => {
-        test.setTimeout(120000);
-        //Login hệ thống
-        await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
-        await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
-        await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
-        await page.getByRole('button', { name: 'Đăng nhập' }).click();
-        await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
-        // Thêm mới khóa học combo 
+        //Xoá khoá học vừa tạo 
         await page.goto('https://mskill8admin.mobiedu.vn/course-combo');
-        await page.getByRole('link', { name: 'Thêm khóa học mới' }).click();
-        await expect(page.getByRole('heading', { name: 'Thêm mới khóa học Combo' })).toBeVisible();
-        await page.getByRole('textbox', { name: 'Tên khóa học *' }).fill('QA_Kỹ năng edit_Combo');
-        await page.locator('#select2-cp-container').click();
-        await page.getByRole('treeitem', { name: 'iNETS' }).click();
-        await page.getByRole('textbox', { name: 'Chọn danh mục...' }).click();
-        await page.getByRole('treeitem', { name: 'Sinh viên và người đi làm' }).click();
-        await page.locator('input#time').fill('46:30:00');
-        await page.getByRole('textbox', { name: 'Chọn thẻ tag...' }).click();
-        await page.getByRole('treeitem', { name: 'Kỹ năng chung' }).click();
-        await page.getByRole('textbox', { name: 'Chọn chủ đề...' }).click();
-        await page.getByRole('treeitem', { name: 'Kĩ năng văn phòng' }).click();
-        await page.locator('body > div:nth-child(2) > main:nth-child(4) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(6) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > section:nth-child(1) > form:nth-child(1) > div:nth-child(3) > div:nth-child(3) > div:nth-child(1) > span:nth-child(3) > span:nth-child(1) > span:nth-child(1) > ul:nth-child(1) > li:nth-child(2) > input:nth-child(1)').click();
-        await page.getByRole('treeitem', { name: 'IoT' }).click();
-        await page.locator('span#select2-list_course-container').click();
-        await page.locator('ul#select2-list_course-results > li:nth-child(3)').click();
-        await page.getByRole('button', { name: 'Thêm khóa học' }).click();
         await page
-            .locator('textarea#intro')
-            .fill('Gói Khóa học Kỹ năng chung');
-        await page.frameLocator('#description_ifr').getByRole('paragraph').click();
-        await page.frameLocator('#description_ifr').getByRole('paragraph')
-            .fill('Gói khóa học Kỹ năng chung với 11 khóa học về gia đình, sức khỏe và các công cụ tin học văn phòng được giảng dạy từ các chuyên gia hàng đầu trong lĩnh vực sẽ giúp bạn hoàn thiện bản thân một các toàn diện nhất. Bộ 3 khóa học về gia đình: 108 Tọa pháp Yoga - Bí mật trẻ mãi, Massage uyên ương và Nghệ thuật Phòng the đỉnh cao giúp bạn có những phút giây thư giãn thoải mái và hâm nóng tình cảm vợ chồng, giữ lửa hôn nhân. Cùng với đó là 4 khóa học: Dạy cắm hoa cơ bản theo phong cách Phương Tây. Ngoài ra, bạn có thể thành tạo các kỹ năng văn phòng với 4 khóa học: DISC - Thấu hiểu bản thân - Xây dựng đội nhóm thành công, Thiết kế Powerpoint chuyên nghiệp, Chinh phục excel công sở và Thiết kế trình chiếu PowerPoint 2016 từ A-Z. Hãy tham gia ngay Gói khóa học Kỹ Năng chung để trải nghiệm những video vô cùng hữu ích nhé!')
-        await page.getByRole('button', { name: 'Upload / Chọn ảnh trang bìa +' }).click();
-        await page.locator('div#file-preview figure:nth-child(2) > img').click();
-        await page.getByRole('button', { name: 'Xong' }).click();
-        await page.waitForTimeout(1000);
-        await page.getByRole('button', { name: 'Upload / Chọn ảnh minh hoạ +' }).click();
-        await page.locator('div#file-preview figure:nth-child(2) > img').click();
-        await page.getByRole('button', { name: 'Xong' }).click();
-        await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).fill('1');
-        await page.locator('#status').click();
-        await page.locator('#status').selectOption('1');
-        await page.locator('#hot').click();
-        await page.locator('#hot').selectOption('1');
-        await page.getByRole('button', { name: 'Lưu' }).click();
-        await expect(page.getByText('Thêm mới thành công!')).toBeVisible();
-
-        //CLick sửa khoá học vừa thêm mới
-        await page.goto('https://mskill8admin.mobiedu.vn/course-combo');
-        await page.getByPlaceholder('Nhập từ khóa tìm kiếm...').click();
-        await page.getByPlaceholder('Nhập từ khóa tìm kiếm...').fill("QA_Kỹ năng edit_Combo");
-        await page.getByRole('button', { name: 'Tìm kiếm' }).click();
-        await page.locator('body > div:nth-child(2) > main:nth-child(4) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(4) > section:nth-child(2) > div:nth-child(1) > table:nth-child(1) > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(7) > a:nth-child(1) > i:nth-child(1)').click();
-        //Edit thông tin gói cước
-        await page.getByRole('link', { name: ' Thêm gói cước' }).click();
-        await expect(page.getByRole('heading', { name: 'Thêm Gói cước' })).toBeVisible();
-        await page.locator('#select2-pod_supplier_2-container').click();
-        await page.getByRole('treeitem', { name: 'Iris' }).click();
-        await page.locator('#select2-pod_service_2-container').click();
-        await page.getByRole('treeitem', { name: 'Dino Đi học' }).click();
-        await page.locator('#select2-pod_code_2-container').click();
-        await page.getByRole('treeitem', { name: 'EPD' }).click();
-        await page.getByRole('textbox', { name: 'Tên gói' }).fill('QA_Combo');
-        await page.getByRole('textbox', { name: 'Giá cước' }).fill('5000');
-        await page.locator('#pod_period_2').isVisible();
-        await page.getByRole('textbox', { name: 'Nhập text dưới 100 ký tự' }).fill('Gio cuoc DNDH');
-        await page.getByLabel('Cú pháp SMS Mobiphone').fill('DK DINO1');
-        await page.getByLabel('Ưu tiên').click();
-        await page.getByLabel('Ưu tiên').selectOption('1');
-        await page.locator('#submit_add_pod_2').click();
-        await expect(page.getByText('Thêm gói cước thành công!')).toBeVisible();
-        await page.waitForTimeout(1000);
-
-        // Truy cập Web kiểm tra 
-        await page.goto('https://mskill8.mobiedu.vn/');
-        await page.getByPlaceholder('Nhập từ khóa...').click();
-        await page.getByPlaceholder('Nhập từ khóa...').fill('QA_Kỹ năng edit_Combo');
-        //Click page khoá học
-        await expect(page.getByRole('link', { name: 'QA_Kỹ năng edit_Combo' })).toBeVisible();
-        await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.price').getByText('5.000 đ/ngày').first()).toBeVisible();
-        await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > div > p.old-price').getByText('500.000 đ')).toBeVisible();
-        await page.locator('div#search-course div:nth-child(1) > div > div.image.img-hover > a > img').click();
-        //Click về trang khoá học search khoá học trên => Check khoá học có hiển thị trong chủ đề hooặc chuyên mục khoá học hay không. 
-        await page.getByRole('link', { name: 'QA_Kỹ năng edit_Combo' }).click();
-        await page.getByRole('main').getByRole('link', { name: 'Khóa học' }).click();
-
-
-
-        // Chụp ảnh màn hình sau khi chỉnh sửa 
-        await page.waitForTimeout(1000);
-        await page.screenshot({ path: 'pic_searchCourse_coursePage', fullPage: true });
-
+            .locator('tbody > tr')
+            .filter({ hasText: 'QA_Kỹ năng chung_Combo' })
+            .locator('i')
+            .nth(1)
+            .click();
+        await page.getByRole('button', { name: 'Xóa' }).click();
+        await expect(page.getByText('Xóa thành công!')).toBeVisible();
     });
 }
 
@@ -695,12 +621,14 @@ function case9() {
         await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
 
         // Thêm khóa học : khóa học API
-        await page.goto('https://mskill8admin.mobiedu.vn/course-combo');
+        await page.goto('https://mskill8admin.mobiedu.vn/course-api');
         await page.getByRole('link', { name: 'Thêm khóa học mới' }).click();
-        await expect(page.getByRole('heading', { name: 'Thêm mới khóa học Combo' })).toBeVisible();
+        await expect(page.getByRole('heading', {
+            name: 'Thêm mới khóa học API'
+        })).toBeVisible();
         await page
             .getByRole('textbox', { name: 'Tên khóa học API *' })
-            .fill('Cổng khoa học giáo dục Vkid');
+            .fill('QA_Cổng khoa học giáo dục Vkid_api');
         await page.locator('#select2-cp-container').click();
         await page.getByRole('treeitem', { name: 'iNETS' }).click();
         await page.getByRole('textbox', { name: 'Chọn danh mục...' }).click();
@@ -717,10 +645,235 @@ function case9() {
         await page
             .getByRole('textbox', { name: 'Bạn sẽ học được gì (Lợi ích)' })
             .fill('Trải nghiệm hàng ngàn câu hỏi trắc nghiệm thuộc nhiều kĩ năng của 4 bộ môn Khoa học tự nhiên.')
+        await page.getByRole('button', { name: 'Upload / Chọn icon +' }).click();
+        await page.getByRole('figure', { name: '...iao-duc-vkid-icon.png' }).getByRole('img').click();
+        await page.getByRole('button', { name: 'Xong' }).click();
+        //Nhap mo ta chi tiet
+        await page.frameLocator('#description_ifr').getByRole('paragraph').click();
+        await page.frameLocator('#description_ifr').getByLabel('Rich Text Area. Press ALT-0').fill('Mo ta chi tiet khoa hoc');
+        //Nhap phu hop voi
+        await page.frameLocator('#suitable_for_ifr').getByRole('paragraph').click();
+        await page.frameLocator('#suitable_for_ifr').getByLabel('Rich Text Area. Press ALT-0').fill('asdasds');
+        //Nhapj HDSD
+        await page.frameLocator('#user_manual_ifr').getByRole('paragraph').click();
+        await page.frameLocator('#user_manual_ifr').getByLabel('Rich Text Area. Press ALT-0').fill('Hướng dẫn sử dụng');
+        //Chon anh bia
+        await page.getByRole('button', { name: 'Upload / Chọn ảnh trang bìa +' }).click();
+        await page.getByRole('figure', { name: '-720-x-430-02.png' }).getByRole('img').click();
+        await page.getByRole('button', { name: 'Xong' }).click();
+        await page.waitForTimeout(3000);
+        //Chon anh minh hoa
+        await page.getByRole('button', { name: 'Upload / Chọn ảnh minh hoạ +' }).click();
+        await page.getByRole('figure', { name: '...d-in-photoretrica.png' }).first().getByRole('img').click();
+        await page.getByRole('button', { name: 'Xong' }).click();
+        //Chọn hình thức học
+        // await page.getByRole('textbox', { name: 'Học trên App' }).click();
+        //Vi tri hien thi
+        await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).click();
+        await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).fill('1');
+        // Chon trang thai
+        await page.locator('#status').selectOption('1');
+        //Chon hot?
+        await page.locator('#hot').selectOption('1');
+        await page.getByRole('button', { name: 'Lưu' }).click();
 
+        //Them goi cuoc
+        // Thêm gói cước 
+        await page.getByRole('link', { name: ' Thêm gói cước' }).click();
+        await expect(page.getByRole('heading', { name: 'Thêm Gói cước' })).toBeVisible();
+        await page.locator('#select2-pod_supplier_2-container').click();
+        await page.getByRole('treeitem', { name: 'iNETSolution' }).click();
+        await page.locator('#select2-pod_service_2-container').click();
+        await page.getByRole('treeitem', { name: 'mSkill-iNETS' }).click();
+        await page.locator('#select2-pod_code_2-container').click();
+        await page.getByRole('treeitem', { name: 'KN' }).click();
+        await page.getByRole('textbox', { name: 'Tên gói' }).fill('QA_Kỹ năng chung_Combo');
+        await page.getByRole('textbox', { name: 'Giá cước' }).fill('5000');
+        page.locator('#pod_period_2');
+        await page.getByRole('textbox', { name: 'Nhập text dưới 100 ký tự' }).fill('QA-KN');
+        await page.getByLabel('Cú pháp SMS Mobiphone').fill('DK QAKN');
+        await page.getByLabel('Ưu tiên').click();
+        await page.getByLabel('Ưu tiên').selectOption('1');
+        await page.locator('#submit_add_pod_2').click();
+        await expect(page.getByText('Thêm gói cước thành công!')).toBeVisible();
+        await page.waitForTimeout(1000);
+        await page.getByRole('button', { name: 'Lưu' }).click();
+        await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
+
+        // Truy cập Web kiểm tra 
+        await page.goto('https://mskill8.mobiedu.vn/');
+        //CLick khoá học ở trang chủ
+        await expect(page.getByRole('link', { name: 'QA_Cổng khoa học giáo dục Vkid_api' })).toBeVisible();
+        await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.price').getByText('5.000 đ/ngày').first()).toBeVisible();
+        //CLick vào khoá học => Check thông tin đã thêm mới có đúng không?
+        await page.getByRole('link', { name: 'QA_Cổng khoa học giáo dục Vkid_api' }).click();
+        //expect
+        await expect(page.locator('h1').getByText('QA_Cổng khoa học giáo dục Vkid_api')).toBeVisible();
+        await expect(page.locator("div.desktop-show > div.cta-price > div.price-wrap.d-flex.d-items-center > p.price > span").getByText('5.000 đ/Ngày')).toBeVisible();
+        await expect(page.locator("div.desktop-show > div.cta-price > div.price-wrap.d-flex.d-items-center > p.old-price > span").getByText('120.000 đ')).toBeVisible();
+        await expect(page.locator("div.desktop-show > div.cta-price > div.sale-off > p").getByText('QA-KN - Kỹ năng')).toBeHidden();
+        await expect(page.locator('#overview').getByRole('heading', { name: 'QA_Cổng khoa học giáo dục Vkid_api' })).toBeVisible();
+        await expect(page.getByText('Mo ta chi tiet khoa hoc')).toBeVisible();
+        await expect(page.getByRole('heading', { name: 'Lợi ích' })).toBeVisible();
+        await expect(page.getByText('Trải nghiệm hàng ngàn câu hỏi')).toBeVisible();
+        await expect(page.locator('#package div').filter({ hasText: 'QA_Kỹ năng chung_Combo' }).nth(2)).toBeVisible();
+        // Chụp ảnh màn hình sau khi chỉnh sửa 
+        await page.waitForTimeout(1000);
+        await page.screenshot({ path: 'Anh_courseApi_1_2.png', fullPage: true });
+
+        //Xoá khoá học vừa tạo 
+        await page.goto('https://mskill8admin.mobiedu.vn/course-api');
+        await page
+            .locator('tbody > tr')
+            .filter({ hasText: 'QA_Cổng khoa học giáo dục Vkid_api' })
+            .locator('i')
+            .nth(1)
+            .click();
+        await page.getByRole('button', { name: 'Xóa' }).click();
+        await expect(page.getByText('Xóa thành công!')).toBeVisible();
 
     });
 }
+
+/**
+ * Case 10: "Update thêm 3 gói cước của khóa học , không tích nổi bật, nhưng mà ở bên ngoài vẫn hiển thị giá của gói cước mới
+-Bên trong khi click vào khoá thì vẫn hiện đúng gói cước đang để nổi bật 
+- Mong muốn: - Gói giá cước bên trong - bên ngoài hiển thị đúng với giá cước được thêm mới
+ */
+function case10() {
+    test('Case lỗi 10: Update thêm gói cước ', async ({ page }) => {
+
+        test.setTimeout(120000);
+        // Đăng nhập CMS thành công 
+        await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+        await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
+        await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
+        await page.getByRole('button', { name: 'Đăng nhập' }).click();
+        await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
+
+        // Thêm khóa học : khóa học API
+        await page.goto('https://mskill8admin.mobiedu.vn/course-api');
+        await page.getByRole('link', { name: 'Thêm khóa học mới' }).click();
+        await expect(page.getByRole('heading', {
+            name: 'Thêm mới khóa học API'
+        })).toBeVisible();
+        await page
+            .getByRole('textbox', { name: 'Tên khóa học API *' })
+            .fill('QA_Office 365 A3_Api');
+        await page.locator('#select2-cp-container').click();
+        await page.getByRole('treeitem', { name: 'iNETS' }).click();
+        await page.getByRole('textbox', { name: 'Chọn danh mục...' }).click();
+        await page.getByRole('treeitem', { name: 'Trẻ em' }).click();
+        await page.getByRole('textbox', { name: 'Chọn thẻ tag...' }).click();
+        await page.getByRole('treeitem', { name: 'trẻ em' }).click();
+        await page.getByRole('textbox', { name: 'Chọn chủ đề...' }).click();
+        await page.getByRole('treeitem', { name: 'Tiền tiểu học' }).click();
+        await page.getByRole('spinbutton', { name: 'Giá gốc *' }).fill('120000');
+        await page.getByRole('textbox', { name: 'Độ tuổi' }).fill('5-10');
+        await page
+            .getByRole('textbox', { name: 'Giới thiệu khóa học *' })
+            .fill('Office 365 A3 là phiên bản trực tuyến của Microsoft Office đáp ứng các nhu cầu lưu trữ (1TB Cloud), soạn thảo, email, hội thảo video, trung tâm tùy chỉnh để làm việc nhóm trong lớp học với Microsoft Teams, các công cụ tuân thủ và bảo vệ thông tin, cộng với quyền truy nhập đầy đủ vào các ứng dụng Office trên máy tính cũng như các công cụ bảo mật và quản lý bổ sung.Lưu ý: các đối tượng áp dụng:- Thuê bao MobiFone trả trước, trả sau đáp ứng một trong các tiêu chí sau:+ Thuê bao phát triển mới tại địa bàn Công ty khu vực; + Thuê bao phát triển mới tại địa bàn Công ty khu vực; + Tập thuê bao hiện hữu khác do Công ty khu vực chủ động lọc và gửi cập nhật hàng tháng - Đồng thời thỏa mãn tất cả các điều kiện:+ Số thuê bao chính chủ, đứng tên của đúng học sinh, sinh viên được xác nhận đang học tập, nghiên cứu tại đúng trường học đăng ký. + Mail Domain trường học thuộc danh sách được Microsoft chấp thuận tham gia chương trình ưu đãi Office 365 Education.+ Thuê bao đăng ký theo Mail Domain trường học, đảm bảo thực hiện kích hoạt tài khoản Microsoft Account và license gói Office 365 A3 đúng theo email của thuê bao.+ Thuê bao đáp ứng các điều kiện do Microsoft quy định với chương trình Office 365 Education.')
+        await page
+            .getByRole('textbox', { name: 'Bạn sẽ học được gì (Lợi ích)' })
+            .fill('- Học tập và làm việc dễ dàng hơn với các công cụ hỗ trợ đa dạng');
+        await page
+            .getByRole('textbox', { name: 'Bạn sẽ học được gì (Lợi ích)' })
+            .fill('- Truy cấp vào hệ sinh thái các ứng dụng CÓ BẢN QUYỀN từ Microsoft');
+        await page
+            .getByRole('textbox', { name: 'Bạn sẽ học được gì (Lợi ích)' })
+            .fill('- - Lưu trữ không giới hạn với 1TB dung lượng OneDrive');
+        await page.getByRole('button', { name: 'Upload / Chọn icon +' }).click();
+        await page.getByRole('figure', { name: '...iao-duc-vkid-icon.png' }).getByRole('img').click();
+        await page.getByRole('button', { name: 'Xong' }).click();
+        //Nhap mo ta chi tiet
+        await page.frameLocator('#description_ifr').getByRole('paragraph').click();
+        await page.frameLocator('#description_ifr').getByLabel('Rich Text Area. Press ALT-0').fill('Mo ta chi tiet khoa hoc');
+        //Nhap phu hop voi
+        await page.frameLocator('#suitable_for_ifr').getByRole('paragraph').click();
+        await page.frameLocator('#suitable_for_ifr').getByLabel('Rich Text Area. Press ALT-0').fill('asdasds');
+        //Nhapj HDSD
+        await page.frameLocator('#user_manual_ifr').getByRole('paragraph').click();
+        await page.frameLocator('#user_manual_ifr').getByLabel('Rich Text Area. Press ALT-0').fill('Hướng dẫn sử dụng');
+        //Chon anh bia
+        await page.getByRole('button', { name: 'Upload / Chọn ảnh trang bìa +' }).click();
+        await page.getByRole('figure', { name: '-720-x-430-02.png' }).getByRole('img').click();
+        await page.getByRole('button', { name: 'Xong' }).click();
+        await page.waitForTimeout(3000);
+        //Chon anh minh hoa
+        await page.getByRole('button', { name: 'Upload / Chọn ảnh minh hoạ +' }).click();
+        await page.getByRole('figure', { name: '...d-in-photoretrica.png' }).first().getByRole('img').click();
+        await page.getByRole('button', { name: 'Xong' }).click();
+        //Chọn hình thức học
+        // await page.getByRole('textbox', { name: 'Học trên App' }).click();
+        //Vi tri hien thi
+        await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).click();
+        await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).fill('1');
+        // Chon trang thai
+        await page.locator('#status').selectOption('1');
+        //Chon hot?
+        await page.locator('#hot').selectOption('1');
+        await page.getByRole('button', { name: 'Lưu' }).click();
+
+        //Them goi cuoc
+        // Thêm gói cước 
+        await page.getByRole('link', { name: ' Thêm gói cước' }).click();
+        await expect(page.getByRole('heading', { name: 'Thêm Gói cước' })).toBeVisible();
+        await page.locator('#select2-pod_supplier_2-container').click();
+        await page.getByRole('treeitem', { name: 'iNETSolution' }).click();
+        await page.locator('#select2-pod_service_2-container').click();
+        await page.getByRole('treeitem', { name: 'mSkill-iNETS' }).click();
+        await page.locator('#select2-pod_code_2-container').click();
+        await page.getByRole('treeitem', { name: 'KN' }).click();
+        await page.getByRole('textbox', { name: 'Tên gói' }).fill('QA_Kỹ năng chung_Combo');
+        await page.getByRole('textbox', { name: 'Giá cước' }).fill('5000');
+        page.locator('#pod_period_2');
+        await page.getByRole('textbox', { name: 'Nhập text dưới 100 ký tự' }).fill('QA-KN');
+        await page.getByLabel('Cú pháp SMS Mobiphone').fill('DK QAKN');
+        await page.getByLabel('Ưu tiên').click();
+        await page.getByLabel('Ưu tiên').selectOption('1');
+        await page.locator('#submit_add_pod_2').click();
+        await expect(page.getByText('Thêm gói cước thành công!')).toBeVisible();
+        await page.waitForTimeout(1000);
+        await page.getByRole('button', { name: 'Lưu' }).click();
+        await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
+
+        // Truy cập Web kiểm tra 
+        await page.goto('https://mskill8.mobiedu.vn/');
+        //CLick khoá học ở trang chủ
+        await expect(page.getByRole('link', { name: 'QA_Cổng khoa học giáo dục Vkid_api' })).toBeVisible();
+        await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.price').getByText('5.000 đ/ngày').first()).toBeVisible();
+        //CLick vào khoá học => Check thông tin đã thêm mới có đúng không?
+        await page.getByRole('link', { name: 'QA_Cổng khoa học giáo dục Vkid_api' }).click();
+        //expect
+        await expect(page.locator('h1').getByText('QA_Cổng khoa học giáo dục Vkid_api')).toBeVisible();
+        await expect(page.locator("div.desktop-show > div.cta-price > div.price-wrap.d-flex.d-items-center > p.price > span").getByText('5.000 đ/Ngày')).toBeVisible();
+        await expect(page.locator("div.desktop-show > div.cta-price > div.price-wrap.d-flex.d-items-center > p.old-price > span").getByText('120.000 đ')).toBeVisible();
+        await expect(page.locator("div.desktop-show > div.cta-price > div.sale-off > p").getByText('QA-KN - Kỹ năng')).toBeHidden();
+        await expect(page.locator('#overview').getByRole('heading', { name: 'QA_Cổng khoa học giáo dục Vkid_api' })).toBeVisible();
+        await expect(page.getByText('Mo ta chi tiet khoa hoc')).toBeVisible();
+        await expect(page.getByRole('heading', { name: 'Lợi ích' })).toBeVisible();
+        await expect(page.getByText('Trải nghiệm hàng ngàn câu hỏi')).toBeVisible();
+        await expect(page.locator('#package div').filter({ hasText: 'QA_Kỹ năng chung_Combo' }).nth(2)).toBeVisible();
+        // Chụp ảnh màn hình sau khi chỉnh sửa 
+        await page.waitForTimeout(1000);
+        await page.screenshot({ path: 'Anh_courseApi_1_2.png', fullPage: true });
+
+        //Back lại CMS -> sửa gói cước => check lạiowr website có thay đổi không? 
+
+        //Xoá khoá học vừa tạo 
+        await page.goto('https://mskill8admin.mobiedu.vn/course-api');
+        await page
+            .locator('tbody > tr')
+            .filter({ hasText: 'QA_Cổng khoa học giáo dục Vkid_api' })
+            .locator('i')
+            .nth(1)
+            .click();
+        await page.getByRole('button', { name: 'Xóa' }).click();
+        await expect(page.getByText('Xóa thành công!')).toBeVisible();
+
+    });
+} //=> Phần này đang code dở
+
 function main() {
     case1();
     case2();
@@ -730,8 +883,7 @@ function main() {
     case6();
     case7();
     case8();
-    case8_1();
-    // case9();
+    case9();
 }
 
 main();
