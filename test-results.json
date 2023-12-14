@@ -1,0 +1,164 @@
+{
+  "config": {
+    "configFile": "c:\\Users\\Thu\\Documents\\auto_mobiedu\\playwright.config.js",
+    "rootDir": "c:/Users/Thu/Documents/auto_mobiedu/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        null
+      ],
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 15000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "c:/Users/Thu/Documents/auto_mobiedu/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "c:/Users/Thu/Documents/auto_mobiedu/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "c:/Users/Thu/Documents/auto_mobiedu/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "c:/Users/Thu/Documents/auto_mobiedu/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "c:/Users/Thu/Documents/auto_mobiedu/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "c:/Users/Thu/Documents/auto_mobiedu/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "c:/Users/Thu/Documents/auto_mobiedu/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "id": "",
+        "name": "",
+        "testDir": "c:/Users/Thu/Documents/auto_mobiedu/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "version": "1.39.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "B_WEB\\A_Truoc_dang_nhap\\H_Quenmatkhau.spec.js",
+      "file": "B_WEB/A_Truoc_dang_nhap/H_Quenmatkhau.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Case 6: Fail_OTP trống",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "timedOut",
+                  "duration": 89999,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 90000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 90000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "c:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\H_Quenmatkhau.spec.js",
+                        "column": 20,
+                        "line": 183
+                      },
+                      "message": "Error: page.waitForTimeout: Test ended\n\n\u001b[0m \u001b[90m 181 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[32m'https://mskill8.mobiedu.vn/kiem-tra-sdt'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 182 |\u001b[39m         \u001b[90m// Nhập số điện thoại \u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 183 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m185000\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 184 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Nhập số điện thoại'\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 185 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Nhập số điện thoại'\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m'0385519997'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 186 |\u001b[39m         \u001b[90m// Click btn Gửi yêu cầu \u001b[39m\u001b[0m\n\n\u001b[2m    at c:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\H_Quenmatkhau.spec.js:183:20\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-14T09:53:06.198Z",
+                  "attachments": []
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a7fb98835e99cdf05ede-b45626593a75a966332d",
+          "file": "B_WEB/A_Truoc_dang_nhap/H_Quenmatkhau.spec.js",
+          "line": 169,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2023-12-14T09:53:05.698Z",
+    "duration": 90575.32800000001
+  }
+}

@@ -34,11 +34,11 @@ function case1 () {
     await page.getByRole('spinbutton', { name: 'Số thứ tự hiển thị *' }).click();
     await page.getByRole('spinbutton', { name: 'Số thứ tự hiển thị *' }).fill('1');
     await page.getByRole('button', { name: 'Upload / Chọn hình ảnh +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
     await page.getByRole('button', { name: 'Xong' }).click();
     await page.waitForTimeout(1000);
     await page.getByRole('button', { name: 'Upload / Chọn hình ảnh mobile +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
     await page.getByRole('button', { name: 'Xong' }).click();
     await page.getByRole('button', { name: 'Lưu' }).click();
     await expect(page.getByText('Thêm mới thành công!')).toBeVisible();
@@ -167,7 +167,7 @@ function case4 () {
     await page.getByRole('spinbutton', { name: 'Lượt xem' }).click();
     await page.getByRole('spinbutton', { name: 'Lượt xem' }).fill('1000');
     await page.getByRole('button', { name: 'Upload / Chọn hình ảnh +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
     await page.getByRole('button', { name: 'Xong' }).click();
     await page.frameLocator('internal:role=dialog[name="Thêm mới"i] >> iframe[title="Rich Text Area"]').getByRole('paragraph').click();
     await page
@@ -249,11 +249,11 @@ function case5 () {
     await page.getByRole('spinbutton', { name: 'Số thứ tự hiển thị *' }).click();
     await page.getByRole('spinbutton', { name: 'Số thứ tự hiển thị *' }).fill('1');
     await page.getByRole('button', { name: 'Upload / Chọn hình ảnh +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
     await page.getByRole('button', { name: 'Xong' }).click();
     await page.waitForTimeout(1000);
     await page.getByRole('button', { name: 'Upload / Chọn hình ảnh mobile +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
     await page.getByRole('button', { name: 'Xong' }).click();
     await page.getByRole('button', { name: 'Lưu' }).click();
     await expect(page.getByText('Thêm mới thành công!')).toBeVisible();
@@ -350,11 +350,11 @@ function case6 () {
     await page.getByRole('spinbutton', { name: 'Số thứ tự hiển thị *' }).click();
     await page.getByRole('spinbutton', { name: 'Số thứ tự hiển thị *' }).fill('1');
     await page.getByRole('button', { name: 'Upload / Chọn hình ảnh +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
     await page.getByRole('button', { name: 'Xong' }).click();
     await page.waitForTimeout(1000);
     await page.getByRole('button', { name: 'Upload / Chọn hình ảnh mobile +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
     await page.getByRole('button', { name: 'Xong' }).click();
     await page.getByRole('button', { name: 'Lưu' }).click();
     await expect(page.getByText('Thêm mới thành công!')).toBeVisible();
@@ -420,7 +420,7 @@ function case7 () {
     await page.getByRole('spinbutton', { name: 'Lượt xem' }).click();
     await page.getByRole('spinbutton', { name: 'Lượt xem' }).fill('1000');
     await page.getByRole('button', { name: 'Upload / Chọn hình ảnh +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
     await page.getByRole('button', { name: 'Xong' }).click();
     await page.frameLocator('internal:role=dialog[name="Thêm mới"i] >> iframe[title="Rich Text Area"]').getByRole('paragraph').click();
     await page
@@ -553,11 +553,11 @@ function case8 () {
     await page.frameLocator('#description_ifr').getByRole('paragraph')
         .fill('Gói khóa học Kỹ năng chung với 11 khóa học về gia đình, sức khỏe và các công cụ tin học văn phòng được giảng dạy từ các chuyên gia hàng đầu trong lĩnh vực sẽ giúp bạn hoàn thiện bản thân một các toàn diện nhất. Bộ 3 khóa học về gia đình: 108 Tọa pháp Yoga - Bí mật trẻ mãi, Massage uyên ương và Nghệ thuật Phòng the đỉnh cao giúp bạn có những phút giây thư giãn thoải mái và hâm nóng tình cảm vợ chồng, giữ lửa hôn nhân. Cùng với đó là 4 khóa học: Dạy cắm hoa cơ bản theo phong cách Phương Tây, Đọc sách siêu tốc, Bí kíp nhiếp ảnh Trẻ em và Gia đình đẹp mê hồn và Làm chủ giọng nói sẽ mang đến cho bạn những kiến thức bổ ich giúp bạn hoàn thiện các kỹ năng trong đời sống, thêm tự tin và dẽ dàng làm chủ mọi tình huống thường ngày. Ngoài ra, bạn có thể thành tạo các kỹ năng văn phòng với 4 khóa học: DISC - Thấu hiểu bản thân - Xây dựng đội nhóm thành công, Thiết kế Powerpoint chuyên nghiệp, Chinh phục excel công sở và Thiết kế trình chiếu PowerPoint 2016 từ A-Z. Hãy tham gia ngay Gói khóa học Kỹ Năng chung để trải nghiệm những video vô cùng hữu ích nhé!')
     await page.getByRole('button', { name: 'Upload / Chọn ảnh trang bìa +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
     await page.getByRole('button', { name: 'Xong' }).click();
     await page.waitForTimeout(1000);
     await page.getByRole('button', { name: 'Upload / Chọn ảnh minh hoạ +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
     await page.getByRole('button', { name: 'Xong' }).click();
     await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).fill('1');
     await page.locator('#status').click();
@@ -703,11 +703,11 @@ function case9 () {
     await page.getByLabel('URL', { exact: true }).fill('http://vkid.mobiedu.vn/');
     await page.getByRole('button', { name: 'Save' }).click();
     await page.getByRole('button', { name: 'Upload / Chọn ảnh trang bìa +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
     await page.getByRole('button', { name: 'Xong' }).click();
     await page.waitForTimeout(1000);
     await page.getByRole('button', { name: 'Upload / Chọn ảnh minh hoạ +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
     await page.getByRole('button', { name: 'Xong' }).click();
     await page.getByLabel('Học trên App').locator('span').nth(1).click();
     await page.getByRole('treeitem', { name: 'Không xác định' }).click();
@@ -883,12 +883,12 @@ function case10() {
         await page.frameLocator('#user_manual_ifr').getByLabel('Rich Text Area. Press ALT-0').fill('Hướng dẫn sử dụng');
         //Chon anh bia
         await page.getByRole('button', { name: 'Upload / Chọn ảnh trang bìa +' }).click();
-        await page.locator('div#file-preview figure:nth-child(2) > img').click();
+        await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
         await page.getByRole('button', { name: 'Xong' }).click();
         await page.waitForTimeout(3000);
         //Chon anh minh hoa
         await page.getByRole('button', { name: 'Upload / Chọn ảnh minh hoạ +' }).click();
-        await page.locator('div#file-preview figure:nth-child(2) > img').click();
+        await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
         await page.getByRole('button', { name: 'Xong' }).click();
         //Chọn hình thức học
         // await page.getByRole('textbox', { name: 'Học trên App' }).click();
@@ -1117,7 +1117,7 @@ function case11() {
         await page.getByLabel('Thêm mới').getByLabel('Hình thức');
         // Upload ảnh
         await page.getByRole('button', { name: 'Upload / Chọn hình ảnh +' }).click();
-        await page.locator('div#file-preview figure:nth-child(2) > img').click();
+        await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
         await page.getByRole('button', { name: 'Xong' }).click();
         // Chọn trạng thái
         await page.getByLabel('Thêm mới').getByLabel('Trạng thái').selectOption('1');
@@ -1144,7 +1144,7 @@ function case11() {
         await page.getByRole('spinbutton', { name: 'Lượt xem' }).fill('1500');
         // Upload ảnh bài viết 
         await page.getByRole('button', { name: 'Upload / Chọn hình ảnh +' }).click();
-        await page.locator('div#file-preview figure:nth-child(2) > img').click();
+        await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
         await page.getByRole('button', { name: 'Xong' }).click();
         // Nhập nội dung bài viết 
         await page.frameLocator('internal:role=dialog[name="Thêm mới"i] >> iframe[title="Rich Text Area"]').locator('html').click();

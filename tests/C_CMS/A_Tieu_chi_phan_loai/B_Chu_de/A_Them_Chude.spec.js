@@ -8,7 +8,7 @@ const exp = require('constants');
  */
 
 function case1 () {
-    test('Case 1: Pass - Hiển thị Trang chủ ', async ({ page }) => {
+    test('Case 1: Pass - Hiển thị Trang khóa học ', async ({ page }) => {
     
           test.slow();
     // Đăng nhập CMS thành công 
@@ -44,15 +44,20 @@ function case1 () {
     // Click btn Lưu 
     await page.getByRole('button', { name: 'Lưu' }).click();
     await expect(page.getByText('Thêm thành công!')).toBeVisible();
-    // Truy cập Web kiểm tra hiển thị - Khóa học
-    await page.goto('')
+    // Truy cập Web kiểm tra hiển thị
+    // [Trước đăng nhập] - Trang khóa học => Hiển thị 
+    await page.goto('https://mskill8.mobiedu.vn/khoa-hoc');
+    await expect(page.getByText('QA_CD_Pass_Kỹ năng sống_Case1')).toBeVisible();
+    // [Trước đăng nhập] - Trang giới thiệu => Không hiển thị 
+    await page.getByRole('link', { name: 'Giới thiệu' }).click();
+    await expect(page.getByText('QA_CD_Pass_Kỹ năng sống_Case1')).not.toBeVisible();
 
 
 });
 }
 
 function main(){
-    case1();
+    // case1();
 
 }
 main();

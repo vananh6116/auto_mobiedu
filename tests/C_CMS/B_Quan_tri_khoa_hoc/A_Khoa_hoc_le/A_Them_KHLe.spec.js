@@ -74,12 +74,12 @@ function case1 () {
     await page.frameLocator('#suitable_for_ifr').getByLabel('Rich Text Area. Press ALT-0 for help.').fill('Case 1_Khóa học phù hợp với : Trẻ em - Học sinh - Sinh viên và người đi làm');
     // Chọn ảnh trang bìa 
     await page.getByRole('button', { name: 'Upload / Chọn ảnh trang bìa +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
     await page.getByRole('button', { name: 'Xong' }).click();
     // Chọn ảnh minh họa 
     await page.waitForTimeout(2000);
     await page.getByRole('button', { name: 'Upload / Chọn ảnh minh hoạ +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
     await page.getByRole('button', { name: 'Xong' }).click();
     // Nhập vị trí hiển thị 
     await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).click();
@@ -298,12 +298,12 @@ function case2 () {
     await page.frameLocator('#suitable_for_ifr').getByLabel('Rich Text Area. Press ALT-0 for help.').fill('Case2_Khóa học phù hợp với : Trẻ em - Học sinh - Sinh viên và người đi làm');
     // Chọn ảnh trang bìa 
     await page.getByRole('button', { name: 'Upload / Chọn ảnh trang bìa +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
     await page.getByRole('button', { name: 'Xong' }).click();
     // Chọn ảnh minh họa 
     await page.waitForTimeout(2000);
     await page.getByRole('button', { name: 'Upload / Chọn ảnh minh hoạ +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
     await page.getByRole('button', { name: 'Xong' }).click();
     // Nhập vị trí hiển thị 
     await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).click();
@@ -521,12 +521,12 @@ function case3 () {
     await page.frameLocator('#suitable_for_ifr').getByLabel('Rich Text Area. Press ALT-0 for help.').fill('Case3_Khóa học phù hợp với : Trẻ em - Học sinh - Sinh viên và người đi làm');
     // Chọn ảnh trang bìa 
     await page.getByRole('button', { name: 'Upload / Chọn ảnh trang bìa +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
     await page.getByRole('button', { name: 'Xong' }).click();
     // Chọn ảnh minh họa 
     await page.waitForTimeout(2000);
     await page.getByRole('button', { name: 'Upload / Chọn ảnh minh hoạ +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
     await page.getByRole('button', { name: 'Xong' }).click();
     // Nhập vị trí hiển thị 
     await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).click();
@@ -748,12 +748,12 @@ function case4 () {
     await page.frameLocator('#suitable_for_ifr').getByLabel('Rich Text Area. Press ALT-0 for help.').fill('Case4_Khóa học phù hợp với : Trẻ em - Học sinh - Sinh viên và người đi làm');
     // Chọn ảnh trang bìa 
     await page.getByRole('button', { name: 'Upload / Chọn ảnh trang bìa +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
     await page.getByRole('button', { name: 'Xong' }).click();
     // Chọn ảnh minh họa 
     await page.waitForTimeout(2000);
     await page.getByRole('button', { name: 'Upload / Chọn ảnh minh hoạ +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
     await page.getByRole('button', { name: 'Xong' }).click();
     // Nhập vị trí hiển thị 
     await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).click();
@@ -981,12 +981,12 @@ function case5 () {
     await page.frameLocator('#suitable_for_ifr').getByLabel('Rich Text Area. Press ALT-0 for help.').fill('Case5_Khóa học phù hợp với : Trẻ em - Học sinh - Sinh viên và người đi làm');
     // Chọn ảnh trang bìa 
     await page.getByRole('button', { name: 'Upload / Chọn ảnh trang bìa +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
     await page.getByRole('button', { name: 'Xong' }).click();
     // Chọn ảnh minh họa 
     await page.waitForTimeout(2000);
     await page.getByRole('button', { name: 'Upload / Chọn ảnh minh hoạ +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
     await page.getByRole('button', { name: 'Xong' }).click();
     // Nhập vị trí hiển thị 
     await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).click();
@@ -1312,12 +1312,12 @@ function case7 () {
     await page.frameLocator('#suitable_for_ifr').getByLabel('Rich Text Area. Press ALT-0 for help.').fill('Case 7_Khóa học phù hợp với : Trẻ em - Học sinh - Sinh viên và người đi làm');
     // Chọn ảnh trang bìa 
     await page.getByRole('button', { name: 'Upload / Chọn ảnh trang bìa +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
     await page.getByRole('button', { name: 'Xong' }).click();
     // Chọn ảnh minh họa 
     await page.waitForTimeout(2000);
     await page.getByRole('button', { name: 'Upload / Chọn ảnh minh hoạ +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
     await page.getByRole('button', { name: 'Xong' }).click();
     // Nhập vị trí hiển thị 
     await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).click();
@@ -1404,12 +1404,12 @@ function case8 () {
     await page.frameLocator('#suitable_for_ifr').getByLabel('Rich Text Area. Press ALT-0 for help.').fill('Case 8_Khóa học phù hợp với : Trẻ em - Học sinh - Sinh viên và người đi làm');
     // Chọn ảnh trang bìa 
     await page.getByRole('button', { name: 'Upload / Chọn ảnh trang bìa +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
     await page.getByRole('button', { name: 'Xong' }).click();
     // Chọn ảnh minh họa 
     await page.waitForTimeout(2000);
     await page.getByRole('button', { name: 'Upload / Chọn ảnh minh hoạ +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
     await page.getByRole('button', { name: 'Xong' }).click();
     // Nhập vị trí hiển thị 
     await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).click();

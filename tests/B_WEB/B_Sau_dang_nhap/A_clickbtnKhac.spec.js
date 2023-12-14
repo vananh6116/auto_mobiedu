@@ -121,7 +121,7 @@ function case3 () {
  */
 
 function case4 () {
-    test('Case 4: KHCT - click btn - thay đổi thông tin  ', async ({ page }) => {
+    test('Case 4: KHCT-thay đổi thông tin  ', async ({ page }) => {
 
         test.slow();
         // Truy cập web 
@@ -160,7 +160,6 @@ function case4 () {
         await expect(page.getByText('Đổi mật khẩu thành công!')).toBeVisible();
         await page.getByRole('button', { name: 'Close' }).click();
         // Đăng xuất - Đăng nhập lại kiểm tra thay đổi thông tin 
-        await page.goto('https://mskill8.mobiedu.vn/tai-khoan/ho-so');
         await page.locator('div.account > div > div > a').hover();
         await page.getByRole('link', { name: 'Đăng xuất' }).click();
         await page.getByRole('link', { name: 'Đăng nhập', exact: true }).click();
@@ -174,7 +173,7 @@ function case4 () {
         await page.getByRole('link', { name: 'Tài khoản của tôi', exact: true }).click();
         await expect(page).toHaveURL('https://mskill8.mobiedu.vn/tai-khoan/ho-so');
         // Đổi lại thông tin cũ 26-11-1999 MK 123123
-        await page.goto('https://mskill8.mobiedu.vn/tai-khoan/ho-so');
+        await page.waitForTimeout(2000);
         await page.getByPlaceholder('Nguyễn Văn A').fill('Vanh Vanh');
         await page.locator('select[name="day"]').click();
         await page.locator('select[name="day"]').selectOption('26');
@@ -191,7 +190,36 @@ function case4 () {
         await page.getByPlaceholder('Nhập lại mật khẩu').fill('123123');
         await page.locator('#change_password').click();
         await expect(page.getByText('Đổi mật khẩu thành công!')).toBeVisible();
-        await page.getByRole('button', { name: 'Close' }).click();
+
+    });
+}        
+
+/**
+ * Case 5: Click btn trang Tài khoản của tôi - click link khác trong menu
+ * Mong muốn: Hiển thị đúng đến trang click
+ */
+
+function case5 () {
+    test('Case 5: KHCT-click link khác', async ({ page }) => {
+
+        test.slow();
+        // Truy cập web 
+        await page.goto('https://mskill8.mobiedu.vn/');
+        await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
+        // Click btn Đăng nhập 
+        await page.getByRole('link', { name: 'Đăng nhập', exact: true }).click();
+        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/dang-nhap?redirect=/');
+        // Nhập số điện thoại - mật khẩu 
+        await page.waitForTimeout(2000);
+        await page.getByPlaceholder('Nhập số điện thoại').fill('0385519997');
+        await page.getByPlaceholder('Nhập mật khẩu').fill('123123');
+        // Click btn Đăng nhập thành công vào hệ thống
+        await page.getByRole('button', { name: 'ĐĂNG NHẬP' }).click();
+        await expect(page.locator('div.account > div > div > a')).toBeVisible();
+        // Hover - click Tài khoản của tôi
+        await page.locator('div.account > div > div > a').hover();
+        await page.getByRole('link', { name: 'Tài khoản của tôi', exact: true }).click();
+        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/tai-khoan/ho-so');
         // Click link Kích hoạt khóa học 
         await page.getByRole('link', { name: 'Kích hoạt khóa học' }).click();
         await expect(page).toHaveURL('https://mskill8.mobiedu.vn/tai-khoan/kich-hoat-khoa-hoc');
@@ -243,6 +271,12 @@ function case4 () {
         await expect(page.getByRole('heading', { name: 'Thông báo' })).toBeVisible();
         await page.waitForTimeout(1000);
         await page.screenshot({ path: 'Ảnh_thông_báo.png', fullPage: true });
+        // Click thông báo chi tiết 
+        await page.waitForTimeout(2000);
+        await page.locator('main#profile_user tr:nth-child(1) > td:nth-child(1) > a').click();
+        await expect(page.locator('section').filter({ hasText: 'Trang chủ Thông báo chi tiết' })).toBeVisible();
+        await page.waitForTimeout(1000);
+        await page.screenshot({ path: 'Ảnh_thông_báo_chi_tiết.png', fullPage: true });
         // Click link Đơn hàng 
         await page.getByRole('link', { name: 'add_shopping_cart Đơn hàng' }).click();
         await expect(page).toHaveURL('https://mskill8.mobiedu.vn/tai-khoan/don-hang');
@@ -254,12 +288,12 @@ function case4 () {
 }        
 
 /**
- * Case 5: Click Giỏ hàng - Không có khóa học 
+ * Case 6: Click Giỏ hàng - Không có khóa học 
  * Mong muốn: Hiển thị giỏ hàng 0 sản phẩm 
  */
 
-function case5 () {
-    test('Case 5: click giỏ hàng_trống ', async ({ page }) => {
+function case6 () {
+    test('Case 6: click giỏ hàng_trống ', async ({ page }) => {
 
         test.slow();
         // Truy cập web 
@@ -280,17 +314,19 @@ function case5 () {
         await expect(page.getByText('Giỏ hàng (0 sản phẩm)')).toBeVisible();
         await expect(page.getByText('Hiện tại giỏ hàng của bạn chưa có sản phẩm nào.')).toBeVisible();
         await expect(page.getByText('Vui lòng lựa chọn Khóa học mà bạn muốn đăng kí!')).toBeVisible();
+        await page.waitForTimeout(1000);
+        await page.screenshot({ path: 'Ảnh_GH_trống.png', fullPage: true });
         
     });
 } 
 
 /**
- * Case 6: Click Giỏ hàng - Có khóa học 
+ * Case 7: Click Giỏ hàng - Có khóa học 
  * Mong muốn: Hiển thị giỏ hàng 0 sản phẩm 
  */
 
-function case6 () {
-    test('Case 6: click giỏ hàng_có khóa học ', async ({ page }) => {
+function case7 () {
+    test('Case 7: click giỏ hàng_có khóa học ', async ({ page }) => {
 
         test.slow();
         // Truy cập web 
@@ -315,6 +351,8 @@ function case6 () {
         await page.getByRole('link', { name: 'shopping_cart 1' }).click();
         await expect(page.getByText('star 4 Nhập môn cờ vua cho người mới bắt đầu 600.000 đ delete_outline Xóa 600.00')).toBeVisible();
         await expect(page.getByText('Áp dụng TIẾP TỤC THANH TOÁN')).toBeVisible();
+        await page.waitForTimeout(1000);
+        await page.screenshot({ path: 'Ảnh_GH_có KH.png', fullPage: true });
         // Xóa khóa học ra khỏi giỏ hàng 
         await page.waitForTimeout(1000);
         await page.getByText('delete_outline Xóa').nth(1).click();
@@ -327,12 +365,12 @@ function case6 () {
 } 
 
 /**
- * Case 7: Click btn Vào học 
+ * Case 8: Click btn Vào học 
  * Mong muốn: vào trang khóa học thành công 
  */
 
-function case7 () {
-    test('Case 7: click btn Vào học ', async ({ page }) => {
+function case8 () {
+    test('Case 8: click btn Vào học ', async ({ page }) => {
 
         test.slow();
         // Truy cập web 
@@ -346,12 +384,23 @@ function case7 () {
         await page.getByPlaceholder('Nhập số điện thoại').fill('0385519997');
         await page.getByPlaceholder('Nhập mật khẩu').fill('123123');
         // Click btn Đăng nhập thành công vào hệ thống
+        await page.waitForTimeout(1000);
         await page.getByRole('button', { name: 'ĐĂNG NHẬP' }).click();
         await expect(page.locator('div.account > div > div > a')).toBeVisible();
-        // Click btn Vào học 
+        // Click btn Vào học - trang chủ của bạn 
         await page.getByRole('link', { name: 'Vào học' }).first().click();
         await expect(page.getByText('Nội dung học Phần 1: Nhập môn thiết kế Power Point Bài 0: Nhập môn thiết kế Powe')).toBeVisible();
         await expect(page.getByText('Tổng quan Bạn đã bao giờ dành thời gian, tâm huyết, hì hụi chuẩn bị một')).toBeVisible();
+        // Click btn Vào học - trang khóa học của tôi 
+        await page.waitForTimeout(1000);
+        await page.locator('div.account > div > div > a').hover();
+        await page.getByRole('link', { name: 'Khóa học của tôi' }).click();
+        await page.getByRole('link', { name: 'Vào học' }).first().click();
+        await expect(page.getByText('Nội dung học Phần 1: Nhập môn thiết kế Power Point Bài 0: Nhập môn thiết kế Powe')).toBeVisible();
+        await expect(page.getByText('Tổng quan Bạn đã bao giờ dành thời gian, tâm huyết, hì hụi chuẩn bị một')).toBeVisible();
+        await page.waitForTimeout(1000);
+        await page.screenshot({ path: 'Ảnh_Vào_học.png', fullPage: true });
+
 
     });
 } 
@@ -365,6 +414,7 @@ function main(){
     case5();
     case6();
     case7();
+    case8();
 
 }
 main();
