@@ -1,6 +1,7 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
 const exp = require('constants');
+const { openAsBlob } = require('fs');
 
 /**
  * Case 1: Click danh mục khóa học 
@@ -318,7 +319,42 @@ function case8 () {
 });
 }
 
+/**
+ * Case 9: Click thông tin giảng viên 
+ * Mong muốn: Hiển thị đúng đến trang giảng viên 
+ */
 
+function case9 () {
+    test('Case 9: Click link giảng viên', async ({ page }) => {
+
+    test.slow();
+        // Truy cập web 
+        await page.goto('https://mskill8.mobiedu.vn/');
+        // Expect
+        await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
+        // Click Khóa học 
+        await page.getByRole('link', { name: 'Khóa học' }).click();
+        // Expect 
+        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc');
+        await expect(page.locator('section').filter({ hasText: 'Trang chủ Khoá học' }).locator('div')).toBeVisible();
+        // Click khóa học 
+        await page.getByRole('link', { name: 'EduPro mSkill EDV' }).click();
+        await expect(page.getByRole('heading', { name: 'EduPro mSkill EDV' })).toBeVisible();
+        // Click link giảng viên 
+        await page.getByRole('link', { name: 'Nguyễn Hiếu' }).first().click();
+        await expect(page.locator('section').filter({ hasText: 'Trang chủ Giảng viên: Nguyễn Hiếu' })).toBeVisible();
+        await expect(page.getByRole('heading', { name: 'Nguyễn Hiếu', exact: true })).toBeVisible();
+        await expect(page.getByText('Thông tin giảng viên Chuyên gia Yoga Nguyễn Hiếu đã có hơn 12 năm nghiên cứu và ').nth(1)).toBeVisible();
+        await expect(page.getByText('Các khóa học của giảng viên Nguyễn Hiếu star 4.8 108 Tọa pháp Yoga - Bí mật trẻ ').nth(1)).toBeVisible();
+        await expect(page.getByRole('heading', { name: 'Học vấn, trình độ' })).toBeVisible();
+        await expect(page.getByRole('heading', { name: 'Nghề nghiệp, kinh nghiệm' })).toBeVisible();
+        await expect(page.getByRole('heading', { name: 'favorite_border Kĩ năng nổi bật' })).toBeVisible();
+        await expect(page.getByText('Video Giới thiệu giảng viên', { exact: true })).toBeVisible();
+        // Chụp ảnh màn hình 
+        await page.waitForTimeout(2000);
+        await page.screenshot({path:'Ảnh_giảng_viên.png',fullPage:true});
+});
+}
 
 function main() {
     case1();
@@ -329,6 +365,7 @@ function main() {
     case6();
     case7();
     case8();
+    case9();
 
 }
 main();

@@ -58,11 +58,11 @@ function case1 () {
     await page.frameLocator('#suitable_for_ifr').getByRole('paragraph').click();
     await page.frameLocator('#suitable_for_ifr').getByLabel('Rich Text Area. Press ALT-0 for help.').fill('Case 1 Thêm_Khóa học phù hợp với : Trẻ em - Học sinh - Sinh viên và người đi làm');
     await page.getByRole('button', { name: 'Upload / Chọn ảnh trang bìa +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
     await page.getByRole('button', { name: 'Xong' }).click();
     await page.waitForTimeout(2000);
     await page.getByRole('button', { name: 'Upload / Chọn ảnh minh hoạ +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
     await page.getByRole('button', { name: 'Xong' }).click();
     await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).click();
     await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).fill('1');
@@ -225,11 +225,11 @@ function case2 () {
     await page.frameLocator('#suitable_for_ifr').getByRole('paragraph').click();
     await page.frameLocator('#suitable_for_ifr').getByLabel('Rich Text Area. Press ALT-0 for help.').fill('Case 2 Thêm_Khóa học phù hợp với : Trẻ em - Học sinh - Sinh viên và người đi làm');
     await page.getByRole('button', { name: 'Upload / Chọn ảnh trang bìa +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
     await page.getByRole('button', { name: 'Xong' }).click();
     await page.waitForTimeout(2000);
     await page.getByRole('button', { name: 'Upload / Chọn ảnh minh hoạ +' }).click();
-    await page.locator('div#file-preview figure:nth-child(2) > img').click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
     await page.getByRole('button', { name: 'Xong' }).click();
     await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).click();
     await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).fill('1');
