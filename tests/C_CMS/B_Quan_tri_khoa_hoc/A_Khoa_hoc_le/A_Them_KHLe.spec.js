@@ -933,6 +933,7 @@ function case5 () {
     await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-mobiedu');
     await expect(page.getByRole('heading', { name: 'Danh sách khóa học Mobiedu' })).toBeVisible();
     // Click btn Thêm khóa học mới 
+    await page.waitForTimeout(1000);
     await page.getByRole('link', { name: 'Thêm khóa học mới' }).click();
     await expect(page.getByRole('heading', { name: 'Thêm mới khóa học Mobiedu' })).toBeVisible();
     // Nhập tên khóa học 
@@ -966,7 +967,7 @@ function case5 () {
     await page.locator('#retail').selectOption('2');
     // Nhập giá gốc 
     await page.getByPlaceholder('Nhập giá gốc').click();
-    await page.getByPlaceholder('Nhập giá gốc').fill('395000');
+    await page.getByPlaceholder('Nhập giá gốc').fill('0');
     // Nhập giá bán 
     await page.getByRole('spinbutton', { name: 'Giá bán (Miễn phí nhập 0) *' }).click();
     await page.getByRole('spinbutton', { name: 'Giá bán (Miễn phí nhập 0) *' }).fill('0');
@@ -1008,6 +1009,7 @@ function case5 () {
     await page.waitForTimeout(2000);
     await page.getByPlaceholder('Nhập số điện thoại').fill('0385519997');
     await page.getByPlaceholder('Nhập mật khẩu').fill('123123');
+    await page.waitForTimeout(1000);
     await page.getByRole('button', { name: 'ĐĂNG NHẬP' }).click();
     await expect(page.locator('div.account > div > div > a')).toBeVisible();
     // Khóa học - Tất cả => Hiển thị 
@@ -1017,55 +1019,51 @@ function case5 () {
     await page.getByRole('button', { name: 'Áp dụng' }).click();
     await expect(page.getByRole('link', { name: 'QA_KHL_Miễn phí_Thuyết trình và những bí mật_Case5' }).first()).toBeVisible();
     await expect(page.getByText('Tạ Đức Hải').first()).toBeVisible();
-    await expect(page.getByText('395.000 đ').first()).toBeVisible();
+    await expect(page.locator('div#product-list-show div:nth-child(1) > div > div.caption > p.price').getByText('Miễn phí')).toBeVisible();
     // Khóa học - Trẻ em => Hiển thị 
     await page.getByRole('main').getByRole('link', { name: 'Trẻ em' }).click();
     await page.getByText('Miễn Phí', { exact: true }).click();
     await page.getByRole('button', { name: 'Áp dụng' }).click();
     await expect(page.getByRole('link', { name: 'QA_KHL_Miễn phí_Thuyết trình và những bí mật_Case5' }).first()).toBeVisible();
     await expect(page.getByText('Tạ Đức Hải').first()).toBeVisible();
-    await expect(page.getByText('395.000 đ').first()).toBeVisible();
+    await expect(page.locator('div#product-list-show p.price').getByText('Miễn phí')).toBeVisible();
     // Khóa học - Học sinh => Không hiển thị 
     await page.getByRole('main').getByRole('link', { name: 'Học sinh phổ thông' }).click();
     await page.getByText('Miễn Phí', { exact: true }).click();
     await page.getByRole('button', { name: 'Áp dụng' }).click();
     await expect(page.getByRole('link', { name: 'QA_KHL_Miễn phí_Thuyết trình và những bí mật_Case5' }).first()).not.toBeVisible();
     await expect(page.getByText('Tạ Đức Hải').first()).not.toBeVisible();
-    await expect(page.getByText('395.000 đ').first()).not.toBeVisible();
     // Khóa học - Sinh viên => Không hiển thị 
     await page.getByRole('main').getByRole('link', { name: 'Sinh viên và người đi làm' }).click();
     await page.getByText('Miễn Phí', { exact: true }).click();
     await page.getByRole('button', { name: 'Áp dụng' }).click();
     await expect(page.getByRole('link', { name: 'QA_KHL_Miễn phí_Thuyết trình và những bí mật_Case5' }).first()).not.toBeVisible();
     await expect(page.getByText('Tạ Đức Hải').first()).not.toBeVisible();
-    await expect(page.getByText('395.000 đ').first()).not.toBeVisible();
     // Trang chủ - Tất cả => Không hiển thị 
     await page.locator('a').first().click();
     await expect(page.getByRole('link', { name: 'QA_KHL_Miễn phí_Thuyết trình và những bí mật_Case5' }).first()).not.toBeVisible();
     await expect(page.getByText('Tạ Đức Hải').first()).not.toBeVisible();
-    await expect(page.getByText('395.000 đ').first()).not.toBeVisible();
     // Trang chủ - Trẻ em => Không hiển thị 
     await page.locator('#btn_tab_tre-em').click();
     await expect(page.getByRole('link', { name: 'QA_KHL_Miễn phí_Thuyết trình và những bí mật_Case5' }).first()).not.toBeVisible();
     await expect(page.getByText('Tạ Đức Hải').first()).not.toBeVisible();
-    await expect(page.getByText('395.000 đ').first()).not.toBeVisible();
     // Trang chủ - Học sinh => Không hiển thị 
     await page.locator('#btn_tab_hoc-sinh-pho-thong').click();
     await expect(page.getByRole('link', { name: 'QA_KHL_Miễn phí_Thuyết trình và những bí mật_Case5' }).first()).not.toBeVisible();
     await expect(page.getByText('Tạ Đức Hải').first()).not.toBeVisible();
-    await expect(page.getByText('395.000 đ').first()).not.toBeVisible();
     // Trang chủ - Sinh viên => Không hiển thị 
     await page.locator('#btn_tab_sinh-vien-nguoi-di-lam').click();
     await expect(page.getByRole('link', { name: 'QA_KHL_Miễn phí_Thuyết trình và những bí mật_Case5' }).first()).not.toBeVisible();
     await expect(page.getByText('Tạ Đức Hải').first()).not.toBeVisible();
-    await expect(page.getByText('395.000 đ').first()).not.toBeVisible();
     // Click xem khóa học chi tiết 
     await page.goto('https://mskill8.mobiedu.vn/khoa-hoc');
+    await page.getByText('Miễn Phí', { exact: true }).click();
+    await page.getByRole('button', { name: 'Áp dụng' }).click();
     await page.getByRole('link', { name: 'QA_KHL_Miễn phí_Thuyết trình và những bí mật_Case5' }).click();
     await expect(page.locator('section').filter({ hasText: 'Trang chủ Khóa học QA_KHL_Miễn phí_Thuyết trình và những bí mật_Case5' })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'QA_KHL_Miễn phí_Thuyết trình và những bí mật_Case5' }).locator('span')).toBeVisible();
     await expect(page.locator('p').filter({ hasText: /^Tạ Đức Hải$/ })).toBeVisible();
-    await expect(page.getByText('395.000 đ').first()).toBeVisible();
+    await expect(page.getByText('0 đ', { exact: true }).first()).toBeVisible();
     await expect(page.getByText('Số lượng bài học 0')).toBeVisible();
     await expect(page.getByText('Thời lượng 02 Giờ 45 Phút')).toBeVisible();
     await expect(page.getByText('Lĩnh vực IoT')).toBeVisible();
@@ -1091,44 +1089,36 @@ function case5 () {
     await page.goto('https://mskill8.mobiedu.vn/');
     await expect(page.getByRole('link', { name: 'QA_KHL_Miễn phí_Thuyết trình và những bí mật_Case5' }).first()).not.toBeVisible();
     await expect(page.getByText('Tạ Đức Hải').first()).not.toBeVisible();
-    await expect(page.getByText('395.000 đ').first()).not.toBeVisible();
     // Trang chủ - Trẻ em => Không hiển thị 
     await page.locator('#btn_tab_tre-em').click();
     await expect(page.getByRole('link', { name: 'QA_KHL_Miễn phí_Thuyết trình và những bí mật_Case5' }).first()).not.toBeVisible();
     await expect(page.getByText('Tạ Đức Hải').first()).not.toBeVisible();
-    await expect(page.getByText('395.000 đ').first()).not.toBeVisible();
     // Trang chủ - Học sinh => Không hiển thị 
     await page.locator('#btn_tab_hoc-sinh-pho-thong').click();
     await expect(page.getByRole('link', { name: 'QA_KHL_Miễn phí_Thuyết trình và những bí mật_Case5' }).first()).not.toBeVisible();
     await expect(page.getByText('Tạ Đức Hải').first()).not.toBeVisible();
-    await expect(page.getByText('395.000 đ').first()).not.toBeVisible();
     // Trang chủ - Sinh viên => Không hiển thị 
     await page.locator('#btn_tab_sinh-vien-nguoi-di-lam').click();
     await expect(page.getByRole('link', { name: 'QA_KHL_Miễn phí_Thuyết trình và những bí mật_Case5' }).first()).not.toBeVisible();
     await expect(page.getByText('Tạ Đức Hải').first()).not.toBeVisible();
-    await expect(page.getByText('395.000 đ').first()).not.toBeVisible();
     // Khóa học - Tất cả => Không hiển thị 
     await page.waitForTimeout(2000);
     await page.getByRole('link', { name: 'Khóa học', exact: true }).click();
     await expect(page.getByText('Miễn phí')).not.toBeVisible();
     await expect(page.getByRole('link', { name: 'QA_KHL_Miễn phí_Thuyết trình và những bí mật_Case5' }).first()).not.toBeVisible();
     await expect(page.getByText('Tạ Đức Hải').first()).not.toBeVisible();
-    await expect(page.getByText('395.000 đ').first()).not.toBeVisible();
     // Khóa học - Trẻ em => Không hiển thị 
     await page.getByRole('main').getByRole('link', { name: 'Trẻ em' }).click();
     await expect(page.getByRole('link', { name: 'QA_KHL_Miễn phí_Thuyết trình và những bí mật_Case5' }).first()).not.toBeVisible();
     await expect(page.getByText('Tạ Đức Hải').first()).not.toBeVisible();
-    await expect(page.getByText('395.000 đ').first()).not.toBeVisible();
     // Khóa học - Học sinh => Không hiển thị 
     await page.getByRole('main').getByRole('link', { name: 'Học sinh phổ thông' }).click();
     await expect(page.getByRole('link', { name: 'QA_KHL_Miễn phí_Thuyết trình và những bí mật_Case5' }).first()).not.toBeVisible();
     await expect(page.getByText('Tạ Đức Hải').first()).not.toBeVisible();
-    await expect(page.getByText('395.000 đ').first()).not.toBeVisible();
     // Khóa học - Sinh viên => Không hiển thị 
     await page.getByRole('main').getByRole('link', { name: 'Sinh viên và người đi làm' }).click();
     await expect(page.getByRole('link', { name: 'QA_KHL_Miễn phí_Thuyết trình và những bí mật_Case5' }).first()).not.toBeVisible();
     await expect(page.getByText('Tạ Đức Hải').first()).not.toBeVisible();
-    await expect(page.getByText('395.000 đ').first()).not.toBeVisible();
     // Truy cập CMS xóa khóa học vừa thêm 
     await page.goto('https://mskill8admin.mobiedu.vn/course-mobiedu');
     await page
@@ -1155,14 +1145,12 @@ function case5 () {
     await page.getByRole('button', { name: 'Áp dụng' }).click();
     await expect(page.getByRole('link', { name: 'QA_KHL_Miễn phí_Thuyết trình và những bí mật_Case5' }).first()).not.toBeVisible();
     await expect(page.getByText('Tạ Đức Hải').first()).not.toBeVisible();
-    await expect(page.getByText('395.000 đ').first()).not.toBeVisible();
     // Khóa học - Trẻ em => Không hiển thị
     await page.getByRole('main').getByRole('link', { name: 'Trẻ em' }).click();
     await page.getByText('Miễn Phí', { exact: true }).click();
     await page.getByRole('button', { name: 'Áp dụng' }).click();
     await expect(page.getByRole('link', { name: 'QA_KHL_Miễn phí_Thuyết trình và những bí mật_Case5' }).first()).not.toBeVisible();
     await expect(page.getByText('Tạ Đức Hải').first()).not.toBeVisible();
-    await expect(page.getByText('395.000 đ').first()).not.toBeVisible();
     
 
 });

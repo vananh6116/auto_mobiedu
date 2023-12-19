@@ -1143,7 +1143,7 @@ function case5 () {
     await page.locator('#pod_period_2').selectOption('1');
     // Nhập tên gói cước 
     await page.getByRole('textbox', { name: 'Tên gói' }).click();
-    await page.getByRole('textbox', { name: 'Tên gói' }).fill('QA_Gói cước_KHCombo_Phát triển bản thân_Case1');
+    await page.getByRole('textbox', { name: 'Tên gói' }).fill('QA_Gói cước_KHCombo_Phát triển bản thân_Case5');
     // Chọn ưu tiên - Ưu tiên 
     await page.getByLabel('Ưu tiên').click();
     await page.getByLabel('Ưu tiên').selectOption('1');
@@ -1834,6 +1834,152 @@ function case11 () {
 });
 }
 
+/**
+ * Case 12: Thành công : Thêm khóa học combo - Trẻ em - Trạng thái Ẩn
+ * Mong muốn: Trang chủ => Không hiển thị  Học sinh - Sinh viên - Trẻ em - Tất cả
+ * Khóa học -> Hiển thị  => Không hiển thị Học sinh - Sinh viên - Tất cả - Trẻ em
+ */
+
+function case12 () {
+    test('Case 12: Pass_trạng thái ẩn', async ({ page }) => {
+    
+          test.slow();
+    // Đăng nhập CMS thành công 
+    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
+    await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
+    await page.getByRole('button', { name: 'Đăng nhập' }).click();
+    await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
+    // Click Quản trị khóa học - Khóa học lẻ 
+    await page.waitForTimeout(13000);
+    await page.getByRole('link', { name: 'Quản trị khoá học' }).click();
+    await page.getByRole('link', { name: 'Khóa học Combo' }).click();
+    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-combo');
+    await expect(page.getByRole('heading', { name: 'Danh sách khóa học Combo' })).toBeVisible();
+    // Click btn Thêm khóa học mới 
+    await page.waitForTimeout(1000);
+    await page.getByRole('link', { name: 'Thêm khóa học mới' }).click();
+    await expect(page.getByRole('heading', { name: 'Thêm mới khóa học Combo' })).toBeVisible();
+    // Nhập tên khóa học 
+    await page.getByRole('textbox', { name: 'Tên khóa học *' }).click();
+    await page.getByRole('textbox', { name: 'Tên khóa học *' }).fill('QA_Pass trạng thái Ẩn_KHCombo_Phát triển bản thân_Case12');
+    // Chọn nhà cung cấp nội dung 
+    await page.waitForTimeout(1000);
+    await page.locator('#select2-cp-container').click();
+    await page.getByRole('treeitem', { name: 'iNETS' }).click();
+    // Chọn danh mục - Trẻ em 
+    await page.waitForTimeout(1000);
+    await page.getByRole('textbox', { name: 'Chọn danh mục...' }).click();
+    await page.getByRole('treeitem', { name: 'Trẻ em' }).click();
+    // Nhập thời gian 
+    await page.locator('input#time').click();
+    await page.locator('input#time').fill('022500');
+    // Chọn thẻ tag 
+    await page.waitForTimeout(1000);
+    await page.getByRole('textbox', { name: 'Chọn thẻ tag...' }).click();
+    await page.getByRole('treeitem', { name: 'Kỹ năng chung' }).click();
+    // Chọn chủ đề 
+    await page.waitForTimeout(1000);
+    await page.getByRole('textbox', { name: 'Chọn chủ đề...' }).click();
+    await page.getByRole('treeitem', { name: 'IoT' }).click();
+    // Click chọn khóa học 
+    await page.waitForTimeout(1000);
+    await page.locator('#select2-list_course-container').click();
+    await page.locator('ul#select2-list_course-results > li:nth-child(1)').click();
+    // Click btn Thêm khóa học 
+    await page.getByRole('button', { name: 'Thêm khóa học' }).click();
+    // Nhập giới thiệu khóa học 
+    await page.getByLabel('Giới thiệu khóa học\n*').click();
+    await page.getByLabel('Giới thiệu khóa học\n*').fill('Case 1 _ Giới thiệu khóa học ');
+    // Nhập mô tả chi tiết 
+    await page.frameLocator('#description_ifr').getByRole('paragraph').click();
+    await page.frameLocator('#description_ifr').getByLabel('Rich Text Area. Press ALT-0 for help.').fill('Case 1 _ Mô tả chi tiết khóa học');
+    // Chọn ảnh trang bìa 
+    await page.getByRole('button', { name: 'Upload / Chọn ảnh trang bìa +' }).click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
+    await page.getByRole('button', { name: 'Xong' }).click();
+    // Chọn ảnh minh họa 
+    await page.waitForTimeout(1000);
+    await page.getByRole('button', { name: 'Upload / Chọn ảnh minh hoạ +' }).click();
+    await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
+    await page.getByRole('button', { name: 'Xong' }).click();
+    // Khóa học phù hợp với 
+    await page.frameLocator('#suitable_for_ifr').getByRole('paragraph').click();
+    await page.frameLocator('#suitable_for_ifr').getByLabel('Rich Text Area. Press ALT-0 for help.').fill('Case 1 _ Khóa học phù hợp với');
+    // Nhập vị trí hiển thị 
+    await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).click();
+    await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).fill('1');
+    // Chọn trạng thái - Ẩn
+    await page.locator('#status').click();
+    await page.locator('#status').selectOption('0');
+    // Khóa học hot
+    await page.locator('#hot').click();
+    await page.locator('#hot').selectOption('1');
+    // Click btn Lưu
+    await page.getByRole('button', { name: 'Lưu' }).click();
+    await expect(page.getByText('Thêm mới thành công!')).toBeVisible();
+    // ***Thêm gói cước 
+    // Click btn Thêm gói cước 
+    await page.getByRole('link', { name: ' Thêm gói cước' }).click();
+    await expect(page.getByRole('heading', { name: 'Thêm Gói cước' })).toBeVisible();
+    // Chọn nhà cung cấp
+    await page.waitForTimeout(1000);
+    await page.locator('#select2-pod_supplier_2-container').click();
+    await page.getByRole('treeitem', { name: 'iNETSolution' }).click();
+    // Chọn dịch vụ 
+    await page.waitForTimeout(1000);
+    await page.locator('#select2-pod_service_2-container').click();
+    await page.getByRole('treeitem', { name: 'mSkill-iNETS' }).click();
+    // Chọn mã gói 
+    await page.waitForTimeout(1000);
+    await page.locator('#select2-pod_code_2-container').click();
+    await page.getByRole('treeitem', { name: 'KN' }).click();
+    // Nhập giá cước 
+    await page.getByRole('textbox', { name: 'Giá cước' }).click();
+    await page.getByRole('textbox', { name: 'Giá cước' }).fill('10000');
+    // Chọn chu kỳ - Ngày 
+    await page.locator('#pod_period_2').click();
+    await page.locator('#pod_period_2').selectOption('1');
+    // Nhập tên gói cước 
+    await page.getByRole('textbox', { name: 'Tên gói' }).click();
+    await page.getByRole('textbox', { name: 'Tên gói' }).fill('QA_Gói cước_KHCombo_Phát triển bản thân_Case1');
+    // Chọn ưu tiên - Ưu tiên 
+    await page.getByLabel('Ưu tiên').click();
+    await page.getByLabel('Ưu tiên').selectOption('1');
+    // Click btn Lưu - gói cước 
+    await page.locator('#submit_add_pod_2').nth(0).click();
+    await expect(page.getByText('Thêm gói cước thành công!')).toBeVisible();
+    // Click btn Lưu - khóa học 
+    await page.getByRole('button', { name: 'Lưu',exact:true }).nth(0).click();
+    await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
+    // ***Truy cập Web kiểm tra hiển thị 
+    // Truy cập Web - Trang chủ - Tất cả => Hiển thị 
+    await page.goto('https://mskill8.mobiedu.vn/');
+    await expect(page.getByRole('link', { name: 'QA_Pass trạng thái Ẩn_KHCombo_Phát triển bản thân_Case12' }).first()).not.toBeVisible();
+    // Truy cập Web - Trang chủ - Trẻ em => Hiển thị 
+    await page.locator('#btn_tab_tre-em').click();
+    await expect(page.getByRole('link', { name: 'QA_Pass trạng thái Ẩn_KHCombo_Phát triển bản thân_Case12' }).first()).not.toBeVisible();
+    // Truy cập Web - Trang chủ - Học sinh => Không hiển thị 
+    await page.locator('#btn_tab_hoc-sinh-pho-thong').click();
+    await expect(page.getByRole('link', { name: 'QA_Pass trạng thái Ẩn_KHCombo_Phát triển bản thân_Case12' }).first()).not.toBeVisible();
+    // Truy cập Web - Trang chủ - Sinh viên => Không hiển thị 
+    await page.locator('#btn_tab_sinh-vien-nguoi-di-lam').click();
+    await expect(page.getByRole('link', { name: 'QA_Pass trạng thái Ẩn_KHCombo_Phát triển bản thân_Case12' }).first()).not.toBeVisible();
+    // Truy cập Web - Khóa học - Tất cả => Hiển thị 
+    await page.getByRole('link', { name: 'Khóa học' }).click();
+    await expect(page.getByRole('link', { name: 'QA_Pass trạng thái Ẩn_KHCombo_Phát triển bản thân_Case12' }).first()).not.toBeVisible();
+    // Truy cập Web - Khóa học - Trẻ em => Hiển thị 
+    await page.getByRole('main').getByRole('link', { name: 'Trẻ em' }).click();
+    await expect(page.getByRole('link', { name: 'QA_Pass trạng thái Ẩn_KHCombo_Phát triển bản thân_Case12' }).first()).not.toBeVisible();
+    // Truy cập Web - Khóa học - Học sinh => Không hiển thị 
+    await page.getByRole('main').getByRole('link', { name: 'Học sinh phổ thông' }).click();
+    await expect(page.getByRole('link', { name: 'QA_Pass trạng thái Ẩn_KHCombo_Phát triển bản thân_Case12' }).first()).not.toBeVisible();
+    // Truy cập Web - Khóa học - Sinh viên => Không hiển thị 
+    await page.getByRole('main').getByRole('link', { name: 'Sinh viên và người đi làm' }).click();
+    await expect(page.getByRole('link', { name: 'QA_Pass trạng thái Ẩn_KHCombo_Phát triển bản thân_Case12' }).first()).not.toBeVisible();
+
+});
+}
 
 function main(){
     case1();
@@ -1847,6 +1993,7 @@ function main(){
     case9();
     case10();
     case11();
+    // case12();
 
 
 }

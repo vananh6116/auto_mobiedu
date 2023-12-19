@@ -1,7 +1,7 @@
 {
   "config": {
-    "configFile": "c:\\Users\\Thu\\Documents\\auto_mobiedu\\playwright.config.js",
-    "rootDir": "c:/Users/Thu/Documents/auto_mobiedu/tests",
+    "configFile": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\playwright.config.js",
+    "rootDir": "C:/Users/Thu/Documents/auto_mobiedu/tests",
     "forbidOnly": false,
     "fullyParallel": true,
     "globalSetup": null,
@@ -37,12 +37,12 @@
     "quiet": false,
     "projects": [
       {
-        "outputDir": "c:/Users/Thu/Documents/auto_mobiedu/test-results",
+        "outputDir": "C:/Users/Thu/Documents/auto_mobiedu/test-results",
         "repeatEach": 1,
         "retries": 0,
         "id": "chromium",
         "name": "chromium",
-        "testDir": "c:/Users/Thu/Documents/auto_mobiedu/tests",
+        "testDir": "C:/Users/Thu/Documents/auto_mobiedu/tests",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -50,12 +50,12 @@
         "timeout": 30000
       },
       {
-        "outputDir": "c:/Users/Thu/Documents/auto_mobiedu/test-results",
+        "outputDir": "C:/Users/Thu/Documents/auto_mobiedu/test-results",
         "repeatEach": 1,
         "retries": 0,
         "id": "firefox",
         "name": "firefox",
-        "testDir": "c:/Users/Thu/Documents/auto_mobiedu/tests",
+        "testDir": "C:/Users/Thu/Documents/auto_mobiedu/tests",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -63,12 +63,12 @@
         "timeout": 30000
       },
       {
-        "outputDir": "c:/Users/Thu/Documents/auto_mobiedu/test-results",
+        "outputDir": "C:/Users/Thu/Documents/auto_mobiedu/test-results",
         "repeatEach": 1,
         "retries": 0,
         "id": "webkit",
         "name": "webkit",
-        "testDir": "c:/Users/Thu/Documents/auto_mobiedu/tests",
+        "testDir": "C:/Users/Thu/Documents/auto_mobiedu/tests",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -76,12 +76,12 @@
         "timeout": 30000
       },
       {
-        "outputDir": "c:/Users/Thu/Documents/auto_mobiedu/test-results",
+        "outputDir": "C:/Users/Thu/Documents/auto_mobiedu/test-results",
         "repeatEach": 1,
         "retries": 0,
         "id": "",
         "name": "",
-        "testDir": "c:/Users/Thu/Documents/auto_mobiedu/tests",
+        "testDir": "C:/Users/Thu/Documents/auto_mobiedu/tests",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -97,13 +97,185 @@
   },
   "suites": [
     {
-      "title": "B_WEB\\A_Truoc_dang_nhap\\H_Quenmatkhau.spec.js",
-      "file": "B_WEB/A_Truoc_dang_nhap/H_Quenmatkhau.spec.js",
+      "title": "A_Tai_hien_case_loi\\Caseloi.spec.js",
+      "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
       "column": 0,
       "line": 0,
       "specs": [
         {
-          "title": "Case 6: Fail_OTP trống",
+          "title": "Case lỗi 1:thay banner",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 51776,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-19T09:06:09.024Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d6c01582396be062879e-6296d36d1071aa25acea",
+          "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
+          "line": 11,
+          "column": 5
+        },
+        {
+          "title": "Case lỗi 2: hiển thị btn Xem thêm",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 7319,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-19T09:07:01.451Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d6c01582396be062879e-1cf65247729b6b206f82",
+          "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
+          "line": 95,
+          "column": 5
+        },
+        {
+          "title": "Case lỗi 3: Lọc khóa học",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 3816,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-19T09:07:08.777Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d6c01582396be062879e-a231568c20694d760619",
+          "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
+          "line": 114,
+          "column": 5
+        },
+        {
+          "title": "Case lỗi 4: Upload ảnh bài viết",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 12084,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-19T09:07:12.601Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d6c01582396be062879e-d9a5f494b0c9ed581a3b",
+          "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
+          "line": 143,
+          "column": 5
+        },
+        {
+          "title": "Case lỗi 5: Sửa banner",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 55445,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-19T09:07:24.688Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d6c01582396be062879e-61d3b4f9a67d2d2021e8",
+          "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
+          "line": 226,
+          "column": 5
+        },
+        {
+          "title": "Case lỗi 6: Upload banner có gắn link",
           "ok": false,
           "tags": [],
           "tests": [
@@ -120,8 +292,146 @@
               "results": [
                 {
                   "workerIndex": 0,
+                  "status": "failed",
+                  "duration": 23904,
+                  "error": {
+                    "message": "page.goto: net::ERR_CONNECTION_TIMED_OUT at https://mskill8admin.mobiedu.vn/admlgi\n=========================== logs ===========================\nnavigating to \"https://mskill8admin.mobiedu.vn/admlgi\", waiting until \"load\"\n============================================================",
+                    "stack": "Error: page.goto: net::ERR_CONNECTION_TIMED_OUT at https://mskill8admin.mobiedu.vn/admlgi\n=========================== logs ===========================\nnavigating to \"https://mskill8admin.mobiedu.vn/admlgi\", waiting until \"load\"\n============================================================\n    at C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\A_Tai_hien_case_loi\\Caseloi.spec.js:331:16",
+                    "location": {
+                      "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\A_Tai_hien_case_loi\\Caseloi.spec.js",
+                      "column": 16,
+                      "line": 331
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 329 |\u001b[39m           test\u001b[33m.\u001b[39mslow()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 330 |\u001b[39m         \u001b[90m// Đăng nhập CMS thành công \u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 331 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'https://mskill8admin.mobiedu.vn/admlgi'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 332 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Tên đăng nhập hoặc Email'\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m'hiennt'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 333 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Mật khẩu'\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m'inet@2023'\u001b[39m)\u001b[0m\n\u001b[0m \u001b[90m 334 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Đăng nhập'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\A_Tai_hien_case_loi\\Caseloi.spec.js",
+                        "column": 16,
+                        "line": 331
+                      },
+                      "message": "Error: page.goto: net::ERR_CONNECTION_TIMED_OUT at https://mskill8admin.mobiedu.vn/admlgi\n=========================== logs ===========================\nnavigating to \"https://mskill8admin.mobiedu.vn/admlgi\", waiting until \"load\"\n============================================================\n\n\u001b[0m \u001b[90m 329 |\u001b[39m           test\u001b[33m.\u001b[39mslow()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 330 |\u001b[39m         \u001b[90m// Đăng nhập CMS thành công \u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 331 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'https://mskill8admin.mobiedu.vn/admlgi'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 332 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Tên đăng nhập hoặc Email'\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m'hiennt'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 333 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Mật khẩu'\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m'inet@2023'\u001b[39m)\u001b[0m\n\u001b[0m \u001b[90m 334 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Đăng nhập'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\n\u001b[2m    at C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\A_Tai_hien_case_loi\\Caseloi.spec.js:331:16\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-19T09:08:20.137Z",
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\test-results\\A_Tai_hien_case_loi-Caseloi-Case-lỗi-6-Upload-banner-có-gắn-link-chromium\\video.webm"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\A_Tai_hien_case_loi\\Caseloi.spec.js",
+                    "column": 16,
+                    "line": 331
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "d6c01582396be062879e-c42cae984fe6e9b9f5b5",
+          "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
+          "line": 327,
+          "column": 5
+        },
+        {
+          "title": "Case lỗi 7: Thêm và sửa bài viết",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "status": "passed",
+                  "duration": 36697,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-19T09:08:44.841Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d6c01582396be062879e-a882abc049fb3143bfaa",
+          "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
+          "line": 396,
+          "column": 5
+        },
+        {
+          "title": "Case lỗi 8: Thêm và sửa KH Combo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "status": "passed",
+                  "duration": 26414,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-19T09:09:22.179Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d6c01582396be062879e-3874c500cf832d988dd6",
+          "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
+          "line": 518,
+          "column": 5
+        },
+        {
+          "title": "Case lỗi 9: Thêm và sửa KH API ",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
                   "status": "timedOut",
-                  "duration": 89999,
+                  "duration": 90012,
                   "error": {
                     "message": "\u001b[31mTest timeout of 90000ms exceeded.\u001b[39m"
                   },
@@ -131,26 +441,248 @@
                     },
                     {
                       "location": {
-                        "file": "c:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\H_Quenmatkhau.spec.js",
-                        "column": 20,
-                        "line": 183
+                        "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\A_Tai_hien_case_loi\\Caseloi.spec.js",
+                        "column": 65,
+                        "line": 700
                       },
-                      "message": "Error: page.waitForTimeout: Test ended\n\n\u001b[0m \u001b[90m 181 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[32m'https://mskill8.mobiedu.vn/kiem-tra-sdt'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 182 |\u001b[39m         \u001b[90m// Nhập số điện thoại \u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 183 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m185000\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 184 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Nhập số điện thoại'\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 185 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Nhập số điện thoại'\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m'0385519997'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 186 |\u001b[39m         \u001b[90m// Click btn Gửi yêu cầu \u001b[39m\u001b[0m\n\n\u001b[2m    at c:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\H_Quenmatkhau.spec.js:183:20\u001b[22m"
+                      "message": "Error: locator.click: Page closed\n=========================== logs ===========================\nwaiting for getByRole('menuitem', { name: 'Insert' }).nth(2)\n============================================================\n\n\u001b[0m \u001b[90m 698 |\u001b[39m         \u001b[33m.\u001b[39mfill(\u001b[32m'Hướng dẫn đăng ký tài khoản: \\n\\Bước 1: Truy cập website và ấn nút đăng kí.\\n\\Bước 2: Chọn gói cước đăng kí, soạn cú pháp qua SMS và ấn gửi tin nhắn. Sau khi gửi tin nhắn thành công, bạn sẽ nhận được mật khẩu để đăng nhập \\n\\Bước 3: Đăng nhập bằng số điện thoại và mật khẩu vừa được cấp để học tập và trải nghiệm'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 699 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mframeLocator(\u001b[32m'#user_manual_ifr'\u001b[39m)\u001b[33m.\u001b[39mgetByText(\u001b[32m'Bước 1: Truy cập website và ấn nút đăng kí.'\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 700 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'menuitem'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Insert'\u001b[39m })\u001b[33m.\u001b[39mnth(\u001b[35m2\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                                                                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 701 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByText(\u001b[32m'Link...'\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 702 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByLabel(\u001b[32m'URL'\u001b[39m\u001b[33m,\u001b[39m { exact\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 703 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByLabel(\u001b[32m'URL'\u001b[39m\u001b[33m,\u001b[39m { exact\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\u001b[33m.\u001b[39mfill(\u001b[32m'http://vkid.mobiedu.vn/'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\n\u001b[2m    at C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\A_Tai_hien_case_loi\\Caseloi.spec.js:700:65\u001b[22m"
                     }
                   ],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-14T09:53:06.198Z",
-                  "attachments": []
+                  "startTime": "2023-12-19T09:09:48.600Z",
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\test-results\\A_Tai_hien_case_loi-Caseloi-Case-lỗi-9-Thêm-và-sửa-KH-API--chromium\\video.webm"
+                    }
+                  ]
                 }
               ],
               "status": "unexpected"
             }
           ],
-          "id": "a7fb98835e99cdf05ede-b45626593a75a966332d",
-          "file": "B_WEB/A_Truoc_dang_nhap/H_Quenmatkhau.spec.js",
-          "line": 169,
+          "id": "d6c01582396be062879e-f8ac7272922e3e52c317",
+          "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
+          "line": 647,
+          "column": 5
+        },
+        {
+          "title": "Case lỗi 10: Update thêm gói cước ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "status": "passed",
+                  "duration": 63152,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-19T09:11:25.743Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d6c01582396be062879e-dfb0c54841524fafd517",
+          "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
+          "line": 833,
+          "column": 5
+        },
+        {
+          "title": "Case lỗi 11: Tạo chuyên đề và bài viết  ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "status": "passed",
+                  "duration": 26793,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-19T09:12:29.781Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d6c01582396be062879e-d133cb1d7529e9cef229",
+          "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
+          "line": 1095,
+          "column": 5
+        },
+        {
+          "title": "Case lỗi 12:Lọc tìm kiếm hỗ trợ  ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "status": "passed",
+                  "duration": 3842,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-19T09:12:56.582Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d6c01582396be062879e-e684d39e3bad9adb56c8",
+          "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
+          "line": 1242,
+          "column": 5
+        },
+        {
+          "title": "Case lỗi 13: click bài viết trang chủ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "status": "passed",
+                  "duration": 5769,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-19T09:13:00.428Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d6c01582396be062879e-9841a76e5b4acb673bae",
+          "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
+          "line": 1271,
+          "column": 5
+        },
+        {
+          "title": "Case lỗi 14: click btn Xem thêm",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "status": "passed",
+                  "duration": 12951,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-19T09:13:06.200Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d6c01582396be062879e-c8376941e5481a37b521",
+          "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
+          "line": 1301,
+          "column": 5
+        },
+        {
+          "title": "Case lỗi 15: click btn chủ đề",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "status": "passed",
+                  "duration": 13513,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-19T09:13:19.154Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d6c01582396be062879e-199ecf18df6bff7921a4",
+          "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
+          "line": 1366,
           "column": 5
         }
       ]
@@ -158,7 +690,7 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2023-12-14T09:53:05.698Z",
-    "duration": 90575.32800000001
+    "startTime": "2023-12-19T09:06:08.323Z",
+    "duration": 444487.918
   }
 }
