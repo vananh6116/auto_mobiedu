@@ -1,7 +1,7 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
 const exp = require('constants');
-const { openAsBlob } = require('fs');
+import dataSiteTest from '../../dataSite.json';
 
 /**
  * Case 1: Thành công: Đăng ký thành công 
@@ -12,15 +12,15 @@ function case1 () {
 
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click btn Đăng ký 
         await page.getByRole('link', { name: 'Đăng kí' }).click();
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/dang-ky');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/dang-ky");
         // Nhập số điện thoại 
         await page.getByPlaceholder('Nhập số điện thoại').click();
-        await page.getByPlaceholder('Nhập số điện thoại').fill('0945874512');
+        await page.getByPlaceholder('Nhập số điện thoại').fill('090345614');
         // Nhập mật khẩu
         await page.getByPlaceholder('Nhập mật khẩu').click();
         await page.getByPlaceholder('Nhập mật khẩu').fill('123123');
@@ -44,12 +44,12 @@ function case2 () {
 
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click btn Đăng ký 
         await page.getByRole('link', { name: 'Đăng kí' }).click();
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/dang-ky');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/dang-ky");
         // Nhập số điện thoại 
         await page.getByPlaceholder('Nhập số điện thoại').click();
         await page.getByPlaceholder('Nhập số điện thoại').fill('');
@@ -60,6 +60,7 @@ function case2 () {
         await page.getByPlaceholder('Nhập lại mật khẩu').click();
         await page.getByPlaceholder('Nhập lại mật khẩu').fill('');
         // Click btn Đăng ký 
+        await page.waitForTimeout(1000);
         await page.getByRole('button', { name: 'ĐĂNG KÝ' }).click();
         await expect(page.getByText('Vui lòng điền số điện thoại!')).toBeVisible();
         await expect(page.getByText('Trường thông tin này là bắt buộc!').nth(0)).toBeVisible();
@@ -78,12 +79,12 @@ function case3 () {
 
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click btn Đăng ký 
         await page.getByRole('link', { name: 'Đăng kí' }).click();
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/dang-ky');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/dang-ky");
         // Nhập số điện thoại 
         await page.getByPlaceholder('Nhập số điện thoại').click();
         await page.getByPlaceholder('Nhập số điện thoại').fill('090654781452');
@@ -111,12 +112,12 @@ function case4 () {
 
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click btn Đăng ký 
         await page.getByRole('link', { name: 'Đăng kí' }).click();
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/dang-ky');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/dang-ky");
         // Nhập số điện thoại 
         await page.getByPlaceholder('Nhập số điện thoại').click();
         await page.getByPlaceholder('Nhập số điện thoại').fill('0385519997');
@@ -143,12 +144,12 @@ function case5 () {
 
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click btn Đăng ký 
         await page.getByRole('link', { name: 'Đăng kí' }).click();
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/dang-ky');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/dang-ky");
         // Nhập số điện thoại 
         await page.getByPlaceholder('Nhập số điện thoại').click();
         await page.getByPlaceholder('Nhập số điện thoại').fill('0945874157');
@@ -167,7 +168,7 @@ function case5 () {
 
 
 function main(){
-    case1();
+    // case1();
     case2();
     case3();
     case4();

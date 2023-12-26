@@ -1,6 +1,7 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
 const exp = require('constants');
+import dataSiteTest from '../../../dataSite.json';
 
 /**
  * Case 1: Thành công : Thêm mới -> Xóa danh mục -> Click Btn Xóa
@@ -12,7 +13,7 @@ function case1 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -21,7 +22,7 @@ function case1 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Tiêu chí phân loại' }).click();
     await page.getByRole('link', { name: 'Danh mục' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-category');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/course-category");
     await expect(page.getByRole('heading', { name: 'Danh sách danh mục' })).toBeVisible();
     // Thêm mới danh mục 
     await page.getByRole('button', { name: 'Thêm danh mục mới' }).click();
@@ -39,10 +40,10 @@ function case1 () {
     await page.getByRole('button', { name: 'Lưu' }).click();
     await expect(page.getByText('Thêm thành công!')).toBeVisible();
     // Truy cập Web kiểm tra hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_DMM_PassXoa_Học sinh tiểu học_case1' })).toBeVisible();
     // Xóa danh mục thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-category');
+    await page.goto(dataSiteTest[0].linkSite + "/course-category");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_DMM_PassXoa_Học sinh tiểu học_case1' })
@@ -53,7 +54,7 @@ function case1 () {
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     await expect(page.getByRole('cell', { name: 'QA_DMM_PassXoa_Học sinh tiểu học_case1' })).not.toBeVisible();
     // Truy cập Web kiểm tra hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_DMM_PassXoa_Học sinh tiểu học_case1' })).not.toBeVisible();
 
 });
@@ -69,7 +70,7 @@ function case2 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -78,7 +79,7 @@ function case2 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Tiêu chí phân loại' }).click();
     await page.getByRole('link', { name: 'Danh mục' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-category');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/course-category");
     await expect(page.getByRole('heading', { name: 'Danh sách danh mục' })).toBeVisible();
     // Thêm mới danh mục 
     await page.getByRole('button', { name: 'Thêm danh mục mới' }).click();
@@ -96,7 +97,7 @@ function case2 () {
     await page.getByRole('button', { name: 'Lưu' }).click();
     await expect(page.getByText('Thêm thành công!')).toBeVisible();
     // Xóa danh mục không thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-category');
+    await page.goto(dataSiteTest[0].linkSite + "/course-category");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_DMM_FailXoa_Học sinh tiểu học_case2' })
@@ -106,10 +107,10 @@ function case2 () {
     await page.getByRole('button', { name: 'Đóng' }).click();
     await expect(page.getByRole('cell', { name: 'QA_DMM_FailXoa_Học sinh tiểu học_case2' })).toBeVisible();
     // Truy cập Web kiểm tra hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_DMM_FailXoa_Học sinh tiểu học_case2' })).toBeVisible();
     // Truy cập CMS xóa danh mục thêm 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-category');
+    await page.goto(dataSiteTest[0].linkSite + "/course-category");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_DMM_FailXoa_Học sinh tiểu học_case2' })

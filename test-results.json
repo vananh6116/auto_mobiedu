@@ -121,12 +121,12 @@
                 {
                   "workerIndex": 0,
                   "status": "passed",
-                  "duration": 51776,
+                  "duration": 50687,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-19T09:06:09.024Z",
+                  "startTime": "2023-12-22T08:40:49.698Z",
                   "attachments": []
                 }
               ],
@@ -135,7 +135,7 @@
           ],
           "id": "d6c01582396be062879e-6296d36d1071aa25acea",
           "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
-          "line": 11,
+          "line": 13,
           "column": 5
         },
         {
@@ -153,12 +153,12 @@
                 {
                   "workerIndex": 0,
                   "status": "passed",
-                  "duration": 7319,
+                  "duration": 6523,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-19T09:07:01.451Z",
+                  "startTime": "2023-12-22T08:41:40.950Z",
                   "attachments": []
                 }
               ],
@@ -167,7 +167,7 @@
           ],
           "id": "d6c01582396be062879e-1cf65247729b6b206f82",
           "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
-          "line": 95,
+          "line": 98,
           "column": 5
         },
         {
@@ -185,12 +185,12 @@
                 {
                   "workerIndex": 0,
                   "status": "passed",
-                  "duration": 3816,
+                  "duration": 2933,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-19T09:07:08.777Z",
+                  "startTime": "2023-12-22T08:41:47.477Z",
                   "attachments": []
                 }
               ],
@@ -199,7 +199,7 @@
           ],
           "id": "d6c01582396be062879e-a231568c20694d760619",
           "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
-          "line": 114,
+          "line": 117,
           "column": 5
         },
         {
@@ -221,12 +221,12 @@
                 {
                   "workerIndex": 0,
                   "status": "passed",
-                  "duration": 12084,
+                  "duration": 10049,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-19T09:07:12.601Z",
+                  "startTime": "2023-12-22T08:41:50.414Z",
                   "attachments": []
                 }
               ],
@@ -235,7 +235,7 @@
           ],
           "id": "d6c01582396be062879e-d9a5f494b0c9ed581a3b",
           "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
-          "line": 143,
+          "line": 146,
           "column": 5
         },
         {
@@ -257,12 +257,12 @@
                 {
                   "workerIndex": 0,
                   "status": "passed",
-                  "duration": 55445,
+                  "duration": 54214,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-19T09:07:24.688Z",
+                  "startTime": "2023-12-22T08:42:00.470Z",
                   "attachments": []
                 }
               ],
@@ -271,12 +271,12 @@
           ],
           "id": "d6c01582396be062879e-61d3b4f9a67d2d2021e8",
           "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
-          "line": 226,
+          "line": 229,
           "column": 5
         },
         {
           "title": "Case lỗi 6: Upload banner có gắn link",
-          "ok": false,
+          "ok": true,
           "tags": [],
           "tests": [
             {
@@ -292,52 +292,22 @@
               "results": [
                 {
                   "workerIndex": 0,
-                  "status": "failed",
-                  "duration": 23904,
-                  "error": {
-                    "message": "page.goto: net::ERR_CONNECTION_TIMED_OUT at https://mskill8admin.mobiedu.vn/admlgi\n=========================== logs ===========================\nnavigating to \"https://mskill8admin.mobiedu.vn/admlgi\", waiting until \"load\"\n============================================================",
-                    "stack": "Error: page.goto: net::ERR_CONNECTION_TIMED_OUT at https://mskill8admin.mobiedu.vn/admlgi\n=========================== logs ===========================\nnavigating to \"https://mskill8admin.mobiedu.vn/admlgi\", waiting until \"load\"\n============================================================\n    at C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\A_Tai_hien_case_loi\\Caseloi.spec.js:331:16",
-                    "location": {
-                      "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\A_Tai_hien_case_loi\\Caseloi.spec.js",
-                      "column": 16,
-                      "line": 331
-                    },
-                    "snippet": "\u001b[0m \u001b[90m 329 |\u001b[39m           test\u001b[33m.\u001b[39mslow()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 330 |\u001b[39m         \u001b[90m// Đăng nhập CMS thành công \u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 331 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'https://mskill8admin.mobiedu.vn/admlgi'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 332 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Tên đăng nhập hoặc Email'\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m'hiennt'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 333 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Mật khẩu'\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m'inet@2023'\u001b[39m)\u001b[0m\n\u001b[0m \u001b[90m 334 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Đăng nhập'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m"
-                  },
-                  "errors": [
-                    {
-                      "location": {
-                        "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\A_Tai_hien_case_loi\\Caseloi.spec.js",
-                        "column": 16,
-                        "line": 331
-                      },
-                      "message": "Error: page.goto: net::ERR_CONNECTION_TIMED_OUT at https://mskill8admin.mobiedu.vn/admlgi\n=========================== logs ===========================\nnavigating to \"https://mskill8admin.mobiedu.vn/admlgi\", waiting until \"load\"\n============================================================\n\n\u001b[0m \u001b[90m 329 |\u001b[39m           test\u001b[33m.\u001b[39mslow()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 330 |\u001b[39m         \u001b[90m// Đăng nhập CMS thành công \u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 331 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'https://mskill8admin.mobiedu.vn/admlgi'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 332 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Tên đăng nhập hoặc Email'\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m'hiennt'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 333 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Mật khẩu'\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m'inet@2023'\u001b[39m)\u001b[0m\n\u001b[0m \u001b[90m 334 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Đăng nhập'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\n\u001b[2m    at C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\A_Tai_hien_case_loi\\Caseloi.spec.js:331:16\u001b[22m"
-                    }
-                  ],
+                  "status": "passed",
+                  "duration": 30750,
+                  "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-19T09:08:20.137Z",
-                  "attachments": [
-                    {
-                      "name": "video",
-                      "contentType": "video/webm",
-                      "path": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\test-results\\A_Tai_hien_case_loi-Caseloi-Case-lỗi-6-Upload-banner-có-gắn-link-chromium\\video.webm"
-                    }
-                  ],
-                  "errorLocation": {
-                    "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\A_Tai_hien_case_loi\\Caseloi.spec.js",
-                    "column": 16,
-                    "line": 331
-                  }
+                  "startTime": "2023-12-22T08:42:54.689Z",
+                  "attachments": []
                 }
               ],
-              "status": "unexpected"
+              "status": "expected"
             }
           ],
           "id": "d6c01582396be062879e-c42cae984fe6e9b9f5b5",
           "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
-          "line": 327,
+          "line": 330,
           "column": 5
         },
         {
@@ -357,14 +327,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "status": "passed",
-                  "duration": 36697,
+                  "duration": 16246,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-19T09:08:44.841Z",
+                  "startTime": "2023-12-22T08:43:25.443Z",
                   "attachments": []
                 }
               ],
@@ -373,7 +343,7 @@
           ],
           "id": "d6c01582396be062879e-a882abc049fb3143bfaa",
           "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
-          "line": 396,
+          "line": 399,
           "column": 5
         },
         {
@@ -393,14 +363,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "status": "passed",
-                  "duration": 26414,
+                  "duration": 24385,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-19T09:09:22.179Z",
+                  "startTime": "2023-12-22T08:43:41.693Z",
                   "attachments": []
                 }
               ],
@@ -409,12 +379,12 @@
           ],
           "id": "d6c01582396be062879e-3874c500cf832d988dd6",
           "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
-          "line": 518,
+          "line": 521,
           "column": 5
         },
         {
           "title": "Case lỗi 9: Thêm và sửa KH API ",
-          "ok": false,
+          "ok": true,
           "tags": [],
           "tests": [
             {
@@ -429,44 +399,23 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 1,
-                  "status": "timedOut",
-                  "duration": 90012,
-                  "error": {
-                    "message": "\u001b[31mTest timeout of 90000ms exceeded.\u001b[39m"
-                  },
-                  "errors": [
-                    {
-                      "message": "\u001b[31mTest timeout of 90000ms exceeded.\u001b[39m"
-                    },
-                    {
-                      "location": {
-                        "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\A_Tai_hien_case_loi\\Caseloi.spec.js",
-                        "column": 65,
-                        "line": 700
-                      },
-                      "message": "Error: locator.click: Page closed\n=========================== logs ===========================\nwaiting for getByRole('menuitem', { name: 'Insert' }).nth(2)\n============================================================\n\n\u001b[0m \u001b[90m 698 |\u001b[39m         \u001b[33m.\u001b[39mfill(\u001b[32m'Hướng dẫn đăng ký tài khoản: \\n\\Bước 1: Truy cập website và ấn nút đăng kí.\\n\\Bước 2: Chọn gói cước đăng kí, soạn cú pháp qua SMS và ấn gửi tin nhắn. Sau khi gửi tin nhắn thành công, bạn sẽ nhận được mật khẩu để đăng nhập \\n\\Bước 3: Đăng nhập bằng số điện thoại và mật khẩu vừa được cấp để học tập và trải nghiệm'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 699 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mframeLocator(\u001b[32m'#user_manual_ifr'\u001b[39m)\u001b[33m.\u001b[39mgetByText(\u001b[32m'Bước 1: Truy cập website và ấn nút đăng kí.'\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 700 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'menuitem'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Insert'\u001b[39m })\u001b[33m.\u001b[39mnth(\u001b[35m2\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                                                                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 701 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByText(\u001b[32m'Link...'\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 702 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByLabel(\u001b[32m'URL'\u001b[39m\u001b[33m,\u001b[39m { exact\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 703 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByLabel(\u001b[32m'URL'\u001b[39m\u001b[33m,\u001b[39m { exact\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\u001b[33m.\u001b[39mfill(\u001b[32m'http://vkid.mobiedu.vn/'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\n\u001b[2m    at C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\A_Tai_hien_case_loi\\Caseloi.spec.js:700:65\u001b[22m"
-                    }
-                  ],
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 28801,
+                  "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-19T09:09:48.600Z",
-                  "attachments": [
-                    {
-                      "name": "video",
-                      "contentType": "video/webm",
-                      "path": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\test-results\\A_Tai_hien_case_loi-Caseloi-Case-lỗi-9-Thêm-và-sửa-KH-API--chromium\\video.webm"
-                    }
-                  ]
+                  "startTime": "2023-12-22T08:44:06.081Z",
+                  "attachments": []
                 }
               ],
-              "status": "unexpected"
+              "status": "expected"
             }
           ],
           "id": "d6c01582396be062879e-f8ac7272922e3e52c317",
           "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
-          "line": 647,
+          "line": 650,
           "column": 5
         },
         {
@@ -486,14 +435,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 2,
+                  "workerIndex": 0,
                   "status": "passed",
-                  "duration": 63152,
+                  "duration": 57300,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-19T09:11:25.743Z",
+                  "startTime": "2023-12-22T08:44:34.886Z",
                   "attachments": []
                 }
               ],
@@ -502,7 +451,7 @@
           ],
           "id": "d6c01582396be062879e-dfb0c54841524fafd517",
           "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
-          "line": 833,
+          "line": 834,
           "column": 5
         },
         {
@@ -522,14 +471,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 2,
+                  "workerIndex": 0,
                   "status": "passed",
-                  "duration": 26793,
+                  "duration": 24132,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-19T09:12:29.781Z",
+                  "startTime": "2023-12-22T08:45:32.192Z",
                   "attachments": []
                 }
               ],
@@ -538,7 +487,7 @@
           ],
           "id": "d6c01582396be062879e-d133cb1d7529e9cef229",
           "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
-          "line": 1095,
+          "line": 1096,
           "column": 5
         },
         {
@@ -558,14 +507,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 2,
+                  "workerIndex": 0,
                   "status": "passed",
-                  "duration": 3842,
+                  "duration": 3189,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-19T09:12:56.582Z",
+                  "startTime": "2023-12-22T08:45:56.329Z",
                   "attachments": []
                 }
               ],
@@ -574,7 +523,7 @@
           ],
           "id": "d6c01582396be062879e-e684d39e3bad9adb56c8",
           "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
-          "line": 1242,
+          "line": 1243,
           "column": 5
         },
         {
@@ -594,14 +543,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 2,
+                  "workerIndex": 0,
                   "status": "passed",
-                  "duration": 5769,
+                  "duration": 4137,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-19T09:13:00.428Z",
+                  "startTime": "2023-12-22T08:45:59.521Z",
                   "attachments": []
                 }
               ],
@@ -610,7 +559,7 @@
           ],
           "id": "d6c01582396be062879e-9841a76e5b4acb673bae",
           "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
-          "line": 1271,
+          "line": 1272,
           "column": 5
         },
         {
@@ -630,14 +579,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 2,
+                  "workerIndex": 0,
                   "status": "passed",
-                  "duration": 12951,
+                  "duration": 9881,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-19T09:13:06.200Z",
+                  "startTime": "2023-12-22T08:46:03.661Z",
                   "attachments": []
                 }
               ],
@@ -646,7 +595,7 @@
           ],
           "id": "d6c01582396be062879e-c8376941e5481a37b521",
           "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
-          "line": 1301,
+          "line": 1302,
           "column": 5
         },
         {
@@ -666,14 +615,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 2,
+                  "workerIndex": 0,
                   "status": "passed",
-                  "duration": 13513,
+                  "duration": 9450,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-19T09:13:19.154Z",
+                  "startTime": "2023-12-22T08:46:13.546Z",
                   "attachments": []
                 }
               ],
@@ -682,7 +631,2837 @@
           ],
           "id": "d6c01582396be062879e-199ecf18df6bff7921a4",
           "file": "A_Tai_hien_case_loi/Caseloi.spec.js",
-          "line": 1366,
+          "line": 1367,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "B_WEB\\A_Truoc_dang_nhap\\A_clickbtnTrangchu.spec.js",
+      "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Case 1: click logo MBE",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 5657,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:46:23.023Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-9a1c3fce84f2b8939a76",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 12,
+          "column": 5
+        },
+        {
+          "title": "Case 2: click Khóa học đầu trang",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 4821,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:46:28.683Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-4d1f7edd3454be92b003",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 51,
+          "column": 5
+        },
+        {
+          "title": "Case 3: click Giải pháp đầu trang",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 4417,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:46:33.508Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-654bd2733d4889091483",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 76,
+          "column": 5
+        },
+        {
+          "title": "Case 4: click cổng thi đầu trang",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 4465,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:46:37.928Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-d4915e525de88d07d59a",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 100,
+          "column": 5
+        },
+        {
+          "title": "Case 5: nhập từ khóa",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 4052,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:46:42.396Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-d20162cfd96a9dc1aa22",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 125,
+          "column": 5
+        },
+        {
+          "title": "Case 6: click btn đăng ký",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 7542,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:46:46.451Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-adc9d233d051f9e4ee84",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 150,
+          "column": 5
+        },
+        {
+          "title": "Case 7: click btn đăng nhập",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 7347,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:46:53.995Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-e1d50eda2234af270972",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 176,
+          "column": 5
+        },
+        {
+          "title": "Case 8: click btn đăng nhập ngay",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 2370,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:47:01.345Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-78ed6ec1d25c046ef18a",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 202,
+          "column": 5
+        },
+        {
+          "title": "Case 9: click danh mục khóa học",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 11990,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:47:03.717Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-a7f3847cdebefc4e8825",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 223,
+          "column": 5
+        },
+        {
+          "title": "Case 10: click khóa học",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 7727,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:47:15.710Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-7414b1c8d140208435e9",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 277,
+          "column": 5
+        },
+        {
+          "title": "Case 11: click Btn Xem thêm khóa học",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 9523,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:47:23.440Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-c27fddacf9c3716d918a",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 301,
+          "column": 5
+        },
+        {
+          "title": "Case 12: click Btn Xem thêm giải pháp",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 2638,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:47:32.966Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-b8961be11b5916c036d2",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 321,
+          "column": 5
+        },
+        {
+          "title": "Case 13: click Btn Xem thêm cổng thi",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 1940,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:47:35.607Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-c3ce84418d83b13687c1",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 341,
+          "column": 5
+        },
+        {
+          "title": "Case 14: click Btn Đăng ký ngay sau cổng thi",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 2640,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:47:37.550Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-407968d1b2edb0f53dd6",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 361,
+          "column": 5
+        },
+        {
+          "title": "Case 15: click Btn Xem thêm đến trang Giới thiệu",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 5000,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:47:40.193Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-2acc83460fd21ca74967",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 381,
+          "column": 5
+        },
+        {
+          "title": "Case 16: click banner gắn link",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 3202,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:47:45.197Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-a2493f9d75be833ba98c",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 404,
+          "column": 5
+        },
+        {
+          "title": "Case 17: click bài viết",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 2244,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:47:48.402Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-61164227a81e07a855e3",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 425,
+          "column": 5
+        },
+        {
+          "title": "Case 18: click btn Xem thêm tin tức",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 1965,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:47:50.649Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-09deff267ee408904b12",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 445,
+          "column": 5
+        },
+        {
+          "title": "Case 19: click link Giới thiệu",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 2384,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:47:52.617Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-fa9ef8383586a0ae7255",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 465,
+          "column": 5
+        },
+        {
+          "title": "Case 20: click link Khóa học",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 1859,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:47:55.003Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-2fcb0622441ad2d04977",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 485,
+          "column": 5
+        },
+        {
+          "title": "Case 21: click link Giải pháp",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 1827,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:47:56.864Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-159f548e170c73f116d6",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 505,
+          "column": 5
+        },
+        {
+          "title": "Case 22: click link Cổng thi",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 2178,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:47:58.694Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-8e74ab70d87b8fecbde4",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 525,
+          "column": 5
+        },
+        {
+          "title": "Case 23: click link Đại lý",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 3887,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:48:00.874Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-bfca26082749cac02428",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 545,
+          "column": 5
+        },
+        {
+          "title": "Case 24: click link App Store",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 5469,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:48:04.764Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-35bdebcc683256794bc0",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 568,
+          "column": 5
+        },
+        {
+          "title": "Case 25: click link Google Play",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 5051,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:48:10.235Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-9068948647a67efafd93",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 592,
+          "column": 5
+        },
+        {
+          "title": "Case 26: click link Facebook",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 4170,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:48:15.288Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-6c9093fa4cb80de4369b",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 616,
+          "column": 5
+        },
+        {
+          "title": "Case 27: click link Youtube",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 5300,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:48:19.461Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-69c26c012e447f1f496a",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 640,
+          "column": 5
+        },
+        {
+          "title": "Case 28: click link Liên hệ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 4418,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:48:24.764Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-ea522a08d6e272804ae4",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 664,
+          "column": 5
+        },
+        {
+          "title": "Case 29: click link Chính sách",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 4241,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:48:29.184Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-53af17d289d2bf24c152",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 688,
+          "column": 5
+        },
+        {
+          "title": "Case 30: click link Điều khoản",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 4671,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:48:33.428Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-3184d03d172be50b3490",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 712,
+          "column": 5
+        },
+        {
+          "title": "Case 31: click link Giải quyết",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 5691,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:48:38.102Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-e602a3b1d6b999ff4a6f",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 736,
+          "column": 5
+        },
+        {
+          "title": "Case 32: click link Quy chế",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 9494,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:48:43.795Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-034360e232389bef1dd6",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 760,
+          "column": 5
+        },
+        {
+          "title": "Case 33: click link icon Tai phone",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 3075,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:48:53.292Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-93f1de7885adb9051356",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 784,
+          "column": 5
+        },
+        {
+          "title": "Case 34: click btn Về mobiEdu",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 2185,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:48:56.370Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-a3960b4fbeadd0a974f8",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 808,
+          "column": 5
+        },
+        {
+          "title": "Case 35: click btn Hỗ trợ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 2423,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:48:58.557Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-eb40caac17d510c819c4",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 829,
+          "column": 5
+        },
+        {
+          "title": "Case 36: click icon Giỏ hàng",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 4180,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:49:00.982Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "183c6206b095a5fc72d7-1d306041f83ee34b196e",
+          "file": "B_WEB/A_Truoc_dang_nhap/A_clickbtnTrangchu.spec.js",
+          "line": 850,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "B_WEB\\A_Truoc_dang_nhap\\B_clickbtnKhoahoc.spec.js",
+      "file": "B_WEB/A_Truoc_dang_nhap/B_clickbtnKhoahoc.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Case 1: click danh mục khóa học",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 13504,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:49:05.187Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "acf310980d243bb6b117-d74fe2dcdd6d58c14df5",
+          "file": "B_WEB/A_Truoc_dang_nhap/B_clickbtnKhoahoc.spec.js",
+          "line": 12,
+          "column": 5
+        },
+        {
+          "title": "Case 2: hover KH click danh mục",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 6983,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:49:18.694Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "acf310980d243bb6b117-c2fd4d4d299e55372606",
+          "file": "B_WEB/A_Truoc_dang_nhap/B_clickbtnKhoahoc.spec.js",
+          "line": 62,
+          "column": 5
+        },
+        {
+          "title": "Case 3: lọc KH theo chủ đề",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 5095,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:49:25.679Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "acf310980d243bb6b117-015b0bfbabf0813ef234",
+          "file": "B_WEB/A_Truoc_dang_nhap/B_clickbtnKhoahoc.spec.js",
+          "line": 106,
+          "column": 5
+        },
+        {
+          "title": "Case 4: click btn Xem thêm nhiều chủ đề",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 5108,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:49:30.776Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "acf310980d243bb6b117-e2edb356dc6ee47365e0",
+          "file": "B_WEB/A_Truoc_dang_nhap/B_clickbtnKhoahoc.spec.js",
+          "line": 139,
+          "column": 5
+        },
+        {
+          "title": "Case 5: lọc KH theo khoảng giá",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 5678,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:49:35.888Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "acf310980d243bb6b117-5c2a77283a0fec6ba9ec",
+          "file": "B_WEB/A_Truoc_dang_nhap/B_clickbtnKhoahoc.spec.js",
+          "line": 176,
+          "column": 5
+        },
+        {
+          "title": "Case 6: Click btn Xóa lọc chủ đề, khoảng giá",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 3106,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:49:41.569Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "acf310980d243bb6b117-0b17e93f1bec346b9cfd",
+          "file": "B_WEB/A_Truoc_dang_nhap/B_clickbtnKhoahoc.spec.js",
+          "line": 214,
+          "column": 5
+        },
+        {
+          "title": "Case 7: Click btn Hướng dẫn đăng ký KH",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 5261,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:49:44.677Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "acf310980d243bb6b117-573c54a4aaa4de25778a",
+          "file": "B_WEB/A_Truoc_dang_nhap/B_clickbtnKhoahoc.spec.js",
+          "line": 246,
+          "column": 5
+        },
+        {
+          "title": "Case 8: Click btn Giá khóa học",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 12693,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:49:49.940Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "acf310980d243bb6b117-46a538273b66a5fc6047",
+          "file": "B_WEB/A_Truoc_dang_nhap/B_clickbtnKhoahoc.spec.js",
+          "line": 276,
+          "column": 5
+        },
+        {
+          "title": "Case 9: Click link giảng viên",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 9278,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:50:02.636Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "acf310980d243bb6b117-a63d5b0a888825d216b8",
+          "file": "B_WEB/A_Truoc_dang_nhap/B_clickbtnKhoahoc.spec.js",
+          "line": 328,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "B_WEB\\A_Truoc_dang_nhap\\C_clickbtnGiaiphap.spec.js",
+      "file": "B_WEB/A_Truoc_dang_nhap/C_clickbtnGiaiphap.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Case 1: click logo trường mầm non, tiểu học - mobiEdu SLL",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 5412,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:50:11.930Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dd7f335f48a31f25f8ac-77999be56f4140b9f462",
+          "file": "B_WEB/A_Truoc_dang_nhap/C_clickbtnGiaiphap.spec.js",
+          "line": 12,
+          "column": 5
+        },
+        {
+          "title": "Case 2: click gắn link mobiEdu SLL",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 21228,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:50:17.345Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dd7f335f48a31f25f8ac-2e9a44f06f040721f138",
+          "file": "B_WEB/A_Truoc_dang_nhap/C_clickbtnGiaiphap.spec.js",
+          "line": 43,
+          "column": 5
+        },
+        {
+          "title": "Case 3: click link btn DN-DH-PT-MN&TH",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 13150,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:50:38.575Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dd7f335f48a31f25f8ac-3b6319372c08483822cf",
+          "file": "B_WEB/A_Truoc_dang_nhap/C_clickbtnGiaiphap.spec.js",
+          "line": 88,
+          "column": 5
+        },
+        {
+          "title": "Case 4: click logo trường phổ thông",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 11636,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:50:51.727Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dd7f335f48a31f25f8ac-f2a17b95ff4f55bf247b",
+          "file": "B_WEB/A_Truoc_dang_nhap/C_clickbtnGiaiphap.spec.js",
+          "line": 182,
+          "column": 5
+        },
+        {
+          "title": "Case 5: click gắn link mobiEdu mSchool ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 11882,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:51:03.366Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dd7f335f48a31f25f8ac-54986767ebfc93ed3f41",
+          "file": "B_WEB/A_Truoc_dang_nhap/C_clickbtnGiaiphap.spec.js",
+          "line": 225,
+          "column": 5
+        },
+        {
+          "title": "Case 6: click gắn link mobiEdu TKB",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 10943,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:51:15.250Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dd7f335f48a31f25f8ac-b39308efb0f3380e4c2a",
+          "file": "B_WEB/A_Truoc_dang_nhap/C_clickbtnGiaiphap.spec.js",
+          "line": 264,
+          "column": 5
+        },
+        {
+          "title": "Case 7: click gắn link Onluyen.vn",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 14211,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:51:26.196Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dd7f335f48a31f25f8ac-791380ed5d9983e4d762",
+          "file": "B_WEB/A_Truoc_dang_nhap/C_clickbtnGiaiphap.spec.js",
+          "line": 301,
+          "column": 5
+        },
+        {
+          "title": "Case 8: click logo trường đại học",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 5438,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:51:40.409Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dd7f335f48a31f25f8ac-89c791913e013acd91a1",
+          "file": "B_WEB/A_Truoc_dang_nhap/C_clickbtnGiaiphap.spec.js",
+          "line": 340,
+          "column": 5
+        },
+        {
+          "title": "Case 9: click logo doanh nghiệp",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 3841,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:51:45.851Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dd7f335f48a31f25f8ac-4069529eed5ec8251929",
+          "file": "B_WEB/A_Truoc_dang_nhap/C_clickbtnGiaiphap.spec.js",
+          "line": 365,
+          "column": 5
+        },
+        {
+          "title": "Case 10: click gắn link mSchool Doanh nghiệp",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 11912,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:51:49.695Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dd7f335f48a31f25f8ac-f4a31e0b074754324ef4",
+          "file": "B_WEB/A_Truoc_dang_nhap/C_clickbtnGiaiphap.spec.js",
+          "line": 392,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "B_WEB\\A_Truoc_dang_nhap\\D_clickbtnCongthi.spec.js",
+      "file": "B_WEB/A_Truoc_dang_nhap/D_clickbtnCongthi.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Case 1: click logo trường mầm non, tiểu học - mobiEdu SLL",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 12912,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:52:01.620Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c5ff30b199a2be2f3208-c5d20d72893af0ff3960",
+          "file": "B_WEB/A_Truoc_dang_nhap/D_clickbtnCongthi.spec.js",
+          "line": 12,
+          "column": 5
+        },
+        {
+          "title": "Case 2: click checkbox lĩnh vực",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 3948,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:52:14.535Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c5ff30b199a2be2f3208-9d06397cdd92f0914803",
+          "file": "B_WEB/A_Truoc_dang_nhap/D_clickbtnCongthi.spec.js",
+          "line": 53,
+          "column": 5
+        },
+        {
+          "title": "Case 3: click link banner đầu trang",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 32254,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:52:18.485Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c5ff30b199a2be2f3208-d84c3faa999fde4a6dca",
+          "file": "B_WEB/A_Truoc_dang_nhap/D_clickbtnCongthi.spec.js",
+          "line": 87,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "B_WEB\\A_Truoc_dang_nhap\\E_clickbtnHotro.spec.js",
+      "file": "B_WEB/A_Truoc_dang_nhap/E_clickbtnHotro.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Case 1: click link trang hỗ trợ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 22474,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:52:50.754Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7857d31edd2e9b0f62b0-c87d9f1dbb390be09c99",
+          "file": "B_WEB/A_Truoc_dang_nhap/E_clickbtnHotro.spec.js",
+          "line": 14,
+          "column": 5
+        },
+        {
+          "title": "Case 2: click link trang hỗ trợ chi tiết",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 12641,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:53:13.230Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7857d31edd2e9b0f62b0-160d6082db6f8ef2ff4a",
+          "file": "B_WEB/A_Truoc_dang_nhap/E_clickbtnHotro.spec.js",
+          "line": 205,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "B_WEB\\A_Truoc_dang_nhap\\F_Dangnhap.spec.js",
+      "file": "B_WEB/A_Truoc_dang_nhap/F_Dangnhap.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Case 1: Pass_Đăng nhập thành công ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 6204,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:53:25.885Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b5fb26ead326b43f99bd-bf7f88aebfa637b595ae",
+          "file": "B_WEB/A_Truoc_dang_nhap/F_Dangnhap.spec.js",
+          "line": 12,
+          "column": 5
+        },
+        {
+          "title": "Case 2: Fail_Để trống trường ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 4162,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:53:32.091Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b5fb26ead326b43f99bd-d9debdcf0357f6ac7718",
+          "file": "B_WEB/A_Truoc_dang_nhap/F_Dangnhap.spec.js",
+          "line": 39,
+          "column": 5
+        },
+        {
+          "title": "Case 3: Fail_Tên đăng nhập ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 4932,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:53:36.255Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b5fb26ead326b43f99bd-ad9d2ae964931728f0c4",
+          "file": "B_WEB/A_Truoc_dang_nhap/F_Dangnhap.spec.js",
+          "line": 66,
+          "column": 5
+        },
+        {
+          "title": "Case 4: Fail_Mật khẩu ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 5928,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:53:41.190Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b5fb26ead326b43f99bd-8625a48318c58925d3a6",
+          "file": "B_WEB/A_Truoc_dang_nhap/F_Dangnhap.spec.js",
+          "line": 93,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "B_WEB\\A_Truoc_dang_nhap\\G_Dangky.spec.js",
+      "file": "B_WEB/A_Truoc_dang_nhap/G_Dangky.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Case 2: Fail_Để trống trường",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "failed",
+                  "duration": 7892,
+                  "error": {
+                    "message": "\u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: getByText('Vui lòng điền số điện thoại!')\nExpected: visible\nReceived: hidden\nCall log:\n  \u001b[2m- expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Vui lòng điền số điện thoại!')\u001b[22m\n",
+                    "stack": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: getByText('Vui lòng điền số điện thoại!')\nExpected: visible\nReceived: hidden\nCall log:\n  \u001b[2m- expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Vui lòng điền số điện thoại!')\u001b[22m\n\n    at C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\G_Dangky.spec.js:64:70",
+                    "location": {
+                      "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\G_Dangky.spec.js",
+                      "column": 70,
+                      "line": 64
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 62 |\u001b[39m         \u001b[90m// Click btn Đăng ký \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 63 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'ĐĂNG KÝ'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 64 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(\u001b[32m'Vui lòng điền số điện thoại!'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                                                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 65 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(\u001b[32m'Trường thông tin này là bắt buộc!'\u001b[39m)\u001b[33m.\u001b[39mnth(\u001b[35m0\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 66 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(\u001b[32m'Trường thông tin này là bắt buộc!'\u001b[39m)\u001b[33m.\u001b[39mnth(\u001b[35m1\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 67 |\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\G_Dangky.spec.js",
+                        "column": 70,
+                        "line": 64
+                      },
+                      "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: getByText('Vui lòng điền số điện thoại!')\nExpected: visible\nReceived: hidden\nCall log:\n  \u001b[2m- expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Vui lòng điền số điện thoại!')\u001b[22m\n\n\n\u001b[0m \u001b[90m 62 |\u001b[39m         \u001b[90m// Click btn Đăng ký \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 63 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'ĐĂNG KÝ'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 64 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(\u001b[32m'Vui lòng điền số điện thoại!'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                                                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 65 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(\u001b[32m'Trường thông tin này là bắt buộc!'\u001b[39m)\u001b[33m.\u001b[39mnth(\u001b[35m0\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 66 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(\u001b[32m'Trường thông tin này là bắt buộc!'\u001b[39m)\u001b[33m.\u001b[39mnth(\u001b[35m1\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 67 |\u001b[39m\u001b[0m\n\n\u001b[2m    at C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\G_Dangky.spec.js:64:70\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:53:47.125Z",
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\test-results\\B_WEB-A_Truoc_dang_nhap-G_Dangky-Case-2-Fail-Để-trống-trường-chromium\\video.webm"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\G_Dangky.spec.js",
+                    "column": 70,
+                    "line": 64
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "1f0d555f06cf26d3724b-dea57e6ea1271e55bda9",
+          "file": "B_WEB/A_Truoc_dang_nhap/G_Dangky.spec.js",
+          "line": 43,
+          "column": 5
+        },
+        {
+          "title": "Case 3: Fail_Sdt ko hợp lệ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "status": "passed",
+                  "duration": 4635,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:53:55.475Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1f0d555f06cf26d3724b-a5931171f625680e58b3",
+          "file": "B_WEB/A_Truoc_dang_nhap/G_Dangky.spec.js",
+          "line": 77,
+          "column": 5
+        },
+        {
+          "title": "Case 4: Fail_Sdt đã tồn tại",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "status": "passed",
+                  "duration": 4189,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:54:00.452Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1f0d555f06cf26d3724b-eae5a8c4b045b6f05db0",
+          "file": "B_WEB/A_Truoc_dang_nhap/G_Dangky.spec.js",
+          "line": 110,
+          "column": 5
+        },
+        {
+          "title": "Case 5: Fail_MK ko trùng",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "status": "passed",
+                  "duration": 4663,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:54:04.644Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1f0d555f06cf26d3724b-57977c5c024fc4ae16f7",
+          "file": "B_WEB/A_Truoc_dang_nhap/G_Dangky.spec.js",
+          "line": 142,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "B_WEB\\B_Sau_dang_nhap\\A_clickbtnKhac.spec.js",
+      "file": "B_WEB/B_Sau_dang_nhap/A_clickbtnKhac.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Case 1: TC - click link Của bạn - Xem thêm ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "status": "passed",
+                  "duration": 9251,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:54:09.320Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bdabfb43d225d209c98e-cd2c5c94de9fca7b352a",
+          "file": "B_WEB/B_Sau_dang_nhap/A_clickbtnKhac.spec.js",
+          "line": 12,
+          "column": 5
+        },
+        {
+          "title": "Case 2: TC - hover - click link AVT ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "status": "passed",
+                  "duration": 9801,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:54:18.574Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bdabfb43d225d209c98e-16a1380d5fde23a9cc72",
+          "file": "B_WEB/B_Sau_dang_nhap/A_clickbtnKhac.spec.js",
+          "line": 46,
+          "column": 5
+        },
+        {
+          "title": "Case 3: KH - khoảng giá  ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "status": "passed",
+                  "duration": 10001,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:54:28.378Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bdabfb43d225d209c98e-12b27f73fb78712fc07c",
+          "file": "B_WEB/B_Sau_dang_nhap/A_clickbtnKhac.spec.js",
+          "line": 89,
+          "column": 5
+        },
+        {
+          "title": "Case 4: KHCT-click link khác",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "status": "passed",
+                  "duration": 24154,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:54:38.382Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bdabfb43d225d209c98e-0e9a91ddbdf85d3cc728",
+          "file": "B_WEB/B_Sau_dang_nhap/A_clickbtnKhac.spec.js",
+          "line": 125,
+          "column": 5
+        },
+        {
+          "title": "Case 5: click giỏ hàng_trống ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "status": "passed",
+                  "duration": 7086,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:55:02.539Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bdabfb43d225d209c98e-7e348632b68945fa6947",
+          "file": "B_WEB/B_Sau_dang_nhap/A_clickbtnKhac.spec.js",
+          "line": 218,
+          "column": 5
+        },
+        {
+          "title": "Case 6: click giỏ hàng_có khóa học ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "status": "passed",
+                  "duration": 8599,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:55:09.628Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bdabfb43d225d209c98e-b0bccdb020263c8b9225",
+          "file": "B_WEB/B_Sau_dang_nhap/A_clickbtnKhac.spec.js",
+          "line": 251,
+          "column": 5
+        },
+        {
+          "title": "Case 7: click btn Vào học ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "status": "passed",
+                  "duration": 11782,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:55:18.230Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bdabfb43d225d209c98e-461f1a7024faf6cfd000",
+          "file": "B_WEB/B_Sau_dang_nhap/A_clickbtnKhac.spec.js",
+          "line": 295,
+          "column": 5
+        },
+        {
+          "title": "Case 8: KHCT-thay đổi thông tin  ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "slow"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "status": "passed",
+                  "duration": 18393,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2023-12-22T08:55:30.015Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bdabfb43d225d209c98e-1e3dec692498002771c0",
+          "file": "B_WEB/B_Sau_dang_nhap/A_clickbtnKhac.spec.js",
+          "line": 335,
           "column": 5
         }
       ]
@@ -690,7 +3469,7 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2023-12-19T09:06:08.323Z",
-    "duration": 444487.918
+    "startTime": "2023-12-22T08:40:48.615Z",
+    "duration": 899887.389
   }
 }

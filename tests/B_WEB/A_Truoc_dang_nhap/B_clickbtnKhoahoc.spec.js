@@ -1,7 +1,7 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
 const exp = require('constants');
-const { openAsBlob } = require('fs');
+import dataSiteTest from '../../dataSite.json';
 
 /**
  * Case 1: Click danh mục khóa học 
@@ -13,39 +13,39 @@ function case1 () {
 
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click Khóa học 
         await page.getByRole('link', { name: 'Khóa học' }).click();
         // Expect
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc");
         await expect(page.locator('section').filter({ hasText: 'Trang chủ Khoá học' }).locator('div')).toBeVisible();
         // Click danh mục trẻ em
         await page.getByRole('main').getByRole('link', { name: 'Trẻ em' }).click();
         // Expect
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc/tre-em');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc/tre-em");
         // Chụp ảnh màn hình danh mục trẻ em 
         await page.waitForTimeout(2000);
         await page.screenshot({ path: 'KH_Ảnh_trẻ_em_case1.png', fullPage: true });
         // Click danh mục học sinh phổ thông 
         await page.getByRole('main').getByRole('link', { name: 'Học sinh phổ thông' }).click();
         // Expect
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc/hoc-sinh-pho-thong');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc/hoc-sinh-pho-thong");
         // Chụp ảnh màn hình danh mục học sinh phổ thông 
         await page.waitForTimeout(2000);
         await page.screenshot({ path: 'KH_Ảnh_học_sinh_case1.png', fullPage: true });
         // Click danh mục sinh viên và người đi làm
         await page.getByRole('main').getByRole('link', { name: 'Sinh viên và người đi làm' }).click();
         // Expect
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc/sinh-vien-nguoi-di-lam');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc/sinh-vien-nguoi-di-lam");
         // Chụp ảnh màn hình danh mục sinh viên và người đi làm 
         await page.waitForTimeout(2000);
         await page.screenshot({ path: 'KH_Ảnh_sinh_viên_case1.png', fullPage: true });
         // Click danh mục tất cả 
         await page.getByRole('main').getByRole('link', { name: 'Tất cả' }).click();
         // Expect
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc");
         // Chụp ảnh màn hình danh mục tất cả 
         await page.waitForTimeout(2000);
         await page.screenshot({ path: 'KH_Ảnh_tất_cả_case1.png', fullPage: true });
@@ -62,7 +62,7 @@ function case2 () {
     test('Case 2: hover KH click danh mục', async ({ page }) => {
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Hover khóa học, click danh mục tất cả 
@@ -70,28 +70,28 @@ function case2 () {
         await page.waitForTimeout(1000);
         await page.locator('#mobiEduToggleMenu').getByRole('link', { name: 'Tất cả' }).click();
         // Expect 
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc");
         await expect(page.locator('section').filter({ hasText: 'Trang chủ Khoá học' }).locator('div')).toBeVisible();
         // Hover khóa học, click danh mục trẻ em 
         await page.getByRole('link', { name: 'Khóa học' }).hover();
         await page.waitForTimeout(1000);
         await page.locator('#mobiEduToggleMenu').getByRole('link', { name: 'Trẻ em' }).click();
         // Expect 
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc/tre-em');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc/tre-em");
         await expect(page.locator('section').filter({ hasText: 'Trang chủ Khoá học' }).locator('div')).toBeVisible();
         // Hover khóa học, click danh mục học sinh phổ thông 
         await page.getByRole('link', { name: 'Khóa học' }).hover();
         await page.waitForTimeout(1000);
         await page.locator('#mobiEduToggleMenu').getByRole('link', { name: 'Học sinh phổ thông' }).click();
         // Expect
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc/hoc-sinh-pho-thong');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc/hoc-sinh-pho-thong");
         await expect(page.locator('section').filter({ hasText: 'Trang chủ Khoá học' }).locator('div')).toBeVisible();
         // Hover khóa học, click danh mục sinh viên và người đi làm
         await page.getByRole('link', { name: 'Khóa học' }).hover();
         await page.waitForTimeout(1000);
         await page.locator('#mobiEduToggleMenu').getByRole('link', { name: 'Sinh viên và người đi làm' }).click();
         // Expect 
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc/sinh-vien-nguoi-di-lam');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc/sinh-vien-nguoi-di-lam");
         await expect(page.locator('section').filter({ hasText: 'Trang chủ Khoá học' }).locator('div')).toBeVisible();
 
     });
@@ -107,21 +107,21 @@ function case3 () {
 
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
 
         // Click Khóa học 
         await page.getByRole('link', { name: 'Khóa học' }).click();
         // Expect 
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc");
         await expect(page.locator('section').filter({ hasText: 'Trang chủ Khoá học' }).locator('div')).toBeVisible();
         // Click chọn chủ đề 
         await page.getByText('Tiền tiểu học').click();
         // Click btn Áp dụng 
         await page.getByRole('button', { name: 'Áp dụng' }).click();
         // Expect 
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc?subjects=72');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc?subjects=72");
         await expect(page.getByText('Tiền tiểu học')).toBeChecked();
         // Chụp ảnh lọc chủ đề 
         await page.waitForTimeout(2000);
@@ -140,14 +140,14 @@ function case4 () {
 
     test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         await page.waitForTimeout(2000);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click Khóa học 
         await page.getByRole('link', { name: 'Khóa học' }).click();
         // Expect 
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc");
         await expect(page.locator('section').filter({ hasText: 'Trang chủ Khoá học' }).locator('div')).toBeVisible();
         // Click btn Xem thêm
         await page.getByRole('link', { name: 'Xem thêm ' }).click();
@@ -177,20 +177,20 @@ function case5 () {
 
     test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click Khóa học 
         await page.getByRole('link', { name: 'Khóa học' }).click();
         // Expect 
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc");
         await expect(page.locator('section').filter({ hasText: 'Trang chủ Khoá học' }).locator('div')).toBeVisible();
         // Click chọn khoảng giá
         await page.getByText('Dưới 500.000đ').click();
         // Click btn Áp dụng 
         await page.getByRole('button', { name: 'Áp dụng' }).click(); 
         // Expect 
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc?price_range=0_500000');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc?price_range=0_500000");
         await expect(page.getByText('Dưới 500.000đ')).toBeChecked();
         // Expect Hiển thị tất cả khoảng giá không có "Miễn phí"
         await page.goto('https://mskill8.mobiedu.vn/khoa-hoc');
@@ -215,13 +215,13 @@ function case6 () {
 
     test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click Khóa học 
         await page.getByRole('link', { name: 'Khóa học' }).click();
         // Expect 
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc");
         await expect(page.locator('section').filter({ hasText: 'Trang chủ Khoá học' }).locator('div')).toBeVisible();
         // Click chọn chủ đề 
         await page.getByText('Tiền tiểu học').click();
@@ -230,7 +230,7 @@ function case6 () {
         // Click btn Xóa 
         await page.getByRole('link', { name: 'Xóa' }).click();
         // Expect 
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc");
         await expect(page.getByText('Tiền tiểu học')).not.toBeChecked();
         await expect(page.getByText('Dưới 500.000đ')).not.toBeChecked();
 
@@ -247,13 +247,13 @@ function case7 () {
 
     test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click Khóa học 
         await page.getByRole('link', { name: 'Khóa học' }).click();
         // Expect 
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc");
         await expect(page.locator('section').filter({ hasText: 'Trang chủ Khoá học' }).locator('div')).toBeVisible();
         // Click btn Hướng dẫn đăng ký khóa học
         await page.getByText('Hướng dẫn đăng kí khóa học').click();
@@ -277,13 +277,13 @@ function case8 () {
 
     test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click Khóa học 
         await page.getByRole('link', { name: 'Khóa học' }).click();
         // Expect 
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc");
         await expect(page.locator('section').filter({ hasText: 'Trang chủ Khoá học' }).locator('div')).toBeVisible();
         // Click btn Giá thấp nhất
         await page.getByRole('link', { name: 'Giá thấp nhất' }).click();
@@ -298,7 +298,7 @@ function case8 () {
         // Click Giá cao nhất 
         await page.getByRole('link', { name: 'Giá cao nhất' }).click();
         // Expect
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc?sort_type=price_desc');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc?sort_type=price_desc");
         // Click btn Xem thêm 
         await page.getByRole('button', { name: 'Xem thêm' }).click();
         await page.getByRole('button', { name: 'Xem thêm' }).click();
@@ -308,7 +308,7 @@ function case8 () {
         // Click Phổ biến 
         await page.getByRole('link', { name: 'Phổ biến' }).click();
         // Expect 
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc?sort_type=stt_asc');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc?sort_type=stt_asc");
         // Click btn Xem thêm 
         await page.getByRole('button', { name: 'Xem thêm' }).click();
         await page.getByRole('button', { name: 'Xem thêm' }).click();
@@ -329,13 +329,13 @@ function case9 () {
 
     test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click Khóa học 
         await page.getByRole('link', { name: 'Khóa học' }).click();
         // Expect 
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc");
         await expect(page.locator('section').filter({ hasText: 'Trang chủ Khoá học' }).locator('div')).toBeVisible();
         // Click khóa học 
         await page.getByRole('link', { name: 'EduPro mSkill EDV' }).click();

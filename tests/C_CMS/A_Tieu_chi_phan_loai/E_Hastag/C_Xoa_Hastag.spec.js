@@ -1,6 +1,7 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
 const exp = require('constants');
+import dataSiteTest from '../../../dataSite.json';
 
 /**
  * Case 1: Thành công : Xóa Hastag
@@ -12,7 +13,7 @@ function case1 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -21,7 +22,7 @@ function case1 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Tiêu chí phân loại' }).click();
     await page.getByRole('link', { name: 'Hashtag' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/tags');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/tags");
     await expect(page.getByRole('heading', { name: 'Danh sách Tags' })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Danh sách Tags' })).toBeVisible();
     // Thêm mới Hastag - Hiển thị chân trang 
@@ -30,21 +31,21 @@ function case1 () {
     await page.getByRole('textbox', { name: 'Hashtag *' }).click();
     await page.getByRole('textbox', { name: 'Hashtag *' }).fill('QA_Pass Xóa_Hastag _Khóa học_Case1');
     await page.getByRole('textbox', { name: 'Link liên kết' }).click();
-    await page.getByRole('textbox', { name: 'Link liên kết' }).fill('https://mskill8.mobiedu.vn/khoa-hoc');
+    await page.getByRole('textbox', { name: 'Link liên kết' }).fill(dataSiteTest[1].linkSite + "/khoa-hoc");
     await page.getByRole('textbox', { name: 'Chọn trang hiển thị...' }).click();
     await page.getByRole('treeitem', { name: 'Hiện thị chân trang' }).click();
     await page.getByRole('button', { name: 'Lưu' }).click();
     await expect(page.getByText('Thêm thành công!')).toBeVisible();
     // Truy cập Web kiểm tra hiển thị Trang chủ sau thêm -> Click link liên kết
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass Xóa_Hastag _Khóa học_Case1' }).nth(0)).toBeVisible();
     await page.getByRole('link', { name: 'QA_Pass Xóa_Hastag _Khóa học_Case1' }).nth(0).click();
-    await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc');
+    await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc");
     // Truy cập Web kiểm tra không hiển thị trang 404
-    await page.goto('https://mskill8.mobiedu.vn/1234567');
+    await page.goto(dataSiteTest[1].linkSite + "/1234567");
     await expect(page.getByRole('link', { name: 'QA_Pass Xóa_Hastag _Khóa học_Case1' }).nth(1)).not.toBeVisible();
     // Xóa Hastag thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/tags');
+    await page.goto(dataSiteTest[0].linkSite + "/tags");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass Xóa_Hastag _Khóa học_Case1' })
@@ -54,10 +55,10 @@ function case1 () {
     await page.getByRole('button', { name: 'Xóa' }).click();
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     // Truy cập Web kiểm tra không hiển thị trang Trang chủ
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass Xóa_Hastag _Khóa học_Case1' }).nth(0)).not.toBeVisible();
     // Truy cập Web kiểm tra không hiển thị trang 404
-    await page.goto('https://mskill8.mobiedu.vn/1234567');
+    await page.goto(dataSiteTest[1].linkSite + "/1234567");
     await expect(page.getByRole('link', { name: 'QA_Pass Xóa_Hastag _Khóa học_Case1' }).nth(1)).not.toBeVisible();
 
 });
@@ -73,7 +74,7 @@ function case2 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -82,7 +83,7 @@ function case2 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Tiêu chí phân loại' }).click();
     await page.getByRole('link', { name: 'Hashtag' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/tags');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/tags");
     await expect(page.getByRole('heading', { name: 'Danh sách Tags' })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Danh sách Tags' })).toBeVisible();
     // Thêm mới Hastag - Hiển thị chân trang 
@@ -91,22 +92,22 @@ function case2 () {
     await page.getByRole('textbox', { name: 'Hashtag *' }).click();
     await page.getByRole('textbox', { name: 'Hashtag *' }).fill('QA_Fail Xóa_Hastag _Khóa học_Case2');
     await page.getByRole('textbox', { name: 'Link liên kết' }).click();
-    await page.getByRole('textbox', { name: 'Link liên kết' }).fill('https://mskill8.mobiedu.vn/khoa-hoc');
+    await page.getByRole('textbox', { name: 'Link liên kết' }).fill(dataSiteTest[1].linkSite + "/khoa-hoc");
     await page.getByRole('textbox', { name: 'Chọn trang hiển thị...' }).click();
     await page.getByRole('treeitem', { name: 'Hiện thị chân trang' }).click();
     await page.getByRole('button', { name: 'Lưu' }).click();
     await expect(page.getByText('Thêm thành công!')).toBeVisible();
     await expect(page.getByRole('cell', { name: 'QA_Fail Xóa_Hastag _Khóa học_Case2' })).toBeVisible();
     // Truy cập Web kiểm tra hiển thị Trang chủ sau thêm -> Click link liên kết
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Fail Xóa_Hastag _Khóa học_Case2' }).nth(0)).toBeVisible();
     await page.getByRole('link', { name: 'QA_Fail Xóa_Hastag _Khóa học_Case2' }).nth(0).click();
-    await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc');
+    await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc");
     // Truy cập Web kiểm tra không hiển thị trang 404
-    await page.goto('https://mskill8.mobiedu.vn/1234567');
+    await page.goto(dataSiteTest[1].linkSite + "/1234567");
     await expect(page.getByRole('link', { name: 'QA_Pass Xóa_Hastag _Khóa học_Case1' }).nth(1)).not.toBeVisible();
     // Xóa Hastag không thành công do click btn Đóng
-    await page.goto('https://mskill8admin.mobiedu.vn/tags');
+    await page.goto(dataSiteTest[0].linkSite + "/tags");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Fail Xóa_Hastag _Khóa học_Case2' })
@@ -116,7 +117,7 @@ function case2 () {
     await page.getByRole('button', { name: 'Đóng' }).click();
     await expect(page.getByRole('cell', { name: 'QA_Fail Xóa_Hastag _Khóa học_Case2' })).toBeVisible();
     // Xóa Hastag vừa thêm 
-    await page.goto('https://mskill8admin.mobiedu.vn/tags');
+    await page.goto(dataSiteTest[0].linkSite + "/tags");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Fail Xóa_Hastag _Khóa học_Case2' })
@@ -126,7 +127,7 @@ function case2 () {
     await page.getByRole('button', { name: 'Xóa' }).click();
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     // Truy cập Web kiểm tra hiển thị Trang chủ sau xóa
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Fail Xóa_Hastag _Khóa học_Case2' })).not.toBeVisible();
 
 });
