@@ -1,6 +1,7 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
 const exp = require('constants');
+import dataSiteTest from '../../../dataSite.json';
 
 /**
  * Case 1: Thành công -> Click btn Xóa 
@@ -12,7 +13,7 @@ function case1 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -21,7 +22,7 @@ function case1 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị khoá học' }).click();
     await page.getByRole('link', { name: 'Khóa học lẻ', exact: true }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-mobiedu');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/course-mobiedu");
     await expect(page.getByRole('heading', { name: 'Danh sách khóa học Mobiedu' })).toBeVisible();
     // Thêm mới khóa học lẻ - Trẻ em 
     await page.getByRole('link', { name: 'Thêm khóa học mới' }).click();
@@ -75,7 +76,7 @@ function case1 () {
     await expect(page.getByRole('cell', { name: 'QA_Pass Xóa KHL_TE_Thuyết trình và những bí mật_Case1' })).toBeVisible();
     // Truy cập Web -> Trang chủ kiểm tra hiển thị trẻ em ->  không hiển thị tất cả - học sinh - sinh viên 
     // Truy cập Web - Trang chủ  -> Tất cả => Không hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass Xóa KHL_TE_Thuyết trình và những bí mật_Case1' }).first()).not.toBeVisible();
     await expect(page.getByText('Nguyễn Hữu Việt', {exact : true}).first()).not.toBeVisible();
     await expect(page.getByText('238.000 đ', {exact : true}).first()).not.toBeVisible();
@@ -103,15 +104,15 @@ function case1 () {
     await expect(page.getByText('386.000 đ', {exact : true}).first()).not.toBeVisible();
     // Truy cập Web -> KHóa học kiểm tra hiển thị trẻ em - tất cả->  không hiển thị học sinh - sinh viên 
     // Truy cập Web -> trang Khóa học -> Tất cả => Hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/khoa-hoc');
+    await page.goto(dataSiteTest[1].linkSite + "/khoa-hoc");
     await expect(page.getByRole('link', { name: 'QA_Pass Xóa KHL_TE_Thuyết trình và những bí mật_Case1' }).first()).toBeVisible();
     await expect(page.getByText('Nguyễn Hữu Việt', {exact : true}).first()).toBeVisible();
     await expect(page.getByText('238.000 đ', {exact : true}).first()).toBeVisible();
     await expect(page.getByText('386.000 đ', {exact : true}).first()).toBeVisible();
     // Truy cập Web -> trang Khóa học -> Trẻ em => Hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/khoa-hoc');
+    await page.goto(dataSiteTest[1].linkSite + "/khoa-hoc");
     await page.getByRole('main').getByRole('link', { name: 'Trẻ em' }).click();
-    await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc/tre-em');
+    await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc/tre-em");
     await expect(page.getByRole('link', { name: 'QA_Pass Xóa KHL_TE_Thuyết trình và những bí mật_Case1' }).first()).toBeVisible();
     await expect(page.getByText('Nguyễn Hữu Việt', {exact : true}).first()).toBeVisible();
     await expect(page.getByText('238.000 đ', {exact : true}).first()).toBeVisible();
@@ -131,7 +132,7 @@ function case1 () {
     await expect(page.getByText('238.000 đ', {exact : true}).first()).not.toBeVisible();
     await expect(page.getByText('386.000 đ', {exact : true}).first()).not.toBeVisible();
     // Click chi tiết khóa học sau khi thêm 
-    await page.goto('https://mskill8.mobiedu.vn/khoa-hoc');
+    await page.goto(dataSiteTest[1].linkSite + "/khoa-hoc");
     await page.getByRole('link', { name: 'QA_Pass Xóa KHL_TE_Thuyết trình và những bí mật_Case1' }).click();
     await expect(page.locator('section').filter({ hasText: 'Trang chủ Khóa học QA_Pass Xóa KHL_TE_Thuyết trình và những bí mật_Case1' })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'QA_Pass Xóa KHL_TE_Thuyết trình và những bí mật_Case1' }).locator('span')).toBeVisible();
@@ -145,7 +146,7 @@ function case1 () {
     await expect(page.getByText('Khóa học phù hợp với Case 1 Thêm_Khóa học phù hợp với : Trẻ em - Học sinh - Sinh')).toBeVisible();
     await expect(page.getByText('Hồ sơ giảng viên Nguyễn Hữu Việt')).toBeVisible();
     // Truy cập CMS xóa thành công khóa học
-    await page.goto('https://mskill8admin.mobiedu.vn/course-mobiedu');
+    await page.goto(dataSiteTest[0].linkSite + "/course-mobiedu");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass Xóa KHL_TE_Thuyết trình và những bí mật_Case1' })
@@ -156,7 +157,7 @@ function case1 () {
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     await expect(page.getByRole('cell', { name: 'QA_Pass Xóa KHL_TE_Thuyết trình và những bí mật_Case1' })).not.toBeVisible();
     // Truy cập Web -> Trang chủ -> Học sinh => Không hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await page.locator('#btn_tab_hoc-sinh-pho-thong').click();
     await expect(page.getByRole('link', { name: 'QA_Pass Xóa KHL_TE_Thuyết trình và những bí mật_Case1' }).first()).not.toBeVisible();
     // Truy cập Web -> Khóa học -> Tất cả => Không hiển thị 
@@ -179,7 +180,7 @@ function case2 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -188,7 +189,7 @@ function case2 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị khoá học' }).click();
     await page.getByRole('link', { name: 'Khóa học lẻ', exact: true }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-mobiedu');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/course-mobiedu");
     await expect(page.getByRole('heading', { name: 'Danh sách khóa học Mobiedu' })).toBeVisible();
     // Thêm mới khóa học lẻ - Trẻ em 
     await page.getByRole('link', { name: 'Thêm khóa học mới' }).click();
@@ -252,7 +253,7 @@ function case2 () {
     await expect(page.getByRole('cell', { name: 'QA_Fail Xóa KHL_TE_Thuyết trình và những bí mật_Case2' })).toBeVisible();
     // Truy cập Web -> Trang chủ kiểm tra hiển thị trẻ em ->  không hiển thị tất cả - học sinh - sinh viên 
     // Truy cập Web - Trang chủ  -> Tất cả => Không hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Fail Xóa KHL_TE_Thuyết trình và những bí mật_Case2' }).first()).not.toBeVisible();
     await expect(page.getByText('Hoàng Minh Thiện', {exact : true}).first()).not.toBeVisible();
     await expect(page.getByText('237.000 đ', {exact : true}).first()).not.toBeVisible();
@@ -280,15 +281,15 @@ function case2 () {
     await expect(page.getByText('385.000 đ', {exact : true}).first()).not.toBeVisible();
     // Truy cập Web -> KHóa học kiểm tra hiển thị trẻ em - tất cả->  không hiển thị học sinh - sinh viên 
     // Truy cập Web -> trang Khóa học -> Tất cả => Hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/khoa-hoc');
+    await page.goto(dataSiteTest[1].linkSite + "/khoa-hoc");
     await expect(page.getByRole('link', { name: 'QA_Fail Xóa KHL_TE_Thuyết trình và những bí mật_Case2' }).first()).toBeVisible();
     await expect(page.getByText('Hoàng Minh Thiện', {exact : true}).first()).toBeVisible();
     await expect(page.getByText('237.000 đ', {exact : true}).first()).toBeVisible();
     await expect(page.getByText('385.000 đ', {exact : true}).first()).toBeVisible();
     // Truy cập Web -> trang Khóa học -> Trẻ em => Hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/khoa-hoc');
+    await page.goto(dataSiteTest[1].linkSite + "/khoa-hoc");
     await page.getByRole('main').getByRole('link', { name: 'Trẻ em' }).click();
-    await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc/tre-em');
+    await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc/tre-em");
     await expect(page.getByRole('link', { name: 'QA_Fail Xóa KHL_TE_Thuyết trình và những bí mật_Case2' }).first()).toBeVisible();
     await expect(page.getByText('Hoàng Minh Thiện', {exact : true}).first()).toBeVisible();
     await expect(page.getByText('237.000 đ', {exact : true}).first()).toBeVisible();
@@ -308,7 +309,7 @@ function case2 () {
     await expect(page.getByText('237.000 đ', {exact : true}).first()).not.toBeVisible();
     await expect(page.getByText('385.000 đ', {exact : true}).first()).not.toBeVisible();
     // Click chi tiết khóa học sau khi thêm 
-    await page.goto('https://mskill8.mobiedu.vn/khoa-hoc');
+    await page.goto(dataSiteTest[1].linkSite + "/khoa-hoc");
     await page.getByRole('link', { name: 'QA_Fail Xóa KHL_TE_Thuyết trình và những bí mật_Case2' }).click();
     await expect(page.locator('section').filter({ hasText: 'Trang chủ Khóa học QA_Fail Xóa KHL_TE_Thuyết trình và những bí mật_Case2' })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'QA_Fail Xóa KHL_TE_Thuyết trình và những bí mật_Case2' }).locator('span')).toBeVisible();
@@ -322,7 +323,7 @@ function case2 () {
     await expect(page.getByText('Khóa học phù hợp với Case 2 Thêm_Khóa học phù hợp với : Trẻ em - Học sinh - Sinh')).toBeVisible();
     await expect(page.getByText('Hồ sơ giảng viên Hoàng Minh Thiện')).toBeVisible();
     // Truy CMS xóa khóa học thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-mobiedu');
+    await page.goto(dataSiteTest[0].linkSite + "/course-mobiedu");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Fail Xóa KHL_TE_Thuyết trình và những bí mật_Case2' })
@@ -332,7 +333,7 @@ function case2 () {
     await page.getByRole('button', { name: 'Xóa' }).click();
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     // Truy cập Web -> Trang chủ -> Học sinh => Không hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await page.locator('#btn_tab_hoc-sinh-pho-thong').click();
     await expect(page.getByRole('link', { name: 'QA_Fail Xóa KHL_TE_Thuyết trình và những bí mật_Case2' }).first()).not.toBeVisible();
     // Truy cập Web -> Khóa học -> Tất cả => Không hiển thị 

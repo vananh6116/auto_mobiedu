@@ -1,6 +1,7 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
 const exp = require('constants');
+import dataSiteTest from '../../../dataSite.json';
 
 /**
  * Case 1: Thành công : Thêm khoảng giá
@@ -12,7 +13,7 @@ function case1 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -21,7 +22,7 @@ function case1 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Tiêu chí phân loại' }).click();
     await page.getByRole('link', { name: 'Khoảng giá' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/price-range');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/price-range");
     await expect(page.getByRole('heading', { name: 'Danh sách khoảng giá' })).toBeVisible();
     // Click btn Thêm khoảng giá mới
     await page.getByRole('button', { name: 'Thêm khoảng giá mới' }).click();
@@ -42,10 +43,10 @@ function case1 () {
     await page.getByRole('button', { name: 'Lưu' }).click();
     await expect(page.getByText('Thêm thành công!')).toBeVisible();
     // Truy cập Web kiểm tra hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/khoa-hoc');
+    await page.goto(dataSiteTest[1].linkSite + "/khoa-hoc");
     await expect(page.getByText('QA_KG_Trên 3.000.000đ_Case1')).toBeVisible();
     // Truy cập CMS xóa khoảng giá vừa thêm 
-    await page.goto('https://mskill8admin.mobiedu.vn/price-range');
+    await page.goto(dataSiteTest[0].linkSite + "/price-range");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_KG_Trên 3.000.000đ_Case1' })
@@ -55,7 +56,7 @@ function case1 () {
     await page.getByRole('button', { name: 'Xóa' }).click();
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     // Truy cập Web kiểm tra hiển thị sau xóa
-    await page.goto('https://mskill8.mobiedu.vn/khoa-hoc');
+    await page.goto(dataSiteTest[1].linkSite + "/khoa-hoc");
     await expect(page.getByText('QA_KG_Trên 3.000.000đ_Case1')).not.toBeVisible();
     
 });
@@ -71,7 +72,7 @@ function case2 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -80,7 +81,7 @@ function case2 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Tiêu chí phân loại' }).click();
     await page.getByRole('link', { name: 'Khoảng giá' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/price-range');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/price-range");
     await expect(page.getByRole('heading', { name: 'Danh sách khoảng giá' })).toBeVisible();
     // Click btn Thêm khoảng giá mới
     await page.getByRole('button', { name: 'Thêm khoảng giá mới' }).click();
@@ -117,7 +118,7 @@ function case3 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -126,7 +127,7 @@ function case3 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Tiêu chí phân loại' }).click();
     await page.getByRole('link', { name: 'Khoảng giá' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/price-range');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/price-range");
     await expect(page.getByRole('heading', { name: 'Danh sách khoảng giá' })).toBeVisible();
     // Thêm khoảng giá 1
     await page.getByRole('button', { name: 'Thêm khoảng giá mới' }).click();
@@ -155,10 +156,10 @@ function case3 () {
     await page.getByRole('button', { name: 'Lưu' }).click();
     await expect(page.getByText('Tên lĩnh vực đã tồn tại!')).toBeVisible();
     // Truy cập Web kiểm tra hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/khoa-hoc');
+    await page.goto(dataSiteTest[1].linkSite + "/khoa-hoc");
     await expect(page.getByText('QA_KG_Trên 3.000.000đ_Case3')).toBeVisible();
     // Truy cập CMS xóa khoảng giá vừa thêm 
-    await page.goto('https://mskill8admin.mobiedu.vn/price-range');
+    await page.goto(dataSiteTest[0].linkSite + "/price-range");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_KG_Trên 3.000.000đ_Case3' })
@@ -168,7 +169,7 @@ function case3 () {
     await page.getByRole('button', { name: 'Xóa' }).click();
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     // Truy cập Web kiểm tra hiển thị sau xóa
-    await page.goto('https://mskill8.mobiedu.vn/khoa-hoc');
+    await page.goto(dataSiteTest[1].linkSite + "/khoa-hoc");
     await expect(page.getByText('QA_KG_Trên 3.000.000đ_Case3')).not.toBeVisible();
 
 });
@@ -184,7 +185,7 @@ function case4 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -193,7 +194,7 @@ function case4 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Tiêu chí phân loại' }).click();
     await page.getByRole('link', { name: 'Khoảng giá' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/price-range');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/price-range");
     await expect(page.getByRole('heading', { name: 'Danh sách khoảng giá' })).toBeVisible();
     // Thêm khoảng giá : Giá min > giá max
     await page.getByRole('button', { name: 'Thêm khoảng giá mới' }).click();

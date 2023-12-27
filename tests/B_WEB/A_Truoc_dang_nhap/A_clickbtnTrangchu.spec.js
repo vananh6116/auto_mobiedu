@@ -1,6 +1,7 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
 const exp = require('constants');
+import dataSiteTest from '../../dataSite.json';
 
 /**
  * Case 1: Click logo mobiEdu 
@@ -12,7 +13,7 @@ function case1 () {
 
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click logo
@@ -51,13 +52,13 @@ function case2 () {
 
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click Khóa học 
         await page.getByRole('link', { name: 'Khóa học' }).click();
         // Expect 
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc");
         await expect(page.locator('section').filter({ hasText: 'Trang chủ Khoá học' }).locator('div')).toBeVisible();
         // Chụp ảnh màn hình Khóa học 
         await page.waitForTimeout(2000);
@@ -76,7 +77,7 @@ function case3 () {
 
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click Giải pháp
@@ -100,13 +101,13 @@ function case4 () {
 
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click Cổng thi
         await page.locator('#mobiEduToggleMenu').getByRole('link', { name: 'Cổng thi' }).click();
         // Expect
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/cong-thi');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/cong-thi");
         await expect(page.locator('div').filter({ hasText: 'Trang chủ Cổng thi' })).toBeVisible();
         // Chụp ảnh màn hình cổng thi
         await page.waitForTimeout(2000);
@@ -125,7 +126,7 @@ function case5 () {
 
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Nhập từ khóa 
@@ -150,14 +151,14 @@ function case6 () {
 
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click btn Đăng ký 
         await page.getByRole('link', { name: 'Đăng kí' }).click();
         // Expect
         await page.waitForTimeout(3000);
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/dang-ky');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/dang-ky");
         await expect(page.getByRole('button', { name: 'ĐĂNG KÝ' })).toBeVisible();
         // Chụp ảnh màn hình đăng ký
         await page.waitForTimeout(2000);
@@ -176,14 +177,14 @@ function case7 () {
 
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click btn Đăng nhập 
         await page.getByRole('link', { name: 'Đăng nhập', exact: true }).click();
         // Expect
         await page.waitForTimeout(3000);
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/dang-nhap?redirect=/');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/dang-nhap?redirect=/");
         await expect(page.getByRole('button', { name: 'ĐĂNG NHẬP' })).toBeVisible();
         // Chụp ảnh màn hình đăng nhập
         await page.waitForTimeout(2000);
@@ -202,7 +203,7 @@ function case8 () {
 
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click btn Đăng nhập ngay
@@ -223,7 +224,7 @@ function case9 () {
 
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click danh mục trẻ em 
@@ -276,13 +277,14 @@ function case10 () {
     test('Case 10: click khóa học', async ({ page }) => {
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click Khóa học
         await page.getByRole('link', { name: 'EduPro mSkill EDV' }).click();
         // Expect
-        await expect(page.locator('div').filter({ hasText: 'EduPro mSkill EDV Số khóa học: 20 Thời lượng: 45 Giờ 38 Phút Lĩnh vực: Kĩ năng m' }).nth(3)).toBeVisible();
+        await expect(page.locator('section').filter({ hasText: 'Trang chủ Khóa học EduPro mSkill EDV' })).toBeVisible();
+        await expect(page.getByRole('heading', { name: 'EduPro mSkill EDV' }).locator('span')).toBeVisible();
         // Chụp màn hình khóa học 
         await page.waitForTimeout(2000);
         await page.screenshot({ path: 'TC_Ảnh_khóa_học_case10.png', fullPage : true });
@@ -299,7 +301,7 @@ function case11 () {
     test('Case 11: click Btn Xem thêm khóa học', async ({ page }) => {
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click btn Xem thêm Khóa học
@@ -319,7 +321,7 @@ function case12 () {
     test('Case 12: click Btn Xem thêm giải pháp', async ({ page }) => {
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click btn Xem thêm giải pháp
@@ -339,7 +341,7 @@ function case13 () {
     test('Case 13: click Btn Xem thêm cổng thi', async ({ page }) => {
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click btn Xem thêm cổng thi
@@ -359,7 +361,7 @@ function case14 () {
     test('Case 14: click Btn Đăng ký ngay sau cổng thi', async ({ page }) => {
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click btn Đăng ký ngay sau zone cổng thi
@@ -379,7 +381,7 @@ function case15 () {
     test('Case 15: click Btn Xem thêm đến trang Giới thiệu', async ({ page }) => {
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click btn Xem thêm zone mobiEdu - Nền tảng chuyển đổi số giáo dục toàn diện
@@ -402,13 +404,13 @@ function case16 () {
     test('Case 16: click banner gắn link', async ({ page }) => {
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click btn banner gắn link
         await page.locator('.home-13 > .caption').click();
         // Expect
-        await page.goto('https://mskill8.mobiedu.vn/tin-dich-vu/he-sang-ron-rang-don-ngan-goi-cuoc-moi-cung-mobiedu-p2105.html');
+        await page.goto(dataSiteTest[1].linkSite + "/tin-dich-vu/he-sang-ron-rang-don-ngan-goi-cuoc-moi-cung-mobiedu-p2105.html");
         await expect(page.locator('section').filter({ hasText: 'Trang chủ Tin tức Tin dịch vụ' })).toBeVisible();
 
     });
@@ -423,7 +425,7 @@ function case17 () {
     test('Case 17: click bài viết', async ({ page }) => {
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click bài viết
@@ -443,7 +445,7 @@ function case18 () {
     test('Case 18: click btn Xem thêm tin tức', async ({ page }) => {
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click btn Xem thêm
@@ -463,7 +465,7 @@ function case19 () {
     test('Case 19: click link Giới thiệu', async ({ page }) => {
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click link Giới thiệu
@@ -483,7 +485,7 @@ function case20 () {
     test('Case 20: click link Khóa học', async ({ page }) => {
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click link Khóa học
@@ -503,7 +505,7 @@ function case21 () {
     test('Case 21: click link Giải pháp', async ({ page }) => {
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click link Giải pháp
@@ -523,7 +525,7 @@ function case22 () {
     test('Case 22: click link Cổng thi', async ({ page }) => {
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click link Cổng thi
@@ -543,7 +545,7 @@ function case23 () {
     test('Case 23: click link Đại lý', async ({ page }) => {
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click link Dành cho đại lý
@@ -566,7 +568,7 @@ function case24 () {
     test('Case 24: click link App Store', async ({ page }) => {
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click link App Store
@@ -590,7 +592,7 @@ function case25 () {
     test('Case 25: click link Google Play', async ({ page }) => {
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click link App Store
@@ -614,7 +616,7 @@ function case26 () {
     test('Case 26: click link Facebook', async ({ page }) => {
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click link App Store
@@ -638,7 +640,7 @@ function case27 () {
     test('Case 27: click link Youtube', async ({ page }) => {
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click link App Store
@@ -662,13 +664,13 @@ function case28 () {
     test('Case 28: click link Liên hệ', async ({ page }) => {
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click link App Store
         await page.getByRole('link', { name: 'Liên hệ' }).click();
         // Expect
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/lien-he');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/lien-he");
         await expect(page.getByRole('heading', { name: 'LIÊN HỆ' })).toBeVisible();
         // Chụp ảnh màn hình Facebook
         await page.waitForTimeout(2000);
@@ -686,13 +688,13 @@ function case29 () {
     test('Case 29: click link Chính sách', async ({ page }) => {
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click link App Store
         await page.getByRole('link', { name: 'CHÍNH SÁCH BẢO MẬT' }).click();
         // Expect
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/chinh-sach-bao-mat.html');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/chinh-sach-bao-mat.html");
         await expect(page.getByRole('heading', { name: 'CHÍNH SÁCH BẢO MẬT THÔNG TIN CÁ NHÂN KHÁCH HÀNG' })).toBeVisible();
         // Chụp ảnh màn hình Facebook
         await page.waitForTimeout(2000);
@@ -710,13 +712,13 @@ function case30 () {
     test('Case 30: click link Điều khoản', async ({ page }) => {
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click link App Store
         await page.getByRole('link', { name: 'ĐIỀU KHOẢN DỊCH VỤ' }).click();
         // Expect
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/dieu-khoan-dich-vu.html');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/dieu-khoan-dich-vu.html");
         await expect(page.locator('#landing_page').getByText('ĐIỀU KHOẢN DỊCH VỤ', { exact: true })).toBeVisible();
         // Chụp ảnh màn hình Facebook
         await page.waitForTimeout(2000);
@@ -734,13 +736,13 @@ function case31 () {
     test('Case 31: click link Giải quyết', async ({ page }) => {
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click link App Store
         await page.getByRole('link', { name: 'GIẢI QUYẾT TRANH CHẤP' }).click();
         // Expect
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/co-che-giai-quyet-tranh-chap.html');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/co-che-giai-quyet-tranh-chap.html");
         await expect(page.locator('p').filter({ hasText: 'CƠ CHẾ GIẢI QUYẾT TRANH CHẤP PHÁT SINH TRÊN SÀN GIAO DỊCH TMĐT MOBIEDU.VN' })).toBeVisible();
         // Chụp ảnh màn hình Facebook
         await page.waitForTimeout(2000);
@@ -758,14 +760,14 @@ function case32 () {
     test('Case 32: click link Quy chế', async ({ page }) => {
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click link App Store
         await page.getByRole('link', { name: 'QUY CHẾ HOẠT ĐỘNG' }).click();
         await page.waitForTimeout(5000);
         // Expect
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/quy-che-hoat-dong.html');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/quy-che-hoat-dong.html");
         // Chụp ảnh màn hình Facebook
         await page.waitForTimeout(2000);
         await page.screenshot({ path: 'TC_Ảnh_Quy_chế_case32.png', fullPage: true });
@@ -782,13 +784,13 @@ function case33 () {
     test('Case 33: click link icon Tai phone', async ({ page }) => {
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click link App Store
         await page.getByRole('link', { name: 'headset' }).click();
         // Expect
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/ho-tro-khach-hang');
+        await expect(page).toHaveURL( dataSiteTest[1].linkSite + "/ho-tro-khach-hang");
         await expect(page.getByRole('heading', { name: 'mobiEdu có thể giúp gì cho bạn?' })).toBeVisible();
         // Chụp ảnh màn hình Facebook
         await page.waitForTimeout(1000);
@@ -806,13 +808,13 @@ function case34 () {
     test('Case 34: click btn Về mobiEdu', async ({ page }) => {
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click btn Về mobiEdu
         await page.getByRole('link', { name: 'Về mobiEdu' }).click();
         // Expect
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/gioi-thieu');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/gioi-thieu");
         await expect(page.locator('section').filter({ hasText: 'Trang chủ Giới thiệu' })).toBeVisible();
 
     });
@@ -827,13 +829,13 @@ function case35 () {
     test('Case 35: click btn Hỗ trợ', async ({ page }) => {
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click btn Hỗ trợ
         await page.getByRole('link', { name: 'Hỗ trợ' }).click();
         // Expect
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/ho-tro-khach-hang');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/ho-tro-khach-hang");
         await expect(page.locator('section').filter({ hasText: 'Trang chủ Hỗ trợ' })).toBeVisible();
 
     });
@@ -848,13 +850,13 @@ function case36 () {
     test('Case 36: click icon Giỏ hàng', async ({ page }) => {
         test.slow();
         // Truy cập web 
-        await page.goto('https://mskill8.mobiedu.vn/');
+        await page.goto(dataSiteTest[1].linkSite);
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click btn Về mobiEdu
         await page.getByRole('link', { name: 'shopping_cart 0' }).click();
         // Expect
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/gio-hang');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/gio-hang");
         await expect(page.getByText('Giỏ hàng (0 sản phẩm) Hiện tại giỏ hàng của bạn chưa có sản phẩm nào. Vui lòng l')).toBeVisible();
         // Chụp hình màn hình Giỏ hàng 
         await page.waitForTimeout(2000);

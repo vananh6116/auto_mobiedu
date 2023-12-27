@@ -1,6 +1,7 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
 const exp = require('constants');
+import dataSiteTest from '../../../dataSite.json';
 
 /**
  * Case 1: Thành công : Click Btn Xóa
@@ -12,7 +13,7 @@ function case1 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -21,7 +22,7 @@ function case1 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị khoá học' }).click();
     await page.getByRole('link', { name: 'Khóa học Combo' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-combo');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/course-combo");
     await expect(page.getByRole('heading', { name: 'Danh sách khóa học Combo' })).toBeVisible();
     // Click btn Thêm khóa học mới 
     await page.waitForTimeout(1000);
@@ -94,7 +95,7 @@ function case1 () {
     await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra sau thêm 
     // Truy cập Web - Trang chủ - Tất cả => Hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass Xóa_KHCombo_Phát triển bản thân_Case1' }).first()).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.author').getByText('1 khóa học', { exact: true })).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.price').getByText('24.000 đ/ngày', { exact: true })).toBeVisible();
@@ -165,7 +166,7 @@ function case1 () {
     await expect(page.getByText('Khóa học phù hợp với Case 1 _ Khóa học phù hợp với')).toBeVisible();
     await expect(page.getByText('Hồ sơ giảng viên Phan Hoàng Anh Phan Hoàng Anh Phan Hoàng Anh').first()).toBeVisible();
     // Truy cập CMS xóa khóa học thành công khóa học 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-combo');
+    await page.goto(dataSiteTest[0].linkSite + "/course-combo");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass Xóa_KHCombo_Phát triển bản thân_Case1' })
@@ -177,7 +178,7 @@ function case1 () {
     await expect(page.getByRole('cell', { name: 'QA_Pass Xóa_KHCombo_Phát triển bản thân_Case1' })).not.toBeVisible();
     // ***Truy cập Web kiểm tra hiển thị sau xóa 
     // Truy cập Web - Trang chủ - Tất cả => Không hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass Xóa_KHCombo_Phát triển bản thân_Case1' }).first()).not.toBeVisible();
     await expect(page.locator('#tab_all div:nth-child(1) > div > div.caption > p.author').getByText('1 khóa học', { exact: true })).not.toBeVisible();
     await expect(page.locator('#tab_all div:nth-child(1) > div > div.caption > p.price').getByText('24.000 đ/ngày', { exact: true })).not.toBeVisible();
@@ -214,7 +215,7 @@ function case2 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -223,7 +224,7 @@ function case2 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị khoá học' }).click();
     await page.getByRole('link', { name: 'Khóa học Combo' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-combo');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/course-combo");
     await expect(page.getByRole('heading', { name: 'Danh sách khóa học Combo' })).toBeVisible();
     // Click btn Thêm khóa học mới 
     await page.waitForTimeout(1000);
@@ -296,7 +297,7 @@ function case2 () {
     await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra sau thêm 
     // Truy cập Web - Trang chủ - Tất cả => Hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Fail Đóng_KHCombo_Phát triển bản thân_Case2' }).first()).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.author').getByText('1 khóa học', { exact: true })).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.price').getByText('25.000 đ/ngày', { exact: true })).toBeVisible();
@@ -367,7 +368,7 @@ function case2 () {
     await expect(page.getByText('Khóa học phù hợp với Case 2 _ Khóa học phù hợp với')).toBeVisible();
     await expect(page.getByText('Hồ sơ giảng viên Phan Hoàng Anh Phan Hoàng Anh Phan Hoàng Anh').first()).toBeVisible();
     // Truy cập CMS xóa khóa học không thành công do click btn Đóng
-    await page.goto('https://mskill8admin.mobiedu.vn/course-combo');
+    await page.goto(dataSiteTest[0].linkSite + "/course-combo");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Fail Đóng_KHCombo_Phát triển bản thân_Case2' })
@@ -377,7 +378,7 @@ function case2 () {
     await page.getByRole('button', { name: 'Đóng' }).click();
     await expect(page.getByRole('cell', { name: 'QA_Fail Đóng_KHCombo_Phát triển bản thân_Case2' })).toBeVisible();
     // Truy cập CMS xóa khóa học thành công khóa học 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-combo');
+    await page.goto(dataSiteTest[0].linkSite + "/course-combo");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Fail Đóng_KHCombo_Phát triển bản thân_Case2' })
@@ -389,7 +390,7 @@ function case2 () {
     await expect(page.getByRole('cell', { name: 'QA_Fail Đóng_KHCombo_Phát triển bản thân_Case2' })).not.toBeVisible();
     // ***Truy cập Web kiểm tra hiển thị sau xóa 
     // Truy cập Web - Trang chủ - Tất cả => Không hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Fail Đóng_KHCombo_Phát triển bản thân_Case2' }).first()).not.toBeVisible();
     await expect(page.locator('#tab_all div:nth-child(1) > div > div.caption > p.author').getByText('1 khóa học', { exact: true })).not.toBeVisible();
     await expect(page.locator('#tab_all div:nth-child(1) > div > div.caption > p.price').getByText('25.000 đ/ngày', { exact: true })).not.toBeVisible();
@@ -426,7 +427,7 @@ function case3 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -435,7 +436,7 @@ function case3 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị khoá học' }).click();
     await page.getByRole('link', { name: 'Khóa học Combo' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-combo');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/course-combo");
     await expect(page.getByRole('heading', { name: 'Danh sách khóa học Combo' })).toBeVisible();
     // Click btn Thêm khóa học mới 
     await page.waitForTimeout(1000);
@@ -534,7 +535,7 @@ function case3 () {
     await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra sau thêm 
     // Truy cập Web - Trang chủ - Tất cả => Hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass Xóa GC-KH_KHCombo_Phát triển bản thân_Case3' }).first()).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.author').getByText('2 khóa học', { exact: true })).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.price').getByText('26.000 đ/ngày', { exact: true })).toBeVisible();
@@ -609,7 +610,7 @@ function case3 () {
     await expect(page.locator('p').filter({ hasText: 'Phan Hoàng Anh' }).first()).toBeVisible();
     await expect(page.getByRole('link', { name: 'Trương Bá Mạnh Long' }).nth(1)).toBeVisible();
     // Truy cập Web xóa gói cước - khóa học thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-combo');
+    await page.goto(dataSiteTest[0].linkSite + "/course-combo");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass Xóa GC-KH_KHCombo_Phát triển bản thân_Case3' })
@@ -632,7 +633,7 @@ function case3 () {
     await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra hiển thị sau xóa GC-KH
     // Truy cập Web - Trang chủ - Tất cả => Hiển thị sau xóa GC-KH
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass Xóa GC-KH_KHCombo_Phát triển bản thân_Case3' }).first()).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.author').getByText('1 khóa học', { exact: true })).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.price').getByText('26.000 đ/ngày', { exact: true })).toBeVisible();
@@ -676,7 +677,7 @@ function case3 () {
     await expect(page.locator('p').filter({ hasText: 'Phan Hoàng Anh' }).first()).toBeVisible();
     await expect(page.getByRole('link', { name: 'Trương Bá Mạnh Long' }).nth(1)).not.toBeVisible();
     // Truy cập CMS xóa khóa học vừa thêm 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-combo');
+    await page.goto(dataSiteTest[0].linkSite + "/course-combo");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass Xóa GC-KH_KHCombo_Phát triển bản thân_Case3' })
@@ -687,7 +688,7 @@ function case3 () {
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     //  ***Truy cập Web kiểm tra hiển thị sau xóa khóa học
     // Truy cập Web - Trang chủ - Tất cả => Không hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass Xóa GC-KH_KHCombo_Phát triển bản thân_Case3' }).first()).not.toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.author').getByText('1 khóa học', { exact: true })).not.toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.price').getByText('26.000 đ/ngày', { exact: true })).not.toBeVisible();
@@ -724,7 +725,7 @@ function case4 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -733,7 +734,7 @@ function case4 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị khoá học' }).click();
     await page.getByRole('link', { name: 'Khóa học Combo' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-combo');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/course-combo");
     await expect(page.getByRole('heading', { name: 'Danh sách khóa học Combo' })).toBeVisible();
     // Click btn Thêm khóa học mới 
     await page.waitForTimeout(1000);
@@ -831,7 +832,7 @@ function case4 () {
     await page.getByRole('button', { name: 'Lưu' }).first().click();
     await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
     // Truy cập Web xóa gói cước - khóa học thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-combo');
+    await page.goto(dataSiteTest[0].linkSite + "/course-combo");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Fail Xóa GC-KH_KHCombo_Phát triển bản thân_Case4' })
@@ -854,7 +855,7 @@ function case4 () {
     await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra sau thêm - xóa gói cước - khóa học không thành công
     // Truy cập Web - Trang chủ - Tất cả => Hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Fail Xóa GC-KH_KHCombo_Phát triển bản thân_Case4' }).first()).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.author').getByText('2 khóa học', { exact: true })).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.price').getByText('28.000 đ/ngày', { exact: true })).toBeVisible();
@@ -929,7 +930,7 @@ function case4 () {
     await expect(page.locator('p').filter({ hasText: 'Phan Hoàng Anh' }).first()).toBeVisible();
     await expect(page.getByRole('link', { name: 'Trương Bá Mạnh Long' }).nth(1)).toBeVisible();
     // Truy cập CMS xóa khóa học vừa thêm 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-combo');
+    await page.goto(dataSiteTest[0].linkSite + "/course-combo");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Fail Xóa GC-KH_KHCombo_Phát triển bản thân_Case4' })
@@ -940,7 +941,7 @@ function case4 () {
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     //  ***Truy cập Web kiểm tra hiển thị sau xóa khóa học
     // Truy cập Web - Trang chủ - Tất cả => Không hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Fail Xóa GC-KH_KHCombo_Phát triển bản thân_Case4' }).first()).not.toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.author').getByText('2 khóa học', { exact: true })).not.toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.price').getByText('28.000 đ/ngày', { exact: true })).not.toBeVisible();
