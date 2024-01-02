@@ -8,7 +8,7 @@ import dataSiteTest from '../../dataSite.json';
  * Mong muốn: Hiển thị đúng khóa học theo từng danh mục 
  */
 
-function case1 () {
+function case1() {
     test('Case 1: click danh mục khóa học', async ({ page }) => {
 
         test.slow();
@@ -58,7 +58,7 @@ function case1 () {
  * Mong muốn: Hiển thị đúng khóa học theo từng danh mục 
  */
 
-function case2 () {
+function case2() {
     test('Case 2: hover KH click danh mục', async ({ page }) => {
         test.slow();
         // Truy cập web 
@@ -80,6 +80,7 @@ function case2 () {
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc/tre-em");
         await expect(page.locator('section').filter({ hasText: 'Trang chủ Khoá học' }).locator('div')).toBeVisible();
         // Hover khóa học, click danh mục học sinh phổ thông 
+        await page.waitForTimeout(1000);
         await page.getByRole('link', { name: 'Khóa học' }).hover();
         await page.waitForTimeout(1000);
         await page.locator('#mobiEduToggleMenu').getByRole('link', { name: 'Học sinh phổ thông' }).click();
@@ -87,6 +88,7 @@ function case2 () {
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc/hoc-sinh-pho-thong");
         await expect(page.locator('section').filter({ hasText: 'Trang chủ Khoá học' }).locator('div')).toBeVisible();
         // Hover khóa học, click danh mục sinh viên và người đi làm
+        await page.waitForTimeout(1000);
         await page.getByRole('link', { name: 'Khóa học' }).hover();
         await page.waitForTimeout(1000);
         await page.locator('#mobiEduToggleMenu').getByRole('link', { name: 'Sinh viên và người đi làm' }).click();
@@ -102,7 +104,7 @@ function case2 () {
  * Mong muốn: Hiển thị đúng khóa học theo chủ đề
  */
 
-function case3 () {
+function case3() {
     test('Case 3: lọc KH theo chủ đề', async ({ page }) => {
 
         test.slow();
@@ -135,10 +137,10 @@ function case3 () {
  * Mong muốn: Hiển thị tất cả chủ đề
  */
 
-function case4 () {
+function case4() {
     test('Case 4: click btn Xem thêm nhiều chủ đề', async ({ page }) => {
 
-    test.slow();
+        test.slow();
         // Truy cập web 
         await page.goto(dataSiteTest[1].linkSite);
         await page.waitForTimeout(2000);
@@ -164,7 +166,7 @@ function case4 () {
         await expect(page.getByText('Nghệ thuật')).toBeVisible();
         await expect(page.getByText('Sức khỏe - Đời sống')).toBeVisible();
 
-});
+    });
 }
 
 /**
@@ -172,10 +174,10 @@ function case4 () {
  * Mong muốn: Hiển thị khóa đúng khoảng giá dưới 500.000
  */
 
-function case5 () {
+function case5() {
     test('Case 5: lọc KH theo khoảng giá', async ({ page }) => {
 
-    test.slow();
+        test.slow();
         // Truy cập web 
         await page.goto(dataSiteTest[1].linkSite);
         // Expect
@@ -188,7 +190,7 @@ function case5 () {
         // Click chọn khoảng giá
         await page.getByText('Dưới 500.000đ').click();
         // Click btn Áp dụng 
-        await page.getByRole('button', { name: 'Áp dụng' }).click(); 
+        await page.getByRole('button', { name: 'Áp dụng' }).click();
         // Expect 
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc?price_range=0_500000");
         await expect(page.getByText('Dưới 500.000đ')).toBeChecked();
@@ -196,13 +198,13 @@ function case5 () {
         await page.goto('https://mskill8.mobiedu.vn/khoa-hoc');
         await expect(page.getByText('Trên 2.000.000đ')).toBeVisible();
         await expect(page.getByText('Dưới 2.000.000đ')).toBeVisible();
-        await expect(page.getByText('Dưới 1.000.000 đ')).toBeVisible();  
+        await expect(page.getByText('Dưới 1.000.000 đ')).toBeVisible();
         await expect(page.getByText('Dưới 500.000đ')).toBeVisible();
         await expect(page.getByText('Miễn Phí')).not.toBeVisible();
         // Chụp hình màn hình lọc khoảng giá
         await page.waitForTimeout(2000);
-        await page.screenshot({path:'KH_Ảnh_lọc_khoảng_giá_case5.png', fullPage:true});
-});
+        await page.screenshot({ path: 'KH_Ảnh_lọc_khoảng_giá_case5.png', fullPage: true });
+    });
 }
 
 /**
@@ -210,10 +212,10 @@ function case5 () {
  * Mong muốn: Lọc khóa học theo chủ đề và khoảng giá không thành công 
  */
 
-function case6 () {
+function case6() {
     test('Case 6: Click btn Xóa lọc chủ đề, khoảng giá', async ({ page }) => {
 
-    test.slow();
+        test.slow();
         // Truy cập web 
         await page.goto(dataSiteTest[1].linkSite);
         // Expect
@@ -234,7 +236,7 @@ function case6 () {
         await expect(page.getByText('Tiền tiểu học')).not.toBeChecked();
         await expect(page.getByText('Dưới 500.000đ')).not.toBeChecked();
 
-});
+    });
 }
 
 /**
@@ -242,10 +244,10 @@ function case6 () {
  * Mong muốn: Hiển thị 3 bước đơn giản đăng kí ngay khóa học trên mobiEdu: 
  */
 
-function case7 () {
+function case7() {
     test('Case 7: Click btn Hướng dẫn đăng ký KH', async ({ page }) => {
 
-    test.slow();
+        test.slow();
         // Truy cập web 
         await page.goto(dataSiteTest[1].linkSite);
         // Expect
@@ -264,7 +266,7 @@ function case7 () {
         await expect(page.getByText('Bước 2: Truy cập vào khóa học muốn đăng kí, chọn "Đăng kí học ngay"')).toBeVisible();
         await expect(page.getByText('Bước 3: Lựa chọn hình thức thanh toán và làm theo hướng dẫn')).toBeVisible();
 
-});
+    });
 }
 
 /**
@@ -272,10 +274,10 @@ function case7 () {
  * Mong muốn: Hiển thị đúng khóa học theo Giá thấp nhất - Giá cao nhất - Phổ biến
  */
 
-function case8 () {
+function case8() {
     test('Case 8: Click btn Giá khóa học', async ({ page }) => {
 
-    test.slow();
+        test.slow();
         // Truy cập web 
         await page.goto(dataSiteTest[1].linkSite);
         // Expect
@@ -294,7 +296,7 @@ function case8 () {
         await page.getByRole('button', { name: 'Xem thêm' }).click();
         // Chụp ảnh màn hình Giá thấp nhất
         await page.waitForTimeout(2000);
-        await page.screenshot({path: 'KH_Ảnh_giá_thấp_nhất_case8.png',fullPage:true});
+        await page.screenshot({ path: 'KH_Ảnh_giá_thấp_nhất_case8.png', fullPage: true });
         // Click Giá cao nhất 
         await page.getByRole('link', { name: 'Giá cao nhất' }).click();
         // Expect
@@ -304,7 +306,7 @@ function case8 () {
         await page.getByRole('button', { name: 'Xem thêm' }).click();
         // Chụp ảnh màn hình giá cao nhất
         await page.waitForTimeout(2000);
-        await page.screenshot({path: 'KH_Ảnh_giá_cao_nhất_case8.png',fullPage:true});
+        await page.screenshot({ path: 'KH_Ảnh_giá_cao_nhất_case8.png', fullPage: true });
         // Click Phổ biến 
         await page.getByRole('link', { name: 'Phổ biến' }).click();
         // Expect 
@@ -314,9 +316,9 @@ function case8 () {
         await page.getByRole('button', { name: 'Xem thêm' }).click();
         // Chụp ảnh màn hình phổ biến 
         await page.waitForTimeout(2000);
-        await page.screenshot({path: 'KH_Ảnh_phổ_biến_case8.png',fullPage:true});
+        await page.screenshot({ path: 'KH_Ảnh_phổ_biến_case8.png', fullPage: true });
 
-});
+    });
 }
 
 /**
@@ -324,10 +326,10 @@ function case8 () {
  * Mong muốn: Hiển thị đúng đến trang giảng viên 
  */
 
-function case9 () {
+function case9() {
     test('Case 9: Click link giảng viên', async ({ page }) => {
 
-    test.slow();
+        test.slow();
         // Truy cập web 
         await page.goto(dataSiteTest[1].linkSite);
         // Expect
@@ -352,8 +354,8 @@ function case9 () {
         await expect(page.getByText('Video Giới thiệu giảng viên', { exact: true })).toBeVisible();
         // Chụp ảnh màn hình 
         await page.waitForTimeout(2000);
-        await page.screenshot({path:'Ảnh_giảng_viên.png',fullPage:true});
-});
+        await page.screenshot({ path: 'Ảnh_giảng_viên.png', fullPage: true });
+    });
 }
 
 function main() {

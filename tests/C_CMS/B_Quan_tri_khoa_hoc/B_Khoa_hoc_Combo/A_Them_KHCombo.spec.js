@@ -1991,7 +1991,7 @@ function case12 () {
 });
 }
 
-function main(){
+function main() {
     case1();
     case2();
     case3();
