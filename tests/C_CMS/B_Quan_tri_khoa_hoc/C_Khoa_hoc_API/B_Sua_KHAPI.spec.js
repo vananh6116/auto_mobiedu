@@ -1,6 +1,7 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
 const exp = require('constants');
+import dataSiteTest from '../../../dataSite.json';
 
 /**
  * Case 1: Thành công : Sửa khóa học trẻ em sang học sinh
@@ -16,7 +17,7 @@ function case1 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -25,7 +26,7 @@ function case1 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị khoá học' }).click();
     await page.getByRole('link', { name: 'Khóa học API' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-api');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/course-api");
     await expect(page.getByRole('heading', { name: 'Danh sách khóa học API' })).toBeVisible();
     // Thêm mới khóa học - trẻ em 
     await page.waitForTimeout(1000);
@@ -104,7 +105,7 @@ function case1 () {
     await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra hiển thị sau thêm 
     // Truy cập Web - Trang chủ - Tất cả => Hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass Thêm TE_API_Giải đố_Case1' }).first()).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.author').getByText('Không xác định', { exact: true })).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.price').getByText('34.000 đ/ngày', { exact: true })).toBeVisible();
@@ -150,7 +151,7 @@ function case1 () {
     await expect(page.getByText('Hướng dẫn Case 1 _ Hướng dẫn sử dụng khóa học API')).toBeVisible();
     await expect(page.getByText('Khóa học phù hợp với Case 1 _ Khóa học phù hợp với tất cả')).toBeVisible();
     // Truy cập CMS sửa khóa học 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-api');
+    await page.goto(dataSiteTest[0].linkSite + "/course-api");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass Thêm TE_API_Giải đố_Case1' })
@@ -184,7 +185,7 @@ function case1 () {
     await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra khóa học sau sửa 
     // Truy cập Web - Trang chủ - Tất cả => Hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass Sửa HS_API_Giải đố_Case1' }).first()).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.author').getByText('Không xác định', { exact: true })).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.price').getByText('35.000 đ/ngày', { exact: true })).toBeVisible();
@@ -230,7 +231,7 @@ function case1 () {
     await expect(page.getByText('Hướng dẫn Case 1 _ Hướng dẫn sử dụng khóa học API')).toBeVisible();
     await expect(page.getByText('Khóa học phù hợp với Case 1 _ Khóa học phù hợp với tất cả')).toBeVisible();
     // Truy cập CMS xóa khóa học 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-api');
+    await page.goto(dataSiteTest[0].linkSite + "/course-api");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass Sửa HS_API_Giải đố_Case1' })
@@ -241,7 +242,7 @@ function case1 () {
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra sau xóa 
     // Truy cập Web - Trang chủ - Tất cả => Không hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass Sửa HS_API_Giải đố_Case1' }).first()).not.toBeVisible();
     // Truy cập Web - Trang chủ - Học sinh => Không hiển thị
     await page.locator('#btn_tab_hoc-sinh-pho-thong').click();
@@ -269,7 +270,7 @@ function case2 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -278,7 +279,7 @@ function case2 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị khoá học' }).click();
     await page.getByRole('link', { name: 'Khóa học API' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-api');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/course-api");
     await expect(page.getByRole('heading', { name: 'Danh sách khóa học API' })).toBeVisible();
     // Thêm mới khóa học - học sinh
     await page.waitForTimeout(1000);
@@ -357,7 +358,7 @@ function case2 () {
     await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra hiển thị sau thêm 
     // Truy cập Web - Trang chủ - Tất cả => Hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass Thêm HS_API_Giải đố_Case2' }).first()).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.author').getByText('Không xác định', { exact: true })).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.price').getByText('36.000 đ/ngày', { exact: true })).toBeVisible();
@@ -403,7 +404,7 @@ function case2 () {
     await expect(page.getByText('Hướng dẫn Case 2 _ Hướng dẫn sử dụng khóa học API')).toBeVisible();
     await expect(page.getByText('Khóa học phù hợp với Case 2 _ Khóa học phù hợp với tất cả')).toBeVisible();
     // Truy cập CMS sửa khóa học 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-api');
+    await page.goto(dataSiteTest[0].linkSite + "/course-api");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass Thêm HS_API_Giải đố_Case2' })
@@ -437,7 +438,7 @@ function case2 () {
     await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra khóa học sau sửa 
     // Truy cập Web - Trang chủ - Tất cả => Hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass Sửa SV_API_Giải đố_Case2' }).first()).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.author').getByText('Không xác định', { exact: true })).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.price').getByText('37.000 đ/ngày', { exact: true })).toBeVisible();
@@ -483,7 +484,7 @@ function case2 () {
     await expect(page.getByText('Hướng dẫn Case 2 _ Hướng dẫn sử dụng khóa học API')).toBeVisible();
     await expect(page.getByText('Khóa học phù hợp với Case 2 _ Khóa học phù hợp với tất cả')).toBeVisible();
     // Truy cập CMS xóa khóa học 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-api');
+    await page.goto(dataSiteTest[0].linkSite + "/course-api");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass Sửa SV_API_Giải đố_Case2' })
@@ -494,7 +495,7 @@ function case2 () {
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra sau xóa 
     // Truy cập Web - Trang chủ - Tất cả => Không hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass Sửa SV_API_Giải đố_Case2' }).first()).not.toBeVisible();
     // Truy cập Web - Trang chủ - Sinh viên => Không hiển thị 
     await page.locator('#btn_tab_sinh-vien-nguoi-di-lam').click();
@@ -522,7 +523,7 @@ function case3 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -531,7 +532,7 @@ function case3 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị khoá học' }).click();
     await page.getByRole('link', { name: 'Khóa học API' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-api');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/course-api");
     await expect(page.getByRole('heading', { name: 'Danh sách khóa học API' })).toBeVisible();
     // Thêm mới khóa học - trẻ em 
     await page.waitForTimeout(1000);
@@ -610,7 +611,7 @@ function case3 () {
     await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra hiển thị sau thêm 
     // Truy cập Web - Trang chủ - Tất cả => Hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass Thêm TE_API_Giải đố_Case3' }).first()).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.author').getByText('Không xác định', { exact: true })).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.price').getByText('38.000 đ/ngày', { exact: true })).toBeVisible();
@@ -656,7 +657,7 @@ function case3 () {
     await expect(page.getByText('Hướng dẫn Case 3 _ Hướng dẫn sử dụng khóa học API')).toBeVisible();
     await expect(page.getByText('Khóa học phù hợp với Case 3 _ Khóa học phù hợp với tất cả')).toBeVisible();
     // Truy cập CMS sửa khóa học 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-api');
+    await page.goto(dataSiteTest[0].linkSite + "/course-api");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass Thêm TE_API_Giải đố_Case3' })
@@ -692,7 +693,7 @@ function case3 () {
     await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra khóa học sau sửa 
     // Truy cập Web - Trang chủ - Tất cả => Hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass Sửa HS&SV_API_Giải đố_Case3' }).first()).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.author').getByText('Không xác định', { exact: true })).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.price').getByText('39.000 đ/ngày', { exact: true })).toBeVisible();
@@ -746,7 +747,7 @@ function case3 () {
     await expect(page.getByText('Hướng dẫn Case 3 _ Hướng dẫn sử dụng khóa học API')).toBeVisible();
     await expect(page.getByText('Khóa học phù hợp với Case 3 _ Khóa học phù hợp với tất cả')).toBeVisible();
     // Truy cập CMS xóa khóa học 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-api');
+    await page.goto(dataSiteTest[0].linkSite + "/course-api");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass Sửa HS&SV_API_Giải đố_Case3' })
@@ -757,7 +758,7 @@ function case3 () {
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra sau xóa 
     // Truy cập Web - Trang chủ - Tất cả => Không hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass Sửa HS&SV_API_Giải đố_Case3' }).first()).not.toBeVisible();
     // Truy cập Web - Trang chủ - Trẻ em => Không hiển thị
     await page.locator('#btn_tab_tre-em').click();
@@ -797,7 +798,7 @@ function case4 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -806,7 +807,7 @@ function case4 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị khoá học' }).click();
     await page.getByRole('link', { name: 'Khóa học API' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-api');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/course-api");
     await expect(page.getByRole('heading', { name: 'Danh sách khóa học API' })).toBeVisible();
     // Thêm mới khóa học - trẻ em 
     await page.waitForTimeout(1000);
@@ -885,7 +886,7 @@ function case4 () {
     await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra hiển thị sau thêm 
     // Truy cập Web - Trang chủ - Tất cả => Hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass Hoạt động sang ẩn_API_Giải đố_Case4' }).first()).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.author').getByText('Không xác định', { exact: true })).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.price').getByText('40.000 đ/ngày', { exact: true })).toBeVisible();
@@ -931,7 +932,7 @@ function case4 () {
     await expect(page.getByText('Hướng dẫn Case 4 _ Hướng dẫn sử dụng khóa học API')).toBeVisible();
     await expect(page.getByText('Khóa học phù hợp với Case 4 _ Khóa học phù hợp với tất cả')).toBeVisible();
     // Truy cập CMS sửa khóa học 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-api');
+    await page.goto(dataSiteTest[0].linkSite + "/course-api");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass Hoạt động sang ẩn_API_Giải đố_Case4' })
@@ -951,7 +952,7 @@ function case4 () {
     await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra khóa học sau sửa 
     // Truy cập Web - Trang chủ - Tất cả => Không hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass Sửa Hoạt động sang ẩn_API_Giải đố_Case4' }).first()).not.toBeVisible();
     // Truy cập Web - Trang chủ - Trẻ em => Không hiển thị 
     await page.locator('#btn_tab_tre-em').click();
@@ -963,7 +964,7 @@ function case4 () {
     await page.getByRole('main').getByRole('link', { name: 'Trẻ em' }).click();
     await expect(page.getByRole('link', { name: 'QA_Pass Sửa Hoạt động sang ẩn_API_Giải đố_Case4' }).first()).not.toBeVisible();
     // Truy cập CMS xóa khóa học 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-api');
+    await page.goto(dataSiteTest[0].linkSite + "/course-api");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass Sửa Hoạt động sang ẩn_API_Giải đố_Case4' })
@@ -989,7 +990,7 @@ function case5 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -998,7 +999,7 @@ function case5 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị khoá học' }).click();
     await page.getByRole('link', { name: 'Khóa học API' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-api');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/course-api");
     await expect(page.getByRole('heading', { name: 'Danh sách khóa học API' })).toBeVisible();
     // Thêm mới khóa học - trẻ em 
     await page.waitForTimeout(1000);
@@ -1077,7 +1078,7 @@ function case5 () {
     await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra hiển thị sau thêm 
     // Truy cập Web - Trang chủ - Tất cả => Không hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass Ẩn sang hoạt động_API_Giải đố_Case5' }).first()).not.toBeVisible();
     // Truy cập Web - Trang chủ - Trẻ em => Không hiển thị
     await page.locator('#btn_tab_tre-em').click();
@@ -1101,7 +1102,7 @@ function case5 () {
     await page.getByRole('main').getByRole('link', { name: 'Sinh viên và người đi làm' }).click();
     await expect(page.getByRole('link', { name: 'QA_Pass Ẩn sang hoạt động_API_Giải đố_Case5' }).first()).not.toBeVisible();
     // Truy cập CMS sửa khóa học 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-api');
+    await page.goto(dataSiteTest[0].linkSite + "/course-api");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass Ẩn sang hoạt động_API_Giải đố_Case5' })
@@ -1121,7 +1122,7 @@ function case5 () {
     await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra khóa học sau sửa 
     // Truy cập Web - Trang chủ - Tất cả => Hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass Sửa Ẩn sang hoạt động_API_Giải đố_Case5' }).first()).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.author').getByText('Không xác định', { exact: true })).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.price').getByText('41.000 đ/ngày', { exact: true })).toBeVisible();
@@ -1167,7 +1168,7 @@ function case5 () {
     await expect(page.getByText('Hướng dẫn Case 5 _ Hướng dẫn sử dụng khóa học API')).toBeVisible();
     await expect(page.getByText('Khóa học phù hợp với Case 5 _ Khóa học phù hợp với tất cả')).toBeVisible();
     // Truy cập CMS xóa khóa học 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-api');
+    await page.goto(dataSiteTest[0].linkSite + "/course-api");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass Sửa Ẩn sang hoạt động_API_Giải đố_Case5' })
@@ -1178,7 +1179,7 @@ function case5 () {
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra khóa học sau xóa
     // Truy cập Web - Trang chủ - Tất cả => Không hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass Sửa Ẩn sang hoạt động_API_Giải đố_Case5' }).first()).not.toBeVisible();
     // Truy cập Web - Trang chủ - Trẻ em => Không hiển thị
     await page.locator('#btn_tab_tre-em').click();
@@ -1203,7 +1204,7 @@ function case6 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -1212,7 +1213,7 @@ function case6 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị khoá học' }).click();
     await page.getByRole('link', { name: 'Khóa học API' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-api');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/course-api");
     await expect(page.getByRole('heading', { name: 'Danh sách khóa học API' })).toBeVisible();
     // Thêm mới khóa học - trẻ em 
     await page.waitForTimeout(1000);
@@ -1291,7 +1292,7 @@ function case6 () {
     await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra hiển thị sau thêm 
     // Truy cập Web - Trang chủ - Tất cả => Hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass thêm gói cước_API_Giải đố_Case6' }).first()).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.author').getByText('Không xác định', { exact: true })).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.price').getByText('42.000 đ/ngày', { exact: true })).toBeVisible();
@@ -1337,7 +1338,7 @@ function case6 () {
     await expect(page.getByText('Hướng dẫn Case 6 _ Hướng dẫn sử dụng khóa học API')).toBeVisible();
     await expect(page.getByText('Khóa học phù hợp với Case 6 _ Khóa học phù hợp với tất cả')).toBeVisible();
     // Truy cập CMS sửa khóa học 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-api');
+    await page.goto(dataSiteTest[0].linkSite + "/course-api");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass thêm gói cước_API_Giải đố_Case6' })
@@ -1375,7 +1376,7 @@ function case6 () {
     await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra hiển thị sau sửa
     // Truy cập Web - Trang chủ - Tất cả => Hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass Sửa thêm gói cước_Ưu tiên_API_Giải đố_Case6' }).first()).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.author').getByText('Không xác định', { exact: true })).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.price').getByText('43.000 đ/ngày', { exact: true })).toBeVisible();
@@ -1410,7 +1411,7 @@ function case6 () {
     await expect(page.getByText('Hướng dẫn Case 6 _ Hướng dẫn sử dụng khóa học API')).toBeVisible();
     await expect(page.getByText('Khóa học phù hợp với Case 6 _ Khóa học phù hợp với tất cả')).toBeVisible();
     // Truy cập CMS xóa khóa học 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-api');
+    await page.goto(dataSiteTest[0].linkSite + "/course-api");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass Sửa thêm gói cước_Ưu tiên_API_Giải đố_Case6' })
@@ -1421,7 +1422,7 @@ function case6 () {
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra khóa học sau xóa
     // Truy cập Web - Trang chủ - Tất cả => Không hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass Sửa thêm gói cước_Ưu tiên_API_Giải đố_Case6' }).first()).not.toBeVisible();
     // Truy cập Web - Trang chủ - Trẻ em => Không hiển thị
     await page.locator('#btn_tab_tre-em').click();
@@ -1446,7 +1447,7 @@ function case7 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -1455,7 +1456,7 @@ function case7 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị khoá học' }).click();
     await page.getByRole('link', { name: 'Khóa học API' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-api');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/course-api");
     await expect(page.getByRole('heading', { name: 'Danh sách khóa học API' })).toBeVisible();
     // Thêm mới khóa học - trẻ em 
     await page.waitForTimeout(1000);
@@ -1534,7 +1535,7 @@ function case7 () {
     await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra hiển thị sau thêm 
     // Truy cập Web - Trang chủ - Tất cả => Hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass thêm gói cước_API_Giải đố_Case7' }).first()).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.author').getByText('Không xác định', { exact: true })).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.price').getByText('44.000 đ/ngày', { exact: true })).toBeVisible();
@@ -1580,7 +1581,7 @@ function case7 () {
     await expect(page.getByText('Hướng dẫn Case 7 _ Hướng dẫn sử dụng khóa học API')).toBeVisible();
     await expect(page.getByText('Khóa học phù hợp với Case 7 _ Khóa học phù hợp với tất cả')).toBeVisible();
     // Truy cập CMS sửa khóa học 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-api');
+    await page.goto(dataSiteTest[0].linkSite + "/course-api");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass thêm gói cước_API_Giải đố_Case7' })
@@ -1616,7 +1617,7 @@ function case7 () {
     await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra hiển thị sau sửa
     // Truy cập Web - Trang chủ - Tất cả => Hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass thêm gói cước Ko Ưu tiên_API_Giải đố_Case7' }).first()).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.author').getByText('Không xác định', { exact: true })).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.price').getByText('44.000 đ/ngày', { exact: true })).toBeVisible();
@@ -1651,7 +1652,7 @@ function case7 () {
     await expect(page.getByText('Hướng dẫn Case 7 _ Hướng dẫn sử dụng khóa học API')).toBeVisible();
     await expect(page.getByText('Khóa học phù hợp với Case 7 _ Khóa học phù hợp với tất cả')).toBeVisible();
     // Truy cập CMS xóa khóa học 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-api');
+    await page.goto(dataSiteTest[0].linkSite + "/course-api");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass thêm gói cước Ko Ưu tiên_API_Giải đố_Case7' })
@@ -1662,7 +1663,7 @@ function case7 () {
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra khóa học sau xóa
     // Truy cập Web - Trang chủ - Tất cả => Không hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass thêm gói cước Ko Ưu tiên_API_Giải đố_Case7' }).first()).not.toBeVisible();
     // Truy cập Web - Trang chủ - Trẻ em => Không hiển thị
     await page.locator('#btn_tab_tre-em').click();
@@ -1687,7 +1688,7 @@ function case8 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -1696,7 +1697,7 @@ function case8 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị khoá học' }).click();
     await page.getByRole('link', { name: 'Khóa học API' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-api');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/course-api");
     await expect(page.getByRole('heading', { name: 'Danh sách khóa học API' })).toBeVisible();
     // Thêm mới khóa học - trẻ em 
     await page.waitForTimeout(1000);
@@ -1775,7 +1776,7 @@ function case8 () {
     await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra hiển thị sau thêm 
     // Truy cập Web - Trang chủ - Tất cả => Hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass thêm KH_API_Giải đố_Case8' }).first()).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.author').getByText('Không xác định', { exact: true })).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.price').getByText('46.000 đ/ngày', { exact: true })).toBeVisible();
@@ -1821,7 +1822,7 @@ function case8 () {
     await expect(page.getByText('Hướng dẫn Case 8 _ Hướng dẫn sử dụng khóa học API')).toBeVisible();
     await expect(page.getByText('Khóa học phù hợp với Case 8 _ Khóa học phù hợp với tất cả')).toBeVisible();
     // Truy cập CMS sửa khóa học 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-api');
+    await page.goto(dataSiteTest[0].linkSite + "/course-api");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass thêm KH_API_Giải đố_Case8' })
@@ -1849,7 +1850,7 @@ function case8 () {
     await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra hiển thị sau sửa
     // Truy cập Web - Trang chủ - Tất cả => Hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass sửa giá Ngày sang Tuần_API_Giải đố_Case8' }).first()).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.author').getByText('Không xác định', { exact: true })).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.price').getByText('99.000 đ/tuần', { exact: true })).toBeVisible();
@@ -1883,7 +1884,7 @@ function case8 () {
     await expect(page.getByText('Hướng dẫn Case 8 _ Hướng dẫn sử dụng khóa học API')).toBeVisible();
     await expect(page.getByText('Khóa học phù hợp với Case 8 _ Khóa học phù hợp với tất cả')).toBeVisible();
     // Truy cập CMS xóa khóa học 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-api');
+    await page.goto(dataSiteTest[0].linkSite + "/course-api");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass sửa giá Ngày sang Tuần_API_Giải đố_Case8' })
@@ -1894,7 +1895,7 @@ function case8 () {
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra khóa học sau xóa
     // Truy cập Web - Trang chủ - Tất cả => Không hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Pass sửa giá Ngày sang Tuần_API_Giải đố_Case8' }).first()).not.toBeVisible();
     // Truy cập Web - Trang chủ - Trẻ em => Không hiển thị
     await page.locator('#btn_tab_tre-em').click();
@@ -1919,7 +1920,7 @@ function case9 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -1928,7 +1929,7 @@ function case9 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị khoá học' }).click();
     await page.getByRole('link', { name: 'Khóa học API' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-api');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/course-api");
     await expect(page.getByRole('heading', { name: 'Danh sách khóa học API' })).toBeVisible();
     // Thêm mới khóa học - trẻ em 
     await page.waitForTimeout(1000);
@@ -2040,7 +2041,7 @@ function case9 () {
     await expect(page.getByText('Cập nhật thành công!')).not.toBeVisible();
     // ***Truy cập Web kiểm tra hiển thị sau thêm 
     // Truy cập Web - Trang chủ - Tất cả => Hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Fail Thêm KH_API_Giải đố_Case9' }).first()).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.author').getByText('Không xác định', { exact: true })).toBeVisible();
     await expect(page.locator('div#tab_all div:nth-child(1) > div > div.caption > p.price').getByText('47.000 đ/ngày', { exact: true })).toBeVisible();
@@ -2086,7 +2087,7 @@ function case9 () {
     await expect(page.getByText('Hướng dẫn Case 9 _ Hướng dẫn sử dụng khóa học API')).toBeVisible();
     await expect(page.getByText('Khóa học phù hợp với Case 9 _ Khóa học phù hợp với tất cả')).toBeVisible();
     // Truy cập CMS xóa khóa học 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-api');
+    await page.goto(dataSiteTest[0].linkSite + "/course-api");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Fail Thêm KH_API_Giải đố_Case9' })
@@ -2097,7 +2098,7 @@ function case9 () {
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra khóa học sau xóa
     // Truy cập Web - Trang chủ - Tất cả => Không hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.getByRole('link', { name: 'QA_Fail Thêm KH_API_Giải đố_Case9' }).first()).not.toBeVisible();
     // Truy cập Web - Trang chủ - Trẻ em => Không hiển thị
     await page.locator('#btn_tab_tre-em').click();

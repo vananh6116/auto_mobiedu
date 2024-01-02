@@ -1,6 +1,7 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
 const exp = require('constants');
+import dataSiteTest from '../../../../dataSite.json';
 
 /**
  * Case 1: Thành công : sửa tiêu đề  
@@ -11,7 +12,7 @@ function case1 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -20,7 +21,7 @@ function case1 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị nội dung' }).click();
     await page.getByRole('link', { name: 'Tin tức' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/blog-category');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/blog-category");
     await expect(page.getByRole('heading', { name: 'Danh sách chuyên mục' })).toBeVisible();
     // Thêm chuyên mục
     await page.waitForTimeout(1000);
@@ -37,10 +38,10 @@ function case1 () {
     await page.getByRole('button', { name: 'Lưu' }).click(); 
     await expect(page.getByText("Thêm thành công!")).toBeVisible();
     //***Truy cập Web kiểm tra hiển thị sau thêm 
-    await page.goto('https://mskill8.mobiedu.vn/tin-tuc');
+    await page.goto(dataSiteTest[1].linkSite + "/tin-tuc");
     await expect(page.getByRole('link', { name: 'QA_Thêm CM_Tin Giải trí_Case1 chevron_right' }).first()).toBeVisible();
     // Truy cập CMS sửa chuyên mục 
-    await page.goto('https://mskill8admin.mobiedu.vn/blog-category');
+    await page.goto(dataSiteTest[0].linkSite + "/blog-category");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Thêm CM_Tin Giải trí_Case1' })
@@ -54,10 +55,10 @@ function case1 () {
     await page.getByRole('button', { name: 'Lưu' }).click(); 
     await expect(page.getByText("Cập nhật thành công!")).toBeVisible();
     //***Truy cập Web kiểm tra hiển thị sau sửa
-    await page.goto('https://mskill8.mobiedu.vn/tin-tuc');
+    await page.goto(dataSiteTest[1].linkSite + "/tin-tuc");
     await expect(page.getByRole('link', { name: 'QA_Sửa CM_Tin Giải trí_Case1 chevron_right' }).first()).toBeVisible();
     // Truy cập CMS xóa chuyên mục 
-    await page.goto('https://mskill8admin.mobiedu.vn/blog-category');
+    await page.goto(dataSiteTest[0].linkSite + "/blog-category");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Sửa CM_Tin Giải trí_Case1' })
@@ -67,7 +68,7 @@ function case1 () {
     await page.getByRole('button', { name: 'Xóa' }).click();
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     //***Truy cập Web kiểm tra hiển thị sau xóa
-    await page.goto('https://mskill8.mobiedu.vn/tin-tuc');
+    await page.goto(dataSiteTest[1].linkSite + "/tin-tuc");
     await expect(page.getByRole('link', { name: 'QA_Sửa CM_Tin Giải trí_Case1 chevron_right' }).first()).not.toBeVisible();
 
 });
@@ -82,7 +83,7 @@ function case2 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -91,7 +92,7 @@ function case2 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị nội dung' }).click();
     await page.getByRole('link', { name: 'Tin tức' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/blog-category');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/blog-category");
     await expect(page.getByRole('heading', { name: 'Danh sách chuyên mục' })).toBeVisible();
     // Thêm chuyên mục
     await page.waitForTimeout(1000);
@@ -108,10 +109,10 @@ function case2 () {
     await page.getByRole('button', { name: 'Lưu' }).click(); 
     await expect(page.getByText("Thêm thành công!")).toBeVisible();
     //***Truy cập Web kiểm tra hiển thị sau thêm 
-    await page.goto('https://mskill8.mobiedu.vn/tin-tuc');
+    await page.goto(dataSiteTest[1].linkSite + "/tin-tuc");
     await expect(page.getByRole('link', { name: 'QA_Thêm CM_Tin Giải trí_Case2 chevron_right' }).first()).toBeVisible();
     // Truy cập CMS sửa chuyên mục 
-    await page.goto('https://mskill8admin.mobiedu.vn/blog-category');
+    await page.goto(dataSiteTest[0].linkSite + "/blog-category");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Thêm CM_Tin Giải trí_Case2' })
@@ -127,10 +128,10 @@ function case2 () {
     await page.getByRole('button', { name: 'Lưu' }).click(); 
     await expect(page.getByText("Cập nhật thành công!")).toBeVisible();
     //***Truy cập Web kiểm tra hiển thị sau sửa
-    await page.goto('https://mskill8.mobiedu.vn/tin-tuc');
+    await page.goto(dataSiteTest[1].linkSite + "/tin-tuc");
     await expect(page.getByRole('link', { name: 'QA_Sửa Hoạt động sang Ẩn_Tin Giải trí_Case2 chevron_right' }).first()).not.toBeVisible();
     // Truy cập CMS xóa chuyên mục 
-    await page.goto('https://mskill8admin.mobiedu.vn/blog-category');
+    await page.goto(dataSiteTest[0].linkSite + "/blog-category");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Sửa Hoạt động sang Ẩn_Tin Giải trí_Case2' })
@@ -152,7 +153,7 @@ function case3 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -161,7 +162,7 @@ function case3 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị nội dung' }).click();
     await page.getByRole('link', { name: 'Tin tức' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/blog-category');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/blog-category");
     await expect(page.getByRole('heading', { name: 'Danh sách chuyên mục' })).toBeVisible();
     // Thêm chuyên mục
     await page.waitForTimeout(1000);
@@ -178,10 +179,10 @@ function case3 () {
     await page.getByRole('button', { name: 'Lưu' }).click(); 
     await expect(page.getByText("Thêm thành công!")).toBeVisible();
     //***Truy cập Web kiểm tra hiển thị sau thêm 
-    await page.goto('https://mskill8.mobiedu.vn/tin-tuc');
+    await page.goto(dataSiteTest[1].linkSite + "/tin-tuc");
     await expect(page.getByRole('link', { name: 'QA_Thêm CM_Tin Giải trí_Case3 chevron_right' }).first()).not.toBeVisible();
     // Truy cập CMS sửa chuyên mục 
-    await page.goto('https://mskill8admin.mobiedu.vn/blog-category');
+    await page.goto(dataSiteTest[0].linkSite + "/blog-category");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Thêm CM_Tin Giải trí_Case3' })
@@ -197,10 +198,10 @@ function case3 () {
     await page.getByRole('button', { name: 'Lưu' }).click(); 
     await expect(page.getByText("Cập nhật thành công!")).toBeVisible();
     //***Truy cập Web kiểm tra hiển thị sau sửa
-    await page.goto('https://mskill8.mobiedu.vn/tin-tuc');
+    await page.goto(dataSiteTest[1].linkSite + "/tin-tuc");
     await expect(page.getByRole('link', { name: 'QA_Sửa Ẩn sang Hoạt động_Tin Giải trí_Case3 chevron_right' }).first()).toBeVisible();
     // Truy cập CMS xóa chuyên mục 
-    await page.goto('https://mskill8admin.mobiedu.vn/blog-category');
+    await page.goto(dataSiteTest[0].linkSite + "/blog-category");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Sửa Ẩn sang Hoạt động_Tin Giải trí_Case3' })
@@ -210,7 +211,7 @@ function case3 () {
     await page.getByRole('button', { name: 'Xóa' }).click();
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     //***Truy cập Web kiểm tra hiển thị sau xóa
-    await page.goto('https://mskill8.mobiedu.vn/tin-tuc');
+    await page.goto(dataSiteTest[1].linkSite + "/tin-tuc");
     await expect(page.getByRole('link', { name: 'QA_Sửa Ẩn sang Hoạt động_Tin Giải trí_Case3 chevron_right' }).first()).not.toBeVisible();
 
 });
@@ -225,7 +226,7 @@ function case4 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -234,7 +235,7 @@ function case4 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị nội dung' }).click();
     await page.getByRole('link', { name: 'Tin tức' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/blog-category');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/blog-category");
     await expect(page.getByRole('heading', { name: 'Danh sách chuyên mục' })).toBeVisible();
     // Thêm chuyên mục
     await page.waitForTimeout(1000);
@@ -267,10 +268,10 @@ function case4 () {
     await expect(page.getByText("Cập nhật thành công!")).not.toBeVisible();
     await expect(page.getByRole('cell', { name: 'QA_Fail CM_Tin Giải trí_Case4' })).toBeVisible();
     //***Truy cập Web kiểm tra hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/tin-tuc');
+    await page.goto(dataSiteTest[1].linkSite + "/tin-tuc");
     await expect(page.getByRole('link', { name: 'QA_Fail CM_Tin Giải trí_Case4 chevron_right' }).first()).toBeVisible();
     // Truy cập CMS xóa chuyên mục 
-    await page.goto('https://mskill8admin.mobiedu.vn/blog-category');
+    await page.goto(dataSiteTest[0].linkSite + "/blog-category");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Fail CM_Tin Giải trí_Case4' })
@@ -280,7 +281,7 @@ function case4 () {
     await page.getByRole('button', { name: 'Xóa' }).click();
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     //***Truy cập Web kiểm tra hiển thị sau xóa
-    await page.goto('https://mskill8.mobiedu.vn/tin-tuc');
+    await page.goto(dataSiteTest[1].linkSite + "/tin-tuc");
     await expect(page.getByRole('link', { name: 'QA_Fail CM_Tin Giải trí_Case4 chevron_right' }).first()).not.toBeVisible();
 
 });

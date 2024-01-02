@@ -1,6 +1,7 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
 const exp = require('constants');
+import dataSiteTest from '../../../../dataSite.json';
 
 /**
  * Case 1: Thành công : Thêm câu hỏi Sản phẩm - Khóa học
@@ -11,7 +12,7 @@ function case1 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -21,7 +22,7 @@ function case1 () {
     await page.getByRole('link', { name: 'Quản trị nội dung' }).click();
     await page.getByRole('link', { name: 'Hỗ trợ' }).click();
     await page.getByRole('link', { name: 'Câu hỏi hỗ trợ' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/support');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/support");
     await expect(page.getByRole('heading', { name: 'Danh sách danh mục hỗ trợ' })).toBeVisible();
     // Click btn Thêm mới 
     await page.waitForTimeout(1000);

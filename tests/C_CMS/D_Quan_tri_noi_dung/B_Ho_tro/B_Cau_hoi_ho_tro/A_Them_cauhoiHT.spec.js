@@ -1,6 +1,7 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
 const exp = require('constants');
+import dataSiteTest from '../../../../dataSite.json';
 
 /**
  * Case 1: Thành công : Thêm câu hỏi Sản phẩm - Khóa học
@@ -11,7 +12,7 @@ function case1 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -21,7 +22,7 @@ function case1 () {
     await page.getByRole('link', { name: 'Quản trị nội dung' }).click();
     await page.getByRole('link', { name: 'Hỗ trợ' }).click();
     await page.getByRole('link', { name: 'Câu hỏi hỗ trợ' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/support');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/support");
     await expect(page.getByRole('heading', { name: 'Danh sách danh mục hỗ trợ' })).toBeVisible();
     // Click btn Thêm mới 
     await page.waitForTimeout(1000);
@@ -50,7 +51,7 @@ function case1 () {
     await expect(page.getByText("Thêm mới thành công!")).toBeVisible();
     //  ***Truy cập Web kiểm tra hiển thị sau thêm
     // Truy cập Web - Sản phẩm - Khóa học => Hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/ho-tro-khach-hang');
+    await page.goto(dataSiteTest[1].linkSite + "/ho-tro-khach-hang");
     await expect(page.locator('main#support div.desktop-show > div.frequently-asked-questions > div > div > div:nth-child(1) > div > div.question-content > p > a')
                 .getByText('QA_Case1_Hệ sinh thái giáo dục mobiEdu có những khóa học nào?')).toBeVisible();
     await expect(page.locator('div#tab-child-7 div:nth-child(1) > div.question-content > a')
@@ -68,7 +69,7 @@ function case1 () {
     await expect(page.getByRole('heading', { name: 'QA_Case1_Hệ sinh thái giáo dục mobiEdu có những khóa học nào?' })).toBeVisible();
     await expect(page.getByText('Case 1 _ Trả lời câu hỏi Hệ sinh thái giáo dục mobiEdu có những khóa học')).toBeVisible();
     // Truy cập CMS xóa câu hỏi hỗ trợ
-    await page.goto('https://mskill8admin.mobiedu.vn/support');
+    await page.goto(dataSiteTest[0].linkSite + "/support");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Case1_Hệ sinh thái giáo dục mobiEdu có những khóa học nào?' })
@@ -79,7 +80,7 @@ function case1 () {
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     //  ***Truy cập Web kiểm tra hiển thị sau xóa
     // Truy cập Web - Sản phẩm - Khóa học => Không hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/ho-tro-khach-hang');
+    await page.goto(dataSiteTest[1].linkSite + "/ho-tro-khach-hang");
     await expect(page.locator('main#support div.desktop-show > div.frequently-asked-questions > div > div > div:nth-child(1) > div > div.question-content > p > a')
                 .getByText('QA_Case1_Hệ sinh thái giáo dục mobiEdu có những khóa học nào?')).not.toBeVisible();
     await expect(page.locator('div#tab-child-7 div:nth-child(1) > div.question-content > a').getByText('QA_Case1_Hệ sinh thái giáo dục mobiEdu có những khóa học nào?'))
@@ -97,7 +98,7 @@ function case2 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -107,7 +108,7 @@ function case2 () {
     await page.getByRole('link', { name: 'Quản trị nội dung' }).click();
     await page.getByRole('link', { name: 'Hỗ trợ' }).click();
     await page.getByRole('link', { name: 'Câu hỏi hỗ trợ' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/support');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/support");
     await expect(page.getByRole('heading', { name: 'Danh sách danh mục hỗ trợ' })).toBeVisible();
     // Click btn Thêm mới 
     await page.waitForTimeout(1000);
@@ -136,7 +137,7 @@ function case2 () {
     await expect(page.getByText("Thêm mới thành công!")).toBeVisible();
     //  ***Truy cập Web kiểm tra hiển thị sau thêm
     // Truy cập Web - Sản phẩm - Khóa học =>  Không hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/ho-tro-khach-hang');
+    await page.goto(dataSiteTest[1].linkSite + "/ho-tro-khach-hang");
     await expect(page.locator('main#support div.desktop-show > div.frequently-asked-questions > div > div > div:nth-child(1) > div > div.question-content > p > a')
                 .getByText('QA_Case2_Các giải pháp mobiEdu là gì?')).toBeVisible();
     await expect(page.locator('div#tab-child-7 div:nth-child(1) > div.question-content > a')
@@ -153,7 +154,7 @@ function case2 () {
     await expect(page.getByRole('heading', { name: 'QA_Case2_Các giải pháp mobiEdu là gì?' })).toBeVisible();
     await expect(page.getByText('Case 2 _ Trả lời câu hỏi Các giải pháp mobiEdu')).toBeVisible();
     // Truy cập CMS xóa câu hỏi hỗ trợ
-    await page.goto('https://mskill8admin.mobiedu.vn/support');
+    await page.goto(dataSiteTest[0].linkSite + "/support");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Case2_Các giải pháp mobiEdu là gì?' })
@@ -164,7 +165,7 @@ function case2 () {
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     //  ***Truy cập Web kiểm tra hiển thị sau xóa
     // Truy cập Web - Sản phẩm - Giải pháp => Không hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/ho-tro-khach-hang');
+    await page.goto(dataSiteTest[1].linkSite + "/ho-tro-khach-hang");
     await expect(page.locator('main#support div.desktop-show > div.frequently-asked-questions > div > div > div:nth-child(1) > div > div.question-content > p > a')
                 .getByText('QA_Case2_Các giải pháp mobiEdu là gì?')).not.toBeVisible();
     await page.locator('#support').getByRole('link', { name: 'Giải pháp' }).click();
@@ -183,7 +184,7 @@ function case3 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -193,7 +194,7 @@ function case3 () {
     await page.getByRole('link', { name: 'Quản trị nội dung' }).click();
     await page.getByRole('link', { name: 'Hỗ trợ' }).click();
     await page.getByRole('link', { name: 'Câu hỏi hỗ trợ' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/support');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/support");
     await expect(page.getByRole('heading', { name: 'Danh sách danh mục hỗ trợ' })).toBeVisible();
     // Click btn Thêm mới 
     await page.waitForTimeout(1000);
@@ -222,7 +223,7 @@ function case3 () {
     await expect(page.getByText("Thêm mới thành công!")).toBeVisible();
     //  ***Truy cập Web kiểm tra hiển thị sau thêm
     // Truy cập Web - Sản phẩm - Khóa học =>  Không hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/ho-tro-khach-hang');
+    await page.goto(dataSiteTest[1].linkSite + "/ho-tro-khach-hang");
     await expect(page.locator('main#support div.desktop-show > div.frequently-asked-questions > div > div > div:nth-child(1) > div > div.question-content > p > a')
                 .getByText('QA_Case3_Cổng thi mobiEdu là gì?')).toBeVisible();
     await expect(page.locator('div#tab-child-7 div:nth-child(1) > div.question-content > a')
@@ -239,7 +240,7 @@ function case3 () {
     await expect(page.getByRole('heading', { name: 'QA_Case3_Cổng thi mobiEdu là gì?' })).toBeVisible();
     await expect(page.getByText('Case 3 _ Trả lời câu hỏi Cổng thi mobiEdu là')).toBeVisible();
     // Truy cập CMS xóa câu hỏi hỗ trợ
-    await page.goto('https://mskill8admin.mobiedu.vn/support');
+    await page.goto(dataSiteTest[0].linkSite + "/support");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Case3_Cổng thi mobiEdu là gì?' })
@@ -250,7 +251,7 @@ function case3 () {
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     //  ***Truy cập Web kiểm tra hiển thị sau xóa
     // Truy cập Web - Sản phẩm - Giải pháp => Không hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/ho-tro-khach-hang');
+    await page.goto(dataSiteTest[1].linkSite + "/ho-tro-khach-hang");
     await expect(page.locator('main#support div.desktop-show > div.frequently-asked-questions > div > div > div:nth-child(1) > div > div.question-content > p > a')
                 .getByText('QA_Case3_Cổng thi mobiEdu là gì?')).not.toBeVisible();
     await page.locator('#support').getByRole('link', { name: 'Cổng thi' }).click();
@@ -269,7 +270,7 @@ function case4 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -279,7 +280,7 @@ function case4 () {
     await page.getByRole('link', { name: 'Quản trị nội dung' }).click();
     await page.getByRole('link', { name: 'Hỗ trợ' }).click();
     await page.getByRole('link', { name: 'Câu hỏi hỗ trợ' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/support');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/support");
     await expect(page.getByRole('heading', { name: 'Danh sách danh mục hỗ trợ' })).toBeVisible();
     // Click btn Thêm mới 
     await page.waitForTimeout(1000);
@@ -308,7 +309,7 @@ function case4 () {
     await expect(page.getByText("Thêm mới thành công!")).toBeVisible();
     //  ***Truy cập CMS kiểm tra hiển thị sau thêm 
     // Truy cập Web - Hướng dẫn - Đăng kí - Đăng nhập => Hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/ho-tro-khach-hang');
+    await page.goto(dataSiteTest[1].linkSite + "/ho-tro-khach-hang");
     await expect(page.locator('main#support div.desktop-show > div.frequently-asked-questions > div > div > div:nth-child(1) > div > div.question-content > p > a')
                 .getByText('QA_Case 4_Đăng kí - Đăng nhập tài khoản trên mobiEdu.vn như thế nào?')).toBeVisible();
     await page.getByRole('link', { name: 'Hướng dẫn' }).click();
@@ -328,7 +329,7 @@ function case4 () {
     await expect(page.getByRole('heading', { name: 'QA_Case 4_Đăng kí - Đăng nhập tài khoản trên mobiEdu.vn như thế nào?' })).toBeVisible();
     await expect(page.getByText('Case 4 _ Trả lời câu hỏi Đăng nhập tài khoản trên mobiEdu.vn là')).toBeVisible();
     // Truy cập CMS xóa câu hỏi hỗ trợ
-    await page.goto('https://mskill8admin.mobiedu.vn/support');
+    await page.goto(dataSiteTest[0].linkSite + "/support");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Case 4_Đăng kí - Đăng nhập tài khoản trên mobiEdu.vn như thế nào?' })
@@ -339,7 +340,7 @@ function case4 () {
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     //  ***Truy cập CMS kiểm tra hiển thị sau xóa
     // Truy cập Web - Hướng dẫn - Đăng kí - Đăng nhập => Không hiển thị  
-    await page.goto('https://mskill8.mobiedu.vn/ho-tro-khach-hang');
+    await page.goto(dataSiteTest[1].linkSite + "/ho-tro-khach-hang");
     await expect(page.locator('main#support div.desktop-show > div.frequently-asked-questions > div > div > div:nth-child(1) > div > div.question-content > p > a')
                 .getByText('QA_Case 4_Đăng kí - Đăng nhập tài khoản trên mobiEdu.vn như thế nào?')).not.toBeVisible();
     await page.getByRole('link', { name: 'Hướng dẫn' }).click();
@@ -358,7 +359,7 @@ function case5 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -368,7 +369,7 @@ function case5 () {
     await page.getByRole('link', { name: 'Quản trị nội dung' }).click();
     await page.getByRole('link', { name: 'Hỗ trợ' }).click();
     await page.getByRole('link', { name: 'Câu hỏi hỗ trợ' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/support');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/support");
     await expect(page.getByRole('heading', { name: 'Danh sách danh mục hỗ trợ' })).toBeVisible();
     // Click btn Thêm mới 
     await page.waitForTimeout(1000);
@@ -397,7 +398,7 @@ function case5 () {
     await expect(page.getByText("Thêm mới thành công!")).toBeVisible();
     //  ***Truy cập CMS kiểm tra hiển thị sau thêm 
     // Truy cập Web - Hướng dẫn - Đăng kí - Đăng nhập =>  Không hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/ho-tro-khach-hang');
+    await page.goto(dataSiteTest[1].linkSite + "/ho-tro-khach-hang");
     await expect(page.locator('main#support div.desktop-show > div.frequently-asked-questions > div > div > div:nth-child(1) > div > div.question-content > p > a')
                 .getByText('QA_Case 5_Làm thế nào để gia hạn khóa học đã hết hạn?')).toBeVisible();
     await page.getByRole('link', { name: 'Hướng dẫn' }).click();
@@ -417,7 +418,7 @@ function case5 () {
     await expect(page.getByRole('heading', { name: 'QA_Case 5_Làm thế nào để gia hạn khóa học đã hết hạn?' })).toBeVisible();
     await expect(page.getByText('Case 5 _ Trả lời câu hỏi Làm thế nào để gia hạn khóa học đã hết hạn')).toBeVisible();
     // Truy cập CMS xóa câu hỏi hỗ trợ
-    await page.goto('https://mskill8admin.mobiedu.vn/support');
+    await page.goto(dataSiteTest[0].linkSite + "/support");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Case 5_Làm thế nào để gia hạn khóa học đã hết hạn?' })
@@ -428,7 +429,7 @@ function case5 () {
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     //  ***Truy cập CMS kiểm tra hiển thị sau xóa
     // Truy cập Web - Hướng dẫn - Mua & sử dụng => Không hiển thị  
-    await page.goto('https://mskill8.mobiedu.vn/ho-tro-khach-hang');
+    await page.goto(dataSiteTest[1].linkSite + "/ho-tro-khach-hang");
     await expect(page.locator('main#support div.desktop-show > div.frequently-asked-questions > div > div > div:nth-child(1) > div > div.question-content > p > a')
                 .getByText('QA_Case 5_Làm thế nào để gia hạn khóa học đã hết hạn?')).not.toBeVisible();
     await page.getByRole('link', { name: 'Hướng dẫn' }).click();            
@@ -448,7 +449,7 @@ function case6 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -458,7 +459,7 @@ function case6 () {
     await page.getByRole('link', { name: 'Quản trị nội dung' }).click();
     await page.getByRole('link', { name: 'Hỗ trợ' }).click();
     await page.getByRole('link', { name: 'Câu hỏi hỗ trợ' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/support');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/support");
     await expect(page.getByRole('heading', { name: 'Danh sách danh mục hỗ trợ' })).toBeVisible();
     // Click btn Thêm mới 
     await page.waitForTimeout(1000);
@@ -487,7 +488,7 @@ function case6 () {
     await expect(page.getByText("Thêm mới thành công!")).toBeVisible();
     //  ***Truy cập CMS kiểm tra hiển thị sau thêm 
     // Truy cập Web - Hướng dẫn - Đăng kí - Đăng nhập =>  Không hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/ho-tro-khach-hang');
+    await page.goto(dataSiteTest[1].linkSite + "/ho-tro-khach-hang");
     await expect(page.locator('main#support div.desktop-show > div.frequently-asked-questions > div > div > div:nth-child(1) > div > div.question-content > p > a')
                 .getByText('QA_Case 6_Làm thế nào để quản lí các khóa học sau khi đã mua?')).toBeVisible();
     await page.getByRole('link', { name: 'Hướng dẫn' }).click();
@@ -507,7 +508,7 @@ function case6 () {
     await expect(page.getByRole('heading', { name: 'QA_Case 6_Làm thế nào để quản lí các khóa học sau khi đã mua?' })).toBeVisible();
     await expect(page.getByText('Case 6 _ Trả lời câu hỏi Làm thế nào để quản lí các khóa học sau khi đã mua')).toBeVisible();
     // Truy cập CMS xóa câu hỏi hỗ trợ
-    await page.goto('https://mskill8admin.mobiedu.vn/support');
+    await page.goto(dataSiteTest[0].linkSite + "/support");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Case 6_Làm thế nào để quản lí các khóa học sau khi đã mua?' })
@@ -518,7 +519,7 @@ function case6 () {
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     //  ***Truy cập CMS kiểm tra hiển thị sau xóa
     // Truy cập Web - Hướng dẫn - Quản lý tài khoản => Không hiển thị  
-    await page.goto('https://mskill8.mobiedu.vn/ho-tro-khach-hang');
+    await page.goto(dataSiteTest[1].linkSite + "/ho-tro-khach-hang");
     await expect(page.locator('main#support div.desktop-show > div.frequently-asked-questions > div > div > div:nth-child(1) > div > div.question-content > p > a')
                 .getByText('QA_Case 5_Làm thế nào để gia hạn khóa học đã hết hạn?')).not.toBeVisible();
     await page.getByRole('link', { name: 'Hướng dẫn' }).click();            
@@ -538,7 +539,7 @@ function case7 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -548,7 +549,7 @@ function case7 () {
     await page.getByRole('link', { name: 'Quản trị nội dung' }).click();
     await page.getByRole('link', { name: 'Hỗ trợ' }).click();
     await page.getByRole('link', { name: 'Câu hỏi hỗ trợ' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/support');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/support");
     await expect(page.getByRole('heading', { name: 'Danh sách danh mục hỗ trợ' })).toBeVisible();
     // Click btn Thêm mới 
     await page.waitForTimeout(1000);
@@ -577,7 +578,7 @@ function case7 () {
     await expect(page.getByText("Thêm mới thành công!")).toBeVisible();
     //  ***Truy cập CMS kiểm tra hiển thị sau thêm 
     // Truy cập Web - Chính sách - Thanh toán - Đổi trả =>  Hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/ho-tro-khach-hang');
+    await page.goto(dataSiteTest[1].linkSite + "/ho-tro-khach-hang");
     await expect(page.locator('main#support div.desktop-show > div.frequently-asked-questions > div > div > div:nth-child(1) > div > div.question-content > p > a')
                 .getByText('QA_Case 7_Thanh toán online như thế nào?')).toBeVisible();
     await page.getByRole('link', { name: 'Chính sách', exact: true }).click();
@@ -593,7 +594,7 @@ function case7 () {
     await expect(page.getByRole('heading', { name: 'QA_Case 7_Thanh toán online như thế nào?' })).toBeVisible();
     await expect(page.getByText('Case 7 _ Trả lời câu hỏi Thanh toán online như thế nào')).toBeVisible();
     // Truy cập CMS xóa câu hỏi hỗ trợ
-    await page.goto('https://mskill8admin.mobiedu.vn/support');
+    await page.goto(dataSiteTest[0].linkSite + "/support");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Case 7_Thanh toán online như thế nào?' })
@@ -604,7 +605,7 @@ function case7 () {
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     //  ***Truy cập CMS kiểm tra hiển thị sau thêm 
     // Truy cập Web - Chính sách - Thanh toán - Đổi trả => Không hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/ho-tro-khach-hang');
+    await page.goto(dataSiteTest[1].linkSite + "/ho-tro-khach-hang");
     await expect(page.locator('main#support div.desktop-show > div.frequently-asked-questions > div > div > div:nth-child(1) > div > div.question-content > p > a')
                 .getByText('QA_Case 7_Thanh toán online như thế nào?')).not.toBeVisible();
     await page.getByRole('link', { name: 'Chính sách', exact: true }).click();
@@ -623,7 +624,7 @@ function case8 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -633,7 +634,7 @@ function case8 () {
     await page.getByRole('link', { name: 'Quản trị nội dung' }).click();
     await page.getByRole('link', { name: 'Hỗ trợ' }).click();
     await page.getByRole('link', { name: 'Câu hỏi hỗ trợ' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/support');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/support");
     await expect(page.getByRole('heading', { name: 'Danh sách danh mục hỗ trợ' })).toBeVisible();
     // Click btn Thêm mới 
     await page.waitForTimeout(1000);
@@ -662,7 +663,7 @@ function case8 () {
     await expect(page.getByText("Thêm mới thành công!")).toBeVisible();
     //  ***Truy cập CMS kiểm tra hiển thị sau thêm 
     // Truy cập Web - Chính sách - Thanh toán - Đổi trả => Không hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/ho-tro-khach-hang');
+    await page.goto(dataSiteTest[1].linkSite + "/ho-tro-khach-hang");
     await expect(page.locator('main#support div.desktop-show > div.frequently-asked-questions > div > div > div:nth-child(1) > div > div.question-content > p > a')
                 .getByText('QA_Case 8_Các mô hình hợp tác đại lí như thế nào?')).toBeVisible();
     await page.getByRole('link', { name: 'Chính sách', exact: true }).click();
@@ -678,7 +679,7 @@ function case8 () {
     await expect(page.getByRole('heading', { name: 'QA_Case 8_Các mô hình hợp tác đại lí như thế nào?' })).toBeVisible();
     await expect(page.getByText('Case 8 _ Trả lời câu hỏi Các mô hình hợp tác đại lí như thế nào')).toBeVisible();
     // Truy cập CMS xóa câu hỏi hỗ trợ
-    await page.goto('https://mskill8admin.mobiedu.vn/support');
+    await page.goto(dataSiteTest[0].linkSite + "/support");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Case 8_Các mô hình hợp tác đại lí như thế nào?' })
@@ -689,7 +690,7 @@ function case8 () {
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     //  ***Truy cập CMS kiểm tra hiển thị sau thêm 
     // Truy cập Web - Chính sách - Thanh toán - Đổi trả => Không hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/ho-tro-khach-hang');
+    await page.goto(dataSiteTest[1].linkSite + "/ho-tro-khach-hang");
     await expect(page.locator('main#support div.desktop-show > div.frequently-asked-questions > div > div > div:nth-child(1) > div > div.question-content > p > a')
                 .getByText('QA_Case 8_Các mô hình hợp tác đại lí như thế nào?')).not.toBeVisible();
     await page.getByRole('link', { name: 'Chính sách', exact: true }).click();
@@ -700,7 +701,107 @@ function case8 () {
 });
 }
 
+/**
+ * Case 9: Không thành công - do để trống tất cả trường thông tin bắt buộc
+ */
 
+function case9 () {
+    test('Case 9: Fail-Để trống trường', async ({ page }) => {
+    
+          test.slow();
+    // Đăng nhập CMS thành công 
+    await page.goto(dataSiteTest[0].linkSite);
+    await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
+    await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
+    await page.getByRole('button', { name: 'Đăng nhập' }).click();
+    await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
+    // Click Quản trị Nội dung - hỗ trợ - danh mục câu hỏi 
+    await page.waitForTimeout(13000);
+    await page.getByRole('link', { name: 'Quản trị nội dung' }).click();
+    await page.getByRole('link', { name: 'Hỗ trợ' }).click();
+    await page.getByRole('link', { name: 'Câu hỏi hỗ trợ' }).click();
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/support");
+    await expect(page.getByRole('heading', { name: 'Danh sách danh mục hỗ trợ' })).toBeVisible();
+    // Click btn Thêm mới 
+    await page.waitForTimeout(1000);
+    await page.getByRole("button", { name: "Thêm mới" }).click();
+    await expect(page.getByRole('heading', { name: 'Thêm mới' })).toBeVisible();
+    // Nhập nội dung câu hỏi 
+    await page.getByRole('textbox', { name: 'Nội dung câu hỏi *' }).click();
+    await page.getByRole('textbox', { name: 'Nội dung câu hỏi *' }).fill('');
+    // Chọn loại 
+    await page.locator('#select2-type-container');
+    await page.getByRole('treeitem', { name: 'Chính sách' });
+    // Chọn danh mục hỗ trợ 
+    await page.locator('#select2-category-container');
+    await page.getByRole('treeitem', { name: 'Dành cho đại lí' });
+    // Nhập câu trả lời 
+    await page.frameLocator('internal:role=dialog[name="Thêm mới"i] >> iframe[title="Rich Text Area"]').getByRole("paragraph");
+    await page.frameLocator('internal:role=dialog[name="Thêm mới"i] >> iframe[title="Rich Text Area"]').getByLabel("Rich Text Area. Press ALT-0")
+            .fill('');
+    // Chọn Trạng thái 
+    await page.locator('select#status');
+    // Nhập vị trí hiển thị 
+    await page.getByRole("textbox", { name: "Vị trí hiển thị *" }).click();
+    await page.getByRole("textbox", { name: "Vị trí hiển thị *" }).fill("");
+    // Click btn Lưu 
+    await page.getByRole("button", { name: "Lưu" }).click();
+    await expect(page.getByText("Vui lòng nhập tiêu đề !")).toBeVisible();
+    await expect(page.getByText("Vui lòng chọn loại câu !")).toBeVisible();
+    await expect(page.getByText("Vui lòng nhập vị trí hiển thị !")).toBeVisible();
+
+});
+}
+
+/**
+ * Case 10: Thành công : Thêm câu hỏi Chính sách - Dành cho đại lí
+ */
+
+function case10 () {
+    test('Case 10: Fail-Vị trí là số âm', async ({ page }) => {
+    
+          test.slow();
+    // Đăng nhập CMS thành công 
+    await page.goto(dataSiteTest[0].linkSite);
+    await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
+    await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
+    await page.getByRole('button', { name: 'Đăng nhập' }).click();
+    await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
+    // Click Quản trị Nội dung - hỗ trợ - danh mục câu hỏi 
+    await page.waitForTimeout(13000);
+    await page.getByRole('link', { name: 'Quản trị nội dung' }).click();
+    await page.getByRole('link', { name: 'Hỗ trợ' }).click();
+    await page.getByRole('link', { name: 'Câu hỏi hỗ trợ' }).click();
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/support");
+    await expect(page.getByRole('heading', { name: 'Danh sách danh mục hỗ trợ' })).toBeVisible();
+    // Click btn Thêm mới 
+    await page.waitForTimeout(1000);
+    await page.getByRole("button", { name: "Thêm mới" }).click();
+    await expect(page.getByRole('heading', { name: 'Thêm mới' })).toBeVisible();
+    // Nhập nội dung câu hỏi 
+    await page.getByRole('textbox', { name: 'Nội dung câu hỏi *' }).click();
+    await page.getByRole('textbox', { name: 'Nội dung câu hỏi *' }).fill('QA_Case 9_Fail_Các mô hình hợp tác đại lí như thế nào?');
+    // Chọn loại 
+    await page.locator('#select2-type-container').click();
+    await page.getByRole('treeitem', { name: 'Chính sách' }).click();
+    // Chọn danh mục hỗ trợ 
+    await page.locator('#select2-category-container').click();
+    await page.getByRole('treeitem', { name: 'Dành cho đại lí' }).click();
+    // Nhập câu trả lời 
+    await page.frameLocator('internal:role=dialog[name="Thêm mới"i] >> iframe[title="Rich Text Area"]').getByRole("paragraph").click();
+    await page.frameLocator('internal:role=dialog[name="Thêm mới"i] >> iframe[title="Rich Text Area"]').getByLabel("Rich Text Area. Press ALT-0")
+            .fill('Case 8 _ Trả lời câu hỏi Các mô hình hợp tác đại lí như thế nào');
+    // Chọn Trạng thái 
+    await page.locator('select#status').selectOption('1');
+    // Nhập vị trí hiển thị 
+    await page.getByRole("textbox", { name: "Vị trí hiển thị *" }).click();
+    await page.getByRole("textbox", { name: "Vị trí hiển thị *" }).fill("-1");
+    // Click btn Lưu 
+    await page.getByRole("button", { name: "Lưu" }).click();
+    await expect(page.getByText("Vui lòng nhập vị trí hiển thị lớn hơn hoặc bằng 0!")).toBeVisible();
+
+});
+}
 
 function main(){
     case1();
@@ -711,6 +812,8 @@ function main(){
     case6();
     case7();
     case8();
+    case9();
+    case10();
 
 }
 main();

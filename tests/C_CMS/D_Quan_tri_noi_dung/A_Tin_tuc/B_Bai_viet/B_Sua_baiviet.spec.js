@@ -1,6 +1,7 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
 const exp = require('constants');
+import dataSiteTest from '../../../../dataSite.json';
 
 /**
  * Case 1: Thành công : Sửa bài viết
@@ -11,7 +12,7 @@ function case1 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -21,7 +22,7 @@ function case1 () {
     await page.getByRole('link', { name: 'Quản trị nội dung' }).click();
     await page.getByRole('link', { name: 'Tin tức' }).click();
     await page.getByRole('link', { name: 'Bài viết' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/blog');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/blog");
     await expect(page.getByRole('heading', { name: 'Danh sách bài viết' })).toBeVisible();
     // Thêm mới bài viết
     await page.waitForTimeout(1000);
@@ -60,7 +61,7 @@ function case1 () {
     await expect(page.getByText('Thêm mới thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra hiển thị sau thêm  
     //  Trang chủ -> Hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.locator('div.col-lg-6.animate > div > div.caption > p.news-title > a').getByText('QA_Thêm BV_Chiến thuật nâng điểm Speaking_Case 1')).toBeVisible();
     // Click btn Xem thêm -> Hiển thị 
     await page.locator('.home-11 > .container > .button > .btn').click();
@@ -79,7 +80,7 @@ function case1 () {
     await expect(page.getByText('Case 1_1 _ Nội dung bài viết Chiến thuật nâng điểm Speaking')).toBeVisible();
     await expect(page.locator("img[src='https://cdn.mobiedu.vn/mskill/uploads/mb3/1702352852-anh-2.jpeg']")).toBeVisible();
     // Truy cập CMS sửa bài viết
-    await page.goto('https://mskill8admin.mobiedu.vn/blog');
+    await page.goto(dataSiteTest[0].linkSite + "/blog");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Thêm BV_Chiến thuật nâng điểm Speaking_Case 1' })
@@ -113,7 +114,7 @@ function case1 () {
     await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra hiển thị sau sửa 
     //  Trang chủ -> Hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.locator('div.col-lg-6.animate > div > div.caption > p.news-title > a').getByText('QA_Sửa BV_Chiến thuật nâng điểm Speaking_Case 2')).toBeVisible();
     // Click btn Xem thêm -> Hiển thị 
     await page.locator('.home-11 > .container > .button > .btn').click();
@@ -136,7 +137,7 @@ function case1 () {
     await expect(page.getByText('Case 1_2 _ Nội dung bài viết Chiến thuật nâng điểm Speaking')).toBeVisible();
     await expect(page.locator("img[src='https://cdn.mobiedu.vn/mskill/uploads/mb3/1696237572-rounded-in-photoretrica.png']")).toBeVisible();
     // Truy cập CMS xóa bài viết
-    await page.goto('https://mskill8admin.mobiedu.vn/blog');
+    await page.goto(dataSiteTest[0].linkSite + "/blog");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Sửa BV_Chiến thuật nâng điểm Speaking_Case 2' })
@@ -147,7 +148,7 @@ function case1 () {
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra hiển thị sau xóa 
     //  Trang chủ -> Không hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.locator('div.col-lg-6.animate > div > div.caption > p.news-title > a').getByText('QA_Sửa BV_Chiến thuật nâng điểm Speaking_Case 2')).not.toBeVisible();
     // Click btn Xem thêm -> Không hiển thị  
     await page.locator('.home-11 > .container > .button > .btn').click();
@@ -170,7 +171,7 @@ function case2 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -180,7 +181,7 @@ function case2 () {
     await page.getByRole('link', { name: 'Quản trị nội dung' }).click();
     await page.getByRole('link', { name: 'Tin tức' }).click();
     await page.getByRole('link', { name: 'Bài viết' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/blog');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/blog");
     await expect(page.getByRole('heading', { name: 'Danh sách bài viết' })).toBeVisible();
     // Thêm mới bài viết
     await page.waitForTimeout(1000);
@@ -219,7 +220,7 @@ function case2 () {
     await expect(page.getByText('Thêm mới thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra hiển thị sau thêm  
     //  Trang chủ -> Hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.locator('div.col-lg-6.animate > div > div.caption > p.news-title > a').getByText('QA_Thêm BV_Chiến thuật nâng điểm Speaking_Case 2')).toBeVisible();
     // Click btn Xem thêm -> Hiển thị 
     await page.locator('.home-11 > .container > .button > .btn').click();
@@ -238,7 +239,7 @@ function case2 () {
     await expect(page.getByText('Case 2 _ Nội dung bài viết Chiến thuật nâng điểm Speaking')).toBeVisible();
     await expect(page.locator("img[src='https://cdn.mobiedu.vn/mskill/uploads/mb3/1702352852-anh-2.jpeg']")).toBeVisible();
     // Truy cập CMS sửa bài viết
-    await page.goto('https://mskill8admin.mobiedu.vn/blog');
+    await page.goto(dataSiteTest[0].linkSite + "/blog");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Thêm BV_Chiến thuật nâng điểm Speaking_Case 2' })
@@ -255,7 +256,7 @@ function case2 () {
     await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra hiển thị sau sửa
     //  Trang chủ -> Không hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.locator('div.col-lg-6.animate > div > div.caption > p.news-title > a').getByText('QA_Hoạt động sang Ẩn_Chiến thuật nâng điểm Speaking_Case 2'))
             .not.toBeVisible();
     // Click btn Xem thêm -> Không hiển thị  
@@ -267,7 +268,7 @@ function case2 () {
     await expect(page.locator('main#blog_category div:nth-child(1) > article > div.caption > h3 > a').getByText('QA_Hoạt động sang Ẩn_Chiến thuật nâng điểm Speaking_Case 2'))
             .not.toBeVisible();
     // Truy cập CMS xóa bài viết
-    await page.goto('https://mskill8admin.mobiedu.vn/blog');
+    await page.goto(dataSiteTest[0].linkSite + "/blog");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Hoạt động sang Ẩn_Chiến thuật nâng điểm Speaking_Case 2' })
@@ -289,7 +290,7 @@ function case3 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -299,7 +300,7 @@ function case3 () {
     await page.getByRole('link', { name: 'Quản trị nội dung' }).click();
     await page.getByRole('link', { name: 'Tin tức' }).click();
     await page.getByRole('link', { name: 'Bài viết' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/blog');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/blog");
     await expect(page.getByRole('heading', { name: 'Danh sách bài viết' })).toBeVisible();
     // Thêm mới bài viết
     await page.waitForTimeout(1000);
@@ -338,7 +339,7 @@ function case3 () {
     await expect(page.getByText('Thêm mới thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra hiển thị sau thêm
     //  Trang chủ -> Không hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.locator('div.col-lg-6.animate > div > div.caption > p.news-title > a').getByText('QA_Thêm BV_Chiến thuật nâng điểm Speaking_Case 3'))
             .not.toBeVisible();
     // Click btn Xem thêm -> Không hiển thị  
@@ -350,7 +351,7 @@ function case3 () {
     await expect(page.locator('main#blog_category div:nth-child(1) > article > div.caption > h3 > a').getByText('QA_Thêm BV_Chiến thuật nâng điểm Speaking_Case 3'))
             .not.toBeVisible();
     // Truy cập CMS sửa bài viết
-    await page.goto('https://mskill8admin.mobiedu.vn/blog');
+    await page.goto(dataSiteTest[0].linkSite + "/blog");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Thêm BV_Chiến thuật nâng điểm Speaking_Case 3' })
@@ -367,7 +368,7 @@ function case3 () {
     await expect(page.getByText('Cập nhật thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra hiển thị sau sửa
     //  Trang chủ -> Hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.locator('div.col-lg-6.animate > div > div.caption > p.news-title > a').getByText('QA_Ẩn sang Hoạt động_Chiến thuật nâng điểm Speaking_Case 3'))
             .toBeVisible();
     // Click btn Xem thêm -> Hiển thị 
@@ -387,7 +388,7 @@ function case3 () {
     await expect(page.getByText('Case 3 _ Nội dung bài viết Chiến thuật nâng điểm Speaking')).toBeVisible();
     await expect(page.locator("img[src='https://cdn.mobiedu.vn/mskill/uploads/mb3/1702352852-anh-2.jpeg']")).toBeVisible();
     // Truy cập CMS xóa bài viết
-    await page.goto('https://mskill8admin.mobiedu.vn/blog');
+    await page.goto(dataSiteTest[0].linkSite + "/blog");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Ẩn sang Hoạt động_Chiến thuật nâng điểm Speaking_Case 3' })
@@ -398,7 +399,7 @@ function case3 () {
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra hiển thị sau xóa
     //  Trang chủ -> Không hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.locator('div.col-lg-6.animate > div > div.caption > p.news-title > a').getByText('QA_Ẩn sang Hoạt động_Chiến thuật nâng điểm Speaking_Case 3'))
             .not.toBeVisible();
     // Click btn Xem thêm -> Không hiển thị 
@@ -422,7 +423,7 @@ function case4 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -432,7 +433,7 @@ function case4 () {
     await page.getByRole('link', { name: 'Quản trị nội dung' }).click();
     await page.getByRole('link', { name: 'Tin tức' }).click();
     await page.getByRole('link', { name: 'Bài viết' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/blog');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/blog");
     await expect(page.getByRole('heading', { name: 'Danh sách bài viết' })).toBeVisible();
     // Thêm mới bài viết
     await page.waitForTimeout(1000);
@@ -506,7 +507,7 @@ function case4 () {
     await expect(page.getByRole('cell', { name: 'QA_Fail BV_Chiến thuật nâng điểm Speaking_Case 4' })).toBeVisible();
     // ***Truy cập Web kiểm tra hiển thị sau thêm  
     //  Trang chủ -> Hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.locator('div.col-lg-6.animate > div > div.caption > p.news-title > a').getByText('QA_Fail BV_Chiến thuật nâng điểm Speaking_Case 4')).toBeVisible();
     // Click btn Xem thêm -> Hiển thị 
     await page.locator('.home-11 > .container > .button > .btn').click();
@@ -525,7 +526,7 @@ function case4 () {
     await expect(page.getByText('Case 4 _ Nội dung bài viết Chiến thuật nâng điểm Speaking')).toBeVisible();
     await expect(page.locator("img[src='https://cdn.mobiedu.vn/mskill/uploads/mb3/1702352852-anh-2.jpeg']")).toBeVisible();
     // Truy cập CMS xóa bài viết
-    await page.goto('https://mskill8admin.mobiedu.vn/blog');
+    await page.goto(dataSiteTest[0].linkSite + "/blog");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Fail BV_Chiến thuật nâng điểm Speaking_Case 4' })
@@ -536,7 +537,7 @@ function case4 () {
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     // ***Truy cập Web kiểm tra hiển thị sau xóa
     //  Trang chủ -> Không hiển thị 
-    await page.goto('https://mskill8.mobiedu.vn/');
+    await page.goto(dataSiteTest[1].linkSite);
     await expect(page.locator('div.col-lg-6.animate > div > div.caption > p.news-title > a').getByText('QA_Fail BV_Chiến thuật nâng điểm Speaking_Case 4'))
             .not.toBeVisible();
     // Click btn Xem thêm -> Không hiển thị 
