@@ -1,6 +1,7 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
 const exp = require('constants');
+import dataSiteTest from '../../dataSite.json';
 
 /**
  * Case 1: Thành công : Cổng thi - Sửa Trẻ em sang Học sinh  
@@ -13,7 +14,7 @@ function case1 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -21,7 +22,7 @@ function case1 () {
     // Click Quản trị Cổng thi
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị cổng Thi' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/exam-gate');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/exam-gate");
     await expect(page.getByRole('heading', { name: 'Danh sách cổng thi' })).toBeVisible();
     // Thêm cổng thi
     await page.waitForTimeout(1000);
@@ -50,7 +51,7 @@ function case1 () {
     await expect(page.getByText("Thêm thành công!")).toBeVisible();
     // Truy cập Web kiểm tra hiển thị sau thêm
     // Truy cập Web - Cổng thi -> Tất cả => Hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/cong-thi');
+    await page.goto(dataSiteTest[1].linkSite + "/cong-thi");
     await expect(page.getByText('QA_Pass Thêm TE_Olympic Tiếng Anh_Case1').nth(1)).toBeVisible();
     // Truy cập Web - Cổng thi -> Trẻ em => Hiển thị
     await page.getByRole('main').getByRole('link', { name: 'Trẻ em' }).click();
@@ -62,7 +63,7 @@ function case1 () {
     await page.getByRole('main').getByRole('link', { name: 'Sinh viên và người đi làm' }).click();
     await expect(page.getByText('QA_Pass Thêm TE_Olympic Tiếng Anh_Case1').nth(1)).not.toBeVisible();
     // Truy cập CMS sửa cổng thi 
-    await page.goto('https://mskill8admin.mobiedu.vn/exam-gate');
+    await page.goto(dataSiteTest[0].linkSite + "/exam-gate");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass Thêm TE_Olympic Tiếng Anh_Case1' })
@@ -80,7 +81,7 @@ function case1 () {
     await expect(page.getByText("Cập nhật thành công!")).toBeVisible();
     // Truy cập Web kiểm tra hiển thị sau sửa
     // Truy cập Web - Cổng thi -> Tất cả => Hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/cong-thi');
+    await page.goto(dataSiteTest[1].linkSite + "/cong-thi");
     await expect(page.getByText('QA_Pass Sửa HS_Olympic Tiếng Anh_Case1').nth(1)).toBeVisible();
     // Truy cập Web - Cổng thi -> Trẻ em => Không hiển thị
     await page.getByRole('main').getByRole('link', { name: 'Trẻ em' }).click();
@@ -89,7 +90,7 @@ function case1 () {
     await page.getByRole('main').getByRole('link', { name: 'Học sinh phổ thông' }).click();
     await expect(page.getByText('QA_Pass Sửa HS_Olympic Tiếng Anh_Case1').nth(1)).toBeVisible();
     // Truy cập CMS xóa cổng thi 
-    await page.goto('https://mskill8admin.mobiedu.vn/exam-gate');
+    await page.goto(dataSiteTest[0].linkSite + "/exam-gate");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass Sửa HS_Olympic Tiếng Anh_Case1' })
@@ -100,7 +101,7 @@ function case1 () {
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     // Truy cập Web kiểm tra hiển thị sau xóa
     // Truy cập Web - Cổng thi -> Tất cả => Không hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/cong-thi');
+    await page.goto(dataSiteTest[1].linkSite + "/cong-thi");
     await expect(page.getByText('QA_Pass Sửa HS_Olympic Tiếng Anh_Case1').nth(1)).not.toBeVisible();
     // Truy cập Web - Cổng thi -> Học sinh => Không hiển thị
     await page.getByRole('main').getByRole('link', { name: 'Học sinh phổ thông' }).click();
@@ -120,7 +121,7 @@ function case2 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -128,7 +129,7 @@ function case2 () {
     // Click Quản trị Cổng thi
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị cổng Thi' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/exam-gate');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/exam-gate");
     await expect(page.getByRole('heading', { name: 'Danh sách cổng thi' })).toBeVisible();
     // Thêm cổng thi mới 
     await page.waitForTimeout(1000);
@@ -157,7 +158,7 @@ function case2 () {
     await expect(page.getByText("Thêm thành công!")).toBeVisible();
     // Truy cập Web kiểm tra hiển thị sau thêm
     // Truy cập Web - Cổng thi -> Tất cả => Hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/cong-thi');
+    await page.goto(dataSiteTest[1].linkSite + "/cong-thi");
     await expect(page.getByText('QA_Pass Thêm HS_Olympic Tiếng Anh_Case2').nth(1)).toBeVisible();
     // Truy cập Web - Cổng thi -> Trẻ em => Không hiển thị
     await page.getByRole('main').getByRole('link', { name: 'Trẻ em' }).click();
@@ -169,7 +170,7 @@ function case2 () {
     await page.getByRole('main').getByRole('link', { name: 'Sinh viên và người đi làm' }).click();
     await expect(page.getByText('QA_Pass Thêm HS_Olympic Tiếng Anh_Case2').nth(1)).not.toBeVisible();
     // Truy cập CMS sửa cổng thi 
-    await page.goto('https://mskill8admin.mobiedu.vn/exam-gate');
+    await page.goto(dataSiteTest[0].linkSite + "/exam-gate");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass Thêm HS_Olympic Tiếng Anh_Case2' })
@@ -187,7 +188,7 @@ function case2 () {
     await expect(page.getByText("Cập nhật thành công!")).toBeVisible();
     // Truy cập Web kiểm tra hiển thị sau thêm
     // Truy cập Web - Cổng thi -> Tất cả => Hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/cong-thi');
+    await page.goto(dataSiteTest[1].linkSite + "/cong-thi");
     await expect(page.getByText('QA_Pass Sửa SV_Olympic Tiếng Anh_Case2').nth(1)).toBeVisible();
     // Truy cập Web - Cổng thi -> Học sinh => Không hiển thị
     await page.getByRole('main').getByRole('link', { name: 'Học sinh phổ thông' }).click();
@@ -196,7 +197,7 @@ function case2 () {
     await page.getByRole('main').getByRole('link', { name: 'Sinh viên và người đi làm' }).click();
     await expect(page.getByText('QA_Pass Sửa SV_Olympic Tiếng Anh_Case2').nth(1)).toBeVisible();
     // Truy cập CMS xóa cổng thi 
-    await page.goto('https://mskill8admin.mobiedu.vn/exam-gate');
+    await page.goto(dataSiteTest[0].linkSite + "/exam-gate");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass Sửa SV_Olympic Tiếng Anh_Case2' })
@@ -207,7 +208,7 @@ function case2 () {
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     // Truy cập Web kiểm tra hiển thị sau thêm
     // Truy cập Web - Cổng thi -> Tất cả => Không hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/cong-thi');
+    await page.goto(dataSiteTest[1].linkSite + "/cong-thi");
     await expect(page.getByText('QA_Pass Sửa SV_Olympic Tiếng Anh_Case2').nth(1)).not.toBeVisible();
     // Truy cập Web - Cổng thi -> Sinh viên => Không hiển thị
     await page.getByRole('main').getByRole('link', { name: 'Sinh viên và người đi làm' }).click();
@@ -227,7 +228,7 @@ function case3 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -235,7 +236,7 @@ function case3 () {
     // Click Quản trị Cổng thi
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị cổng Thi' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/exam-gate');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/exam-gate");
     await expect(page.getByRole('heading', { name: 'Danh sách cổng thi' })).toBeVisible();
     // Thêm cổng thi mới 
     await page.waitForTimeout(1000);
@@ -264,7 +265,7 @@ function case3 () {
     await expect(page.getByText("Thêm thành công!")).toBeVisible();
     // Truy cập Web kiểm tra hiển thị sau thêm
     // Truy cập Web - Cổng thi -> Tất cả => Hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/cong-thi');
+    await page.goto(dataSiteTest[1].linkSite + "/cong-thi");
     await expect(page.getByText('QA_Pass Thêm TE_Olympic Tiếng Anh_Case3').nth(1)).toBeVisible();
     // Truy cập Web - Cổng thi -> Trẻ em => Hiển thị
     await page.getByRole('main').getByRole('link', { name: 'Trẻ em' }).click();
@@ -276,7 +277,7 @@ function case3 () {
     await page.getByRole('main').getByRole('link', { name: 'Sinh viên và người đi làm' }).click();
     await expect(page.getByText('QA_Pass Thêm TE_Olympic Tiếng Anh_Case3').nth(1)).not.toBeVisible();
     // Truy cập CMS sửa cổng thi 
-    await page.goto('https://mskill8admin.mobiedu.vn/exam-gate');
+    await page.goto(dataSiteTest[0].linkSite + "/exam-gate");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass Thêm TE_Olympic Tiếng Anh_Case3' })
@@ -297,7 +298,7 @@ function case3 () {
     await expect(page.getByText("Cập nhật thành công!")).toBeVisible();
     // Truy cập Web kiểm tra hiển thị sau sửa
     // Truy cập Web - Cổng thi -> Tất cả => Hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/cong-thi');
+    await page.goto(dataSiteTest[1].linkSite + "/cong-thi");
     await expect(page.getByText('QA_Pass Sửa All_Olympic Tiếng Anh_Case3').nth(1)).toBeVisible();
     // Truy cập Web - Cổng thi -> Trẻ em => Hiển thị
     await page.getByRole('main').getByRole('link', { name: 'Trẻ em' }).click();
@@ -309,7 +310,7 @@ function case3 () {
     await page.getByRole('main').getByRole('link', { name: 'Sinh viên và người đi làm' }).click();
     await expect(page.getByText('QA_Pass Sửa All_Olympic Tiếng Anh_Case3').nth(1)).toBeVisible();
     // Truy cập CMS xóa cổng thi 
-    await page.goto('https://mskill8admin.mobiedu.vn/exam-gate');
+    await page.goto(dataSiteTest[0].linkSite + "/exam-gate");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass Sửa All_Olympic Tiếng Anh_Case3' })
@@ -320,7 +321,7 @@ function case3 () {
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     // Truy cập Web kiểm tra hiển thị sau xóa
     // Truy cập Web - Cổng thi -> Tất cả => Không hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/cong-thi');
+    await page.goto(dataSiteTest[1].linkSite + "/cong-thi");
     await expect(page.getByText('QA_Pass Sửa All_Olympic Tiếng Anh_Case3').nth(1)).not.toBeVisible();
     // Truy cập Web - Cổng thi -> Trẻ em => Không hiển thị
     await page.getByRole('main').getByRole('link', { name: 'Trẻ em' }).click();
@@ -345,7 +346,7 @@ function case4 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -353,7 +354,7 @@ function case4 () {
     // Click Quản trị Cổng thi
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị cổng Thi' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/exam-gate');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/exam-gate");
     await expect(page.getByRole('heading', { name: 'Danh sách cổng thi' })).toBeVisible();
     // Thêm cổng thi mới 
     await page.waitForTimeout(1000);
@@ -382,7 +383,7 @@ function case4 () {
     await expect(page.getByText("Thêm thành công!")).toBeVisible();
     // Truy cập Web kiểm tra hiển thị sau thêm
     // Truy cập Web - Cổng thi -> Tất cả => Hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/cong-thi');
+    await page.goto(dataSiteTest[1].linkSite + "/cong-thi");
     await expect(page.getByText('QA_Pass Thêm TE_Olympic Tiếng Anh_Case4').nth(1)).toBeVisible();
     // Truy cập Web - Cổng thi -> Trẻ em => Hiển thị
     await page.getByRole('main').getByRole('link', { name: 'Trẻ em' }).click();
@@ -394,7 +395,7 @@ function case4 () {
     await page.getByRole('main').getByRole('link', { name: 'Sinh viên và người đi làm' }).click();
     await expect(page.getByText('QA_Pass Thêm TE_Olympic Tiếng Anh_Case4').nth(1)).not.toBeVisible();
     // Truy cập CMS sửa cổng thi 
-    await page.goto('https://mskill8admin.mobiedu.vn/exam-gate');
+    await page.goto(dataSiteTest[0].linkSite + "/exam-gate");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass Thêm TE_Olympic Tiếng Anh_Case4' })
@@ -412,13 +413,13 @@ function case4 () {
     await expect(page.getByText("Cập nhật thành công!")).toBeVisible();
     // Truy cập Web kiểm tra hiển thị sau sửa
     // Truy cập Web - Cổng thi -> Tất cả => Không hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/cong-thi');
+    await page.goto(dataSiteTest[1].linkSite + "/cong-thi");
     await expect(page.getByText('QA_Pass Sửa hoạt động sang ẩn_Olympic Tiếng Anh_Case4').nth(1)).not.toBeVisible();
     // Truy cập Web - Cổng thi -> Trẻ em => Không hiển thị
     await page.getByRole('main').getByRole('link', { name: 'Trẻ em' }).click();
     await expect(page.getByText('QA_Pass Sửa hoạt động sang ẩn_Olympic Tiếng Anh_Case4').nth(1)).not.toBeVisible();
     // Truy cập CMS xóa cổng thi 
-    await page.goto('https://mskill8admin.mobiedu.vn/exam-gate');
+    await page.goto(dataSiteTest[0].linkSite + "/exam-gate");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass Sửa hoạt động sang ẩn_Olympic Tiếng Anh_Case4' })
@@ -441,7 +442,7 @@ function case5 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -449,7 +450,7 @@ function case5 () {
     // Click Quản trị Cổng thi
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị cổng Thi' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/exam-gate');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/exam-gate");
     await expect(page.getByRole('heading', { name: 'Danh sách cổng thi' })).toBeVisible();
     // Thêm cổng thi mới 
     await page.waitForTimeout(1000);
@@ -478,7 +479,7 @@ function case5 () {
     await expect(page.getByText("Thêm thành công!")).toBeVisible();
     // Truy cập Web kiểm tra hiển thị sau thêm
     // Truy cập Web - Cổng thi -> Tất cả => Không hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/cong-thi');
+    await page.goto(dataSiteTest[1].linkSite + "/cong-thi");
     await expect(page.getByText('QA_Pass Thêm TE_Olympic Tiếng Anh_Case5').nth(1)).not.toBeVisible();
     // Truy cập Web - Cổng thi -> Trẻ em => Không hiển thị
     await page.getByRole('main').getByRole('link', { name: 'Trẻ em' }).click();
@@ -490,7 +491,7 @@ function case5 () {
     await page.getByRole('main').getByRole('link', { name: 'Sinh viên và người đi làm' }).click();
     await expect(page.getByText('QA_Pass Thêm TE_Olympic Tiếng Anh_Case5').nth(1)).not.toBeVisible();
     // Truy cập CMS sửa cổng thi 
-    await page.goto('https://mskill8admin.mobiedu.vn/exam-gate');
+    await page.goto(dataSiteTest[0].linkSite + "/exam-gate");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass Thêm TE_Olympic Tiếng Anh_Case5' })
@@ -508,13 +509,13 @@ function case5 () {
     await expect(page.getByText("Cập nhật thành công!")).toBeVisible();
     // Truy cập Web kiểm tra hiển thị sau sửa
     // Truy cập Web - Cổng thi -> Tất cả => Hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/cong-thi');
+    await page.goto(dataSiteTest[1].linkSite + "/cong-thi");
     await expect(page.getByText('QA_Pass Sửa ẩn sang hoạt động_Olympic Tiếng Anh_Case5').nth(1)).toBeVisible();
     // Truy cập Web - Cổng thi -> Trẻ em => Hiển thị
     await page.getByRole('main').getByRole('link', { name: 'Trẻ em' }).click();
     await expect(page.getByText('QA_Pass Sửa ẩn sang hoạt động_Olympic Tiếng Anh_Case5').nth(1)).toBeVisible();
     // Truy cập CMS xóa cổng thi 
-    await page.goto('https://mskill8admin.mobiedu.vn/exam-gate');
+    await page.goto(dataSiteTest[0].linkSite + "/exam-gate");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass Sửa ẩn sang hoạt động_Olympic Tiếng Anh_Case5' })
@@ -525,7 +526,7 @@ function case5 () {
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     // Truy cập Web kiểm tra hiển thị sau xóa
     // Truy cập Web - Cổng thi -> Tất cả => Không hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/cong-thi');
+    await page.goto(dataSiteTest[1].linkSite + "/cong-thi");
     await expect(page.getByText('QA_Pass Sửa ẩn sang hoạt động_Olympic Tiếng Anh_Case5').nth(1)).not.toBeVisible();
     // Truy cập Web - Cổng thi -> Trẻ em => Không hiển thị
     await page.getByRole('main').getByRole('link', { name: 'Trẻ em' }).click();
@@ -544,7 +545,7 @@ function case6 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -552,7 +553,7 @@ function case6 () {
     // Click Quản trị Cổng thi
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị cổng Thi' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/exam-gate');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/exam-gate");
     await expect(page.getByRole('heading', { name: 'Danh sách cổng thi' })).toBeVisible();
     // Thêm cổng thi mới 
     await page.waitForTimeout(1000);
@@ -582,7 +583,7 @@ function case6 () {
     await expect(page.getByRole('cell', { name: 'QA_Fail Thêm TE_Olympic Tiếng Anh_Case6' })).toBeVisible();
     // Truy cập Web kiểm tra hiển thị sau thêm
     // Truy cập Web - Cổng thi -> Tất cả => Hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/cong-thi');
+    await page.goto(dataSiteTest[1].linkSite + "/cong-thi");
     await expect(page.getByText('QA_Fail Thêm TE_Olympic Tiếng Anh_Case6').nth(1)).toBeVisible();
     // Truy cập Web - Cổng thi -> Trẻ em => Hiển thị
     await page.getByRole('main').getByRole('link', { name: 'Trẻ em' }).click();
@@ -594,7 +595,7 @@ function case6 () {
     await page.getByRole('main').getByRole('link', { name: 'Sinh viên và người đi làm' }).click();
     await expect(page.getByText('QA_Fail Thêm TE_Olympic Tiếng Anh_Case6').nth(1)).not.toBeVisible();
     // Truy cập CMS sửa cổng thi 
-    await page.goto('https://mskill8admin.mobiedu.vn/exam-gate');
+    await page.goto(dataSiteTest[0].linkSite + "/exam-gate");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Fail Thêm TE_Olympic Tiếng Anh_Case6' })
@@ -613,7 +614,7 @@ function case6 () {
     await expect(page.getByRole('cell', { name: 'QA_Fail Thêm TE_Olympic Tiếng Anh_Case6' })).toBeVisible();
     // Truy cập Web kiểm tra hiển thị sau thêm
     // Truy cập Web - Cổng thi -> Tất cả => Hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/cong-thi');
+    await page.goto(dataSiteTest[1].linkSite + "/cong-thi");
     await expect(page.getByText('QA_Fail Thêm TE_Olympic Tiếng Anh_Case6').nth(1)).toBeVisible();
     // Truy cập Web - Cổng thi -> Trẻ em => Hiển thị
     await page.getByRole('main').getByRole('link', { name: 'Trẻ em' }).click();
@@ -625,7 +626,7 @@ function case6 () {
     await page.getByRole('main').getByRole('link', { name: 'Sinh viên và người đi làm' }).click();
     await expect(page.getByText('QA_Fail Thêm TE_Olympic Tiếng Anh_Case6').nth(1)).not.toBeVisible();
     // Truy cập CMS xóa cổng thi 
-    await page.goto('https://mskill8admin.mobiedu.vn/exam-gate');
+    await page.goto(dataSiteTest[0].linkSite + "/exam-gate");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Fail Thêm TE_Olympic Tiếng Anh_Case6' })
@@ -636,7 +637,7 @@ function case6 () {
     await expect(page.getByText('Xóa thành công!')).toBeVisible();
     // Truy cập Web kiểm tra hiển thị sau xóa
     // Truy cập Web - Cổng thi -> Tất cả => Không hiển thị
-    await page.goto('https://mskill8.mobiedu.vn/cong-thi');
+    await page.goto(dataSiteTest[1].linkSite + "/cong-thi");
     await expect(page.getByText('QA_Fail Thêm TE_Olympic Tiếng Anh_Case6').nth(1)).not.toBeVisible();
     // Truy cập Web - Cổng thi -> Trẻ em => Không hiển thị
     await page.getByRole('main').getByRole('link', { name: 'Trẻ em' }).click();

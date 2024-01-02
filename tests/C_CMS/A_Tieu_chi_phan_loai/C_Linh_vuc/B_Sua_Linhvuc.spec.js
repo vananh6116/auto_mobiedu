@@ -242,10 +242,10 @@ function case4 () {
     await page.getByRole('dialog', { name: 'Thêm lĩnh vực mới' }).getByLabel('Trạng thái\n*').selectOption('1');
     await page.getByRole('button', { name: 'Lưu' }).click();
     await expect(page.getByText('Thêm thành công!')).toBeVisible();
-    await expect(page.getByRole('cell', { name: 'QA_LV Thêm_Tôn giáo_Case3' })).toBeVisible();
+    await expect(page.getByRole('cell', { name: 'QA_LV Thêm_Tôn giáo_Case4' })).toBeVisible();
     // Truy cập Web kiểm tra hiển thị trang Cổng thi sau thêm 
     await page.goto(dataSiteTest[1].linkSite + "/cong-thi");
-    await expect(page.locator('#desktop-field').getByText('QA_LV Thêm_Tôn giáo_Case3')).toBeVisible();
+    await expect(page.locator('#desktop-field').getByText('QA_LV Thêm_Tôn giáo_Case4')).toBeVisible();
     // Sửa lĩnh vực 
     await page.goto(dataSiteTest[0].linkSite + "/course-field");
     await page

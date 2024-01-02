@@ -1,6 +1,7 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
 const exp = require('constants');
+import dataSiteTest from '../../../dataSite.json';
 
 /**
  * Case 1: Thành công : Thêm khóa học API - Trẻ em 
@@ -14,7 +15,7 @@ function case1 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -23,7 +24,7 @@ function case1 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị khoá học' }).click();
     await page.getByRole('link', { name: 'Khóa học API' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-api');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/course-api");
     await expect(page.getByRole('heading', { name: 'Danh sách khóa học API' })).toBeVisible();
     // Click btn Thêm khóa học mới 
     await page.waitForTimeout(1000);
@@ -207,7 +208,7 @@ function case1 () {
     await page.getByRole('link', { name: 'Đăng kí học ngay' }).click();
     await expect(page.getByRole('heading', { name: 'Lựa chọn hình thức thanh toán' })).toBeVisible();
     // Truy cập CMS xóa khóa học 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-api');
+    await page.goto(dataSiteTest[0].linkSite + "/course-api");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass TE_API_Giải đố_Case1' })
@@ -245,7 +246,7 @@ function case2 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -254,7 +255,7 @@ function case2 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị khoá học' }).click();
     await page.getByRole('link', { name: 'Khóa học API' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-api');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/course-api");
     await expect(page.getByRole('heading', { name: 'Danh sách khóa học API' })).toBeVisible();
     // Click btn Thêm khóa học mới 
     await page.waitForTimeout(1000);
@@ -438,7 +439,7 @@ function case2 () {
     await page.getByRole('link', { name: 'Đăng kí học ngay' }).click();
     await expect(page.getByRole('heading', { name: 'Lựa chọn hình thức thanh toán' })).toBeVisible();
     // Truy cập CMS xóa khóa học 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-api');
+    await page.goto(dataSiteTest[0].linkSite + "/course-api");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass HS_API_Giải đố_Case2' })
@@ -476,7 +477,7 @@ function case3 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -485,7 +486,7 @@ function case3 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị khoá học' }).click();
     await page.getByRole('link', { name: 'Khóa học API' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-api');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/course-api");
     await expect(page.getByRole('heading', { name: 'Danh sách khóa học API' })).toBeVisible();
     // Click btn Thêm khóa học mới 
     await page.waitForTimeout(1000);
@@ -669,7 +670,7 @@ function case3 () {
     await page.getByRole('link', { name: 'Đăng kí học ngay' }).click();
     await expect(page.getByRole('heading', { name: 'Lựa chọn hình thức thanh toán' })).toBeVisible();
     // Truy cập CMS xóa khóa học 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-api');
+    await page.goto(dataSiteTest[0].linkSite + "/course-api");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass SV_API_Giải đố_Case3' })
@@ -706,7 +707,7 @@ function case4 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -715,7 +716,7 @@ function case4 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị khoá học' }).click();
     await page.getByRole('link', { name: 'Khóa học API' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-api');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/course-api");
     await expect(page.getByRole('heading', { name: 'Danh sách khóa học API' })).toBeVisible();
     // Click btn Thêm khóa học mới 
     await page.waitForTimeout(1000);
@@ -911,7 +912,7 @@ function case4 () {
     await page.getByRole('link', { name: 'Đăng kí học ngay' }).click();
     await expect(page.getByRole('heading', { name: 'Lựa chọn hình thức thanh toán' })).toBeVisible();
     // Truy cập CMS xóa khóa học 
-    await page.goto('https://mskill8admin.mobiedu.vn/course-api');
+    await page.goto(dataSiteTest[0].linkSite + "/course-api");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass All_API_Giải đố_Case4' })
@@ -959,7 +960,7 @@ function case5 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -968,7 +969,7 @@ function case5 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị khoá học' }).click();
     await page.getByRole('link', { name: 'Khóa học API' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-api');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/course-api");
     await expect(page.getByRole('heading', { name: 'Danh sách khóa học API' })).toBeVisible();
     // Click btn Thêm khóa học mới 
     await page.waitForTimeout(1000);
@@ -1101,7 +1102,7 @@ function case5 () {
     await page.getByRole('main').getByRole('link', { name: 'Sinh viên và người đi làm' }).click();
     await expect(page.getByRole('link', { name: 'QA_Pass trạng thái Ẩn_API_Giải đố_Case5' }).first()).not.toBeVisible();
     // Truy cập CMS xóa khóa học
-    await page.goto('https://mskill8admin.mobiedu.vn/course-api');
+    await page.goto(dataSiteTest[0].linkSite + "/course-api");
     await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_Pass trạng thái Ẩn_API_Giải đố_Case5' })
@@ -1124,7 +1125,7 @@ function case6 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -1133,7 +1134,7 @@ function case6 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị khoá học' }).click();
     await page.getByRole('link', { name: 'Khóa học API' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-api');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/course-api");
     await expect(page.getByRole('heading', { name: 'Danh sách khóa học API' })).toBeVisible();
     // Click btn Thêm khóa học mới 
     await page.waitForTimeout(1000);
@@ -1217,7 +1218,7 @@ function case7 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -1226,7 +1227,7 @@ function case7 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị khoá học' }).click();
     await page.getByRole('link', { name: 'Khóa học API' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-api');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/course-api");
     await expect(page.getByRole('heading', { name: 'Danh sách khóa học API' })).toBeVisible();
     // Click btn Thêm khóa học mới 
     await page.waitForTimeout(1000);
@@ -1356,7 +1357,7 @@ function case8 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -1365,7 +1366,7 @@ function case8 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị khoá học' }).click();
     await page.getByRole('link', { name: 'Khóa học API' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-api');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/course-api");
     await expect(page.getByRole('heading', { name: 'Danh sách khóa học API' })).toBeVisible();
     // Click btn Thêm khóa học mới 
     await page.waitForTimeout(1000);
@@ -1495,7 +1496,7 @@ function case9 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -1504,7 +1505,7 @@ function case9 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị khoá học' }).click();
     await page.getByRole('link', { name: 'Khóa học API' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-api');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/course-api");
     await expect(page.getByRole('heading', { name: 'Danh sách khóa học API' })).toBeVisible();
     // Click btn Thêm khóa học mới 
     await page.waitForTimeout(1000);
@@ -1590,7 +1591,7 @@ function case10 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -1599,7 +1600,7 @@ function case10 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị khoá học' }).click();
     await page.getByRole('link', { name: 'Khóa học API' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-api');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/course-api");
     await expect(page.getByRole('heading', { name: 'Danh sách khóa học API' })).toBeVisible();
     // Click btn Thêm khóa học mới 
     await page.waitForTimeout(1000);
@@ -1702,7 +1703,7 @@ function case10 () {
     // Click btn Lưu - gói cước 
     await page.locator('#submit_add_pod_2').click();
     await expect(page.getByText('Lỗi! Đã có lỗi xảy ra, vui lòng kiểm tra lại thông tin.')).toBeVisible();
-    // Xóa khóc học 
+    // Xóa khóa học 
     await page.locator('#podCourseApi-2').getByRole('button', { name: 'Đóng' }).click();
     await expect(page.getByText('Thêm gói cước thành công!')).not.toBeVisible();
     await page.getByRole('button', { name: 'Đóng' }).click();
@@ -1730,7 +1731,7 @@ function case11 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -1739,7 +1740,7 @@ function case11 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị khoá học' }).click();
     await page.getByRole('link', { name: 'Khóa học API' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-api');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/course-api");
     await expect(page.getByRole('heading', { name: 'Danh sách khóa học API' })).toBeVisible();
     // Click btn Thêm khóa học mới 
     await page.waitForTimeout(1000);
@@ -1871,7 +1872,7 @@ function case12 () {
     
           test.slow();
     // Đăng nhập CMS thành công 
-    await page.goto('https://mskill8admin.mobiedu.vn/admlgi');
+    await page.goto(dataSiteTest[0].linkSite);
     await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
     await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
     await page.getByRole('button', { name: 'Đăng nhập' }).click();
@@ -1880,7 +1881,7 @@ function case12 () {
     await page.waitForTimeout(13000);
     await page.getByRole('link', { name: 'Quản trị khoá học' }).click();
     await page.getByRole('link', { name: 'Khóa học API' }).click();
-    await expect(page).toHaveURL('https://mskill8admin.mobiedu.vn/course-api');
+    await expect(page).toHaveURL(dataSiteTest[0].linkSite + "/course-api");
     await expect(page.getByRole('heading', { name: 'Danh sách khóa học API' })).toBeVisible();
     // Click btn Thêm khóa học mới 
     await page.waitForTimeout(1000);

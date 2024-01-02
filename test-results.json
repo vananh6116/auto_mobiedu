@@ -121,12 +121,12 @@
                 {
                   "workerIndex": 0,
                   "status": "passed",
-                  "duration": 50687,
+                  "duration": 48729,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:40:49.698Z",
+                  "startTime": "2024-01-02T09:44:51.422Z",
                   "attachments": []
                 }
               ],
@@ -140,7 +140,7 @@
         },
         {
           "title": "Case lỗi 2: hiển thị btn Xem thêm",
-          "ok": true,
+          "ok": false,
           "tags": [],
           "tests": [
             {
@@ -152,17 +152,47 @@
               "results": [
                 {
                   "workerIndex": 0,
-                  "status": "passed",
-                  "duration": 6523,
-                  "errors": [],
+                  "status": "failed",
+                  "duration": 10749,
+                  "error": {
+                    "message": "\u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: getByRole('button', { name: 'Xem thêm ' })\nExpected: visible\nReceived: hidden\nCall log:\n  \u001b[2m- expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Xem thêm ' })\u001b[22m\n",
+                    "stack": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: getByRole('button', { name: 'Xem thêm ' })\nExpected: visible\nReceived: hidden\nCall log:\n  \u001b[2m- expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Xem thêm ' })\u001b[22m\n\n    at C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\A_Tai_hien_case_loi\\Caseloi.spec.js:106:72",
+                    "location": {
+                      "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\A_Tai_hien_case_loi\\Caseloi.spec.js",
+                      "column": 72,
+                      "line": 106
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 104 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'div'\u001b[39m)\u001b[33m.\u001b[39mfilter({ hasText\u001b[33m:\u001b[39m \u001b[32m'Khóa họckeyboard_arrow_down Tất cả Trẻ em Học sinh phổ thông Sinh viên và người '\u001b[39m })\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 105 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'link'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'EduPro mSkill EDV'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 106 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Xem thêm '\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                                                                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 107 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 108 |\u001b[39m     })\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 109 |\u001b[39m }\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\A_Tai_hien_case_loi\\Caseloi.spec.js",
+                        "column": 72,
+                        "line": 106
+                      },
+                      "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: getByRole('button', { name: 'Xem thêm ' })\nExpected: visible\nReceived: hidden\nCall log:\n  \u001b[2m- expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Xem thêm ' })\u001b[22m\n\n\n\u001b[0m \u001b[90m 104 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'div'\u001b[39m)\u001b[33m.\u001b[39mfilter({ hasText\u001b[33m:\u001b[39m \u001b[32m'Khóa họckeyboard_arrow_down Tất cả Trẻ em Học sinh phổ thông Sinh viên và người '\u001b[39m })\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 105 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'link'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'EduPro mSkill EDV'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 106 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Xem thêm '\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                                                                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 107 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 108 |\u001b[39m     })\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 109 |\u001b[39m }\u001b[0m\n\n\u001b[2m    at C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\A_Tai_hien_case_loi\\Caseloi.spec.js:106:72\u001b[22m"
+                    }
+                  ],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:41:40.950Z",
-                  "attachments": []
+                  "startTime": "2024-01-02T09:45:40.416Z",
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\test-results\\A_Tai_hien_case_loi-Caseloi-Case-lỗi-2-hiển-thị-btn-Xem-thêm-chromium\\video.webm"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\A_Tai_hien_case_loi\\Caseloi.spec.js",
+                    "column": 72,
+                    "line": 106
+                  }
                 }
               ],
-              "status": "expected"
+              "status": "unexpected"
             }
           ],
           "id": "d6c01582396be062879e-1cf65247729b6b206f82",
@@ -183,14 +213,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 1,
                   "status": "passed",
-                  "duration": 2933,
+                  "duration": 2687,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:41:47.477Z",
+                  "startTime": "2024-01-02T09:45:51.624Z",
                   "attachments": []
                 }
               ],
@@ -204,7 +234,7 @@
         },
         {
           "title": "Case lỗi 4: Upload ảnh bài viết",
-          "ok": true,
+          "ok": false,
           "tags": [],
           "tests": [
             {
@@ -219,18 +249,48 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
-                  "status": "passed",
-                  "duration": 10049,
-                  "errors": [],
+                  "workerIndex": 1,
+                  "status": "failed",
+                  "duration": 23504,
+                  "error": {
+                    "message": "page.goto: net::ERR_CONNECTION_TIMED_OUT at https://mskill8admin.mobiedu.vn/\n=========================== logs ===========================\nnavigating to \"https://mskill8admin.mobiedu.vn/\", waiting until \"load\"\n============================================================",
+                    "stack": "Error: page.goto: net::ERR_CONNECTION_TIMED_OUT at https://mskill8admin.mobiedu.vn/\n=========================== logs ===========================\nnavigating to \"https://mskill8admin.mobiedu.vn/\", waiting until \"load\"\n============================================================\n    at C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\A_Tai_hien_case_loi\\Caseloi.spec.js:150:20",
+                    "location": {
+                      "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\A_Tai_hien_case_loi\\Caseloi.spec.js",
+                      "column": 20,
+                      "line": 150
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 148 |\u001b[39m         test\u001b[33m.\u001b[39mslow()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 149 |\u001b[39m         \u001b[90m// Đăng nhập CMS thành công \u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 150 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(dataSiteTest[\u001b[35m0\u001b[39m]\u001b[33m.\u001b[39mlinkSite)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 151 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Tên đăng nhập hoặc Email'\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m'hiennt'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 152 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Mật khẩu'\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m'inet@2023'\u001b[39m)\u001b[0m\n\u001b[0m \u001b[90m 153 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Đăng nhập'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\A_Tai_hien_case_loi\\Caseloi.spec.js",
+                        "column": 20,
+                        "line": 150
+                      },
+                      "message": "Error: page.goto: net::ERR_CONNECTION_TIMED_OUT at https://mskill8admin.mobiedu.vn/\n=========================== logs ===========================\nnavigating to \"https://mskill8admin.mobiedu.vn/\", waiting until \"load\"\n============================================================\n\n\u001b[0m \u001b[90m 148 |\u001b[39m         test\u001b[33m.\u001b[39mslow()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 149 |\u001b[39m         \u001b[90m// Đăng nhập CMS thành công \u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 150 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(dataSiteTest[\u001b[35m0\u001b[39m]\u001b[33m.\u001b[39mlinkSite)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 151 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Tên đăng nhập hoặc Email'\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m'hiennt'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 152 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Mật khẩu'\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m'inet@2023'\u001b[39m)\u001b[0m\n\u001b[0m \u001b[90m 153 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Đăng nhập'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\n\u001b[2m    at C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\A_Tai_hien_case_loi\\Caseloi.spec.js:150:20\u001b[22m"
+                    }
+                  ],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:41:50.414Z",
-                  "attachments": []
+                  "startTime": "2024-01-02T09:45:54.582Z",
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\test-results\\A_Tai_hien_case_loi-Caseloi-Case-lỗi-4-Upload-ảnh-bài-viết-chromium\\video.webm"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\A_Tai_hien_case_loi\\Caseloi.spec.js",
+                    "column": 20,
+                    "line": 150
+                  }
                 }
               ],
-              "status": "expected"
+              "status": "unexpected"
             }
           ],
           "id": "d6c01582396be062879e-d9a5f494b0c9ed581a3b",
@@ -255,14 +315,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 2,
                   "status": "passed",
-                  "duration": 54214,
+                  "duration": 53439,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:42:00.470Z",
+                  "startTime": "2024-01-02T09:46:18.610Z",
                   "attachments": []
                 }
               ],
@@ -291,14 +351,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 2,
                   "status": "passed",
-                  "duration": 30750,
+                  "duration": 27404,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:42:54.689Z",
+                  "startTime": "2024-01-02T09:47:12.358Z",
                   "attachments": []
                 }
               ],
@@ -312,7 +372,7 @@
         },
         {
           "title": "Case lỗi 7: Thêm và sửa bài viết",
-          "ok": true,
+          "ok": false,
           "tags": [],
           "tests": [
             {
@@ -327,18 +387,48 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
-                  "status": "passed",
-                  "duration": 16246,
-                  "errors": [],
+                  "workerIndex": 2,
+                  "status": "failed",
+                  "duration": 22667,
+                  "error": {
+                    "message": "page.goto: net::ERR_CONNECTION_TIMED_OUT at https://mskill8admin.mobiedu.vn/\n=========================== logs ===========================\nnavigating to \"https://mskill8admin.mobiedu.vn/\", waiting until \"load\"\n============================================================",
+                    "stack": "Error: page.goto: net::ERR_CONNECTION_TIMED_OUT at https://mskill8admin.mobiedu.vn/\n=========================== logs ===========================\nnavigating to \"https://mskill8admin.mobiedu.vn/\", waiting until \"load\"\n============================================================\n    at C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\A_Tai_hien_case_loi\\Caseloi.spec.js:403:20",
+                    "location": {
+                      "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\A_Tai_hien_case_loi\\Caseloi.spec.js",
+                      "column": 20,
+                      "line": 403
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 401 |\u001b[39m         test\u001b[33m.\u001b[39mslow()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 402 |\u001b[39m         \u001b[90m// Đăng nhập CMS thành công \u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 403 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(dataSiteTest[\u001b[35m0\u001b[39m]\u001b[33m.\u001b[39mlinkSite)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 404 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Tên đăng nhập hoặc Email'\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m'hiennt'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 405 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Mật khẩu'\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m'inet@2023'\u001b[39m)\u001b[0m\n\u001b[0m \u001b[90m 406 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Đăng nhập'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\A_Tai_hien_case_loi\\Caseloi.spec.js",
+                        "column": 20,
+                        "line": 403
+                      },
+                      "message": "Error: page.goto: net::ERR_CONNECTION_TIMED_OUT at https://mskill8admin.mobiedu.vn/\n=========================== logs ===========================\nnavigating to \"https://mskill8admin.mobiedu.vn/\", waiting until \"load\"\n============================================================\n\n\u001b[0m \u001b[90m 401 |\u001b[39m         test\u001b[33m.\u001b[39mslow()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 402 |\u001b[39m         \u001b[90m// Đăng nhập CMS thành công \u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 403 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(dataSiteTest[\u001b[35m0\u001b[39m]\u001b[33m.\u001b[39mlinkSite)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 404 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Tên đăng nhập hoặc Email'\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m'hiennt'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 405 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByPlaceholder(\u001b[32m'Mật khẩu'\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m'inet@2023'\u001b[39m)\u001b[0m\n\u001b[0m \u001b[90m 406 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Đăng nhập'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\n\u001b[2m    at C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\A_Tai_hien_case_loi\\Caseloi.spec.js:403:20\u001b[22m"
+                    }
+                  ],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:43:25.443Z",
-                  "attachments": []
+                  "startTime": "2024-01-02T09:47:39.770Z",
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\test-results\\A_Tai_hien_case_loi-Caseloi-Case-lỗi-7-Thêm-và-sửa-bài-viết-chromium\\video.webm"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\A_Tai_hien_case_loi\\Caseloi.spec.js",
+                    "column": 20,
+                    "line": 403
+                  }
                 }
               ],
-              "status": "expected"
+              "status": "unexpected"
             }
           ],
           "id": "d6c01582396be062879e-a882abc049fb3143bfaa",
@@ -363,14 +453,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 3,
                   "status": "passed",
-                  "duration": 24385,
+                  "duration": 39031,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:43:41.693Z",
+                  "startTime": "2024-01-02T09:48:02.917Z",
                   "attachments": []
                 }
               ],
@@ -399,14 +489,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 3,
                   "status": "passed",
-                  "duration": 28801,
+                  "duration": 28563,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:44:06.081Z",
+                  "startTime": "2024-01-02T09:48:42.208Z",
                   "attachments": []
                 }
               ],
@@ -435,14 +525,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 3,
                   "status": "passed",
-                  "duration": 57300,
+                  "duration": 55553,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:44:34.886Z",
+                  "startTime": "2024-01-02T09:49:10.786Z",
                   "attachments": []
                 }
               ],
@@ -471,14 +561,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 3,
                   "status": "passed",
-                  "duration": 24132,
+                  "duration": 38968,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:45:32.192Z",
+                  "startTime": "2024-01-02T09:50:06.344Z",
                   "attachments": []
                 }
               ],
@@ -507,14 +597,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 3,
                   "status": "passed",
-                  "duration": 3189,
+                  "duration": 2960,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:45:56.329Z",
+                  "startTime": "2024-01-02T09:50:45.315Z",
                   "attachments": []
                 }
               ],
@@ -543,14 +633,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 3,
                   "status": "passed",
-                  "duration": 4137,
+                  "duration": 4520,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:45:59.521Z",
+                  "startTime": "2024-01-02T09:50:48.278Z",
                   "attachments": []
                 }
               ],
@@ -579,14 +669,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 3,
                   "status": "passed",
-                  "duration": 9881,
+                  "duration": 9188,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:46:03.661Z",
+                  "startTime": "2024-01-02T09:50:52.801Z",
                   "attachments": []
                 }
               ],
@@ -615,14 +705,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 3,
                   "status": "passed",
-                  "duration": 9450,
+                  "duration": 9842,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:46:13.546Z",
+                  "startTime": "2024-01-02T09:51:01.992Z",
                   "attachments": []
                 }
               ],
@@ -659,14 +749,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 3,
                   "status": "passed",
-                  "duration": 5657,
+                  "duration": 5610,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:46:23.023Z",
+                  "startTime": "2024-01-02T09:51:11.861Z",
                   "attachments": []
                 }
               ],
@@ -695,14 +785,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 3,
                   "status": "passed",
-                  "duration": 4821,
+                  "duration": 4390,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:46:28.683Z",
+                  "startTime": "2024-01-02T09:51:17.475Z",
                   "attachments": []
                 }
               ],
@@ -731,14 +821,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 3,
                   "status": "passed",
-                  "duration": 4417,
+                  "duration": 4348,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:46:33.508Z",
+                  "startTime": "2024-01-02T09:51:21.868Z",
                   "attachments": []
                 }
               ],
@@ -767,14 +857,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 3,
                   "status": "passed",
-                  "duration": 4465,
+                  "duration": 4488,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:46:37.928Z",
+                  "startTime": "2024-01-02T09:51:26.220Z",
                   "attachments": []
                 }
               ],
@@ -803,14 +893,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 3,
                   "status": "passed",
-                  "duration": 4052,
+                  "duration": 4081,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:46:42.396Z",
+                  "startTime": "2024-01-02T09:51:30.711Z",
                   "attachments": []
                 }
               ],
@@ -839,14 +929,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 3,
                   "status": "passed",
-                  "duration": 7542,
+                  "duration": 7392,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:46:46.451Z",
+                  "startTime": "2024-01-02T09:51:34.796Z",
                   "attachments": []
                 }
               ],
@@ -875,14 +965,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 3,
                   "status": "passed",
-                  "duration": 7347,
+                  "duration": 7345,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:46:53.995Z",
+                  "startTime": "2024-01-02T09:51:42.190Z",
                   "attachments": []
                 }
               ],
@@ -911,14 +1001,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 3,
                   "status": "passed",
-                  "duration": 2370,
+                  "duration": 2422,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:47:01.345Z",
+                  "startTime": "2024-01-02T09:51:49.538Z",
                   "attachments": []
                 }
               ],
@@ -947,14 +1037,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 3,
                   "status": "passed",
-                  "duration": 11990,
+                  "duration": 11945,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:47:03.717Z",
+                  "startTime": "2024-01-02T09:51:51.963Z",
                   "attachments": []
                 }
               ],
@@ -968,7 +1058,7 @@
         },
         {
           "title": "Case 10: click khóa học",
-          "ok": true,
+          "ok": false,
           "tags": [],
           "tests": [
             {
@@ -983,18 +1073,48 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
-                  "status": "passed",
-                  "duration": 7727,
-                  "errors": [],
+                  "workerIndex": 3,
+                  "status": "failed",
+                  "duration": 10148,
+                  "error": {
+                    "message": "\u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('section').filter({ hasText: 'Trang chủ Khóa học EduPro mSkill EDV' })\nExpected: visible\nReceived: hidden\nCall log:\n  \u001b[2m- expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('section').filter({ hasText: 'Trang chủ Khóa học EduPro mSkill EDV' })\u001b[22m\n",
+                    "stack": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('section').filter({ hasText: 'Trang chủ Khóa học EduPro mSkill EDV' })\nExpected: visible\nReceived: hidden\nCall log:\n  \u001b[2m- expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('section').filter({ hasText: 'Trang chủ Khóa học EduPro mSkill EDV' })\u001b[22m\n\n    at C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\A_clickbtnTrangchu.spec.js:286:107",
+                    "location": {
+                      "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\A_clickbtnTrangchu.spec.js",
+                      "column": 107,
+                      "line": 286
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 284 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'link'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'EduPro mSkill EDV'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 285 |\u001b[39m         \u001b[90m// Expect\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 286 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'section'\u001b[39m)\u001b[33m.\u001b[39mfilter({ hasText\u001b[33m:\u001b[39m \u001b[32m'Trang chủ Khóa học EduPro mSkill EDV'\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                                                                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 287 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'heading'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'EduPro mSkill EDV'\u001b[39m })\u001b[33m.\u001b[39mlocator(\u001b[32m'span'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 288 |\u001b[39m         \u001b[90m// Chụp màn hình khóa học \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 289 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m2000\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\A_clickbtnTrangchu.spec.js",
+                        "column": 107,
+                        "line": 286
+                      },
+                      "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('section').filter({ hasText: 'Trang chủ Khóa học EduPro mSkill EDV' })\nExpected: visible\nReceived: hidden\nCall log:\n  \u001b[2m- expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('section').filter({ hasText: 'Trang chủ Khóa học EduPro mSkill EDV' })\u001b[22m\n\n\n\u001b[0m \u001b[90m 284 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'link'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'EduPro mSkill EDV'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 285 |\u001b[39m         \u001b[90m// Expect\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 286 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'section'\u001b[39m)\u001b[33m.\u001b[39mfilter({ hasText\u001b[33m:\u001b[39m \u001b[32m'Trang chủ Khóa học EduPro mSkill EDV'\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                                                                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 287 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'heading'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'EduPro mSkill EDV'\u001b[39m })\u001b[33m.\u001b[39mlocator(\u001b[32m'span'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 288 |\u001b[39m         \u001b[90m// Chụp màn hình khóa học \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 289 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m2000\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\n\u001b[2m    at C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\A_clickbtnTrangchu.spec.js:286:107\u001b[22m"
+                    }
+                  ],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:47:15.710Z",
-                  "attachments": []
+                  "startTime": "2024-01-02T09:52:03.912Z",
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\test-results\\B_WEB-A_Truoc_dang_nhap-A_clickbtnTrangchu-Case-10-click-khóa-học-chromium\\video.webm"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\A_clickbtnTrangchu.spec.js",
+                    "column": 107,
+                    "line": 286
+                  }
                 }
               ],
-              "status": "expected"
+              "status": "unexpected"
             }
           ],
           "id": "183c6206b095a5fc72d7-7414b1c8d140208435e9",
@@ -1019,14 +1139,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 9523,
+                  "duration": 2282,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:47:23.440Z",
+                  "startTime": "2024-01-02T09:52:14.503Z",
                   "attachments": []
                 }
               ],
@@ -1055,14 +1175,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 2638,
+                  "duration": 1842,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:47:32.966Z",
+                  "startTime": "2024-01-02T09:52:17.061Z",
                   "attachments": []
                 }
               ],
@@ -1091,14 +1211,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 1940,
+                  "duration": 1846,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:47:35.607Z",
+                  "startTime": "2024-01-02T09:52:18.907Z",
                   "attachments": []
                 }
               ],
@@ -1127,14 +1247,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 2640,
+                  "duration": 1859,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:47:37.550Z",
+                  "startTime": "2024-01-02T09:52:20.756Z",
                   "attachments": []
                 }
               ],
@@ -1163,14 +1283,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 5000,
+                  "duration": 4320,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:47:40.193Z",
+                  "startTime": "2024-01-02T09:52:22.618Z",
                   "attachments": []
                 }
               ],
@@ -1199,14 +1319,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 3202,
+                  "duration": 46545,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:47:45.197Z",
+                  "startTime": "2024-01-02T09:52:26.941Z",
                   "attachments": []
                 }
               ],
@@ -1235,14 +1355,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 2244,
+                  "duration": 2365,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:47:48.402Z",
+                  "startTime": "2024-01-02T09:53:13.489Z",
                   "attachments": []
                 }
               ],
@@ -1271,14 +1391,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 1965,
+                  "duration": 2029,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:47:50.649Z",
+                  "startTime": "2024-01-02T09:53:15.857Z",
                   "attachments": []
                 }
               ],
@@ -1307,14 +1427,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 2384,
+                  "duration": 2113,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:47:52.617Z",
+                  "startTime": "2024-01-02T09:53:17.889Z",
                   "attachments": []
                 }
               ],
@@ -1343,14 +1463,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 1859,
+                  "duration": 2158,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:47:55.003Z",
+                  "startTime": "2024-01-02T09:53:20.005Z",
                   "attachments": []
                 }
               ],
@@ -1379,14 +1499,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 1827,
+                  "duration": 1695,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:47:56.864Z",
+                  "startTime": "2024-01-02T09:53:22.165Z",
                   "attachments": []
                 }
               ],
@@ -1415,14 +1535,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 2178,
+                  "duration": 1655,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:47:58.694Z",
+                  "startTime": "2024-01-02T09:53:23.863Z",
                   "attachments": []
                 }
               ],
@@ -1451,14 +1571,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 3887,
+                  "duration": 3379,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:48:00.874Z",
+                  "startTime": "2024-01-02T09:53:25.522Z",
                   "attachments": []
                 }
               ],
@@ -1487,14 +1607,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 5469,
+                  "duration": 4962,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:48:04.764Z",
+                  "startTime": "2024-01-02T09:53:28.903Z",
                   "attachments": []
                 }
               ],
@@ -1523,14 +1643,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 5051,
+                  "duration": 4666,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:48:10.235Z",
+                  "startTime": "2024-01-02T09:53:33.867Z",
                   "attachments": []
                 }
               ],
@@ -1559,14 +1679,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 4170,
+                  "duration": 3987,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:48:15.288Z",
+                  "startTime": "2024-01-02T09:53:38.536Z",
                   "attachments": []
                 }
               ],
@@ -1595,14 +1715,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 5300,
+                  "duration": 4698,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:48:19.461Z",
+                  "startTime": "2024-01-02T09:53:42.525Z",
                   "attachments": []
                 }
               ],
@@ -1631,14 +1751,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 4418,
+                  "duration": 4559,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:48:24.764Z",
+                  "startTime": "2024-01-02T09:53:47.226Z",
                   "attachments": []
                 }
               ],
@@ -1667,14 +1787,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 4241,
+                  "duration": 4405,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:48:29.184Z",
+                  "startTime": "2024-01-02T09:53:51.789Z",
                   "attachments": []
                 }
               ],
@@ -1703,14 +1823,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 4671,
+                  "duration": 4849,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:48:33.428Z",
+                  "startTime": "2024-01-02T09:53:56.197Z",
                   "attachments": []
                 }
               ],
@@ -1739,14 +1859,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 5691,
+                  "duration": 4335,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:48:38.102Z",
+                  "startTime": "2024-01-02T09:54:01.048Z",
                   "attachments": []
                 }
               ],
@@ -1775,14 +1895,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 9494,
+                  "duration": 9214,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:48:43.795Z",
+                  "startTime": "2024-01-02T09:54:05.386Z",
                   "attachments": []
                 }
               ],
@@ -1811,14 +1931,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 3075,
+                  "duration": 3274,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:48:53.292Z",
+                  "startTime": "2024-01-02T09:54:14.602Z",
                   "attachments": []
                 }
               ],
@@ -1847,14 +1967,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 2185,
+                  "duration": 2149,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:48:56.370Z",
+                  "startTime": "2024-01-02T09:54:17.878Z",
                   "attachments": []
                 }
               ],
@@ -1883,14 +2003,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 2423,
+                  "duration": 1932,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:48:58.557Z",
+                  "startTime": "2024-01-02T09:54:20.030Z",
                   "attachments": []
                 }
               ],
@@ -1919,14 +2039,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 4180,
+                  "duration": 4011,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:49:00.982Z",
+                  "startTime": "2024-01-02T09:54:21.965Z",
                   "attachments": []
                 }
               ],
@@ -1963,14 +2083,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 13504,
+                  "duration": 13984,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:49:05.187Z",
+                  "startTime": "2024-01-02T09:54:26.000Z",
                   "attachments": []
                 }
               ],
@@ -1999,14 +2119,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 6983,
+                  "duration": 7156,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:49:18.694Z",
+                  "startTime": "2024-01-02T09:54:39.987Z",
                   "attachments": []
                 }
               ],
@@ -2035,14 +2155,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 5095,
+                  "duration": 5337,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:49:25.679Z",
+                  "startTime": "2024-01-02T09:54:47.146Z",
                   "attachments": []
                 }
               ],
@@ -2071,14 +2191,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 5108,
+                  "duration": 4887,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:49:30.776Z",
+                  "startTime": "2024-01-02T09:54:52.486Z",
                   "attachments": []
                 }
               ],
@@ -2107,14 +2227,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 5678,
+                  "duration": 5514,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:49:35.888Z",
+                  "startTime": "2024-01-02T09:54:57.376Z",
                   "attachments": []
                 }
               ],
@@ -2143,14 +2263,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 3106,
+                  "duration": 3269,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:49:41.569Z",
+                  "startTime": "2024-01-02T09:55:02.892Z",
                   "attachments": []
                 }
               ],
@@ -2179,14 +2299,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "status": "passed",
-                  "duration": 5261,
+                  "duration": 5594,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:49:44.677Z",
+                  "startTime": "2024-01-02T09:55:06.164Z",
                   "attachments": []
                 }
               ],
@@ -2200,7 +2320,7 @@
         },
         {
           "title": "Case 8: Click btn Giá khóa học",
-          "ok": true,
+          "ok": false,
           "tags": [],
           "tests": [
             {
@@ -2215,18 +2335,48 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
-                  "status": "passed",
-                  "duration": 12693,
-                  "errors": [],
+                  "workerIndex": 4,
+                  "status": "failed",
+                  "duration": 7965,
+                  "error": {
+                    "message": "\u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nLocator: locator(':root')\nExpected string: \u001b[32m\"https://mskill8.mobiedu.vn/\u001b[7mkhoa-hoc?sort_type=price_asc\u001b[27m\"\u001b[39m\nReceived string: \u001b[31m\"https://mskill8.mobiedu.vn/\"\u001b[39m\nCall log:\n  \u001b[2m- expect.toHaveURL with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator(':root')\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"https://mskill8.mobiedu.vn/\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"https://mskill8.mobiedu.vn/\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"https://mskill8.mobiedu.vn/\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"https://mskill8.mobiedu.vn/\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"https://mskill8.mobiedu.vn/\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"https://mskill8.mobiedu.vn/\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"https://mskill8.mobiedu.vn/\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"https://mskill8.mobiedu.vn/\"\u001b[22m\n",
+                    "stack": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nLocator: locator(':root')\nExpected string: \u001b[32m\"https://mskill8.mobiedu.vn/\u001b[7mkhoa-hoc?sort_type=price_asc\u001b[27m\"\u001b[39m\nReceived string: \u001b[31m\"https://mskill8.mobiedu.vn/\"\u001b[39m\nCall log:\n  \u001b[2m- expect.toHaveURL with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator(':root')\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"https://mskill8.mobiedu.vn/\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"https://mskill8.mobiedu.vn/\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"https://mskill8.mobiedu.vn/\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"https://mskill8.mobiedu.vn/\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"https://mskill8.mobiedu.vn/\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"https://mskill8.mobiedu.vn/\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"https://mskill8.mobiedu.vn/\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"https://mskill8.mobiedu.vn/\"\u001b[22m\n\n    at C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\B_clickbtnKhoahoc.spec.js:291:28",
+                    "location": {
+                      "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\B_clickbtnKhoahoc.spec.js",
+                      "column": 28,
+                      "line": 291
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 289 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'link'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Giá thấp nhất'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 290 |\u001b[39m         \u001b[90m// Expect\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 291 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[32m'https://mskill8.mobiedu.vn/khoa-hoc?sort_type=price_asc'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 292 |\u001b[39m         \u001b[90m// Click btn Xem thêm \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 293 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Xem thêm'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 294 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Xem thêm'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\B_clickbtnKhoahoc.spec.js",
+                        "column": 28,
+                        "line": 291
+                      },
+                      "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nLocator: locator(':root')\nExpected string: \u001b[32m\"https://mskill8.mobiedu.vn/\u001b[7mkhoa-hoc?sort_type=price_asc\u001b[27m\"\u001b[39m\nReceived string: \u001b[31m\"https://mskill8.mobiedu.vn/\"\u001b[39m\nCall log:\n  \u001b[2m- expect.toHaveURL with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator(':root')\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"https://mskill8.mobiedu.vn/\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"https://mskill8.mobiedu.vn/\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"https://mskill8.mobiedu.vn/\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"https://mskill8.mobiedu.vn/\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"https://mskill8.mobiedu.vn/\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"https://mskill8.mobiedu.vn/\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"https://mskill8.mobiedu.vn/\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"https://mskill8.mobiedu.vn/\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 289 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'link'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Giá thấp nhất'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 290 |\u001b[39m         \u001b[90m// Expect\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 291 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[32m'https://mskill8.mobiedu.vn/khoa-hoc?sort_type=price_asc'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 292 |\u001b[39m         \u001b[90m// Click btn Xem thêm \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 293 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Xem thêm'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 294 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Xem thêm'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\n\u001b[2m    at C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\B_clickbtnKhoahoc.spec.js:291:28\u001b[22m"
+                    }
+                  ],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:49:49.940Z",
-                  "attachments": []
+                  "startTime": "2024-01-02T09:55:11.761Z",
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\test-results\\B_WEB-A_Truoc_dang_nhap-B_clickbtnKhoahoc-Case-8-Click-btn-Giá-khóa-học-chromium\\video.webm"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\B_clickbtnKhoahoc.spec.js",
+                    "column": 28,
+                    "line": 291
+                  }
                 }
               ],
-              "status": "expected"
+              "status": "unexpected"
             }
           ],
           "id": "acf310980d243bb6b117-46a538273b66a5fc6047",
@@ -2236,7 +2386,7 @@
         },
         {
           "title": "Case 9: Click link giảng viên",
-          "ok": true,
+          "ok": false,
           "tags": [],
           "tests": [
             {
@@ -2251,18 +2401,48 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
-                  "status": "passed",
-                  "duration": 9278,
-                  "errors": [],
+                  "workerIndex": 5,
+                  "status": "failed",
+                  "duration": 10236,
+                  "error": {
+                    "message": "\u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: getByRole('heading', { name: 'EduPro mSkill EDV' })\nExpected: visible\nReceived: hidden\nCall log:\n  \u001b[2m- expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'EduPro mSkill EDV' })\u001b[22m\n",
+                    "stack": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: getByRole('heading', { name: 'EduPro mSkill EDV' })\nExpected: visible\nReceived: hidden\nCall log:\n  \u001b[2m- expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'EduPro mSkill EDV' })\u001b[22m\n\n    at C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\B_clickbtnKhoahoc.spec.js:342:80",
+                    "location": {
+                      "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\B_clickbtnKhoahoc.spec.js",
+                      "column": 80,
+                      "line": 342
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 340 |\u001b[39m         \u001b[90m// Click khóa học \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 341 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'link'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'EduPro mSkill EDV'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 342 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'heading'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'EduPro mSkill EDV'\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                                                                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 343 |\u001b[39m         \u001b[90m// Click link giảng viên \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 344 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'link'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Nguyễn Hiếu'\u001b[39m })\u001b[33m.\u001b[39mfirst()\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 345 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'section'\u001b[39m)\u001b[33m.\u001b[39mfilter({ hasText\u001b[33m:\u001b[39m \u001b[32m'Trang chủ Giảng viên: Nguyễn Hiếu'\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\B_clickbtnKhoahoc.spec.js",
+                        "column": 80,
+                        "line": 342
+                      },
+                      "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: getByRole('heading', { name: 'EduPro mSkill EDV' })\nExpected: visible\nReceived: hidden\nCall log:\n  \u001b[2m- expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'EduPro mSkill EDV' })\u001b[22m\n\n\n\u001b[0m \u001b[90m 340 |\u001b[39m         \u001b[90m// Click khóa học \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 341 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'link'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'EduPro mSkill EDV'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 342 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'heading'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'EduPro mSkill EDV'\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                                                                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 343 |\u001b[39m         \u001b[90m// Click link giảng viên \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 344 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'link'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Nguyễn Hiếu'\u001b[39m })\u001b[33m.\u001b[39mfirst()\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 345 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'section'\u001b[39m)\u001b[33m.\u001b[39mfilter({ hasText\u001b[33m:\u001b[39m \u001b[32m'Trang chủ Giảng viên: Nguyễn Hiếu'\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\n\u001b[2m    at C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\B_clickbtnKhoahoc.spec.js:342:80\u001b[22m"
+                    }
+                  ],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:50:02.636Z",
-                  "attachments": []
+                  "startTime": "2024-01-02T09:55:20.176Z",
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\test-results\\B_WEB-A_Truoc_dang_nhap-B_clickbtnKhoahoc-Case-9-Click-link-giảng-viên-chromium\\video.webm"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\B_clickbtnKhoahoc.spec.js",
+                    "column": 80,
+                    "line": 342
+                  }
                 }
               ],
-              "status": "expected"
+              "status": "unexpected"
             }
           ],
           "id": "acf310980d243bb6b117-a63d5b0a888825d216b8",
@@ -2295,14 +2475,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 6,
                   "status": "passed",
-                  "duration": 5412,
+                  "duration": 4276,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:50:11.930Z",
+                  "startTime": "2024-01-02T09:55:31.157Z",
                   "attachments": []
                 }
               ],
@@ -2331,14 +2511,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 6,
                   "status": "passed",
-                  "duration": 21228,
+                  "duration": 18850,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:50:17.345Z",
+                  "startTime": "2024-01-02T09:55:35.807Z",
                   "attachments": []
                 }
               ],
@@ -2367,14 +2547,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 6,
                   "status": "passed",
-                  "duration": 13150,
+                  "duration": 14199,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:50:38.575Z",
+                  "startTime": "2024-01-02T09:55:54.660Z",
                   "attachments": []
                 }
               ],
@@ -2403,14 +2583,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 6,
                   "status": "passed",
-                  "duration": 11636,
+                  "duration": 13001,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:50:51.727Z",
+                  "startTime": "2024-01-02T09:56:08.862Z",
                   "attachments": []
                 }
               ],
@@ -2439,14 +2619,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 6,
                   "status": "passed",
-                  "duration": 11882,
+                  "duration": 8165,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:51:03.366Z",
+                  "startTime": "2024-01-02T09:56:21.867Z",
                   "attachments": []
                 }
               ],
@@ -2475,14 +2655,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 6,
                   "status": "passed",
-                  "duration": 10943,
+                  "duration": 9558,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:51:15.250Z",
+                  "startTime": "2024-01-02T09:56:30.035Z",
                   "attachments": []
                 }
               ],
@@ -2511,14 +2691,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 6,
                   "status": "passed",
-                  "duration": 14211,
+                  "duration": 15136,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:51:26.196Z",
+                  "startTime": "2024-01-02T09:56:39.597Z",
                   "attachments": []
                 }
               ],
@@ -2547,14 +2727,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 6,
                   "status": "passed",
-                  "duration": 5438,
+                  "duration": 2085,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:51:40.409Z",
+                  "startTime": "2024-01-02T09:56:54.737Z",
                   "attachments": []
                 }
               ],
@@ -2583,14 +2763,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 6,
                   "status": "passed",
-                  "duration": 3841,
+                  "duration": 3708,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:51:45.851Z",
+                  "startTime": "2024-01-02T09:56:56.826Z",
                   "attachments": []
                 }
               ],
@@ -2619,14 +2799,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 6,
                   "status": "passed",
-                  "duration": 11912,
+                  "duration": 9661,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:51:49.695Z",
+                  "startTime": "2024-01-02T09:57:00.538Z",
                   "attachments": []
                 }
               ],
@@ -2663,14 +2843,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 6,
                   "status": "passed",
-                  "duration": 12912,
+                  "duration": 13228,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:52:01.620Z",
+                  "startTime": "2024-01-02T09:57:10.213Z",
                   "attachments": []
                 }
               ],
@@ -2699,14 +2879,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 6,
                   "status": "passed",
-                  "duration": 3948,
+                  "duration": 3539,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:52:14.535Z",
+                  "startTime": "2024-01-02T09:57:23.445Z",
                   "attachments": []
                 }
               ],
@@ -2720,7 +2900,7 @@
         },
         {
           "title": "Case 3: click link banner đầu trang",
-          "ok": true,
+          "ok": false,
           "tags": [],
           "tests": [
             {
@@ -2735,18 +2915,58 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
-                  "status": "passed",
-                  "duration": 32254,
-                  "errors": [],
+                  "workerIndex": 6,
+                  "status": "failed",
+                  "duration": 49712,
+                  "error": {
+                    "message": "page.goto: net::ERR_CONNECTION_TIMED_OUT at https://mobiedu.vn/tin-tuc/tich-hop-chatgpt-nang-tam-hoc-tap-tren-mobiedu-p2063.html\n=========================== logs ===========================\nnavigating to \"https://mobiedu.vn/tin-tuc/tich-hop-chatgpt-nang-tam-hoc-tap-tren-mobiedu-p2063.html\", waiting until \"load\"\n============================================================",
+                    "stack": "Error: page.goto: net::ERR_CONNECTION_TIMED_OUT at https://mobiedu.vn/tin-tuc/tich-hop-chatgpt-nang-tam-hoc-tap-tren-mobiedu-p2063.html\n=========================== logs ===========================\nnavigating to \"https://mobiedu.vn/tin-tuc/tich-hop-chatgpt-nang-tam-hoc-tap-tren-mobiedu-p2063.html\", waiting until \"load\"\n============================================================\n    at C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\D_clickbtnCongthi.spec.js:113:20",
+                    "location": {
+                      "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\D_clickbtnCongthi.spec.js",
+                      "column": 20,
+                      "line": 113
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 111 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m12000\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 112 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'div.swiper-slide.swiper-slide-active > div > div > div > a > img'\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 113 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'https://mobiedu.vn/tin-tuc/tich-hop-chatgpt-nang-tam-hoc-tap-tren-mobiedu-p2063.html'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 114 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'.news-detail-title'\u001b[39m\u001b[33m,\u001b[39m{hasText\u001b[33m:\u001b[39m\u001b[32m'TÍCH HỢP CHATGPT - NÂNG TẦM HỌC TẬP TRÊN MOBIEDU'\u001b[39m}))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 115 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 116 |\u001b[39m })\u001b[33m;\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\D_clickbtnCongthi.spec.js",
+                        "column": 20,
+                        "line": 113
+                      },
+                      "message": "Error: page.goto: net::ERR_CONNECTION_TIMED_OUT at https://mobiedu.vn/tin-tuc/tich-hop-chatgpt-nang-tam-hoc-tap-tren-mobiedu-p2063.html\n=========================== logs ===========================\nnavigating to \"https://mobiedu.vn/tin-tuc/tich-hop-chatgpt-nang-tam-hoc-tap-tren-mobiedu-p2063.html\", waiting until \"load\"\n============================================================\n\n\u001b[0m \u001b[90m 111 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m12000\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 112 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'div.swiper-slide.swiper-slide-active > div > div > div > a > img'\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 113 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'https://mobiedu.vn/tin-tuc/tich-hop-chatgpt-nang-tam-hoc-tap-tren-mobiedu-p2063.html'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 114 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'.news-detail-title'\u001b[39m\u001b[33m,\u001b[39m{hasText\u001b[33m:\u001b[39m\u001b[32m'TÍCH HỢP CHATGPT - NÂNG TẦM HỌC TẬP TRÊN MOBIEDU'\u001b[39m}))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 115 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 116 |\u001b[39m })\u001b[33m;\u001b[39m\u001b[0m\n\n\u001b[2m    at C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\D_clickbtnCongthi.spec.js:113:20\u001b[22m"
+                    }
+                  ],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:52:18.485Z",
-                  "attachments": []
+                  "startTime": "2024-01-02T09:57:26.986Z",
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\test-results\\B_WEB-A_Truoc_dang_nhap-D_clickbtnCongthi-Case-3-click-link-banner-đầu-trang-chromium\\video-2.webm"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\test-results\\B_WEB-A_Truoc_dang_nhap-D_clickbtnCongthi-Case-3-click-link-banner-đầu-trang-chromium\\video-1.webm"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\test-results\\B_WEB-A_Truoc_dang_nhap-D_clickbtnCongthi-Case-3-click-link-banner-đầu-trang-chromium\\video.webm"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\D_clickbtnCongthi.spec.js",
+                    "column": 20,
+                    "line": 113
+                  }
                 }
               ],
-              "status": "expected"
+              "status": "unexpected"
             }
           ],
           "id": "c5ff30b199a2be2f3208-d84c3faa999fde4a6dca",
@@ -2779,14 +2999,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 7,
                   "status": "passed",
-                  "duration": 22474,
+                  "duration": 54750,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:52:50.754Z",
+                  "startTime": "2024-01-02T09:58:17.132Z",
                   "attachments": []
                 }
               ],
@@ -2815,14 +3035,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 7,
                   "status": "passed",
-                  "duration": 12641,
+                  "duration": 35429,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:53:13.230Z",
+                  "startTime": "2024-01-02T09:59:12.158Z",
                   "attachments": []
                 }
               ],
@@ -2831,7 +3051,7 @@
           ],
           "id": "7857d31edd2e9b0f62b0-160d6082db6f8ef2ff4a",
           "file": "B_WEB/A_Truoc_dang_nhap/E_clickbtnHotro.spec.js",
-          "line": 205,
+          "line": 234,
           "column": 5
         }
       ]
@@ -2859,14 +3079,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 7,
                   "status": "passed",
-                  "duration": 6204,
+                  "duration": 6941,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:53:25.885Z",
+                  "startTime": "2024-01-02T09:59:47.601Z",
                   "attachments": []
                 }
               ],
@@ -2895,14 +3115,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 7,
                   "status": "passed",
-                  "duration": 4162,
+                  "duration": 4070,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:53:32.091Z",
+                  "startTime": "2024-01-02T09:59:54.545Z",
                   "attachments": []
                 }
               ],
@@ -2931,14 +3151,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 7,
                   "status": "passed",
-                  "duration": 4932,
+                  "duration": 4755,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:53:36.255Z",
+                  "startTime": "2024-01-02T09:59:58.617Z",
                   "attachments": []
                 }
               ],
@@ -2967,14 +3187,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 7,
                   "status": "passed",
-                  "duration": 5928,
+                  "duration": 4664,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:53:41.190Z",
+                  "startTime": "2024-01-02T10:00:03.375Z",
                   "attachments": []
                 }
               ],
@@ -2996,7 +3216,7 @@
       "specs": [
         {
           "title": "Case 2: Fail_Để trống trường",
-          "ok": false,
+          "ok": true,
           "tags": [],
           "tests": [
             {
@@ -3011,48 +3231,18 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
-                  "status": "failed",
-                  "duration": 7892,
-                  "error": {
-                    "message": "\u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: getByText('Vui lòng điền số điện thoại!')\nExpected: visible\nReceived: hidden\nCall log:\n  \u001b[2m- expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Vui lòng điền số điện thoại!')\u001b[22m\n",
-                    "stack": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: getByText('Vui lòng điền số điện thoại!')\nExpected: visible\nReceived: hidden\nCall log:\n  \u001b[2m- expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Vui lòng điền số điện thoại!')\u001b[22m\n\n    at C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\G_Dangky.spec.js:64:70",
-                    "location": {
-                      "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\G_Dangky.spec.js",
-                      "column": 70,
-                      "line": 64
-                    },
-                    "snippet": "\u001b[0m \u001b[90m 62 |\u001b[39m         \u001b[90m// Click btn Đăng ký \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 63 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'ĐĂNG KÝ'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 64 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(\u001b[32m'Vui lòng điền số điện thoại!'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                                                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 65 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(\u001b[32m'Trường thông tin này là bắt buộc!'\u001b[39m)\u001b[33m.\u001b[39mnth(\u001b[35m0\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 66 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(\u001b[32m'Trường thông tin này là bắt buộc!'\u001b[39m)\u001b[33m.\u001b[39mnth(\u001b[35m1\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 67 |\u001b[39m\u001b[0m"
-                  },
-                  "errors": [
-                    {
-                      "location": {
-                        "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\G_Dangky.spec.js",
-                        "column": 70,
-                        "line": 64
-                      },
-                      "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: getByText('Vui lòng điền số điện thoại!')\nExpected: visible\nReceived: hidden\nCall log:\n  \u001b[2m- expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Vui lòng điền số điện thoại!')\u001b[22m\n\n\n\u001b[0m \u001b[90m 62 |\u001b[39m         \u001b[90m// Click btn Đăng ký \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 63 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'ĐĂNG KÝ'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 64 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(\u001b[32m'Vui lòng điền số điện thoại!'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                                                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 65 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(\u001b[32m'Trường thông tin này là bắt buộc!'\u001b[39m)\u001b[33m.\u001b[39mnth(\u001b[35m0\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 66 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(\u001b[32m'Trường thông tin này là bắt buộc!'\u001b[39m)\u001b[33m.\u001b[39mnth(\u001b[35m1\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 67 |\u001b[39m\u001b[0m\n\n\u001b[2m    at C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\G_Dangky.spec.js:64:70\u001b[22m"
-                    }
-                  ],
+                  "workerIndex": 7,
+                  "status": "passed",
+                  "duration": 3383,
+                  "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:53:47.125Z",
-                  "attachments": [
-                    {
-                      "name": "video",
-                      "contentType": "video/webm",
-                      "path": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\test-results\\B_WEB-A_Truoc_dang_nhap-G_Dangky-Case-2-Fail-Để-trống-trường-chromium\\video.webm"
-                    }
-                  ],
-                  "errorLocation": {
-                    "file": "C:\\Users\\Thu\\Documents\\auto_mobiedu\\tests\\B_WEB\\A_Truoc_dang_nhap\\G_Dangky.spec.js",
-                    "column": 70,
-                    "line": 64
-                  }
+                  "startTime": "2024-01-02T10:00:08.045Z",
+                  "attachments": []
                 }
               ],
-              "status": "unexpected"
+              "status": "expected"
             }
           ],
           "id": "1f0d555f06cf26d3724b-dea57e6ea1271e55bda9",
@@ -3077,14 +3267,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 7,
                   "status": "passed",
-                  "duration": 4635,
+                  "duration": 5702,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:53:55.475Z",
+                  "startTime": "2024-01-02T10:00:11.430Z",
                   "attachments": []
                 }
               ],
@@ -3093,7 +3283,7 @@
           ],
           "id": "1f0d555f06cf26d3724b-a5931171f625680e58b3",
           "file": "B_WEB/A_Truoc_dang_nhap/G_Dangky.spec.js",
-          "line": 77,
+          "line": 78,
           "column": 5
         },
         {
@@ -3113,14 +3303,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 7,
                   "status": "passed",
-                  "duration": 4189,
+                  "duration": 3813,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:54:00.452Z",
+                  "startTime": "2024-01-02T10:00:17.135Z",
                   "attachments": []
                 }
               ],
@@ -3129,7 +3319,7 @@
           ],
           "id": "1f0d555f06cf26d3724b-eae5a8c4b045b6f05db0",
           "file": "B_WEB/A_Truoc_dang_nhap/G_Dangky.spec.js",
-          "line": 110,
+          "line": 111,
           "column": 5
         },
         {
@@ -3149,14 +3339,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 7,
                   "status": "passed",
-                  "duration": 4663,
+                  "duration": 5364,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:54:04.644Z",
+                  "startTime": "2024-01-02T10:00:20.952Z",
                   "attachments": []
                 }
               ],
@@ -3165,7 +3355,7 @@
           ],
           "id": "1f0d555f06cf26d3724b-57977c5c024fc4ae16f7",
           "file": "B_WEB/A_Truoc_dang_nhap/G_Dangky.spec.js",
-          "line": 142,
+          "line": 143,
           "column": 5
         }
       ]
@@ -3193,14 +3383,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 7,
                   "status": "passed",
-                  "duration": 9251,
+                  "duration": 8915,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:54:09.320Z",
+                  "startTime": "2024-01-02T10:00:26.326Z",
                   "attachments": []
                 }
               ],
@@ -3229,14 +3419,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 7,
                   "status": "passed",
-                  "duration": 9801,
+                  "duration": 8609,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:54:18.574Z",
+                  "startTime": "2024-01-02T10:00:35.244Z",
                   "attachments": []
                 }
               ],
@@ -3265,14 +3455,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 7,
                   "status": "passed",
-                  "duration": 10001,
+                  "duration": 7355,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:54:28.378Z",
+                  "startTime": "2024-01-02T10:00:43.855Z",
                   "attachments": []
                 }
               ],
@@ -3301,14 +3491,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 7,
                   "status": "passed",
-                  "duration": 24154,
+                  "duration": 26099,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:54:38.382Z",
+                  "startTime": "2024-01-02T10:00:51.213Z",
                   "attachments": []
                 }
               ],
@@ -3337,14 +3527,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 7,
                   "status": "passed",
-                  "duration": 7086,
+                  "duration": 7778,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:55:02.539Z",
+                  "startTime": "2024-01-02T10:01:17.317Z",
                   "attachments": []
                 }
               ],
@@ -3373,14 +3563,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 7,
                   "status": "passed",
-                  "duration": 8599,
+                  "duration": 10925,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:55:09.628Z",
+                  "startTime": "2024-01-02T10:01:25.098Z",
                   "attachments": []
                 }
               ],
@@ -3409,14 +3599,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 7,
                   "status": "passed",
-                  "duration": 11782,
+                  "duration": 14123,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:55:18.230Z",
+                  "startTime": "2024-01-02T10:01:36.026Z",
                   "attachments": []
                 }
               ],
@@ -3445,14 +3635,14 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 7,
                   "status": "passed",
-                  "duration": 18393,
+                  "duration": 18972,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-12-22T08:55:30.015Z",
+                  "startTime": "2024-01-02T10:01:50.152Z",
                   "attachments": []
                 }
               ],
@@ -3469,7 +3659,7 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2023-12-22T08:40:48.615Z",
-    "duration": 899887.389
+    "startTime": "2024-01-02T09:44:50.944Z",
+    "duration": 1038274.8859999999
   }
 }
