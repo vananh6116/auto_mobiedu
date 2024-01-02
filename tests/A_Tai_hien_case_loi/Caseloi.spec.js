@@ -767,7 +767,9 @@ function case9() {
         await page.screenshot({ path: 'Lỗi_Khóa_học_thêm_case9_1.png', fullPage: true });
 
         // Truy cập CMS chỉnh sửa khóa học : tên khóa học, giá cước, gói cước tuần 
+
         await page.goto(dataSiteTest[0].linkSite + "/course-api");
+
         await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_API Thêm_Cổng khoa học giáo dục Vkid' })
@@ -777,6 +779,7 @@ function case9() {
         await page.waitForTimeout(3000);
         await page.getByRole('textbox', { name: 'Tên khóa học API *' }).fill('QA_API Sửa_Cổng khoa học giáo dục Vkid');
         await page.getByRole('textbox', { name: 'Độ tuổi' }).fill('6-12');
+
         await page.locator('#edit_course_api').getByRole('link', { name: ' Edit' }).click();
         await page.getByRole('textbox', { name: 'Giá cước' }).fill('10000');
         await page.locator('#edit_pod_period_2').selectOption('2');
@@ -790,7 +793,9 @@ function case9() {
 
         // Kiểm tra bên ngoài hiển thị vị trí 1, gói ngày, hình thức học: không xác định 
         await expect(page.getByRole('link', { name: 'QA_API Sửa_Cổng khoa học giáo dục Vkid' })).toBeVisible();
+
         await expect(page.getByText('Không xác định').first()).toBeVisible();
+
         await expect(page.getByText('10.000 đ/tuần')).toBeVisible();
 
         // Kiểm tra bên trong hình thức học, khóa học phù hợp, gói cước, hướng dẫn 
@@ -799,7 +804,9 @@ function case9() {
         await expect(page.locator('h1').getByText('QA_API Sửa_Cổng khoa học giáo dục Vkid')).toBeVisible();
         await expect(page.getByText('10.000 đ/Tuần').first()).toBeVisible();
         await expect(page.getByText('QA_API_Cổng khoa học giáo dục Vkid').first()).toBeVisible();
+
         await expect(page.getByText('Hình thức học: Không xác định').nth(1)).toBeVisible();
+
         await expect(page.getByText('Độ tuổi: 6-12').nth(1)).toBeVisible();
         await expect(page.getByText('Lĩnh vực: Tiền tiểu học').nth(1)).toBeVisible();
         await expect(page.getByText('QA_API Sửa_Cổng khoa học giáo dục Vkid Cổng Khoa học cho bé Vkid là cổng giáo dụ')).toBeVisible();
@@ -812,7 +819,9 @@ function case9() {
         await page.screenshot({ path: 'Lỗi_Khóa_học_sửa_case9_2.png', fullPage: true });
 
         // Truy cập CMS xóa khóa học 
+
         await page.goto(dataSiteTest[0].linkSite + "/course-api");
+
         await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_API Sửa_Cổng khoa học giáo dục Vkid' })
