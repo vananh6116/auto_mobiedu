@@ -57,21 +57,26 @@ function case2 () {
         await page.getByPlaceholder('Nhập số điện thoại').fill('0385519997');
         await page.getByPlaceholder('Nhập mật khẩu').fill('123123');
         // Click btn Đăng nhập thành công vào hệ thống
+        await page.waitForTimeout(1000);
         await page.getByRole('button', { name: 'ĐĂNG NHẬP' }).click();
         await expect(page.locator('div.account > div > div > a')).toBeVisible();
         // Hover - click Tài khoản của tôi 
+        await page.waitForTimeout(1000);
         await page.locator('div.account > div > div > a').hover();
         await page.getByRole('link', { name: 'Tài khoản của tôi' }).click();
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/tai-khoan/ho-so");
         // Hover - click Khóa học của tôi 
+        await page.waitForTimeout(1000);
         await page.locator('div.account > div > div > a').hover();
         await page.getByRole('link', { name: 'Khóa học của tôi', exact: true }).click();
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/tai-khoan/khoa-hoc-cua-toi"); 
         // Hover - click Khuyến mại của tôi 
+        await page.waitForTimeout(1000);
         await page.locator('div.account > div > div > a').hover();
         await page.getByRole('link', { name: 'Khuyến mại của tôi' }).click();
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/tai-khoan/uu-dai");
         // Hover - click Đăng xuất 
+        await page.waitForTimeout(1000);
         await page.locator('div.account > div > div > a').hover();
         await page.getByRole('link', { name: 'Đăng xuất' }).click();
         await expect(page).toHaveURL(dataSiteTest[1].linkSite);
@@ -100,14 +105,17 @@ function case3 () {
         await page.getByPlaceholder('Nhập số điện thoại').fill('0385519997');
         await page.getByPlaceholder('Nhập mật khẩu').fill('123123');
         // Click btn Đăng nhập thành công vào hệ thống
+        await page.waitForTimeout(1000);
         await page.getByRole('button', { name: 'ĐĂNG NHẬP' }).click();
         await expect(page.locator('div.account > div > div > a')).toBeVisible();
         // Click Khóa học 
+        await page.waitForTimeout(1000);
         await page.getByRole('link', { name: 'Khóa học', exact: true }).click();
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc");
         // Mong muốn hiển thị khoảng giá miễn phí
         await expect(page.getByText('Miễn Phí')).toBeVisible();
         // Click khoảng giá miễn phí 
+        await page.waitForTimeout(1000);
         await page.getByText('Miễn Phí', { exact: true }).click();
         await page.getByRole('button', { name: 'Áp dụng' }).click();
         await expect(page.getByText('Miễn Phí', { exact: true })).toBeChecked();
@@ -136,31 +144,37 @@ function case4 () {
         await page.getByPlaceholder('Nhập số điện thoại').fill('0776518894');
         await page.getByPlaceholder('Nhập mật khẩu').fill('inet@123');
         // Click btn Đăng nhập thành công vào hệ thống
+        await page.waitForTimeout(1000);
         await page.getByRole('button', { name: 'ĐĂNG NHẬP' }).click();
         await expect(page.locator('div.account > div > div > a')).toBeVisible();
         // Hover - click Tài khoản của tôi
+        await page.waitForTimeout(1000);
         await page.locator('div.account > div > div > a').hover();
         await page.getByRole('link', { name: 'Tài khoản của tôi', exact: true }).click();
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/tai-khoan/ho-so");
         // Click link Kích hoạt khóa học 
+        await page.waitForTimeout(1000);
         await page.getByRole('link', { name: 'Kích hoạt khóa học' }).click();
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/tai-khoan/kich-hoat-khoa-hoc");
         await expect(page.getByRole('heading', { name: 'Kích hoạt khóa học' })).toBeVisible();
         await page.waitForTimeout(1000);
         await page.screenshot({ path: 'Ảnh_kích_hoạt_KH.png', fullPage: true });
         // Click link Khóa học của tôi 
+        await page.waitForTimeout(1000);
         await page.getByRole('link', { name: 'bookmark_border Khóa học của tôi' }).click();
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/tai-khoan/khoa-hoc-cua-toi");
         await expect(page.getByRole('heading', { name: 'Khóa học của tôi' })).toBeVisible();
         await page.waitForTimeout(1000);
         await page.screenshot({ path: 'Ảnh_KH_của_tôi.png', fullPage: true });
         // Click link chủ đề quan tâm 
+        await page.waitForTimeout(1000);
         await page.getByRole('link', { name: 'star_border Chủ đề quan tâm' }).click();
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/tai-khoan/chu-de-quan-tam");
         await expect(page.getByRole('heading', { name: 'Chủ đề quan tâm' })).toBeVisible();
         await page.waitForTimeout(1000);
         await page.screenshot({ path: 'Ảnh_chủ_đề_quan_tâm.png', fullPage: true });
         // Thêm chủ đề quan tâm 
+        await page.waitForTimeout(1000);
         await page.getByRole('link', { name: 'Thêm chủ đề' }).click();
         await page.locator('span').filter({ hasText: 'Tiền tiểu học' }).click();
         await page.getByRole('link', { name: 'Chọn hoàn tất' }).click();
@@ -171,12 +185,14 @@ function case4 () {
         await page.getByRole('link', { name: 'delete_outline Xoá' }).first().click();
         await page.getByRole('link', { name: 'Xoá chủ đề' }).click();
         // Click link Khóa học đã xem 
+        await page.waitForTimeout(1000);
         await page.getByRole('link', { name: 'visibility Khóa học đã xem' }).click();
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/tai-khoan/khoa-hoc-da-xem");
         await expect(page.getByRole('heading', { name: 'Khóa học đã xem' })).toBeVisible();
         await page.waitForTimeout(1000);
         await page.screenshot({ path: 'Ảnh_KH_đã_xem.png', fullPage: true });
         // Click link Ưu đãi 
+        await page.waitForTimeout(1000);
         await page.getByRole('link', { name: 'favorite_border Ưu đãi' }).click();
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/tai-khoan/uu-dai");
         await expect(page.getByRole('heading', { name: 'Ưu đãi' })).toBeVisible();
@@ -188,6 +204,7 @@ function case4 () {
         await page.waitForTimeout(1000);
         await page.screenshot({ path: 'Ảnh_ưu_đãi.png', fullPage: true });
         // Click link Thông báo 
+        await page.waitForTimeout(1000);
         await page.getByRole('link', { name: 'notifications Thông báo' }).click();
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/tai-khoan/thong-bao");
         await expect(page.getByRole('heading', { name: 'Thông báo' })).toBeVisible();
@@ -200,6 +217,7 @@ function case4 () {
         await page.waitForTimeout(1000);
         await page.screenshot({ path: 'Ảnh_thông_báo_chi_tiết.png', fullPage: true });
         // Click link Đơn hàng 
+        await page.waitForTimeout(1000);
         await page.getByRole('link', { name: 'add_shopping_cart Đơn hàng' }).click();
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/tai-khoan/don-hang");
         await expect(page.getByRole('heading', { name: 'Đơn hàng của tôi' })).toBeVisible();
@@ -232,6 +250,7 @@ function case5 () {
         await page.getByRole('button', { name: 'ĐĂNG NHẬP' }).click();
         await expect(page.locator('div.account > div > div > a')).toBeVisible();
         // Click icon giỏ hàng 
+        await page.waitForTimeout(1000);
         await page.getByRole('link', { name: 'shopping_cart 0' }).click();
         await expect(page.getByText('Giỏ hàng (0 sản phẩm)')).toBeVisible();
         await expect(page.getByText('Hiện tại giỏ hàng của bạn chưa có sản phẩm nào.')).toBeVisible();
@@ -299,6 +318,7 @@ function case7 () {
         await page.goto(dataSiteTest[1].linkSite);
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click btn Đăng nhập 
+        await page.waitForTimeout(1000);
         await page.getByRole('link', { name: 'Đăng nhập', exact: true }).click();
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/dang-nhap?redirect=/");
         // Nhập số điện thoại - mật khẩu 
@@ -310,6 +330,7 @@ function case7 () {
         await page.getByRole('button', { name: 'ĐĂNG NHẬP' }).click();
         await expect(page.locator('div.account > div > div > a')).toBeVisible();
         // Click btn Vào học - trang chủ của bạn 
+        await page.waitForTimeout(1000);
         await page.getByRole('link', { name: 'Vào học' }).first().click();
         await expect(page.getByText('Nội dung học Phần 1: Nhập môn thiết kế Power Point Bài 0: Nhập môn thiết kế Powe')).toBeVisible();
         await expect(page.getByText('Tổng quan Bạn đã bao giờ dành thời gian, tâm huyết, hì hụi chuẩn bị một')).toBeVisible();
@@ -346,9 +367,11 @@ function case8 () {
         await page.getByPlaceholder('Nhập số điện thoại').fill('0385519997');
         await page.getByPlaceholder('Nhập mật khẩu').fill('123123');
         // Click btn Đăng nhập thành công vào hệ thống
+        await page.waitForTimeout(1000);
         await page.getByRole('button', { name: 'ĐĂNG NHẬP' }).click();
         await expect(page.locator('div.account > div > div > a')).toBeVisible();
         // Hover - click Tài khoản của tôi
+        await page.waitForTimeout(1000);
         await page.locator('div.account > div > div > a').hover();
         await page.getByRole('link', { name: 'Tài khoản của tôi', exact: true }).click();
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/tai-khoan/ho-so");
@@ -367,6 +390,7 @@ function case8 () {
         await page.getByPlaceholder('Nhập mật khẩu hiện tại').fill('123123');
         await page.getByPlaceholder('Nhập mật khẩu', { exact: true }).fill('456456');
         await page.getByPlaceholder('Nhập lại mật khẩu').fill('456456');
+        await page.waitForTimeout(1000);
         await page.locator('#change_password').click();
         await expect(page.getByText('Đổi mật khẩu thành công!')).toBeVisible();
         await page.getByRole('button', { name: 'Close' }).click();
@@ -382,6 +406,7 @@ function case8 () {
         await page.getByPlaceholder('Nhập mật khẩu').fill('456456');
         await page.getByRole('button', { name: 'ĐĂNG NHẬP' }).click();
         await expect(page.locator('div.account > div > div > a')).toBeVisible();
+        await page.waitForTimeout(1000);
         await page.locator('div.account > div > div > a').hover();
         await page.getByRole('link', { name: 'Tài khoản của tôi', exact: true }).click();
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/tai-khoan/ho-so");
@@ -401,6 +426,7 @@ function case8 () {
         await page.getByPlaceholder('Nhập mật khẩu hiện tại').fill('456456');
         await page.getByPlaceholder('Nhập mật khẩu', { exact: true }).fill('123123');
         await page.getByPlaceholder('Nhập lại mật khẩu').fill('123123');
+        await page.waitForTimeout(1000);
         await page.locator('#change_password').click();
         await expect(page.getByText('Đổi mật khẩu thành công!')).toBeVisible();
 

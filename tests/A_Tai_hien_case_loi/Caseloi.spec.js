@@ -1,6 +1,7 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
 const exp = require('constants');
+import { time } from 'console';
 import dataSiteTest from '../dataSite.json';
 
 /**
@@ -16,7 +17,7 @@ function case1() {
         // Đăng nhập CMS thành công 
         await page.goto(dataSiteTest[0].linkSite);
         await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
-        await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
+        await page.getByPlaceholder('Mật khẩu').fill('inet@2023');
         await page.getByRole('button', { name: 'Đăng nhập' }).click();
         await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
 
@@ -28,7 +29,7 @@ function case1() {
 
         // Thêm mới banner 
         await page.getByRole('textbox', { name: 'Tiêu đề *' }).click();
-        await page.getByRole('textbox', { name: 'Tiêu đề *' }).fill('QA_BE YOURSELF');
+        await page.getByRole('textbox', { name: 'Tiêu đề *' }).fill('QA_BE YOURSELF_Case1');
         await page.getByRole('textbox', { name: 'Đường dẫn *' }).click();
         await page.getByRole('textbox', { name: 'Đường dẫn *' }).fill('https://');
         await page.locator('#select2-page_show-container').click();
@@ -48,25 +49,25 @@ function case1() {
         // Truy cập Web kiểm tra hiển thị 
         await page.goto(dataSiteTest[1].linkSite);
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
-        await page.waitForTimeout(18000);
-        await expect(page.locator('section').filter({ hasText: 'QA_BE YOURSELF ĐĂNG NHẬP NGAY hoidap.mobiedu.vn Cộng đồng hỏi đápcủa mobiEdu ĐĂNG N' })).toBeVisible();
+        await page.waitForTimeout(2000);
+        await expect(page.getByRole('heading', { name: 'QA_BE YOURSELF_Case1' }).first()).toBeVisible();
 
         // Chụp ảnh màn hình web hiển thị
         await page.waitForTimeout(1000);
         await page
-            .locator('section').filter({ hasText: 'QA_BE YOURSELF ĐĂNG NHẬP NGAY hoidap.mobiedu.vn Cộng đồng hỏi đápcủa mobiEdu ĐĂN' })
+            .locator('main > section.home-banner.index_section_4')
             .screenshot({ path: 'Lỗi_Banner_them_case1.png' });
 
         // Truy cập CMS xóa banner : Click Quản trị Banner - Banner
         // Lọc banner nhập tiêu đề 
         await page.goto(dataSiteTest[0].linkSite + "/banner");
-        await page.getByPlaceholder('Nhập từ khóa tìm kiếm...').fill('QA_BE YOURSELF');
+        await page.getByPlaceholder('Nhập từ khóa tìm kiếm...').fill('QA_BE YOURSELF_Case1');
         await page.getByRole('button', { name: 'Tìm kiếm' }).click();
 
         // Xóa banner
         await page
             .locator('tbody > tr')
-            .filter({ hasText: 'QA_BE YOURSELF' })
+            .filter({ hasText: 'QA_BE YOURSELF_Case1' })
             .locator('a')
             .nth(1)
             .click();
@@ -77,12 +78,13 @@ function case1() {
         await page.goto(dataSiteTest[1].linkSite);
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         await page.waitForTimeout(18000);
-        await expect(page.locator('section').filter({ hasText: 'QA_BE YOURSELF ĐĂNG NHẬP NGAY hoidap.mobiedu.vn Cộng đồng hỏi đápcủa mobiEdu ĐĂNG N' })).not.toBeVisible();
+        await expect(page.getByRole('heading', { name: 'QA_BE YOURSELF_Case1' }).first()).not.toBeVisible();
 
         // Chụp ảnh màn hình 
+        await page.locator('a').first().click();
         await page.waitForTimeout(1000);
         await page
-            .locator('section').filter({ hasText: 'Tích hợp ChatGPT Nâng tầm học tập cùng mobiEdu ĐĂNG NHẬP NGAY hoidap.mobiedu.vn ' })
+            .locator('main > section.home-banner.index_section_4')
             .screenshot({ path: 'Lỗi_Banner_sau_xoa_case1.png' });
 
     });
@@ -138,18 +140,52 @@ function case3() {
 }
 
 /**
- * Case 4 : Upload bài viết không upload ảnh được 
- * Mong muốn : Upload bài viết upload được ảnh, web hiển thị ảnh 
+ * Case 4: Click bài viết trên trang chủ 
+ * Mong muốn: Điều hướng đúng đến bài viết => Không hiển thị lỗi 
  */
 
 function case4() {
-    test('Case lỗi 4: Upload ảnh bài viết', async ({ page }) => {
+    test('Case lỗi 4: click bài viết trang chủ', async ({ page }) => {
+
+        test.slow();
+        // Truy cập hệ thống thành công
+        await page.goto(dataSiteTest[1].linkSite);
+        // Click bài viết 1
+        await page.waitForTimeout(1000);
+        await page.getByRole('link', { name: 'NHỮNG ĐIỀU CẦN LƯU Ý KHI THAM GIA CHƯƠNG TRÌNH \\\'ĐUA ĐIỂM TÍCH QUÀ\\\'' }).click();
+        await expect(page.getByRole('heading', { name: 'NHỮNG ĐIỀU CẦN LƯU Ý KHI THAM GIA CHƯƠNG TRÌNH \\\\\\\'ĐUA ĐIỂM TÍCH QUÀ\\\\\\\'' })).toBeVisible();
+        // Click bài viết 2 
+        await page.locator('a').first().click();
+        await page.waitForTimeout(1000);
+        await page.getByRole('link', { name: 'THỂ LỆ CHƯƠNG TRÌNH “ĐUA ĐIỂM TÍCH QUÀ” TRÊN CỘNG ĐỒNG HỎI ĐÁP' }).click();
+        await expect(page.getByRole('heading', { name: 'THỂ LỆ CHƯƠNG TRÌNH “ĐUA ĐIỂM TÍCH QUÀ” TRÊN CỘNG ĐỒNG HỎI ĐÁP' })).toBeVisible();
+        // Click bài viết 3
+        await page.locator('a').first().click();
+        await page.waitForTimeout(1000);
+        await page.getByRole('link', { name: 'MOBIEDU RA MẮT CHUYÊN TRANG CỘNG ĐỒNG HỎI ĐÁP HOIDAP.MOBIEDU.VN' }).click();
+        await expect(page.getByRole('heading', { name: 'MOBIEDU RA MẮT CHUYÊN TRANG CỘNG ĐỒNG HỎI ĐÁP HOIDAP.MOBIEDU.VN' })).toBeVisible();
+        // Click bài viết 4 
+        await page.locator('a').first().click();
+        await page.waitForTimeout(1000);
+        await page.getByRole('link', { name: 'Đáp án đề thi môn Lịch sử tốt nghiệp THPT Quốc gia 2023 nhanh nhất tại mobiEdu' }).click();
+        await expect(page.getByRole('heading', { name: 'Đáp án đề thi môn Lịch sử tốt nghiệp THPT Quốc gia 2023 nhanh nhất tại mobiEdu' })).toBeVisible();
+
+    });
+}
+
+/**
+ * Case 5 : Upload bài viết không upload ảnh được 
+ * Mong muốn : Upload bài viết upload được ảnh, web hiển thị ảnh 
+ */
+
+function case5() {
+    test('Case lỗi 5: Upload ảnh bài viết', async ({ page }) => {
 
         test.slow();
         // Đăng nhập CMS thành công 
         await page.goto(dataSiteTest[0].linkSite);
         await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
-        await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
+        await page.getByPlaceholder('Mật khẩu').fill('inet@2023');
         await page.getByRole('button', { name: 'Đăng nhập' }).click();
         await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
 
@@ -204,7 +240,7 @@ function case4() {
 
         // Chụp ảnh màn hình Web  
         await page.waitForTimeout(1000);
-        await page.screenshot({ path: 'Lỗi_Anh_them_tin_tuc_case4.png', fullPage: true });
+        await page.screenshot({ path: 'Lỗi_Anh_them_tin_tuc_case5.png', fullPage: true });
 
         // Truy cập CMS xóa tin tức 
         await page.goto(dataSiteTest[0].linkSite + "/blog");
@@ -221,18 +257,18 @@ function case4() {
 }
 
 /**
- * Case 5 : Sửa banner không lưu được - Sửa banner Web không hiển thị đúng tiêu đề đã chỉnh sửa 
+ * Case 6 : Sửa banner không lưu được - Sửa banner Web không hiển thị đúng tiêu đề đã chỉnh sửa 
  * Mong muốn : Sửa banner lưu thành công - Web hiển thị đúng tiêu đề
  */
 
-function case5() {
-    test('Case lỗi 5: Sửa banner', async ({ page }) => {
+function case6() {
+    test('Case lỗi 6: Sửa banner', async ({ page }) => {
 
         test.slow();
         // Đăng nhập CMS thành công 
         await page.goto(dataSiteTest[0].linkSite);
         await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
-        await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
+        await page.getByPlaceholder('Mật khẩu').fill('inet@2023');
         await page.getByRole('button', { name: 'Đăng nhập' }).click();
         await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
 
@@ -264,14 +300,14 @@ function case5() {
         // Truy cập Web kiểm tra hiển thị sau khi thêm mới thành công 
         await page.goto(dataSiteTest[1].linkSite);
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
-        await page.waitForTimeout(18000);
-        await expect(page.locator('div').filter({ hasText: 'QA_BN Thêm_BE YOURSELF ĐĂNG NHẬP NGAY' }).nth(1)).toBeVisible();
+        await page.waitForTimeout(2000);
+        await expect(page.getByRole('heading', { name: 'QA_BN Thêm_BE YOURSELF' }).first()).toBeVisible();
 
         // Chụp ảnh màn hình web hiển thị
         await page.waitForTimeout(1000);
         await page
-            .locator('section').filter({ hasText: 'QA_BN Thêm_BE YOURSELF ĐĂNG NHẬP NGAY hoidap.mobiedu.vn Cộng đồng hỏi đápcủa mobiEdu ĐĂN' })
-            .screenshot({ path: 'Lỗi_Banner_them_case5_1.png' });
+            .locator('main > section.home-banner.index_section_4')
+            .screenshot({ path: 'Lỗi_Banner_them_case6_1.png' });
 
         //  Truy cập CMS Chỉnh sửa banner 
         await page.goto(dataSiteTest[0].linkSite + "/banner");
@@ -295,17 +331,15 @@ function case5() {
         // Truy cập Web kiểm tra hiển thị sau khi chỉnh sửa 
         await page.goto(dataSiteTest[1].linkSite);
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
-        await page.waitForTimeout(18000);
-        await expect(page.locator('section')
-            .filter({ hasText: 'QA_BN_Sửa_ BE YOURSELF ĐĂNG NHẬP NGAY hoidap.mobiedu.vn Cộng đồng hỏi đápcủa mobiEdu ĐĂNG N' }))
+        await page.waitForTimeout(2000);
+        await expect(page.getByRole('heading', { name: 'QA_BN_Sửa_ BE YOURSELF' }).first())
             .toBeVisible();
 
-        // Chụp ảnh màn hình web hiển thị
+        // Chụp ảnh màn hình web hiển thị sau sửa
         await page.waitForTimeout(1000);
         await page
-            .locator('section')
-            .filter({ hasText: 'QA_BN_Sửa_ BE YOURSELF ĐĂNG NHẬP NGAY hoidap.mobiedu.vn Cộng đồng hỏi đápcủa mobiEdu ĐĂN' })
-            .screenshot({ path: 'Lỗi_Banner_sua_case5_2.png' });
+            .locator('main > section.home-banner.index_section_4')
+            .screenshot({ path: 'Lỗi_Banner_sua_case6_2.png' });
 
         // Truy cập CMS xoá banner
         await page.goto(dataSiteTest[0].linkSite + "/banner");
@@ -318,22 +352,35 @@ function case5() {
         await page.getByRole('button', { name: 'Xóa' }).click();
         await expect(page.getByText('Xóa thành công!')).toBeVisible();
 
+        // Truy cập Web kiểm tra không hiển thị sau xóa
+        await page.goto(dataSiteTest[1].linkSite);
+        await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
+        await page.waitForTimeout(18000);
+        await expect(page.getByRole('heading', { name: 'QA_BN_Sửa_ BE YOURSELF' }).first()).not.toBeVisible();
+
+        // Chụp ảnh màn hình 
+        await page.locator('a').first().click();
+        await page.waitForTimeout(1000);
+        await page
+            .locator('main > section.home-banner.index_section_4')
+            .screenshot({ path: 'Lỗi_Banner_sau_xoa_case6_3.png' });
+
     });
 }
 
 /**
- * Case 6 : Upload banner lên trang có gắn đường link, nhưng khi click vào thì không click được
+ * Case 7 : Upload banner lên trang có gắn đường link, nhưng khi click vào thì không click được
  * Mong muốn : Upload banner lên trang có gắn đường link, click vào link thành công 
 */
 
-function case6() {
-    test('Case lỗi 6: Upload banner có gắn link', async ({ page }) => {
+function case7() {
+    test('Case lỗi 7: Upload banner có gắn link', async ({ page }) => {
 
         test.slow();
         // Đăng nhập CMS thành công 
         await page.goto(dataSiteTest[0].linkSite);
         await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
-        await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
+        await page.getByPlaceholder('Mật khẩu').fill('inet@2023');
         await page.getByRole('button', { name: 'Đăng nhập' }).click();
         await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
 
@@ -365,9 +412,8 @@ function case6() {
         // Truy cập web kiểm tra click banner 
         await page.goto(dataSiteTest[1].linkSite);
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
-        await page.waitForTimeout(18000);
-        await expect(page.locator('section')
-            .filter({ hasText: 'QA_BE YOURSELF ĐĂNG NHẬP NGAY hoidap.mobiedu.vn Cộng đồng hỏi đápcủa mobiEdu ĐĂNG N' })).toBeVisible();
+        await page.waitForTimeout(2000);
+        await expect(page.getByRole('heading', { name: 'QA_BE YOURSELF' }).first()).toBeVisible();
         await page.locator('div.swiper-slide.swiper-slide-active > div > div > div.col-lg-7.col-xl-7-custom > div > a > img').click();
         await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc/hoc-thu-khoa-2007');
 
@@ -387,22 +433,93 @@ function case6() {
         await page.getByRole('button', { name: 'Xóa' }).click();
         await expect(page.getByText('Xóa thành công!')).toBeVisible();
 
+        // Truy cập Web kiểm tra không hiển thị sau xóa
+        await page.goto(dataSiteTest[1].linkSite);
+        await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
+        await page.waitForTimeout(18000);
+        await expect(page.getByRole('heading', { name: 'QA_BE YOURSELF' }).first()).not.toBeVisible();
+
     });
 }
 
 /**
- * Case 7 : up 1 bài -> hiện bình thường, nhưng sau khi vào edit bài này lần 1 và save -> bài viết biến mất 
+ * Case 8: Click btn Xem thếm -> Đến trang Tin tức -> click bài viết
+ * Mong muốn: Điều hướng đúng đến bài viết => Không hiển thị lỗi 
+ */
+
+function case8() {
+    test('Case lỗi 8: click btn Xem thêm', async ({ page }) => {
+
+        test.slow();
+        // Truy cập hệ thống thành công
+        await page.goto(dataSiteTest[1].linkSite);
+        // Click btn Xem thêm 
+        await page.locator('.home-11 > .container > .button > .btn').click();
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/tin-tuc");
+        // Click bài viết số 1
+        await page.locator('h1').getByRole('link', { name: 'NHỮNG ĐIỀU CẦN LƯU Ý KHI THAM GIA CHƯƠNG TRÌNH \\\\\\\'ĐUA ĐIỂM TÍCH QUÀ\\\\\\\'' }).click();
+        await expect(page.getByRole('heading', { name: 'NHỮNG ĐIỀU CẦN LƯU Ý KHI THAM GIA CHƯƠNG TRÌNH \\\\\\\'ĐUA ĐIỂM TÍCH QUÀ\\\\\\\'' })).toBeVisible();
+        // Click bài viết số 2 
+        await page.getByRole('link', { name: 'Tin tức' }).first().click();
+        await page.getByRole('link', { name: 'NHỮNG ĐIỀU CẦN LƯU Ý KHI THAM GIA CHƯƠNG TRÌNH \\\'ĐUA ĐIỂM TÍCH QUÀ\\\'' }).first().click();
+        await expect(page.getByRole('heading', { name: 'NHỮNG ĐIỀU CẦN LƯU Ý KHI THAM GIA CHƯƠNG TRÌNH \\\\\\\'ĐUA ĐIỂM TÍCH QUÀ\\\\\\\'' })).toBeVisible();
+        // Click bài viết số 3
+        await page.getByRole('link', { name: 'Tin tức' }).first().click();
+        await page.getByRole('link', { name: 'MOBIEDU RA MẮT CHUYÊN TRANG CỘNG ĐỒNG HỎI ĐÁP HOIDAP.MOBIEDU.VN' }).first().click();
+        await expect(page.getByRole('heading', { name: 'MOBIEDU RA MẮT CHUYÊN TRANG CỘNG ĐỒNG HỎI ĐÁP HOIDAP.MOBIEDU.VN' })).toBeVisible();
+        // Click bài viết số 4 
+        await page.getByRole('link', { name: 'Tin tức' }).first().click();
+        await page.getByRole('link', { name: 'TƯNG BỪNG MỪNG SINH NHẬT MOBIFONE VỚI MOBIEDU' }).click();
+        await expect(page.getByRole('heading', { name: 'TƯNG BỪNG MỪNG SINH NHẬT MOBIFONE VỚI MOBIEDU' })).toBeVisible();
+        // Click bài viết số 5 
+        await page.getByRole('link', { name: 'Tin tức' }).first().click();
+        await page.getByRole('link', { name: 'NHỮNG ĐIỀU CẦN LƯU Ý KHI THAM GIA CHƯƠNG TRÌNH \\\'ĐUA ĐIỂM TÍCH QUÀ\\\'' }).nth(1).click();
+        await expect(page.getByRole('heading', { name: 'NHỮNG ĐIỀU CẦN LƯU Ý KHI THAM GIA CHƯƠNG TRÌNH \\\\\\\'ĐUA ĐIỂM TÍCH QUÀ\\\\\\\'' })).toBeVisible();
+        // Click bài viết số 6 
+        await page.getByRole('link', { name: 'Tin tức' }).first().click();
+        await page.locator('h3').filter({ hasText: /^THỂ LỆ CHƯƠNG TRÌNH “ĐUA ĐIỂM TÍCH QUÀ” TRÊN CỘNG ĐỒNG HỎI ĐÁP$/ }).getByRole('link').click();
+        await expect(page.getByRole('heading', { name: 'THỂ LỆ CHƯƠNG TRÌNH “ĐUA ĐIỂM TÍCH QUÀ” TRÊN CỘNG ĐỒNG HỎI ĐÁP' })).toBeVisible();
+        // Click bài viết số 7 
+        await page.getByRole('link', { name: 'Tin tức' }).first().click();
+        await page.getByRole('link', { name: 'THỂ LỆ CHƯƠNG TRÌNH “ĐUA ĐIỂM TÍCH QUÀ” TRÊN CỘNG ĐỒNG HỎI ĐÁP' }).nth(2).click();
+        await expect(page.getByRole('heading', { name: 'THỂ LỆ CHƯƠNG TRÌNH “ĐUA ĐIỂM TÍCH QUÀ” TRÊN CỘNG ĐỒNG HỎI ĐÁP' })).toBeVisible();
+        // Click bài viết số 8 
+        await page.getByRole('link', { name: 'Tin tức' }).first().click();
+        await page.getByRole('link', { name: 'MOBIEDU RA MẮT CHUYÊN TRANG CỘNG ĐỒNG HỎI ĐÁP HOIDAP.MOBIEDU.VN' }).nth(2).click();
+        await expect(page.getByRole('heading', { name: 'MOBIEDU RA MẮT CHUYÊN TRANG CỘNG ĐỒNG HỎI ĐÁP HOIDAP.MOBIEDU.VN' })).toBeVisible();
+        // Click bài viết số 9 
+        await page.getByRole('link', { name: 'Tin tức' }).first().click();
+        await page.getByText('Đáp án đề thi môn Lịch sử tốt nghiệp THPT Quốc gia 2023 nhanh nhất tại mobiEdu').click();
+        await expect(page.getByRole('heading', { name: 'Đáp án đề thi môn Lịch sử tốt nghiệp THPT Quốc gia 2023 nhanh nhất tại mobiEdu' })).toBeVisible();
+        // Click bài viết số 10
+        await page.getByRole('link', { name: 'Tin tức' }).first().click();
+        await page.getByRole('link', { name: 'Đáp án đề thi môn Toán tốt nghiệp THPT Quốc gia 2023 nhanh nhất tại mobiEdu' }).first().click();
+        await expect(page.getByRole('heading', { name: 'Đáp án đề thi môn Toán tốt nghiệp THPT Quốc gia 2023 nhanh nhất tại mobiEdu' })).toBeVisible();
+        // Click bài viết số 11
+        await page.getByRole('link', { name: 'Tin tức', exact: true }).first().click();
+        await page.getByRole('link', { name: 'Đáp án đề thi môn Văn tốt nghiệp THPT Quốc gia 2023 nhanh nhất tại mobiEdu' }).first().click();
+        await expect(page.getByRole('heading', { name: 'Đáp án đề thi môn Văn tốt nghiệp THPT Quốc gia 2023 nhanh nhất tại mobiEdu' })).toBeVisible();
+        // Click bài viết số 12
+        await page.getByRole('link', { name: 'Tin tức', exact: true }).first().click();
+        await page.getByRole('link', { name: 'Cập nhật tất cả đáp án đề thi tốt nghiệp THPT 2023 nhanh nhất tại mobiEdu' }).first().click();
+        await expect(page.getByRole('heading', { name: 'Cập nhật tất cả đáp án đề thi tốt nghiệp THPT 2023 nhanh nhất tại mobiEdu' })).toBeVisible();
+
+    });
+}
+
+/**
+ * Case 9 : up 1 bài -> hiện bình thường, nhưng sau khi vào edit bài này lần 1 và save -> bài viết biến mất 
  * Mong muốn : Sau khi chỉnh sửa bài viết => Bài viết vẫn hiển thị trên web 
  */
 
-function case7() {
-    test('Case lỗi 7: Thêm và sửa bài viết', async ({ page }) => {
+function case9() {
+    test('Case lỗi 9: Thêm và sửa bài viết', async ({ page }) => {
 
         test.slow();
         // Đăng nhập CMS thành công 
         await page.goto(dataSiteTest[0].linkSite);
         await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
-        await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
+        await page.getByPlaceholder('Mật khẩu').fill('inet@2023');
         await page.getByRole('button', { name: 'Đăng nhập' }).click();
         await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
 
@@ -413,13 +530,19 @@ function case7() {
         await expect(page.getByRole('heading', { name: 'Thêm mới' })).toBeVisible();
 
         // Thêm data tin tức 
+        await page.waitForTimeout(1000);
         await page.getByRole('textbox', { name: 'Tiêu đề *' }).fill('QA_BV Thêm_Cách chinh phục hai đại học top đầu thế giới');
+        await page.waitForTimeout(1000);
         await page.getByRole('textbox', { name: 'Đường dẫn' }).fill('qa-cach-chinh-phuc-hai-dai-hoc-top-dau-the-gioi');
+        await page.waitForTimeout(1000);
         await page.locator('#select2-blog_category-container').click();
         await page.getByRole('treeitem', { name: '[Blog]Tin dịch vụ' }).click();
+        await page.waitForTimeout(1000);
         await page.getByRole('spinbutton', { name: 'Thời gian đọc *' }).fill('10');
+        await page.waitForTimeout(1000);
         await page.getByRole('textbox', { name: 'Chọn thẻ tag...' }).click();
         await page.getByRole('treeitem', { name: 'Kỹ năng chung' }).click();
+        await page.waitForTimeout(1000);
         await page.getByRole('spinbutton', { name: 'Lượt xem' }).click();
         await page.getByRole('spinbutton', { name: 'Lượt xem' }).fill('1000');
         await page.getByRole('button', { name: 'Upload / Chọn hình ảnh +' }).click();
@@ -436,10 +559,13 @@ function case7() {
         await page.getByLabel('Source').click();
         await page.getByLabel('Source').fill('https://cdn.mobiedu.vn/mskill/uploads/mb3/1692449927-720x430.png');
         await page.getByRole('button', { name: 'Save' }).click();
+        await page.waitForTimeout(1000);
         await page.getByLabel('Thêm mới').getByLabel('Trạng thái\n*').click();
         await page.getByLabel('Thêm mới').getByLabel('Trạng thái\n*').selectOption('1');
+        await page.waitForTimeout(1000);
         await page.getByLabel('Thêm mới').getByLabel('Nổi bật\n*').click();
         await page.getByLabel('Thêm mới').getByLabel('Nổi bật\n*').selectOption('1');
+        await page.waitForTimeout(1000);
         await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).click();
         await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).clear();
         await page.getByRole('spinbutton', { name: 'Vị trí hiển thị *' }).fill('1');
@@ -457,7 +583,7 @@ function case7() {
 
         // Chụp ảnh màn hình Web  
         await page.waitForTimeout(1000);
-        await page.screenshot({ path: 'Lỗi_Anh_them_tin_tuc_case7.png', fullPage: true });
+        await page.screenshot({ path: 'Lỗi_Anh_them_tin_tuc_case9.png', fullPage: true });
 
         // Truy cập CMS chỉnh sửa bài viết 
         await page.goto(dataSiteTest[0].linkSite + "/blog");
@@ -467,6 +593,7 @@ function case7() {
             .locator('i')
             .nth(0)
             .click();
+        await page.waitForTimeout(1000);
         await page.getByRole('textbox', { name: 'Tiêu đề *' }).click();
         await page.getByRole('textbox', { name: 'Tiêu đề *' }).clear();
         await page
@@ -496,7 +623,7 @@ function case7() {
 
         // Chụp ảnh màn hình sau khi chỉnh sửa 
         await page.waitForTimeout(1000);
-        await page.screenshot({ path: 'Lỗi_Anh_sua_tin_tuc_case7.png', fullPage: true });
+        await page.screenshot({ path: 'Lỗi_Anh_sua_tin_tuc_case9.png', fullPage: true });
 
         //  Truy cập CMS xóa bài viết 
         await page.goto(dataSiteTest[0].linkSite + "/blog");
@@ -513,18 +640,18 @@ function case7() {
 }
 
 /**
- * Case 8 : Thêm mới - chỉnh sửa khóa học Combo gói cước hiển thị không đúng CMS
+ * Case 10 : Thêm mới - chỉnh sửa khóa học Combo gói cước hiển thị không đúng CMS
  * Mong muốn: Web hiển thị đúng thông tin như CMS đã cài đặt 
  */
 
-function case8() {
-    test('Case lỗi 8: Thêm và sửa KH Combo', async ({ page }) => {
+function case10() {
+    test('Case lỗi 10: Thêm và sửa KH Combo', async ({ page }) => {
 
         test.slow();
         // Đăng nhập CMS thành công 
         await page.goto(dataSiteTest[0].linkSite);
         await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
-        await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
+        await page.getByPlaceholder('Mật khẩu').fill('inet@2023');
         await page.getByRole('button', { name: 'Đăng nhập' }).click();
         await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
 
@@ -642,18 +769,18 @@ function case8() {
 
 
 /**
- * Case 9 : Thêm mới - chỉnh sửa khóa học bị lỗi - khóa học API
+ * Case 11 : Thêm mới - chỉnh sửa khóa học bị lỗi - khóa học API
  * Mong muốn: Web hiển thị đúng thông tin như CMS đã cài đặt 
  */
 
-function case9() {
-    test('Case lỗi 9: Thêm và sửa KH API ', async ({ page }) => {
+function case11() {
+    test('Case lỗi 11: Thêm và sửa KH API ', async ({ page }) => {
 
         test.slow();
         // Đăng nhập CMS thành công 
         await page.goto(dataSiteTest[0].linkSite);
         await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
-        await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
+        await page.getByPlaceholder('Mật khẩu').fill('inet@2023');
         await page.getByRole('button', { name: 'Đăng nhập' }).click();
         await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
 
@@ -764,7 +891,7 @@ function case9() {
 
         // Chụp màn hình khóa học bên trong 
         await page.waitForTimeout(1000);
-        await page.screenshot({ path: 'Lỗi_Khóa_học_thêm_case9_1.png', fullPage: true });
+        await page.screenshot({ path: 'Lỗi_Khóa_học_thêm_case11_1.png', fullPage: true });
 
         // Truy cập CMS chỉnh sửa khóa học : tên khóa học, giá cước, gói cước tuần 
 
@@ -776,10 +903,10 @@ function case9() {
             .locator('i')
             .nth(0)
             .click();
-        await page.waitForTimeout(3000);
+        await page.waitForTimeout(1000);
         await page.getByRole('textbox', { name: 'Tên khóa học API *' }).fill('QA_API Sửa_Cổng khoa học giáo dục Vkid');
         await page.getByRole('textbox', { name: 'Độ tuổi' }).fill('6-12');
-
+        await page.waitForTimeout(1000);
         await page.locator('#edit_course_api').getByRole('link', { name: ' Edit' }).click();
         await page.getByRole('textbox', { name: 'Giá cước' }).fill('10000');
         await page.locator('#edit_pod_period_2').selectOption('2');
@@ -793,9 +920,7 @@ function case9() {
 
         // Kiểm tra bên ngoài hiển thị vị trí 1, gói ngày, hình thức học: không xác định 
         await expect(page.getByRole('link', { name: 'QA_API Sửa_Cổng khoa học giáo dục Vkid' })).toBeVisible();
-
         await expect(page.getByText('Không xác định').first()).toBeVisible();
-
         await expect(page.getByText('10.000 đ/tuần')).toBeVisible();
 
         // Kiểm tra bên trong hình thức học, khóa học phù hợp, gói cước, hướng dẫn 
@@ -816,12 +941,10 @@ function case9() {
 
         // Chụp màn hình khóa học bên trong 
         await page.waitForTimeout(1000);
-        await page.screenshot({ path: 'Lỗi_Khóa_học_sửa_case9_2.png', fullPage: true });
+        await page.screenshot({ path: 'Lỗi_Khóa_học_sửa_case11_2.png', fullPage: true });
 
         // Truy cập CMS xóa khóa học 
-
         await page.goto(dataSiteTest[0].linkSite + "/course-api");
-
         await page
             .locator('tbody > tr')
             .filter({ hasText: 'QA_API Sửa_Cổng khoa học giáo dục Vkid' })
@@ -835,18 +958,18 @@ function case9() {
 }
 
 /**
- * Case 10: "Update thêm 3 gói cước của khóa học , không tích nổi bật, nhưng mà ở bên ngoài vẫn hiển thị giá của gói cước mới
+ * Case 12: "Update thêm 3 gói cước của khóa học , không tích nổi bật, nhưng mà ở bên ngoài vẫn hiển thị giá của gói cước mới
 -Bên trong khi click vào khoá thì vẫn hiện đúng gói cước đang để nổi bật 
 - Mong muốn: - Gói giá cước bên trong - bên ngoài hiển thị đúng với giá cước được thêm mới
  */
-function case10() {
-    test('Case lỗi 10: Update thêm gói cước ', async ({ page }) => {
+function case12() {
+    test('Case lỗi 12: Update thêm gói cước ', async ({ page }) => {
 
         test.slow();
         // Đăng nhập CMS thành công 
         await page.goto(dataSiteTest[0].linkSite);
         await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
-        await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
+        await page.getByPlaceholder('Mật khẩu').fill('inet@2023');
         await page.getByRole('button', { name: 'Đăng nhập' }).click();
         await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
 
@@ -956,7 +1079,7 @@ function case10() {
         await expect(page.locator('#package div').filter({ hasText: 'QA_Kỹ năng chung_Combo' }).nth(2)).toBeVisible();
         // Chụp ảnh màn hình sau khi thêm khóa học 
         await page.waitForTimeout(3000);
-        await page.screenshot({ path: 'Lỗi_Anh_courseApi_thêm_1_2.png', fullPage: true });
+        await page.screenshot({ path: 'Lỗi_Anh_courseApi_thêm_12.png', fullPage: true });
 
         //Back lại CMS -> thêm 3 gói cước -> Chỉnh sửa nổi bật 
         await page.goto(dataSiteTest[0].linkSite + "/course-api");
@@ -1079,7 +1202,7 @@ function case10() {
         await expect(page.getByText('QA_Kỹ năng chung_Combo_3 20.000 đ/Ngày QA-KN3 Đăng kí')).toBeVisible();
         // Chụp ảnh màn hình sau khi thêm khóa học 
         await page.waitForTimeout(3000);
-        await page.screenshot({ path: 'Lỗi_Anh_courseApi_sua_1_2.png', fullPage: true });
+        await page.screenshot({ path: 'Lỗi_Anh_courseApi_sua_12.png', fullPage: true });
 
         // Xoá khoá học vừa tạo 
         await page.goto(dataSiteTest[0].linkSite + "/course-api");
@@ -1097,18 +1220,18 @@ function case10() {
 
 
 /**
- * Case 11 :  tạo danh mục mới, thì các bài viết đều không lưu được sau khi chỉnh sửa.
+ * Case 13 :  tạo danh mục mới, thì các bài viết đều không lưu được sau khi chỉnh sửa.
  * Mong muốn : tạo danh mục mới, thì các bài viết đều lưu thành công sau khi chỉnh sửa.
  */
 
-function case11() {
-    test('Case lỗi 11: Tạo chuyên đề và bài viết  ', async ({ page }) => {
+function case13() {
+    test('Case lỗi 13: Tạo chuyên đề và bài viết  ', async ({ page }) => {
 
         test.slow();
         // Đăng nhập CMS thành công 
         await page.goto(dataSiteTest[0].linkSite);
         await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
-        await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
+        await page.getByPlaceholder('Mật khẩu').fill('inet@2023');
         await page.getByRole('button', { name: 'Đăng nhập' }).click();
         await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
 
@@ -1182,7 +1305,7 @@ function case11() {
         await expect(page.getByText('QA_CM_Tin dịch vụ QA_BV Thêm_Giáo dục sớm không có nghĩa bắt con học trước chương trình dat')).toBeVisible();
         // Chụp hình ảnh thêm bài viết 
         await page.waitForTimeout(2000);
-        await page.screenshot({ path: 'Lỗi_Ảnh_thêm_bài_viết.png', fullPage: true });
+        await page.screenshot({ path: 'Lỗi_Ảnh_thêm_bài_viết_Case13_1.png', fullPage: true });
 
         // **Truy cập CMS chỉnh sửa bài viết 
         await page.goto(dataSiteTest[0].linkSite + "/blog");
@@ -1216,7 +1339,7 @@ function case11() {
         await expect(page.getByText('QA_CM_Tin dịch vụ QA_BV Sửa_Giáo dục sớm không có nghĩa bắt con học trước chương trình')).toBeVisible();
         // Chụp hình ảnh thêm bài viết 
         await page.waitForTimeout(2000);
-        await page.screenshot({ path: 'Lỗi_Ảnh_sửa_bài_viết.png', fullPage: true });
+        await page.screenshot({ path: 'Lỗi_Ảnh_sửa_bài_viếtCase13_2.png', fullPage: true });
 
         // **Xóa Bài viết vừa thêm 
         await page.goto(dataSiteTest[0].linkSite + "/blog");
@@ -1244,18 +1367,18 @@ function case11() {
 }
 
 /**
- * Case 12: fail stt 5: "Lọc câu hỏi theo từ khóa.VD: Nhập Toán -> Hệ thống hiển thị không đúng từ khóa nhập "
+ * Case 14: fail stt 5: "Lọc câu hỏi theo từ khóa.VD: Nhập Toán -> Hệ thống hiển thị không đúng từ khóa nhập "
  * Mong muốn: Lọc từ khóa nào hiển thị đúng ký tự, tìm kiếm thành công 
  */
 
-function case12() {
-    test('Case lỗi 12:Lọc tìm kiếm hỗ trợ  ', async ({ page }) => {
+function case14() {
+    test('Case lỗi 14:Lọc tìm kiếm hỗ trợ  ', async ({ page }) => {
 
         test.slow();
         // Đăng nhập CMS thành công 
         await page.goto(dataSiteTest[0].linkSite);
         await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
-        await page.getByPlaceholder('Mật khẩu').fill('inet@2023')
+        await page.getByPlaceholder('Mật khẩu').fill('inet@2023');
         await page.getByRole('button', { name: 'Đăng nhập' }).click();
         await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
 
@@ -1272,100 +1395,6 @@ function case12() {
     });
 }
 
-/**
- * Case 13: Click bài viết trên trang chủ 
- * Mong muốn: Điều hướng đúng đến bài viết => Không hiển thị lỗi 
- */
-
-function case13() {
-    test('Case lỗi 13: click bài viết trang chủ', async ({ page }) => {
-
-        test.slow();
-        // Truy cập hệ thống thành công
-        await page.goto(dataSiteTest[1].linkSite);
-        // Click bài viết 1
-        await page.getByRole('link', { name: 'NHỮNG ĐIỀU CẦN LƯU Ý KHI THAM GIA CHƯƠNG TRÌNH \\\'ĐUA ĐIỂM TÍCH QUÀ\\\'' }).click();
-        await expect(page.getByRole('heading', { name: 'NHỮNG ĐIỀU CẦN LƯU Ý KHI THAM GIA CHƯƠNG TRÌNH \\\\\\\'ĐUA ĐIỂM TÍCH QUÀ\\\\\\\'' })).toBeVisible();
-        // Click bài viết 2 
-        await page.locator('a').first().click();
-        await page.getByRole('link', { name: 'THỂ LỆ CHƯƠNG TRÌNH “ĐUA ĐIỂM TÍCH QUÀ” TRÊN CỘNG ĐỒNG HỎI ĐÁP' }).click();
-        await expect(page.getByRole('heading', { name: 'THỂ LỆ CHƯƠNG TRÌNH “ĐUA ĐIỂM TÍCH QUÀ” TRÊN CỘNG ĐỒNG HỎI ĐÁP' })).toBeVisible();
-        // Click bài viết 3
-        await page.locator('a').first().click();
-        await page.getByRole('link', { name: 'MOBIEDU RA MẮT CHUYÊN TRANG CỘNG ĐỒNG HỎI ĐÁP HOIDAP.MOBIEDU.VN' }).click();
-        await expect(page.getByRole('heading', { name: 'MOBIEDU RA MẮT CHUYÊN TRANG CỘNG ĐỒNG HỎI ĐÁP HOIDAP.MOBIEDU.VN' })).toBeVisible();
-        // Click bài viết 4 
-        await page.locator('a').first().click();
-        await page.getByRole('link', { name: 'Đáp án đề thi môn Lịch sử tốt nghiệp THPT Quốc gia 2023 nhanh nhất tại mobiEdu' }).click();
-        await expect(page.getByRole('heading', { name: 'Đáp án đề thi môn Lịch sử tốt nghiệp THPT Quốc gia 2023 nhanh nhất tại mobiEdu' })).toBeVisible();
-
-    });
-}
-
-/**
- * Case 14: Click btn Xem thếm -> Đến trang Tin tức -> click bài viết
- * Mong muốn: Điều hướng đúng đến bài viết => Không hiển thị lỗi 
- */
-
-function case14() {
-    test('Case lỗi 14: click btn Xem thêm', async ({ page }) => {
-
-        test.slow();
-        // Truy cập hệ thống thành công
-        await page.goto(dataSiteTest[1].linkSite);
-        // Click btn Xem thêm 
-        await page.locator('.home-11 > .container > .button > .btn').click();
-        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/tin-tuc");
-        // Click bài viết số 1
-        await page.locator('h1').getByRole('link', { name: 'NHỮNG ĐIỀU CẦN LƯU Ý KHI THAM GIA CHƯƠNG TRÌNH \\\\\\\'ĐUA ĐIỂM TÍCH QUÀ\\\\\\\'' }).click();
-        await expect(page.getByRole('heading', { name: 'NHỮNG ĐIỀU CẦN LƯU Ý KHI THAM GIA CHƯƠNG TRÌNH \\\\\\\'ĐUA ĐIỂM TÍCH QUÀ\\\\\\\'' })).toBeVisible();
-        // Click bài viết số 2 
-        await page.getByRole('link', { name: 'Tin tức' }).first().click();
-        await page.getByRole('link', { name: 'NHỮNG ĐIỀU CẦN LƯU Ý KHI THAM GIA CHƯƠNG TRÌNH \\\'ĐUA ĐIỂM TÍCH QUÀ\\\'' }).first().click();
-        await expect(page.getByRole('heading', { name: 'NHỮNG ĐIỀU CẦN LƯU Ý KHI THAM GIA CHƯƠNG TRÌNH \\\\\\\'ĐUA ĐIỂM TÍCH QUÀ\\\\\\\'' })).toBeVisible();
-        // Click bài viết số 3
-        await page.getByRole('link', { name: 'Tin tức' }).first().click();
-        await page.getByRole('link', { name: 'MOBIEDU RA MẮT CHUYÊN TRANG CỘNG ĐỒNG HỎI ĐÁP HOIDAP.MOBIEDU.VN' }).first().click();
-        await expect(page.getByRole('heading', { name: 'MOBIEDU RA MẮT CHUYÊN TRANG CỘNG ĐỒNG HỎI ĐÁP HOIDAP.MOBIEDU.VN' })).toBeVisible();
-        // Click bài viết số 4 
-        await page.getByRole('link', { name: 'Tin tức' }).first().click();
-        await page.getByRole('link', { name: 'TƯNG BỪNG MỪNG SINH NHẬT MOBIFONE VỚI MOBIEDU' }).click();
-        await expect(page.getByRole('heading', { name: 'TƯNG BỪNG MỪNG SINH NHẬT MOBIFONE VỚI MOBIEDU' })).toBeVisible();
-        // Click bài viết số 5 
-        await page.getByRole('link', { name: 'Tin tức' }).first().click();
-        await page.getByRole('link', { name: 'NHỮNG ĐIỀU CẦN LƯU Ý KHI THAM GIA CHƯƠNG TRÌNH \\\'ĐUA ĐIỂM TÍCH QUÀ\\\'' }).nth(1).click();
-        await expect(page.getByRole('heading', { name: 'NHỮNG ĐIỀU CẦN LƯU Ý KHI THAM GIA CHƯƠNG TRÌNH \\\\\\\'ĐUA ĐIỂM TÍCH QUÀ\\\\\\\'' })).toBeVisible();
-        // Click bài viết số 6 
-        await page.getByRole('link', { name: 'Tin tức' }).first().click();
-        await page.locator('h3').filter({ hasText: /^THỂ LỆ CHƯƠNG TRÌNH “ĐUA ĐIỂM TÍCH QUÀ” TRÊN CỘNG ĐỒNG HỎI ĐÁP$/ }).getByRole('link').click();
-        await expect(page.getByRole('heading', { name: 'THỂ LỆ CHƯƠNG TRÌNH “ĐUA ĐIỂM TÍCH QUÀ” TRÊN CỘNG ĐỒNG HỎI ĐÁP' })).toBeVisible();
-        // Click bài viết số 7 
-        await page.getByRole('link', { name: 'Tin tức' }).first().click();
-        await page.getByRole('link', { name: 'THỂ LỆ CHƯƠNG TRÌNH “ĐUA ĐIỂM TÍCH QUÀ” TRÊN CỘNG ĐỒNG HỎI ĐÁP' }).nth(2).click();
-        await expect(page.getByRole('heading', { name: 'THỂ LỆ CHƯƠNG TRÌNH “ĐUA ĐIỂM TÍCH QUÀ” TRÊN CỘNG ĐỒNG HỎI ĐÁP' })).toBeVisible();
-        // Click bài viết số 8 
-        await page.getByRole('link', { name: 'Tin tức' }).first().click();
-        await page.getByRole('link', { name: 'MOBIEDU RA MẮT CHUYÊN TRANG CỘNG ĐỒNG HỎI ĐÁP HOIDAP.MOBIEDU.VN' }).nth(2).click();
-        await expect(page.getByRole('heading', { name: 'MOBIEDU RA MẮT CHUYÊN TRANG CỘNG ĐỒNG HỎI ĐÁP HOIDAP.MOBIEDU.VN' })).toBeVisible();
-        // Click bài viết số 9 
-        await page.getByRole('link', { name: 'Tin tức' }).first().click();
-        await page.getByText('Đáp án đề thi môn Lịch sử tốt nghiệp THPT Quốc gia 2023 nhanh nhất tại mobiEdu').click();
-        await expect(page.getByRole('heading', { name: 'Đáp án đề thi môn Lịch sử tốt nghiệp THPT Quốc gia 2023 nhanh nhất tại mobiEdu' })).toBeVisible();
-        // Click bài viết số 10
-        await page.getByRole('link', { name: 'Tin tức' }).first().click();
-        await page.getByRole('link', { name: 'Đáp án đề thi môn Toán tốt nghiệp THPT Quốc gia 2023 nhanh nhất tại mobiEdu' }).first().click();
-        await expect(page.getByRole('heading', { name: 'Đáp án đề thi môn Toán tốt nghiệp THPT Quốc gia 2023 nhanh nhất tại mobiEdu' })).toBeVisible();
-        // Click bài viết số 11
-        await page.getByRole('link', { name: 'Tin tức', exact: true }).first().click();
-        await page.getByRole('link', { name: 'Đáp án đề thi môn Văn tốt nghiệp THPT Quốc gia 2023 nhanh nhất tại mobiEdu' }).first().click();
-        await expect(page.getByRole('heading', { name: 'Đáp án đề thi môn Văn tốt nghiệp THPT Quốc gia 2023 nhanh nhất tại mobiEdu' })).toBeVisible();
-        // Click bài viết số 12
-        await page.getByRole('link', { name: 'Tin tức', exact: true }).first().click();
-        await page.getByRole('link', { name: 'Cập nhật tất cả đáp án đề thi tốt nghiệp THPT 2023 nhanh nhất tại mobiEdu' }).first().click();
-        await expect(page.getByRole('heading', { name: 'Cập nhật tất cả đáp án đề thi tốt nghiệp THPT 2023 nhanh nhất tại mobiEdu' })).toBeVisible();
-
-    });
-}
 
 /**
  * Case 15: Click bài viết tại chủ đề 
@@ -1429,6 +1458,103 @@ function case15() {
     });
 }
 
+/**
+ * Case 16 :Thêm mới giải pháp không thành công 
+ * Mong muốn: Thêm mới giải pháp thành công 
+ */
+
+function case16() {
+    test('Case lỗi 16: Pass-Giải pháp', async ({ page }) => {
+
+        test.slow();
+        // Đăng nhập CMS thành công 
+        await page.goto(dataSiteTest[0].linkSite);
+        await page.getByPlaceholder('Tên đăng nhập hoặc Email').fill('hiennt');
+        await page.getByPlaceholder('Mật khẩu').fill('inet@2023');
+        await page.getByRole('button', { name: 'Đăng nhập' }).click();
+        await expect(page.getByText('Đăng nhập thành công')).toBeVisible();
+
+        // // Thêm mới giải pháp 
+        // await page.goto(dataSiteTest[0].linkSite + "/solution");
+        // await page.getByRole('button', { name: 'Thêm mới' }).click();
+        // await page.getByPlaceholder('Tên gói').fill('QA_mobiEdu TKB');
+        // await page.getByPlaceholder('Tên hiển thị').fill('Giải pháp sắp xếp thời khóa biểu');
+        // await page.getByPlaceholder('Mô tả gói').fill('Phần mềm sắp xếp thời khóa biểu mobiEdu TKB cho phép tạo và quản lí dữ liệu thời khóa biểu của một nhà trường với tối đa 600 giáo viên và 300 lớp học mỗi buổi học tại 10 địa điểm khác nhau. Với thời gian xếp cực nhanh và kết quả xếp luôn làm hài lòng các khách hàng khó tính nhất.');
+        // await page.locator('#edit-parent_id').selectOption('3');
+        // await page.locator('#edit-stt').click();
+        // await page.locator('#edit-stt').fill('1');
+        // await page.locator('#edit-is_hot').selectOption('1');
+        // await page.locator('#edit-status').selectOption('1');
+        // await page.waitForTimeout(1000);
+        // await page.getByRole('button', { name: 'Thêm lợi ích +' }).click();
+        // await page.getByRole('button', { name: 'Upload / Chọn ảnh minh hoạ +' }).click();
+        // await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
+        // await page.getByRole('button', { name: 'Xong' }).click();
+        // await page.locator('input[name="solution\\[benefit\\]\\[NaN\\]\\[title\\]"]').click();
+        // await page
+        //         .locator('input[name="solution\\[benefit\\]\\[NaN\\]\\[title\\]"]')
+        //         .fill('Tiết kiệm');
+        // await page.locator('input[name="solution\\[benefit\\]\\[NaN\\]\\[content\\]"]').click();
+        // await page
+        //         .locator('input[name="solution\\[benefit\\]\\[NaN\\]\\[content\\]"]')
+        //         .fill('Nhà trường tiết kiệm được thời gian và công sức sắp xếp thời khóa biểu.');
+        // await page.waitForTimeout(1000);
+        // await page.getByRole('button', { name: 'Thêm nổi bật +' }).click();
+        // await page.locator('#group-highlight').getByRole('button', { name: 'Upload / Chọn ảnh minh hoạ +' }).click();
+        // await page.locator(".figure-img.img-fluid.rounded[fid='1245']").click();
+        // await page.getByRole('button', { name: 'Xong' }).click();
+        // await page.locator('input[name="solution\\[highlight\\]\\[NaN\\]\\[title\\]"]').click();
+        // await page
+        //         .locator('input[name="solution\\[highlight\\]\\[NaN\\]\\[title\\]"]')
+        //         .fill('Xếp tự động 100% thời khóa biểu');
+        // await page.locator('input[name="solution\\[highlight\\]\\[NaN\\]\\[content\\]"]').click();
+        // await page
+        //         .locator('input[name="solution\\[highlight\\]\\[NaN\\]\\[content\\]"]')
+        //         .fill('Phần mềm xếp tự động 100% thời khóa biểu sau khi nhà trường nhập đủ dữ liệu đầu vào và không bị lỗi logic.');
+        // await page.getByRole('button', { name: 'Save changes' }).click();
+        // await expect(page.getByText('Thành công!')).toBeVisible();
+
+        await page.goto('https://mskill8admin.mobiedu.vn/solution#');
+        // await page.waitForTimeout(1000);
+        // await page.getByPlaceholder('Nhập từ khóa tìm kiếm...').fill('QA_mobiEdu TKB');
+        // await page.getByRole('button', { name: 'Tìm kiếm' }).click();
+        await page.waitForTimeout(1000);
+        await page
+            .locator('tbody > tr')
+            .filter({ hasText: 'QA_mobiEdu TKB' })
+            .locator('i')
+            .nth(1)
+            .click();
+        await page.getByRole('button', { name: 'Xóa' }).click();
+        await expect(page.getByText('Xóa thành công!')).toBeVisible();
+
+
+        // await page
+        //     .locator('tbody > tr')
+        //     .filter({ hasText: 'QA_mobiEdu TKB' })
+        //     .locator('i')
+        //     .nth(1)
+        //     .click();
+        // await page.getByRole('button', { name: 'Xóa' }).click();
+        // await expect(page.getByText('Xóa thành công!')).toBeVisible();
+
+
+
+        // // Truy cập Web kiểm tra hiển thị giải pháp 
+        // await page.goto(dataSiteTest[1].linkSite + "/giai-phap");
+        // await page.locator('div:nth-child(2) > .solution-school-item > .img-scale').click();
+        // await expect(page.locator('p').filter({ hasText: 'QA_mobiEdu TKB' })).toBeVisible();
+        // await page.waitForTimeout(1000);
+        // await page.locator('p').filter({ hasText: 'QA_mobiEdu TKB' }).click();
+
+
+        
+
+
+    });
+}
+
+
 function main() {
     case1();
     case2();
@@ -1445,6 +1571,7 @@ function main() {
     case13();
     case14();
     case15();
+    // case16();
 
 }
 

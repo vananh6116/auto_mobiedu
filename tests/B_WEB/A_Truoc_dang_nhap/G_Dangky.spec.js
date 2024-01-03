@@ -51,12 +51,15 @@ function case2 () {
         await page.getByRole('link', { name: 'Đăng kí' }).click();
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/dang-ky");
         // Nhập số điện thoại 
+        await page.waitForTimeout(1000);
         await page.getByPlaceholder('Nhập số điện thoại').click();
         await page.getByPlaceholder('Nhập số điện thoại').fill('');
         // Nhập mật khẩu
+        await page.waitForTimeout(1000);
         await page.getByPlaceholder('Nhập mật khẩu').click();
         await page.getByPlaceholder('Nhập mật khẩu').fill('');
         // Nhập lại mật khẩu 
+        await page.waitForTimeout(1000);
         await page.getByPlaceholder('Nhập lại mật khẩu').click();
         await page.getByPlaceholder('Nhập lại mật khẩu').fill('');
         // Click btn Đăng ký 
@@ -86,15 +89,19 @@ function case3 () {
         await page.getByRole('link', { name: 'Đăng kí' }).click();
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/dang-ky");
         // Nhập số điện thoại 
+        await page.waitForTimeout(1000);
         await page.getByPlaceholder('Nhập số điện thoại').click();
         await page.getByPlaceholder('Nhập số điện thoại').fill('090654781452');
         // Nhập mật khẩu
+        await page.waitForTimeout(1000);
         await page.getByPlaceholder('Nhập mật khẩu').click();
         await page.getByPlaceholder('Nhập mật khẩu').fill('123123');
         // Nhập lại mật khẩu 
+        await page.waitForTimeout(1000);
         await page.getByPlaceholder('Nhập lại mật khẩu').click();
         await page.getByPlaceholder('Nhập lại mật khẩu').fill('123123');
         // Click btn Đăng ký 
+        await page.waitForTimeout(1000);
         await page.getByRole('button', { name: 'ĐĂNG KÝ' }).click();
         await expect(page.getByText('Vui lòng kiểm tra lại số điện thoại.')).toBeVisible();
 
@@ -119,15 +126,19 @@ function case4 () {
         await page.getByRole('link', { name: 'Đăng kí' }).click();
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/dang-ky");
         // Nhập số điện thoại 
+        await page.waitForTimeout(1000);
         await page.getByPlaceholder('Nhập số điện thoại').click();
         await page.getByPlaceholder('Nhập số điện thoại').fill('0385519997');
         // Nhập mật khẩu
+        await page.waitForTimeout(1000);
         await page.getByPlaceholder('Nhập mật khẩu').click();
         await page.getByPlaceholder('Nhập mật khẩu').fill('123123');
         // Nhập lại mật khẩu 
+        await page.waitForTimeout(1000);
         await page.getByPlaceholder('Nhập lại mật khẩu').click();
         await page.getByPlaceholder('Nhập lại mật khẩu').fill('123123');
         // Click btn Đăng ký 
+        await page.waitForTimeout(1000);
         await page.getByRole('button', { name: 'ĐĂNG KÝ' }).click();
         await expect(page.getByText('Số điện thoại đã được sử dụng. Vui lòng đăng chuyển sang đang nhập!')).toBeVisible();
 
@@ -151,15 +162,19 @@ function case5 () {
         await page.getByRole('link', { name: 'Đăng kí' }).click();
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/dang-ky");
         // Nhập số điện thoại 
+        await page.waitForTimeout(1000);
         await page.getByPlaceholder('Nhập số điện thoại').click();
         await page.getByPlaceholder('Nhập số điện thoại').fill('0945874157');
         // Nhập mật khẩu
+        await page.waitForTimeout(1000);
         await page.getByPlaceholder('Nhập mật khẩu').click();
         await page.getByPlaceholder('Nhập mật khẩu').fill('123456');
         // Nhập lại mật khẩu 
+        await page.waitForTimeout(1000);
         await page.getByPlaceholder('Nhập lại mật khẩu').click();
         await page.getByPlaceholder('Nhập lại mật khẩu').fill('123123');
         // Click btn Đăng ký 
+        await page.waitForTimeout(1000);
         await page.getByRole('button', { name: 'ĐĂNG KÝ' }).click();
         await expect(page.getByText('Mật khẩu không trùng khớp.')).toBeVisible();
 

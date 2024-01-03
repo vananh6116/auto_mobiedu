@@ -64,7 +64,7 @@ function case2 () {
         await page.locator('div.desktop-show > div > div.image.img-scale > a > img').click();
         // Expect 
         await page.goto('https://sll.mobiedu.vn/?_gl=1*la0ry6*_ga*MTAzNjQ3ODg3MS4xNzAxMjMzMzU5*_ga_ZZM9L108RW*MTcwMTIzMzM1OC4xLjEuMTcwMTIzMzY5MS4wLjAuMA..');
-        await expect(page).toHaveURL('https://sll.mobiedu.vn/?_gl=1*la0ry6*_ga*MTAzNjQ3ODg3MS4xNzAxMjMzMzU5*_ga_ZZM9L108RW*MTcwMTIzMzM1OC4xLjEuMTcwMTIzMzY5MS4wLjAuMA..');
+        await expect(page.getByRole('navigation').getByRole('link', { name: 'mobiEdu | Phần mềm quản lý và kết nối nhà trường' })).toBeVisible();
         await expect(page).toHaveTitle(/Phần mềm quản lý và kết nối nhà trường mobiEdu/);
         // Click banner gắn link 2 đến trang mobiEdu SLL
         await page.goto(dataSiteTest[1].linkSite + "/giai-phap");
