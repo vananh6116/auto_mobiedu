@@ -80,30 +80,20 @@ function case2() {
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc/tre-em");
         await expect(page.locator('section').filter({ hasText: 'Trang chủ Khoá học' }).locator('div')).toBeVisible();
         // Hover khóa học, click danh mục học sinh phổ thông 
-<<<<<<< HEAD
-<<<<<<< HEAD
-        await page.getByRole('link', { name: 'Khóa học', exact: true }).hover();
-=======
-=======
->>>>>>> 9bf5f0e660aec939d264f42ae34fda6c64f17529
         await page.waitForTimeout(1000);
         await page.getByRole('link', { name: 'Khóa học' }).hover();
->>>>>>> 9bf5f0e660aec939d264f42ae34fda6c64f17529
+
         await page.waitForTimeout(1000);
         await page.locator('#mobiEduToggleMenu').getByRole('link', { name: 'Học sinh phổ thông' }).click();
         // Expect
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc/hoc-sinh-pho-thong");
         await expect(page.locator('section').filter({ hasText: 'Trang chủ Khoá học' }).locator('div')).toBeVisible();
         // Hover khóa học, click danh mục sinh viên và người đi làm
-<<<<<<< HEAD
-<<<<<<< HEAD
-        await page.getByRole('link', { name: 'Khóa học', exact: true }).hover();
-=======
-=======
->>>>>>> 9bf5f0e660aec939d264f42ae34fda6c64f17529
+
+
         await page.waitForTimeout(1000);
         await page.getByRole('link', { name: 'Khóa học' }).hover();
->>>>>>> 9bf5f0e660aec939d264f42ae34fda6c64f17529
+
         await page.waitForTimeout(1000);
         await page.locator('#mobiEduToggleMenu').getByRole('link', { name: 'Sinh viên và người đi làm' }).click();
         // Expect 
@@ -205,16 +195,8 @@ function case5() {
         await page.waitForTimeout(1000);
         await page.getByText('Dưới 500.000đ').click();
         // Click btn Áp dụng 
-<<<<<<< HEAD
-<<<<<<< HEAD
         await page.waitForTimeout(1000);
         await page.getByRole('button', { name: 'Áp dụng' }).click(); 
-=======
-        await page.getByRole('button', { name: 'Áp dụng' }).click();
->>>>>>> 9bf5f0e660aec939d264f42ae34fda6c64f17529
-=======
-        await page.getByRole('button', { name: 'Áp dụng' }).click();
->>>>>>> 9bf5f0e660aec939d264f42ae34fda6c64f17529
         // Expect 
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc?price_range=0_500000");
         await expect(page.getByText('Dưới 500.000đ')).toBeChecked();
