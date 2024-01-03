@@ -81,8 +81,11 @@ function case2() {
         await expect(page.locator('section').filter({ hasText: 'Trang chủ Khoá học' }).locator('div')).toBeVisible();
         // Hover khóa học, click danh mục học sinh phổ thông 
 <<<<<<< HEAD
+<<<<<<< HEAD
         await page.getByRole('link', { name: 'Khóa học', exact: true }).hover();
 =======
+=======
+>>>>>>> 9bf5f0e660aec939d264f42ae34fda6c64f17529
         await page.waitForTimeout(1000);
         await page.getByRole('link', { name: 'Khóa học' }).hover();
 >>>>>>> 9bf5f0e660aec939d264f42ae34fda6c64f17529
@@ -93,8 +96,11 @@ function case2() {
         await expect(page.locator('section').filter({ hasText: 'Trang chủ Khoá học' }).locator('div')).toBeVisible();
         // Hover khóa học, click danh mục sinh viên và người đi làm
 <<<<<<< HEAD
+<<<<<<< HEAD
         await page.getByRole('link', { name: 'Khóa học', exact: true }).hover();
 =======
+=======
+>>>>>>> 9bf5f0e660aec939d264f42ae34fda6c64f17529
         await page.waitForTimeout(1000);
         await page.getByRole('link', { name: 'Khóa học' }).hover();
 >>>>>>> 9bf5f0e660aec939d264f42ae34fda6c64f17529
@@ -200,8 +206,12 @@ function case5() {
         await page.getByText('Dưới 500.000đ').click();
         // Click btn Áp dụng 
 <<<<<<< HEAD
+<<<<<<< HEAD
         await page.waitForTimeout(1000);
         await page.getByRole('button', { name: 'Áp dụng' }).click(); 
+=======
+        await page.getByRole('button', { name: 'Áp dụng' }).click();
+>>>>>>> 9bf5f0e660aec939d264f42ae34fda6c64f17529
 =======
         await page.getByRole('button', { name: 'Áp dụng' }).click();
 >>>>>>> 9bf5f0e660aec939d264f42ae34fda6c64f17529
