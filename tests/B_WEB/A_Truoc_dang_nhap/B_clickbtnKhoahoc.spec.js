@@ -66,28 +66,28 @@ function case2 () {
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Hover khóa học, click danh mục tất cả 
-        await page.getByRole('link', { name: 'Khóa học' }).hover();
+        await page.getByRole('link', { name: 'Khóa học', exact: true }).hover();
         await page.waitForTimeout(1000);
         await page.locator('#mobiEduToggleMenu').getByRole('link', { name: 'Tất cả' }).click();
         // Expect 
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc");
         await expect(page.locator('section').filter({ hasText: 'Trang chủ Khoá học' }).locator('div')).toBeVisible();
         // Hover khóa học, click danh mục trẻ em 
-        await page.getByRole('link', { name: 'Khóa học' }).hover();
+        await page.getByRole('link', { name: 'Khóa học' , exact: true}).hover();
         await page.waitForTimeout(1000);
         await page.locator('#mobiEduToggleMenu').getByRole('link', { name: 'Trẻ em' }).click();
         // Expect 
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc/tre-em");
         await expect(page.locator('section').filter({ hasText: 'Trang chủ Khoá học' }).locator('div')).toBeVisible();
         // Hover khóa học, click danh mục học sinh phổ thông 
-        await page.getByRole('link', { name: 'Khóa học' }).hover();
+        await page.getByRole('link', { name: 'Khóa học', exact: true }).hover();
         await page.waitForTimeout(1000);
         await page.locator('#mobiEduToggleMenu').getByRole('link', { name: 'Học sinh phổ thông' }).click();
         // Expect
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc/hoc-sinh-pho-thong");
         await expect(page.locator('section').filter({ hasText: 'Trang chủ Khoá học' }).locator('div')).toBeVisible();
         // Hover khóa học, click danh mục sinh viên và người đi làm
-        await page.getByRole('link', { name: 'Khóa học' }).hover();
+        await page.getByRole('link', { name: 'Khóa học', exact: true }).hover();
         await page.waitForTimeout(1000);
         await page.locator('#mobiEduToggleMenu').getByRole('link', { name: 'Sinh viên và người đi làm' }).click();
         // Expect 
@@ -186,14 +186,16 @@ function case5 () {
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc");
         await expect(page.locator('section').filter({ hasText: 'Trang chủ Khoá học' }).locator('div')).toBeVisible();
         // Click chọn khoảng giá
+        await page.waitForTimeout(1000);
         await page.getByText('Dưới 500.000đ').click();
         // Click btn Áp dụng 
+        await page.waitForTimeout(1000);
         await page.getByRole('button', { name: 'Áp dụng' }).click(); 
         // Expect 
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc?price_range=0_500000");
         await expect(page.getByText('Dưới 500.000đ')).toBeChecked();
         // Expect Hiển thị tất cả khoảng giá không có "Miễn phí"
-        await page.goto('https://mskill8.mobiedu.vn/khoa-hoc');
+        await page.goto(dataSiteTest[1].linkSite + "/khoa-hoc");
         await expect(page.getByText('Trên 2.000.000đ')).toBeVisible();
         await expect(page.getByText('Dưới 2.000.000đ')).toBeVisible();
         await expect(page.getByText('Dưới 1.000.000 đ')).toBeVisible();  
@@ -281,6 +283,7 @@ function case8 () {
         // Expect
         await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
         // Click Khóa học 
+        await page.waitForTimeout(1000);
         await page.getByRole('link', { name: 'Khóa học' }).click();
         // Expect 
         await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc");
@@ -288,7 +291,7 @@ function case8 () {
         // Click btn Giá thấp nhất
         await page.getByRole('link', { name: 'Giá thấp nhất' }).click();
         // Expect
-        await expect(page).toHaveURL('https://mskill8.mobiedu.vn/khoa-hoc?sort_type=price_asc');
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/khoa-hoc?sort_type=price_asc");
         // Click btn Xem thêm 
         await page.getByRole('button', { name: 'Xem thêm' }).click();
         await page.getByRole('button', { name: 'Xem thêm' }).click();
