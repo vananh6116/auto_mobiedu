@@ -247,6 +247,7 @@ function case5 () {
         await page.getByPlaceholder('Nhập số điện thoại').fill('0776518894');
         await page.getByPlaceholder('Nhập mật khẩu').fill('inet@123');
         // Click btn Đăng nhập thành công vào hệ thống
+        await page.waitForTimeout(1000);
         await page.getByRole('button', { name: 'ĐĂNG NHẬP' }).click();
         await expect(page.locator('div.account > div > div > a')).toBeVisible();
         // Click icon giỏ hàng 
@@ -285,10 +286,12 @@ function case6 () {
         await expect(page.locator('div.account > div > div > a')).toBeVisible();
         // Thêm khóa học vào giỏ hàng 
         await page.locator('#btn_tab_tre-em').click();
+        await page.waitForTimeout(1000);
         await page.getByRole('link', { name: 'Nhập môn cờ vua cho người mới bắt đầu' }).click();
         await page.getByRole('link', { name: 'Thêm vào giỏ hàng' }).click();
         await page.keyboard.press('Enter');
         // Click icon giỏ hàng 
+        await page.waitForTimeout(1000);
         await page.getByRole('link', { name: 'shopping_cart 1' }).click();
         await expect(page.getByText('star 4 Nhập môn cờ vua cho người mới bắt đầu 600.000 đ delete_outline Xóa 600.00')).toBeVisible();
         await expect(page.getByText('Áp dụng TIẾP TỤC THANH TOÁN')).toBeVisible();
@@ -348,12 +351,48 @@ function case7 () {
 } 
 
 /**
- * Case 8: Click btn trang Tài khoản của tôi - thay đổi thông tin cá nhân
- * Mong muốn: Hiển thị đúng đến trang click
+ * Case 8: Thay đổi ảnh AVT 
+ * Mong muốn: Hiển thị đúng ảnh avt 
  */
 
 function case8 () {
-    test('Case 8: KHCT-thay đổi thông tin  ', async ({ page }) => {
+    test('Case 8: đổi ảnh avt  ', async ({ page }) => {
+
+        test.slow();
+        // Truy cập web 
+        await page.goto(dataSiteTest[1].linkSite);
+        await expect(page).toHaveTitle(/mobiEdu - Nền tảng chuyển đổi số toàn diện của MobiFone/);
+        // Click btn Đăng nhập 
+        await page.getByRole('link', { name: 'Đăng nhập', exact: true }).click();
+        await expect(page).toHaveURL(dataSiteTest[1].linkSite + "/dang-nhap?redirect=/");
+        // Nhập số điện thoại - mật khẩu 
+        await page.waitForTimeout(2000);
+        await page.getByPlaceholder('Nhập số điện thoại').fill('0385519997');
+        await page.getByPlaceholder('Nhập mật khẩu').fill('123123');
+        // Click btn Đăng nhập thành công vào hệ thống
+        await page.waitForTimeout(1000);
+        await page.getByRole('button', { name: 'ĐĂNG NHẬP' }).click();
+        await expect(page.locator('div.account > div > div > a')).toBeVisible();
+        // Thay đổi avt mới 
+        await page.waitForTimeout(1000);
+        await page.locator('div.account > div > div > a').hover();
+        await page.getByRole('link', { name: 'Tài khoản của tôi' }).click();
+        const fileChooserPromise = page.waitForEvent('filechooser');
+        await page.getByRole('link', { name: 'border_color', exact: true }).click();
+        const fileChooser = await fileChooserPromise;
+        await fileChooser.setFiles(['tests/import anh/avatar-dep-89.jpg']);
+    
+      
+    });
+} 
+
+/**
+ * Case 9: Click btn trang Tài khoản của tôi - thay đổi thông tin cá nhân
+ * Mong muốn: Hiển thị đúng đến trang click
+ */
+
+function case9 () {
+    test('Case 9: KHCT-thay đổi thông tin  ', async ({ page }) => {
 
         test.slow();
         // Truy cập web 
@@ -441,7 +480,8 @@ function main(){
     case5();
     case6();
     case7();
-    case8();
+    // case8();
+    case9();
 
 }
 main();
